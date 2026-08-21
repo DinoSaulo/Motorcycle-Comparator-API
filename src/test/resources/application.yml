@@ -29,6 +29,15 @@ spring:
     problemdetails:
       enabled: false
 
+# Mirrors main's exposure so a test can actually exercise the actuator authorization
+# rule in SecurityConfig; the default (health only) would hide the gap instead of
+# testing it.
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
 app:
   api:
     version: v1-test

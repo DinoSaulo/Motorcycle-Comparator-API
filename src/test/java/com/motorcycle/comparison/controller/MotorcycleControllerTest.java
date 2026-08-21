@@ -20,6 +20,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -191,6 +192,41 @@ class MotorcycleControllerTest {
                 .andExpect(jsonPath("$.violations[?(@.field == 'modelYear')]").exists())
                 .andExpect(jsonPath("$.violations[?(@.field == 'category')]").exists())
                 .andExpect(jsonPath("$.violations[?(@.field == 'engine')]").exists());
+    }
+
+    @Test
+    @DisplayName("accepts an electric motorcycle with no displacement")
+    void createAcceptsElectricMotorcycleWithoutDisplacement() throws Exception {
+        // Regression test: displacementCc used to be @NotNull, which made it impossible
+        // to create through the API the very electric motorcycle the seed data ships.
+        CreateMotorcycleRequest request = new CreateMotorcycleRequest(
+                "Zero", "SR/F", 2024, Category.ELECTRIC,
+                new BigDecimal("24900.00"), null, "Electric naked",
+                "Steel trellis", null, null, null, null, "Bosch cornering ABS",
+                null, null,
+                MotorcycleFixtures.electricEngineRequest(), null, Map.of());
+        when(motorcycleService.create(any())).thenReturn(response(9L, "Zero", "SR/F"));
+
+        mockMvc.perform(post("/api/v1/motorcycles")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isCreated());
+    }
+
+    @Test
+    @DisplayName("a slug collision that slips past the check becomes 409, not 500")
+    void createRaceConditionOnSlugBecomesConflict() throws Exception {
+        // Simulates two concurrent creates both passing existsBySlug() before either
+        // commits: the unique constraint catches it at flush, as a DataIntegrityViolationException.
+        when(motorcycleService.create(any()))
+                .thenThrow(new DataIntegrityViolationException("duplicate key"));
+
+        mockMvc.perform(post("/api/v1/motorcycles")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(
+                                MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024))))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.status").value(409));
     }
 
     @Test

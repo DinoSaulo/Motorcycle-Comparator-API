@@ -71,7 +71,9 @@ public record CreateMotorcycleRequest(
     @Schema(description = "Powertrain block")
     public record EngineRequest(
             @Size(max = 80) String engineType,
-            @NotNull @Positive Integer displacementCc,
+            // Nullable on purpose: an electric motor has no displacement (see the
+            // seeded Zero SR/F). @Positive alone already rejects 0/negative when present.
+            @Positive Integer displacementCc,
             @Positive Integer cylinders,
             @Positive Integer valvesPerCylinder,
             @DecimalMin("0.0") BigDecimal maxPowerHp,

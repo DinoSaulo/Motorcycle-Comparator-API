@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.List;
 
@@ -114,11 +115,31 @@ public class GlobalExceptionHandler {
                 "The request conflicts with the current state of the resource", request);
     }
 
+    /**
+     * With the default MVC resource-handling config (no {@code spring.mvc.throw-exception
+     * -if-no-handler-found}), an unmapped path never reaches this: it is claimed first by
+     * the static-resource handler mounted on {@code /**}, which throws {@link
+     * NoResourceFoundException} instead. Kept for the day that property is turned on.
+     */
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<ApiError> handleNoHandler(NoHandlerFoundException ex,
                                                     HttpServletRequest request) {
         return build(HttpStatus.NOT_FOUND, "No endpoint " + ex.getHttpMethod() + " "
                 + ex.getRequestURL(), request);
+    }
+
+    /**
+     * The exception actually thrown today for an unmapped sub-path under a public
+     * prefix (e.g. a typo'd id or trailing segment): Spring's static-resource fallback
+     * claims the request before routing gives up. Without this handler it fell through
+     * to the catch-all below and came back as a 500 with a stack trace logged as if it
+     * were a real fault, for what is just a client requesting a URL that never existed.
+     */
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ApiError> handleNoResource(NoResourceFoundException ex,
+                                                     HttpServletRequest request) {
+        return build(HttpStatus.NOT_FOUND, "No endpoint " + request.getMethod() + " "
+                + request.getRequestURI(), request);
     }
 
     @ExceptionHandler(Exception.class)

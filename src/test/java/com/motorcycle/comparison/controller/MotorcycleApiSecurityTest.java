@@ -46,6 +46,27 @@ class MotorcycleApiSecurityTest {
     }
 
     @Test
+    @DisplayName("a path outside the public prefix is 401, not a stack trace, when it doesn't exist either")
+    void unmappedPathOutsidePublicPrefixRequiresAuth() throws Exception {
+        // anyRequest().authenticated() is deny-by-default: a caller cannot tell "wrong
+        // URL" apart from "real endpoint, no token" — that is the point, not a bug.
+        mockMvc.perform(get("/api/v1/this-route-does-not-exist"))
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("$.status").value(401));
+    }
+
+    @Test
+    @DisplayName("an unmapped sub-path inside the public prefix is 404, not 500")
+    void unmappedPathInsidePublicPrefixBecomesNotFound() throws Exception {
+        // Regression test: this used to fall through to the catch-all handler and come
+        // back as a 500, because Spring's static-resource fallback throws
+        // NoResourceFoundException here, not NoHandlerFoundException.
+        mockMvc.perform(get("/api/v1/motorcycles/1/nonexistent-sub-path"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.status").value(404));
+    }
+
+    @Test
     @DisplayName("an anonymous write is rejected with 401 in the uniform error shape")
     void anonymousWriteIsUnauthorized() throws Exception {
         mockMvc.perform(post("/api/v1/motorcycles")
@@ -108,6 +129,23 @@ class MotorcycleApiSecurityTest {
 
         mockMvc.perform(get("/api/v1/motorcycles/" + firstId))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DisplayName("actuator metrics requires the admin role, unlike health")
+    void actuatorMetricsRequiresAdmin() throws Exception {
+        mockMvc.perform(get("/actuator/metrics"))
+                .andExpect(status().isUnauthorized());
+
+        String editorToken = login("editor", "editor123");
+        mockMvc.perform(get("/actuator/metrics")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + editorToken))
+                .andExpect(status().isForbidden());
+
+        String adminToken = login("admin", "admin123");
+        mockMvc.perform(get("/actuator/metrics")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + adminToken))
+                .andExpect(status().isOk());
     }
 
     @Test

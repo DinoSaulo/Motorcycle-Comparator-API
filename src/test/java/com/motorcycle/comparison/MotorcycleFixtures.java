@@ -99,6 +99,17 @@ public final class MotorcycleFixtures {
                 full.engine(), null, full.additionalSpecs());
     }
 
+    /** Shaped like the seeded Zero SR/F: no displacement, no cylinders, no gearbox ratios. */
+    public static CreateMotorcycleRequest.EngineRequest electricEngineRequest() {
+        return new CreateMotorcycleRequest.EngineRequest(
+                "Permanent magnet AC motor", null, null, null,
+                new BigDecimal("100.0"), null,
+                new BigDecimal("190.0"), null,
+                null, null, null,
+                "Air", "Battery electric, 14.4 kWh", "Single-speed direct drive", 1, "Belt",
+                200, null, "Zero emission");
+    }
+
     public static CreateMotorcycleRequest.DimensionRequest dimensionRequest() {
         return new CreateMotorcycleRequest.DimensionRequest(
                 2090, 820, 1190, 1430, 825, 140,

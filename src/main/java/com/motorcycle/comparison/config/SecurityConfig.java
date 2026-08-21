@@ -80,6 +80,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PUBLIC_PATHS).permitAll()
                         .requestMatchers(HttpMethod.GET, PUBLIC_GET_PATHS).permitAll()
+                        // health/info above are public; every other actuator endpoint
+                        // (metrics included) exposes operational detail an editor has no
+                        // business reading.
+                        .requestMatchers("/actuator/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/v1/motorcycles/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/v1/motorcycles/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/motorcycles/**").hasRole("ADMIN")

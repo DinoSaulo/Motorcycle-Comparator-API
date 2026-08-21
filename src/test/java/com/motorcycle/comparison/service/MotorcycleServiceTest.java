@@ -4,6 +4,7 @@ import com.motorcycle.comparison.MotorcycleFixtures;
 import com.motorcycle.comparison.dto.request.CreateMotorcycleRequest;
 import com.motorcycle.comparison.dto.response.MotorcycleResponse;
 import com.motorcycle.comparison.entity.Motorcycle;
+import com.motorcycle.comparison.exception.DuplicateResourceException;
 import com.motorcycle.comparison.exception.ResourceNotFoundException;
 import com.motorcycle.comparison.repository.MotorcycleRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -126,6 +127,17 @@ class MotorcycleServiceTest {
             ArgumentCaptor<Motorcycle> captor = ArgumentCaptor.forClass(Motorcycle.class);
             verify(motorcycleRepository).save(captor.capture());
             assertThat(captor.getValue().getSlug()).isEqualTo("yamaha-mt-09-2024-2");
+        }
+
+        @Test
+        @DisplayName("gives up deriving a unique slug after too many collisions")
+        void givesUpAfterTooManyCollisions() {
+            when(motorcycleRepository.existsBySlug(anyString())).thenReturn(true);
+
+            assertThatThrownBy(() -> motorcycleService.create(
+                    MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024)))
+                    .isInstanceOf(DuplicateResourceException.class)
+                    .hasMessageContaining("yamaha-mt-09-2024");
         }
 
         @Test
