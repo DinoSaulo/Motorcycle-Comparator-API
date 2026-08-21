@@ -16,13 +16,21 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -63,6 +71,27 @@ class MotorcycleServiceTest {
             assertThatThrownBy(() -> motorcycleService.getById(404L))
                     .isInstanceOf(ResourceNotFoundException.class)
                     .hasMessageContaining("404");
+        }
+
+        @Test
+        @DisplayName("rejects a sort property outside the allow-list instead of reaching Hibernate")
+        void rejectsUnknownSortProperty() {
+            Pageable pageable = PageRequest.of(0, 20, Sort.by("engine.displacementCc"));
+
+            assertThatThrownBy(() -> motorcycleService.search(null, pageable))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("engine.displacementCc");
+        }
+
+        @Test
+        @DisplayName("accepts a sort by an allow-listed property")
+        void acceptsAllowedSortProperty() {
+            Pageable pageable = PageRequest.of(0, 20, Sort.by("brand"));
+            when(motorcycleRepository.findAll(any(Specification.class), eq(pageable)))
+                    .thenReturn(new PageImpl<>(List.of()));
+
+            assertThatCode(() -> motorcycleService.search(null, pageable))
+                    .doesNotThrowAnyException();
         }
     }
 
@@ -160,6 +189,22 @@ class MotorcycleServiceTest {
             // Swapping the instance would make orphanRemoval delete and re-insert the row.
             assertThat(existing.getEngine()).isSameAs(originalEngine);
             assertThat(existing.getEngine().getEngineType()).isEqualTo("Inline-3");
+        }
+
+        @Test
+        @DisplayName("clears the dimension block when a full-replace request omits it")
+        void clearsDimensionWhenOmitted() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setSlug("yamaha-mt-09-2024");
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            CreateMotorcycleRequest request =
+                    MotorcycleFixtures.createRequestWithoutDimension("Yamaha", "MT-09", 2024);
+            motorcycleService.update(1L, request);
+
+            // PUT is a full replace: an omitted optional block clears like any other
+            // omitted field, it does not silently keep the previous value.
+            assertThat(existing.getDimension()).isNull();
         }
     }
 

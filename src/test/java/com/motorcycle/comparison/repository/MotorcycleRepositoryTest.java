@@ -163,6 +163,19 @@ class MotorcycleRepositoryTest {
     }
 
     @Test
+    @DisplayName("treats the client's own wildcard characters as literal text")
+    void freeTextWildcardIsTreatedLiterally() {
+        // None of the seeded brands/models/slugs contain a literal '%' or '_', so an
+        // unescaped LIKE would wrongly match everything instead of matching nothing.
+        assertThat(search(new MotorcycleFilter(null, null, null, null, null,
+                null, null, null, "%")))
+                .isEmpty();
+        assertThat(search(new MotorcycleFilter(null, null, null, null, null,
+                null, null, null, "_")))
+                .isEmpty();
+    }
+
+    @Test
     @DisplayName("combines facets with AND")
     void combinesFacets() {
         assertThat(search(new MotorcycleFilter("Yamaha", Category.NAKED, 2024, 800, 1000,

@@ -1,8 +1,6 @@
 package com.motorcycle.comparison.repository;
 
 import com.motorcycle.comparison.entity.Motorcycle;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -38,9 +36,6 @@ public interface MotorcycleRepository
     List<Motorcycle> findAllWithSpecificationsByIdIn(Collection<Long> ids);
 
     boolean existsBySlug(String slug);
-
-    @EntityGraph(attributePaths = {"engine", "dimension"})
-    Page<Motorcycle> findAllBy(Pageable pageable);
 
     /** Distinct brands, for populating the filter sidebar without a second table. */
     @Query(

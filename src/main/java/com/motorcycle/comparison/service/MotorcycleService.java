@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
@@ -43,11 +45,35 @@ public class MotorcycleService {
     private static final Pattern EDGE_DASHES = Pattern.compile("^-|-$");
     private static final Pattern DISAMBIGUATOR = Pattern.compile("-\\d+$");
 
+    /**
+     * Properties a client is allowed to sort the catalogue by. Anything else is
+     * rejected with a clean 400 instead of reaching Hibernate: an unknown property
+     * would otherwise surface as an {@code IllegalArgumentException} whose message
+     * names the entity's fully-qualified class, which is an internal detail we do
+     * not want to hand to an anonymous caller.
+     */
+    private static final Set<String> SORTABLE_PROPERTIES = Set.of(
+            "id", "brand", "model", "modelYear", "category", "priceEur",
+            "createdAt", "updatedAt");
+
+    private static final char LIKE_ESCAPE = '\\';
+
     private final MotorcycleRepository motorcycleRepository;
 
     public Page<MotorcycleResponse> search(MotorcycleFilter filter, Pageable pageable) {
+        validateSort(pageable.getSort());
         return motorcycleRepository.findAll(toSpecification(filter), pageable)
                 .map(MotorcycleResponse::from);
+    }
+
+    private static void validateSort(Sort sort) {
+        sort.forEach(order -> {
+            if (!SORTABLE_PROPERTIES.contains(order.getProperty())) {
+                throw new IllegalArgumentException(
+                        "Cannot sort by '" + order.getProperty() + "'. Allowed fields: "
+                                + String.join(", ", SORTABLE_PROPERTIES));
+            }
+        });
     }
 
     public MotorcycleResponse getById(Long id) {
@@ -134,11 +160,13 @@ public class MotorcycleService {
                 predicates.add(cb.lessThanOrEqualTo(root.get("priceEur"), filter.maxPriceEur()));
             }
             if (hasText(filter.q())) {
-                String pattern = "%" + filter.q().toLowerCase(Locale.ROOT) + "%";
+                // Escape the client's own '%'/'_' so free text is matched literally;
+                // otherwise "q=%" would match every row instead of being a no-op search.
+                String pattern = "%" + escapeLike(filter.q().toLowerCase(Locale.ROOT)) + "%";
                 predicates.add(cb.or(
-                        cb.like(cb.lower(root.get("brand")), pattern),
-                        cb.like(cb.lower(root.get("model")), pattern),
-                        cb.like(cb.lower(root.get("slug")), pattern)));
+                        cb.like(cb.lower(root.get("brand")), pattern, LIKE_ESCAPE),
+                        cb.like(cb.lower(root.get("model")), pattern, LIKE_ESCAPE),
+                        cb.like(cb.lower(root.get("slug")), pattern, LIKE_ESCAPE)));
             }
 
             boolean needsEngine = filter.minDisplacementCc() != null
@@ -227,7 +255,11 @@ public class MotorcycleService {
     private Dimension mergeDimension(CreateMotorcycleRequest.DimensionRequest src,
                                      Dimension existing) {
         if (src == null) {
-            return existing;
+            // Unlike engine (@NotNull on the request), dimension is optional, and this
+            // request/response pair backs a full-replacement PUT: an omitted block must
+            // clear like every flat field does, not silently keep the previous value.
+            // orphanRemoval on Motorcycle#dimension deletes the row on flush.
+            return null;
         }
         Dimension d = existing != null ? existing : new Dimension();
         d.setLengthMm(src.lengthMm());
@@ -289,5 +321,13 @@ public class MotorcycleService {
 
     private static boolean hasText(String value) {
         return value != null && !value.isBlank();
+    }
+
+    /** Escapes the LIKE metacharacters so free text is matched literally. */
+    private static String escapeLike(String value) {
+        return value
+                .replace(String.valueOf(LIKE_ESCAPE), LIKE_ESCAPE + "" + LIKE_ESCAPE)
+                .replace("%", LIKE_ESCAPE + "%")
+                .replace("_", LIKE_ESCAPE + "_");
     }
 }
