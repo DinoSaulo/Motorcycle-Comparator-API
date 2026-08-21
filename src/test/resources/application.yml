@@ -1,0 +1,55 @@
+# Test configuration. This file shadows src/main/resources/application.yml on the
+# test classpath, so it must be self-contained.
+spring:
+  datasource:
+    url: jdbc:h2:mem:motorcycle;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        default_batch_fetch_size: 32
+
+  # The dev seed script is PostgreSQL-specific; tests build their own fixtures.
+  sql:
+    init:
+      mode: never
+
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+
+  mvc:
+    problemdetails:
+      enabled: false
+
+app:
+  api:
+    version: v1-test
+  comparison:
+    max-items: 4
+  security:
+    cors:
+      allowed-origins: http://localhost:3000
+    jwt:
+      secret: dGVzdC1vbmx5LXNlY3JldC1rZXktZm9yLW1vdG9yY3ljbGUtY29tcGFyaXNvbi1hcGk=
+      ttl: PT1H
+      issuer: motorcycle-comparison-api
+    users:
+      admin:
+        username: admin
+        password: admin123
+      editor:
+        username: editor
+        password: editor123
+
+logging:
+  level:
+    com.motorcycle.comparison: WARN
+    org.hibernate: WARN

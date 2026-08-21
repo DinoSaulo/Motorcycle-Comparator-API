@@ -1,0 +1,132 @@
+spring:
+  application:
+    name: motorcycle-comparison-api
+
+  profiles:
+    default: dev
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/motorcycle_comparison}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    hikari:
+      pool-name: motorcycle-pool
+      maximum-pool-size: ${DB_POOL_SIZE:10}
+      connection-timeout: 20000
+
+  jpa:
+    # Off by default: keeping a session open for view rendering is how lazy loading
+    # silently becomes N+1 inside the serializer. The service layer decides what to fetch.
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+          batch_size: 30
+        # Loads the lazy to-one specification blocks of a whole page in one extra
+        # query instead of one per row.
+        default_batch_fetch_size: 32
+        order_inserts: true
+        order_updates: true
+
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+
+  mvc:
+    problemdetails:
+      enabled: false
+
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-stacktrace: never
+    include-message: never
+  compression:
+    enabled: true
+    mime-types: application/json
+  shutdown: graceful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: alpha
+    tags-sorter: alpha
+
+app:
+  api:
+    version: v1
+  comparison:
+    # Four columns is where a side-by-side table stops being readable on a laptop.
+    max-items: 4
+  security:
+    cors:
+      allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173}
+    jwt:
+      # Base64, >= 32 bytes decoded. The value below is a DEVELOPMENT default only:
+      # every deployed environment must override JWT_SECRET.
+      secret: ${JWT_SECRET:cWNKFJMcbggRga1+khWjTK94037jYuxzSZf51LeOElDAa30IJtph+58whj0Elj0r}
+      ttl: ${JWT_TTL:PT2H}
+      issuer: motorcycle-comparison-api
+    users:
+      admin:
+        username: ${ADMIN_USERNAME:admin}
+        password: ${ADMIN_PASSWORD:admin123}
+      editor:
+        username: ${EDITOR_USERNAME:editor}
+        password: ${EDITOR_PASSWORD:editor123}
+
+logging:
+  level:
+    com.motorcycle.comparison: ${LOG_LEVEL:INFO}
+
+---
+# Local development: schema rebuilt from the entities on every boot and reseeded
+# from data.sql. Good enough while the model is still moving; replaced by Flyway
+# migrations before anything is deployed.
+spring:
+  config:
+    activate:
+      on-profile: dev
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+logging:
+  level:
+    com.motorcycle.comparison: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+
+---
+# Deployed environments: the application never touches the schema, and never seeds.
+spring:
+  config:
+    activate:
+      on-profile: prod
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  sql:
+    init:
+      mode: never
+management:
+  endpoint:
+    health:
+      show-details: never

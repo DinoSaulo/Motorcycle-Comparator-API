@@ -15,3 +15,30 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+# --- IDEs ---
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+nbproject/private/
+
+# --- Build output ---
+target/
+build/
+out/
+
+# --- OS noise ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Logs & local overrides ---
+*.log
+logs/
+.env
+.env.local
+application-local.yml
+application-local.properties
