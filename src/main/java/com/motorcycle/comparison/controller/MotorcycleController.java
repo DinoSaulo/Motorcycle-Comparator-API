@@ -93,8 +93,7 @@ public class MotorcycleController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Fetch one motorcycle with all its specifications")
-    @ApiResponse(responseCode = "404", description = "Unknown id",
-            content = @Content(schema = @Schema(implementation = ApiError.class)))
+    @ApiResponse(responseCode = "404", description = "Unknown id", content = @Content(schema = @Schema(implementation = ApiError.class)))
     public MotorcycleResponse getById(@PathVariable Long id) {
         return motorcycleService.getById(id);
     }
@@ -110,22 +109,17 @@ public class MotorcycleController {
     @SecurityRequirement(name = "bearerAuth")
     @Operation(summary = "Create a motorcycle")
     @ApiResponse(responseCode = "201", description = "Created; Location header carries the new URI")
-    public ResponseEntity<MotorcycleResponse> create(
-            @Valid @RequestBody CreateMotorcycleRequest request,
-            UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<MotorcycleResponse> create( @Valid @RequestBody CreateMotorcycleRequest request, UriComponentsBuilder uriBuilder) {
 
         MotorcycleResponse created = motorcycleService.create(request);
-        URI location = uriBuilder.path("/api/v1/motorcycles/{id}")
-                .buildAndExpand(created.id())
-                .toUri();
+        URI location = uriBuilder.path("/api/v1/motorcycles/{id}").buildAndExpand(created.id()) .toUri();
         return ResponseEntity.created(location).body(created);
     }
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     @SecurityRequirement(name = "bearerAuth")
-    @Operation(summary = "Replace a motorcycle",
-            description = "Full replacement: omitted optional fields are cleared.")
+    @Operation(summary = "Replace a motorcycle", description = "Full replacement: omitted optional fields are cleared.")
     public MotorcycleResponse update(@PathVariable Long id,
                                      @Valid @RequestBody CreateMotorcycleRequest request) {
         return motorcycleService.update(id, request);
