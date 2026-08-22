@@ -12,14 +12,11 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * {@link JpaSpecificationExecutor} is what powers the catalogue filters: the
- * facets a comparison site offers (brand, category, displacement range, price
- * range, free text) combine arbitrarily, and a derived query per combination
- * would not scale.
+ * {@link JpaSpecificationExecutor} powers the catalogue filters: the facets a comparison site offers (brand,
+ * category, displacement range, price range, free text) combine arbitrarily, and a derived query per combination would not scale.
  */
 @Repository
-public interface MotorcycleRepository
-        extends JpaRepository<Motorcycle, Long>, JpaSpecificationExecutor<Motorcycle> {
+public interface MotorcycleRepository extends JpaRepository<Motorcycle, Long>, JpaSpecificationExecutor<Motorcycle> {
 
     @EntityGraph(attributePaths = {"engine", "dimension"})
     Optional<Motorcycle> findWithSpecificationsById(Long id);
@@ -27,18 +24,13 @@ public interface MotorcycleRepository
     @EntityGraph(attributePaths = {"engine", "dimension"})
     Optional<Motorcycle> findWithSpecificationsBySlug(String slug);
 
-    /**
-     * Single round trip for the whole comparison set. The to-one joins keep this
-     * to one query, which is the point: a side-by-side table of N bikes must not
-     * cost N+1 selects.
-     */
+    /** Single round trip for the whole comparison set: the to-one joins keep a side-by-side table of N bikes to one query, not N+1. */
     @EntityGraph(attributePaths = {"engine", "dimension"})
     List<Motorcycle> findAllWithSpecificationsByIdIn(Collection<Long> ids);
 
     boolean existsBySlug(String slug);
 
     /** Distinct brands, for populating the filter sidebar without a second table. */
-    @Query(
-            "SELECT DISTINCT m.brand FROM Motorcycle m ORDER BY m.brand")
+    @Query("SELECT DISTINCT m.brand FROM Motorcycle m ORDER BY m.brand")
     List<String> findDistinctBrands();
 }

@@ -15,9 +15,8 @@ import lombok.Setter;
 import java.math.BigDecimal;
 
 /**
- * Powertrain specifications. Kept in its own table because it is the densest
- * and most frequently compared block of attributes, and because a motorcycle
- * catalogue listing rarely needs to load it.
+ * Powertrain specifications, kept in its own table: it is the densest and most frequently compared block of
+ * attributes, and a plain catalogue listing rarely needs to load it.
  */
 @Entity
 @Table(name = "engine_specifications")

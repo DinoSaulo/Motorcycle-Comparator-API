@@ -32,19 +32,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Aggregate root of the catalogue.
- *
- * <p>The specification model is deliberately hybrid:
- * <ul>
- *   <li><b>Structured columns</b> ({@link EngineSpecification}, {@link Dimension}, chassis
- *       fields below) for everything the comparison engine needs to filter, sort or
- *       declare a winner on. These are typed, indexable and queryable.</li>
- *   <li><b>{@code additionalSpecs}</b>, a key/value side table, for the long tail of
- *       spec-sheet attributes that differ per manufacturer and per segment (rider
- *       modes, TFT size, connectivity...). Adding one must never require a migration.</li>
- * </ul>
- * Anything that graduates from the long tail into a real comparison criterion gets
- * promoted to a typed column.
+ * Aggregate root of the catalogue: structured columns ({@link EngineSpecification}, {@link Dimension}, chassis
+ * fields) back the comparison engine, while {@code additionalSpecs} holds the long tail until it earns a real column.
  */
 @Entity
 @Table(
@@ -93,8 +82,7 @@ public class Motorcycle {
     private String description;
 
     // --- Chassis & running gear -------------------------------------------------
-    // Flat on the aggregate root: few fields, always displayed with the bike, and
-    // not worth a third join. Split into a ChassisSpecification entity if it grows.
+    // Flat on the aggregate root: few fields, always shown with the bike; split out into its own entity if it grows.
 
     @Column(name = "frame_type", length = 120)
     private String frameType;
