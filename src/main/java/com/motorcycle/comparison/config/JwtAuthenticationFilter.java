@@ -21,10 +21,7 @@ import java.util.List;
 
 /**
  * Populates the security context from a {@code Authorization: Bearer <jwt>} header.
- *
- * <p>An absent or invalid token is not an error here — the filter simply leaves the
- * context empty and lets the authorization rules decide. That keeps public endpoints
- * reachable with a stale token in the browser instead of failing them outright.
+ * An absent or invalid token is not an error here — it just leaves the context empty and lets the authorization rules decide.
  */
 @Component
 @RequiredArgsConstructor

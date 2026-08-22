@@ -35,15 +35,8 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Stateless security for a public catalogue with an administrative back office.
- *
- * <p>Read endpoints are open — a comparison site is useless behind a login — while
- * every write requires the {@code ROLE_ADMIN} authority carried in a JWT.
- *
- * <p><b>Iteration 1 caveat:</b> the two accounts below are configured in
- * {@code application.yml} and held in memory. A {@code User} entity backed by
- * {@code UserRepository} replaces this without touching any other class, because
- * only the {@link UserDetailsService} bean changes.
+ * Stateless security for a public catalogue with an administrative back office: reads are open, writes need {@code ROLE_ADMIN} from a JWT.
+ * <p><b>Iteration 1 caveat:</b> the two accounts below live in {@code application.yml}; a future {@code User} entity only swaps the {@link UserDetailsService} bean.
  */
 @Configuration
 @EnableMethodSecurity
@@ -80,9 +73,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PUBLIC_PATHS).permitAll()
                         .requestMatchers(HttpMethod.GET, PUBLIC_GET_PATHS).permitAll()
-                        // health/info above are public; every other actuator endpoint
-                        // (metrics included) exposes operational detail an editor has no
-                        // business reading.
+                        // health/info above are public; every other actuator endpoint (metrics
+                        // included) exposes operational detail an editor has no business reading.
                         .requestMatchers("/actuator/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/v1/motorcycles/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/v1/motorcycles/**").hasRole("ADMIN")
@@ -143,29 +135,17 @@ public class SecurityConfig {
     // Security-layer rejections never reach @RestControllerAdvice, so they are
     // rendered here in the same ApiError shape the rest of the API uses.
 
-    private void writeUnauthorized(HttpServletRequest request,
-                                   HttpServletResponse response,
-                                   AuthenticationException ex)
-            throws IOException {
-        writeError(request, response, HttpStatus.UNAUTHORIZED,
-                "Authentication required to access this resource");
+    private void writeUnauthorized(HttpServletRequest request, HttpServletResponse response, AuthenticationException ex) throws IOException {
+        writeError(request, response, HttpStatus.UNAUTHORIZED, "Authentication required to access this resource");
     }
 
-    private void writeForbidden(HttpServletRequest request,
-                                HttpServletResponse response,
-                                AccessDeniedException ex)
-            throws IOException {
-        writeError(request, response, HttpStatus.FORBIDDEN,
-                "Your account is not allowed to perform this operation");
+    private void writeForbidden(HttpServletRequest request, HttpServletResponse response, AccessDeniedException ex) throws IOException {
+        writeError(request, response, HttpStatus.FORBIDDEN, "Your account is not allowed to perform this operation");
     }
 
-    private void writeError(HttpServletRequest request,
-                            HttpServletResponse response,
-                            HttpStatus status, String message) throws IOException {
+    private void writeError(HttpServletRequest request, HttpServletResponse response, HttpStatus status, String message) throws IOException {
         response.setStatus(status.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        objectMapper.writeValue(response.getOutputStream(),
-                ApiError.of(status.value(), status.getReasonPhrase(), message,
-                        request.getRequestURI()));
+        objectMapper.writeValue(response.getOutputStream(), ApiError.of(status.value(), status.getReasonPhrase(), message, request.getRequestURI()));
     }
 }

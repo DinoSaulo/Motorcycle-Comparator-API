@@ -25,11 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.Instant;
 
 /**
- * Credential exchange for the administrative endpoints.
- *
- * <p>Authentication is delegated to Spring Security's {@link AuthenticationManager},
- * so swapping the in-memory users for a database-backed {@code UserDetailsService}
- * later requires no change in this class.
+ * Credential exchange for the administrative endpoints. Authentication is delegated to Spring Security's
+ * {@link AuthenticationManager}, so swapping the in-memory users for a database-backed service needs no change here.
  */
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -50,8 +47,7 @@ public class AuthController {
     public AuthResponse login(@Valid @RequestBody LoginRequest request) {
         // Throws BadCredentialsException on failure; the advice maps it to 401 so
         // the response never leaks whether the username exists.
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.username(), request.password()));
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.username(), request.password()));
 
         UserDetails user = userDetailsService.loadUserByUsername(authentication.getName());
         String token = jwtService.generateToken(user);

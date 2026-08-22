@@ -15,9 +15,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 /**
- * OpenAPI descriptor. Beyond documentation, this is the contract the React client
- * is generated from, so the bearer scheme is declared explicitly rather than left
- * to springdoc's defaults.
+ * OpenAPI descriptor and the contract the React client is generated from, so the bearer
+ * scheme is declared explicitly rather than left to springdoc's defaults.
  */
 @Configuration
 public class OpenApiConfig {
@@ -33,12 +32,7 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title("Motorcycle Comparison API")
                         .version(apiVersion)
-                        .description("""
-                                RESTful API for browsing motorcycle specifications and \
-                                building side-by-side comparisons.
-
-                                Read endpoints are public. Write endpoints require a bearer \
-                                token obtained from `POST /api/v1/auth/login`.""")
+                        .description("RESTful API for browsing motorcycle specifications and building side-by-side comparisons.\n\nRead endpoints are public. Write endpoints require a bearer token obtained from `POST /api/v1/auth/login`.")
                         .contact(new Contact().name("Motorcycle Comparison Team"))
                         .license(new License().name("MIT")))
                 .servers(List.of(
