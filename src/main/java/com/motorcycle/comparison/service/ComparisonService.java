@@ -28,12 +28,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * Turns N motorcycles into the row-oriented table the frontend renders.
- *
- * <p>All display knowledge — which specs appear, in what order, under which
- * heading, with what unit, and which direction counts as "better" — lives in the
- * {@link #GROUPS} registry below. Adding a spec to the comparison is a one-line
- * change here and requires no frontend deploy.
+ * Turns N motorcycles into the row-oriented table the frontend renders. All display knowledge — which specs
+ * appear, in what order, heading, unit and "better" direction — lives in the {@link #GROUPS} registry below.
  */
 @Service
 @RequiredArgsConstructor
@@ -75,19 +71,15 @@ public class ComparisonService {
         }
         additionalSpecsGroup(ordered).ifPresent(groups::add);
 
-        return new ComparisonResponse(
-                ordered.stream().map(MotorcycleResponse::from).toList(),
-                List.copyOf(groups));
+        return new ComparisonResponse(ordered.stream().map(MotorcycleResponse::from).toList(), List.copyOf(groups));
     }
 
     private void validateSize(List<Long> ids) {
         if (ids.size() < MIN_ITEMS) {
-            throw new IllegalArgumentException(
-                    "A comparison needs at least " + MIN_ITEMS + " distinct motorcycles");
+            throw new IllegalArgumentException("A comparison needs at least " + MIN_ITEMS + " distinct motorcycles");
         }
         if (ids.size() > maxItems) {
-            throw new IllegalArgumentException(
-                    "A comparison accepts at most " + maxItems + " motorcycles");
+            throw new IllegalArgumentException("A comparison accepts at most " + maxItems + " motorcycles");
         }
     }
 

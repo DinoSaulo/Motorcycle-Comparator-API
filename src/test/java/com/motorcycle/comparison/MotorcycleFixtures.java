@@ -11,11 +11,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Shared test data builders.
- *
- * <p>Every factory returns a fully valid object; each test then mutates only the
- * one field it is actually about, which keeps the intent of a test visible instead
- * of buried in twenty lines of setup.
+ * Shared test data builders. Every factory returns a fully valid object; each test then mutates only the one
+ * field it is actually about, keeping the intent of a test visible instead of buried in twenty lines of setup.
  */
 public final class MotorcycleFixtures {
 
@@ -87,8 +84,7 @@ public final class MotorcycleFixtures {
     }
 
     /** Same as {@link #createRequest} but with no dimension block, for full-replace tests. */
-    public static CreateMotorcycleRequest createRequestWithoutDimension(
-            String brand, String model, int year) {
+    public static CreateMotorcycleRequest createRequestWithoutDimension(String brand, String model, int year) {
         CreateMotorcycleRequest full = createRequest(brand, model, year);
         return new CreateMotorcycleRequest(
                 full.brand(), full.model(), full.modelYear(), full.category(),

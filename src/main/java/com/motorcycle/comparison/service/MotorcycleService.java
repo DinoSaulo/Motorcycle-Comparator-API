@@ -30,10 +30,8 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
- * Catalogue use cases: browse, read, and administer motorcycles.
- *
- * <p>Reads are {@code readOnly} so Hibernate skips dirty checking and the
- * connection can be routed to a replica later without touching this class.
+ * Catalogue use cases: browse, read, and administer motorcycles. Reads are {@code readOnly} so Hibernate skips
+ * dirty checking and the connection can be routed to a replica later without touching this class.
  */
 @Service
 @RequiredArgsConstructor
@@ -46,11 +44,8 @@ public class MotorcycleService {
     private static final Pattern DISAMBIGUATOR = Pattern.compile("-\\d+$");
 
     /**
-     * Properties a client is allowed to sort the catalogue by. Anything else is
-     * rejected with a clean 400 instead of reaching Hibernate: an unknown property
-     * would otherwise surface as an {@code IllegalArgumentException} whose message
-     * names the entity's fully-qualified class, which is an internal detail we do
-     * not want to hand to an anonymous caller.
+     * Properties a client is allowed to sort the catalogue by. Anything else is rejected with a clean 400 instead
+     * of reaching Hibernate, whose own error would name the entity's fully-qualified class to an anonymous caller.
      */
     private static final Set<String> SORTABLE_PROPERTIES = Set.of(
             "id", "brand", "model", "modelYear", "category", "priceEur",
@@ -69,9 +64,7 @@ public class MotorcycleService {
     private static void validateSort(Sort sort) {
         sort.forEach(order -> {
             if (!SORTABLE_PROPERTIES.contains(order.getProperty())) {
-                throw new IllegalArgumentException(
-                        "Cannot sort by '" + order.getProperty() + "'. Allowed fields: "
-                                + String.join(", ", SORTABLE_PROPERTIES));
+                throw new IllegalArgumentException("Cannot sort by '" + order.getProperty() + "'. Allowed fields: " + String.join(", ", SORTABLE_PROPERTIES));
             }
         });
     }
@@ -81,9 +74,7 @@ public class MotorcycleService {
     }
 
     public MotorcycleResponse getBySlug(String slug) {
-        return motorcycleRepository.findWithSpecificationsBySlug(slug)
-                .map(MotorcycleResponse::from)
-                .orElseThrow(() -> ResourceNotFoundException.of("Motorcycle", slug));
+        return motorcycleRepository.findWithSpecificationsBySlug(slug).map(MotorcycleResponse::from).orElseThrow(() -> ResourceNotFoundException.of("Motorcycle", slug));
     }
 
     public List<String> listBrands() {
@@ -127,14 +118,12 @@ public class MotorcycleService {
     // --- internals --------------------------------------------------------------
 
     private Motorcycle requireById(Long id) {
-        return motorcycleRepository.findWithSpecificationsById(id)
-                .orElseThrow(() -> ResourceNotFoundException.of("Motorcycle", id));
+        return motorcycleRepository.findWithSpecificationsById(id).orElseThrow(() -> ResourceNotFoundException.of("Motorcycle", id));
     }
 
     /**
-     * Composes only the predicates the caller actually supplied. The join to the
-     * engine table is added only when an engine facet is in play, so the plain
-     * "list everything" query stays join-free.
+     * Composes only the predicates the caller actually supplied. The join to the engine table is added only when
+     * an engine facet is in play, so the plain "list everything" query stays join-free.
      */
     public static Specification<Motorcycle> toSpecification(MotorcycleFilter filter) {
         return (root, query, cb) -> {
@@ -144,8 +133,7 @@ public class MotorcycleService {
             List<Predicate> predicates = new ArrayList<>();
 
             if (hasText(filter.brand())) {
-                predicates.add(cb.equal(cb.lower(root.get("brand")),
-                        filter.brand().toLowerCase(Locale.ROOT)));
+                predicates.add(cb.equal(cb.lower(root.get("brand")), filter.brand().toLowerCase(Locale.ROOT)));
             }
             if (filter.category() != null) {
                 predicates.add(cb.equal(root.get("category"), filter.category()));
@@ -169,28 +157,21 @@ public class MotorcycleService {
                         cb.like(cb.lower(root.get("slug")), pattern, LIKE_ESCAPE)));
             }
 
-            boolean needsEngine = filter.minDisplacementCc() != null
-                    || filter.maxDisplacementCc() != null
-                    || filter.minPowerHp() != null;
+            boolean needsEngine = filter.minDisplacementCc() != null || filter.maxDisplacementCc() != null || filter.minPowerHp() != null;
             if (needsEngine) {
                 var engine = root.join("engine", JoinType.INNER);
                 if (filter.minDisplacementCc() != null) {
-                    predicates.add(cb.greaterThanOrEqualTo(
-                            engine.get("displacementCc"), filter.minDisplacementCc()));
+                    predicates.add(cb.greaterThanOrEqualTo(engine.get("displacementCc"), filter.minDisplacementCc()));
                 }
                 if (filter.maxDisplacementCc() != null) {
-                    predicates.add(cb.lessThanOrEqualTo(
-                            engine.get("displacementCc"), filter.maxDisplacementCc()));
+                    predicates.add(cb.lessThanOrEqualTo(engine.get("displacementCc"), filter.maxDisplacementCc()));
                 }
                 if (filter.minPowerHp() != null) {
-                    predicates.add(cb.greaterThanOrEqualTo(
-                            engine.get("maxPowerHp"), filter.minPowerHp()));
+                    predicates.add(cb.greaterThanOrEqualTo(engine.get("maxPowerHp"), filter.minPowerHp()));
                 }
             }
 
-            return predicates.isEmpty()
-                    ? cb.conjunction()
-                    : cb.and(predicates.toArray(Predicate[]::new));
+            return predicates.isEmpty() ? cb.conjunction() : cb.and(predicates.toArray(Predicate[]::new));
         };
     }
 
@@ -224,8 +205,7 @@ public class MotorcycleService {
         target.getAdditionalSpecs().putAll(extras);
     }
 
-    private EngineSpecification mergeEngine(CreateMotorcycleRequest.EngineRequest src,
-                                            EngineSpecification existing) {
+    private EngineSpecification mergeEngine(CreateMotorcycleRequest.EngineRequest src, EngineSpecification existing) {
         if (src == null) {
             return existing;
         }
@@ -252,13 +232,10 @@ public class MotorcycleService {
         return e;
     }
 
-    private Dimension mergeDimension(CreateMotorcycleRequest.DimensionRequest src,
-                                     Dimension existing) {
+    private Dimension mergeDimension(CreateMotorcycleRequest.DimensionRequest src, Dimension existing) {
         if (src == null) {
-            // Unlike engine (@NotNull on the request), dimension is optional, and this
-            // request/response pair backs a full-replacement PUT: an omitted block must
-            // clear like every flat field does, not silently keep the previous value.
-            // orphanRemoval on Motorcycle#dimension deletes the row on flush.
+            // Unlike engine (@NotNull), dimension is optional; this full-replacement PUT clears an omitted block
+            // instead of keeping the previous value. orphanRemoval on Motorcycle#dimension deletes the row on flush.
             return null;
         }
         Dimension d = existing != null ? existing : new Dimension();
@@ -282,8 +259,7 @@ public class MotorcycleService {
         while (!candidate.equals(slugToKeep) && motorcycleRepository.existsBySlug(candidate)) {
             candidate = base + "-" + suffix++;
             if (suffix > 100) {
-                throw new DuplicateResourceException(
-                        "Could not derive a unique slug from " + base);
+                throw new DuplicateResourceException("Could not derive a unique slug from " + base);
             }
         }
         return candidate;
@@ -294,12 +270,8 @@ public class MotorcycleService {
     }
 
     /**
-     * Whether {@code currentSlug} was derived from {@code base}, either exactly or
-     * with a numeric disambiguator appended.
-     *
-     * <p>Deliberately not a "strip the trailing {@code -\d+}" regex: the base slug
-     * already ends in the model year, so stripping would turn "yamaha-mt-09-2024"
-     * into "yamaha-mt-09" and make every update look like a rename.
+     * Whether {@code currentSlug} was derived from {@code base}, exactly or with a numeric disambiguator appended.
+     * Not a trailing-{@code -\d+} strip: the base ends in the model year, so that would turn a rename into a no-op.
      */
     static boolean slugMatchesIdentity(String currentSlug, String base) {
         if (currentSlug == null) {
@@ -308,14 +280,11 @@ public class MotorcycleService {
         if (currentSlug.equals(base)) {
             return true;
         }
-        return currentSlug.startsWith(base + "-")
-                && DISAMBIGUATOR.matcher(currentSlug.substring(base.length())).matches();
+        return currentSlug.startsWith(base + "-") && DISAMBIGUATOR.matcher(currentSlug.substring(base.length())).matches();
     }
 
     static String slugify(String raw) {
-        String ascii = Normalizer.normalize(raw, Normalizer.Form.NFD)
-                .replaceAll("\\p{M}", "")
-                .toLowerCase(Locale.ROOT);
+        String ascii = Normalizer.normalize(raw, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase(Locale.ROOT);
         return EDGE_DASHES.matcher(NON_SLUG_CHARS.matcher(ascii).replaceAll("-")).replaceAll("");
     }
 
@@ -325,9 +294,6 @@ public class MotorcycleService {
 
     /** Escapes the LIKE metacharacters so free text is matched literally. */
     private static String escapeLike(String value) {
-        return value
-                .replace(String.valueOf(LIKE_ESCAPE), LIKE_ESCAPE + "" + LIKE_ESCAPE)
-                .replace("%", LIKE_ESCAPE + "%")
-                .replace("_", LIKE_ESCAPE + "_");
+        return value.replace(String.valueOf(LIKE_ESCAPE), LIKE_ESCAPE + "" + LIKE_ESCAPE).replace("%", LIKE_ESCAPE + "%").replace("_", LIKE_ESCAPE + "_");
     }
 }

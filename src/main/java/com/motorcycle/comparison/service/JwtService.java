@@ -19,12 +19,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Issues and validates the bearer tokens used by the API.
- *
- * <p>Stateless by design: the token carries the username and authorities, so a
- * request never costs a session lookup and any instance can serve any request.
- * That is also the trade-off — a token cannot be revoked before it expires, so
- * the TTL is kept short.
+ * Issues and validates the bearer tokens used by the API. Stateless by design: the token carries username and
+ * authorities so no request costs a session lookup — the trade-off is it cannot be revoked before it expires, hence the short TTL.
  */
 @Service
 @Slf4j
@@ -43,8 +39,7 @@ public class JwtService {
         // HS256 requires >= 256 bits of key material; fail fast rather than at first login.
         byte[] keyBytes = Decoders.BASE64.decode(secret);
         if (keyBytes.length < 32) {
-            throw new IllegalStateException(
-                    "app.security.jwt.secret must decode to at least 32 bytes (256 bits)");
+            throw new IllegalStateException("app.security.jwt.secret must decode to at least 32 bytes (256 bits)");
         }
         this.signingKey = Keys.hmacShaKeyFor(keyBytes);
         this.ttl = ttl;
