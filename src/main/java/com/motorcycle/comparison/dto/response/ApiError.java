@@ -24,8 +24,7 @@ public record ApiError(
         return new ApiError(Instant.now(), status, error, message, path, null);
     }
 
-    public static ApiError withViolations(int status, String error, String message,
-                                          String path, List<FieldViolation> violations) {
+    public static ApiError withViolations(int status, String error, String message, String path, List<FieldViolation> violations) {
         return new ApiError(Instant.now(), status, error, message, path, violations);
     }
 

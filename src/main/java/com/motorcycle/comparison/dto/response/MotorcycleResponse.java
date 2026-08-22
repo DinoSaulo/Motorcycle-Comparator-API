@@ -10,11 +10,8 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 /**
- * Read model for a single motorcycle, including both specification blocks.
- *
- * <p>The mapping lives here as static factories rather than in a separate mapper
- * class: it is a pure, dependency-free projection, and keeping it next to the
- * shape it produces makes drift between the two immediately visible.
+ * Read model for a single motorcycle, including both specification blocks. The mapping lives here as static
+ * factories rather than a separate mapper: a pure, dependency-free projection kept next to the shape it produces.
  */
 @Schema(description = "Full motorcycle record with its specification blocks")
 public record MotorcycleResponse(

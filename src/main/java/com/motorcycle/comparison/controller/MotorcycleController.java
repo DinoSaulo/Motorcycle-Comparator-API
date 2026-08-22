@@ -39,10 +39,8 @@ import java.net.URI;
 import java.util.List;
 
 /**
- * Public catalogue and administrative CRUD.
- *
- * <p>The controller stays thin on purpose: bind, delegate, map to a status code.
- * Business rules and persistence concerns belong to the services below it.
+ * Public catalogue and administrative CRUD. The controller stays thin on purpose: bind, delegate, map to a status
+ * code — business rules and persistence concerns belong to the services below it.
  */
 @RestController
 @RequestMapping("/api/v1/motorcycles")
@@ -54,13 +52,9 @@ public class MotorcycleController {
     private final ComparisonService comparisonService;
 
     @GetMapping
-    @Operation(summary = "Search the catalogue",
-            description = "Every filter is optional and combinable. Supports paging and sorting, "
-                    + "e.g. `?sort=priceEur,asc&size=20`.")
-    public Page<MotorcycleResponse> search(
-            @ParameterObject @ModelAttribute MotorcycleFilter filter,
-            @ParameterObject @PageableDefault(size = 20, sort = "brand", direction = Sort.Direction.ASC)
-            Pageable pageable) {
+    @Operation(summary = "Search the catalogue", description = "Every filter is optional and combinable. Supports paging and sorting, e.g. `?sort=priceEur,asc&size=20`.")
+    public Page<MotorcycleResponse> search(@ParameterObject @ModelAttribute MotorcycleFilter filter,
+            @ParameterObject @PageableDefault(size = 20, sort = "brand", direction = Sort.Direction.ASC) Pageable pageable) {
         return motorcycleService.search(filter, pageable);
     }
 
@@ -71,22 +65,16 @@ public class MotorcycleController {
     }
 
     /**
-     * Comparison is exposed under the collection it operates on so that a client
-     * needs no second base path, and as GET so that a comparison is a shareable,
-     * cacheable URL — which is how people actually use these pages.
+     * Comparison is exposed under the collection it operates on, and as GET, so it is a shareable, cacheable
+     * URL — no second base path needed, and that is how people actually use these pages.
      */
     @GetMapping("/compare")
-    @Operation(summary = "Compare motorcycles side by side",
-            description = "Returns the comparison pre-shaped as table rows. "
-                    + "Between 2 and 4 distinct ids.")
+    @Operation(summary = "Compare motorcycles side by side", description = "Returns the comparison pre-shaped as table rows. Between 2 and 4 distinct ids.")
     @ApiResponse(responseCode = "200", description = "Comparison table")
-    @ApiResponse(responseCode = "400", description = "Too few or too many ids",
-            content = @Content(schema = @Schema(implementation = ApiError.class)))
-    @ApiResponse(responseCode = "404", description = "At least one id does not exist",
-            content = @Content(schema = @Schema(implementation = ApiError.class)))
+    @ApiResponse(responseCode = "400", description = "Too few or too many ids", content = @Content(schema = @Schema(implementation = ApiError.class)))
+    @ApiResponse(responseCode = "404", description = "At least one id does not exist", content = @Content(schema = @Schema(implementation = ApiError.class)))
     public ComparisonResponse compare(
-            @Parameter(description = "Motorcycle ids, in the order the columns should appear",
-                    example = "1,2,3")
+            @Parameter(description = "Motorcycle ids, in the order the columns should appear", example = "1,2,3")
             @RequestParam("ids") List<Long> ids) {
         return comparisonService.compare(ids);
     }
@@ -109,10 +97,9 @@ public class MotorcycleController {
     @SecurityRequirement(name = "bearerAuth")
     @Operation(summary = "Create a motorcycle")
     @ApiResponse(responseCode = "201", description = "Created; Location header carries the new URI")
-    public ResponseEntity<MotorcycleResponse> create( @Valid @RequestBody CreateMotorcycleRequest request, UriComponentsBuilder uriBuilder) {
-
+    public ResponseEntity<MotorcycleResponse> create(@Valid @RequestBody CreateMotorcycleRequest request, UriComponentsBuilder uriBuilder) {
         MotorcycleResponse created = motorcycleService.create(request);
-        URI location = uriBuilder.path("/api/v1/motorcycles/{id}").buildAndExpand(created.id()) .toUri();
+        URI location = uriBuilder.path("/api/v1/motorcycles/{id}").buildAndExpand(created.id()).toUri();
         return ResponseEntity.created(location).body(created);
     }
 
@@ -120,8 +107,7 @@ public class MotorcycleController {
     @PreAuthorize("hasRole('ADMIN')")
     @SecurityRequirement(name = "bearerAuth")
     @Operation(summary = "Replace a motorcycle", description = "Full replacement: omitted optional fields are cleared.")
-    public MotorcycleResponse update(@PathVariable Long id,
-                                     @Valid @RequestBody CreateMotorcycleRequest request) {
+    public MotorcycleResponse update(@PathVariable Long id, @Valid @RequestBody CreateMotorcycleRequest request) {
         return motorcycleService.update(id, request);
     }
 
