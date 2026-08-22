@@ -22,10 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * End-to-end pass through the real filter chain, controllers, services and an
- * in-memory database. This is the test that would catch a security rule that only
- * looks right in isolation — a permitted path that is actually blocked, or a write
- * endpoint that quietly accepts an anonymous caller.
+ * End-to-end pass through the real filter chain, controllers, services and an in-memory database — the test that
+ * would catch a security rule that only looks right in isolation, e.g. a blocked public path or an anonymous write.
  */
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -41,29 +39,22 @@ class MotorcycleApiSecurityTest {
     @Test
     @DisplayName("the catalogue is readable without a token")
     void catalogueIsPublic() throws Exception {
-        mockMvc.perform(get("/api/v1/motorcycles"))
-                .andExpect(status().isOk());
+        mockMvc.perform(get("/api/v1/motorcycles")).andExpect(status().isOk());
     }
 
     @Test
     @DisplayName("a path outside the public prefix is 401, not a stack trace, when it doesn't exist either")
     void unmappedPathOutsidePublicPrefixRequiresAuth() throws Exception {
-        // anyRequest().authenticated() is deny-by-default: a caller cannot tell "wrong
-        // URL" apart from "real endpoint, no token" — that is the point, not a bug.
-        mockMvc.perform(get("/api/v1/this-route-does-not-exist"))
-                .andExpect(status().isUnauthorized())
-                .andExpect(jsonPath("$.status").value(401));
+        // anyRequest().authenticated() is deny-by-default: a caller cannot tell "wrong URL" from "real endpoint, no token" — that is the point, not a bug.
+        mockMvc.perform(get("/api/v1/this-route-does-not-exist")).andExpect(status().isUnauthorized()).andExpect(jsonPath("$.status").value(401));
     }
 
     @Test
     @DisplayName("an unmapped sub-path inside the public prefix is 404, not 500")
     void unmappedPathInsidePublicPrefixBecomesNotFound() throws Exception {
-        // Regression test: this used to fall through to the catch-all handler and come
-        // back as a 500, because Spring's static-resource fallback throws
-        // NoResourceFoundException here, not NoHandlerFoundException.
-        mockMvc.perform(get("/api/v1/motorcycles/1/nonexistent-sub-path"))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.status").value(404));
+        // Regression test: this used to fall through to the catch-all handler and come back as a 500, because
+        // Spring's static-resource fallback throws NoResourceFoundException here, not NoHandlerFoundException.
+        mockMvc.perform(get("/api/v1/motorcycles/1/nonexistent-sub-path")).andExpect(status().isNotFound()).andExpect(jsonPath("$.status").value(404));
     }
 
     @Test

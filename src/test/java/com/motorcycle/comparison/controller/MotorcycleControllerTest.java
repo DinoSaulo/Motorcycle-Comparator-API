@@ -46,11 +46,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * HTTP-contract tests: routing, binding, serialisation and status mapping.
- *
- * <p>The security chain is deliberately switched off here so a failure points at the
- * web layer and nothing else; authentication and authorisation are covered end to
- * end by {@link MotorcycleApiSecurityTest}.
+ * HTTP-contract tests: routing, binding, serialisation and status mapping. The security chain is deliberately
+ * switched off so a failure points at the web layer alone; auth is covered end to end by {@link MotorcycleApiSecurityTest}.
  */
 @WebMvcTest(controllers = MotorcycleController.class,
         excludeFilters = @ComponentScan.Filter(
@@ -119,9 +116,7 @@ class MotorcycleControllerTest {
     @Test
     @DisplayName("a non-numeric id becomes 400, not 500")
     void nonNumericIdBecomesBadRequest() throws Exception {
-        mockMvc.perform(get("/api/v1/motorcycles/not-a-number"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.status").value(400));
+        mockMvc.perform(get("/api/v1/motorcycles/not-a-number")).andExpect(status().isBadRequest()).andExpect(jsonPath("$.status").value(400));
     }
 
     @Test
@@ -143,21 +138,17 @@ class MotorcycleControllerTest {
     void compareWithoutIdsBecomesBadRequest() throws Exception {
         mockMvc.perform(get("/api/v1/motorcycles/compare"))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message").value(
-                        "Missing required query parameter 'ids'"));
+                .andExpect(jsonPath("$.message").value("Missing required query parameter 'ids'"));
     }
 
     @Test
     @DisplayName("a domain rule violation becomes 400 with the rule's own message")
     void tooFewIdsBecomesBadRequest() throws Exception {
-        when(comparisonService.compare(any()))
-                .thenThrow(new IllegalArgumentException(
-                        "A comparison needs at least 2 distinct motorcycles"));
+        when(comparisonService.compare(any())).thenThrow(new IllegalArgumentException("A comparison needs at least 2 distinct motorcycles"));
 
         mockMvc.perform(get("/api/v1/motorcycles/compare").param("ids", "1"))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message").value(
-                        "A comparison needs at least 2 distinct motorcycles"));
+                .andExpect(jsonPath("$.message").value("A comparison needs at least 2 distinct motorcycles"));
     }
 
     @Test
@@ -232,8 +223,7 @@ class MotorcycleControllerTest {
     @Test
     @DisplayName("DELETE returns 204 and no body")
     void deleteReturnsNoContent() throws Exception {
-        mockMvc.perform(delete("/api/v1/motorcycles/1"))
-                .andExpect(status().isNoContent());
+        mockMvc.perform(delete("/api/v1/motorcycles/1")).andExpect(status().isNoContent());
 
         verify(motorcycleService).delete(1L);
     }
@@ -241,11 +231,9 @@ class MotorcycleControllerTest {
     @Test
     @DisplayName("DELETE on an unknown id becomes 404")
     void deleteUnknownIdBecomesNotFound() throws Exception {
-        doThrow(ResourceNotFoundException.of("Motorcycle", 404L))
-                .when(motorcycleService).delete(eq(404L));
+        doThrow(ResourceNotFoundException.of("Motorcycle", 404L)).when(motorcycleService).delete(eq(404L));
 
-        mockMvc.perform(delete("/api/v1/motorcycles/404"))
-                .andExpect(status().isNotFound());
+        mockMvc.perform(delete("/api/v1/motorcycles/404")).andExpect(status().isNotFound());
     }
 
     // --- fixtures ---------------------------------------------------------------

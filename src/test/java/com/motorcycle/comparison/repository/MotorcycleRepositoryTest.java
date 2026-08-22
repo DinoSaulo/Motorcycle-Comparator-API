@@ -20,9 +20,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Exercises the queries against a real (in-memory) database. Mockito cannot tell
- * us whether an entity graph, a criteria join or a JPQL projection actually
- * compiles and returns the right rows — only a database can.
+ * Exercises the queries against a real (in-memory) database: Mockito cannot tell us whether an entity graph, a
+ * criteria join or a JPQL projection actually compiles and returns the right rows — only a database can.
  */
 @DataJpaTest
 @DisplayName("MotorcycleRepository")
@@ -75,10 +74,8 @@ class MotorcycleRepositoryTest {
     void cascadesSpecificationBlocks() {
         EntityManager em = entityManager.getEntityManager();
 
-        Long engineCount = em.createQuery(
-                "SELECT COUNT(e) FROM EngineSpecification e", Long.class).getSingleResult();
-        Long dimensionCount = em.createQuery(
-                "SELECT COUNT(d) FROM Dimension d", Long.class).getSingleResult();
+        Long engineCount = em.createQuery("SELECT COUNT(e) FROM EngineSpecification e", Long.class).getSingleResult();
+        Long dimensionCount = em.createQuery("SELECT COUNT(d) FROM Dimension d", Long.class).getSingleResult();
 
         assertThat(engineCount).isEqualTo(3);
         assertThat(dimensionCount).isEqualTo(3);
@@ -95,8 +92,7 @@ class MotorcycleRepositoryTest {
     @Test
     @DisplayName("fetches a whole comparison set in one call")
     void fetchesComparisonSet() {
-        List<Motorcycle> found =
-                motorcycleRepository.findAllWithSpecificationsByIdIn(List.of(yamahaId, bmwId));
+        List<Motorcycle> found = motorcycleRepository.findAllWithSpecificationsByIdIn(List.of(yamahaId, bmwId));
 
         assertThat(found).hasSize(2)
                 .extracting(Motorcycle::getBrand)
@@ -113,8 +109,7 @@ class MotorcycleRepositoryTest {
     @Test
     @DisplayName("returns distinct brands in alphabetical order")
     void returnsDistinctBrands() {
-        assertThat(motorcycleRepository.findDistinctBrands())
-                .containsExactly("BMW", "Honda", "Yamaha");
+        assertThat(motorcycleRepository.findDistinctBrands()).containsExactly("BMW", "Honda", "Yamaha");
     }
 
     // --- filters, driven through the criteria specification ---------------------
@@ -122,57 +117,40 @@ class MotorcycleRepositoryTest {
     @Test
     @DisplayName("filters by category")
     void filtersByCategory() {
-        assertThat(search(new MotorcycleFilter(null, Category.ADVENTURE, null, null, null,
-                null, null, null, null)))
-                .containsExactly("BMW");
+        assertThat(search(new MotorcycleFilter(null, Category.ADVENTURE, null, null, null, null, null, null, null))).containsExactly("BMW");
     }
 
     @Test
     @DisplayName("filters by displacement range through the engine join")
     void filtersByDisplacementRange() {
-        assertThat(search(new MotorcycleFilter(null, null, null, 600, 900,
-                null, null, null, null)))
-                .containsExactlyInAnyOrder("Yamaha", "Honda");
+        assertThat(search(new MotorcycleFilter(null, null, null, 600, 900, null, null, null, null))).containsExactlyInAnyOrder("Yamaha", "Honda");
     }
 
     @Test
     @DisplayName("filters by minimum power through the engine join")
     void filtersByMinimumPower() {
-        assertThat(search(new MotorcycleFilter(null, null, null, null, null,
-                new BigDecimal("100"), null, null, null)))
-                .containsExactlyInAnyOrder("Yamaha", "BMW");
+        assertThat(search(new MotorcycleFilter(null, null, null, null, null, new BigDecimal("100"), null, null, null))).containsExactlyInAnyOrder("Yamaha", "BMW");
     }
 
     @Test
     @DisplayName("filters by price ceiling")
     void filtersByPriceCeiling() {
-        assertThat(search(new MotorcycleFilter(null, null, null, null, null,
-                null, null, new BigDecimal("11000"), null)))
-                .containsExactlyInAnyOrder("Yamaha", "Honda");
+        assertThat(search(new MotorcycleFilter(null, null, null, null, null, null, null, new BigDecimal("11000"), null))).containsExactlyInAnyOrder("Yamaha", "Honda");
     }
 
     @Test
     @DisplayName("free text matches brand, model or slug, case-insensitively")
     void freeTextSearch() {
-        assertThat(search(new MotorcycleFilter(null, null, null, null, null,
-                null, null, null, "cb650")))
-                .containsExactly("Honda");
-        assertThat(search(new MotorcycleFilter(null, null, null, null, null,
-                null, null, null, "YAMAHA")))
-                .containsExactly("Yamaha");
+        assertThat(search(new MotorcycleFilter(null, null, null, null, null, null, null, null, "cb650"))).containsExactly("Honda");
+        assertThat(search(new MotorcycleFilter(null, null, null, null, null, null, null, null, "YAMAHA"))).containsExactly("Yamaha");
     }
 
     @Test
     @DisplayName("treats the client's own wildcard characters as literal text")
     void freeTextWildcardIsTreatedLiterally() {
-        // None of the seeded brands/models/slugs contain a literal '%' or '_', so an
-        // unescaped LIKE would wrongly match everything instead of matching nothing.
-        assertThat(search(new MotorcycleFilter(null, null, null, null, null,
-                null, null, null, "%")))
-                .isEmpty();
-        assertThat(search(new MotorcycleFilter(null, null, null, null, null,
-                null, null, null, "_")))
-                .isEmpty();
+        // None of the seeded brands/models/slugs contain a literal '%' or '_', so an unescaped LIKE would wrongly match everything.
+        assertThat(search(new MotorcycleFilter(null, null, null, null, null, null, null, null, "%"))).isEmpty();
+        assertThat(search(new MotorcycleFilter(null, null, null, null, null, null, null, null, "_"))).isEmpty();
     }
 
     @Test
@@ -186,15 +164,10 @@ class MotorcycleRepositoryTest {
     @Test
     @DisplayName("an empty filter constrains nothing")
     void emptyFilterReturnsEverything() {
-        assertThat(search(new MotorcycleFilter(null, null, null, null, null,
-                null, null, null, null)))
-                .hasSize(3);
+        assertThat(search(new MotorcycleFilter(null, null, null, null, null, null, null, null, null))).hasSize(3);
     }
 
     private List<String> search(MotorcycleFilter filter) {
-        return motorcycleRepository
-                .findAll(MotorcycleService.toSpecification(filter), PageRequest.of(0, 10))
-                .map(Motorcycle::getBrand)
-                .getContent();
+        return motorcycleRepository.findAll(MotorcycleService.toSpecification(filter), PageRequest.of(0, 10)).map(Motorcycle::getBrand).getContent();
     }
 }
