@@ -97,9 +97,11 @@ public class SecurityConfig {
     UserDetailsService userDetailsService(
             PasswordEncoder encoder,
             @Value("${app.security.users.admin.username:admin}") String adminUser,
-            @Value("${app.security.users.admin.password:admin123}") String adminPassword,
+            // No fallback on the passwords: the dev profile supplies them, so a deployed
+            // environment that forgets ADMIN_PASSWORD fails to start instead of shipping admin123.
+            @Value("${app.security.users.admin.password}") String adminPassword,
             @Value("${app.security.users.editor.username:editor}") String editorUser,
-            @Value("${app.security.users.editor.password:editor123}") String editorPassword) {
+            @Value("${app.security.users.editor.password}") String editorPassword) {
 
         return new InMemoryUserDetailsManager(
                 User.withUsername(adminUser)
@@ -136,6 +138,9 @@ public class SecurityConfig {
     // rendered here in the same ApiError shape the rest of the API uses.
 
     private void writeUnauthorized(HttpServletRequest request, HttpServletResponse response, AuthenticationException ex) throws IOException {
+        // RFC 7235 makes the challenge mandatory on a 401: without it a client cannot
+        // tell which scheme to retry with, and generated SDKs stop offering to log in.
+        response.setHeader(HttpHeaders.WWW_AUTHENTICATE, "Bearer");
         writeError(request, response, HttpStatus.UNAUTHORIZED, "Authentication required to access this resource");
     }
 

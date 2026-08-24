@@ -66,6 +66,13 @@ spring:
           # one prepared statement per size bucket instead of one per id count.
           in_clause_parameter_padding: true
 
+  data:
+    web:
+      pageable:
+        # The catalogue is public and every row carries both specification blocks; Spring's
+        # own ceiling of 2000 is a free amplification lever on an unauthenticated endpoint.
+        max-page-size: 100
+
   jackson:
     default-property-inclusion: non_null
     serialization:
@@ -112,18 +119,18 @@ app:
     cors:
       allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173}
     jwt:
-      # Base64, >= 32 bytes decoded. The value below is a DEVELOPMENT default only:
-      # every deployed environment must override JWT_SECRET.
-      secret: ${JWT_SECRET:cWNKFJMcbggRga1+khWjTK94037jYuxzSZf51LeOElDAa30IJtph+58whj0Elj0r}
+      # Base64, >= 32 bytes decoded. No fallback on purpose: a default committed here is
+      # public knowledge, so anything but dev must supply it or fail to start.
+      secret: ${JWT_SECRET}
       ttl: ${JWT_TTL:PT2H}
       issuer: motorcycle-comparison-api
     users:
       admin:
         username: ${ADMIN_USERNAME:admin}
-        password: ${ADMIN_PASSWORD:admin123}
+        password: ${ADMIN_PASSWORD}
       editor:
         username: ${EDITOR_USERNAME:editor}
-        password: ${EDITOR_PASSWORD:editor123}
+        password: ${EDITOR_PASSWORD}
 
 logging:
   level:
@@ -142,6 +149,17 @@ spring:
     hibernate:
       ddl-auto: validate
     show-sql: true
+app:
+  security:
+    # The committed credentials live here and nowhere else: confined to the dev profile,
+    # forgetting to override them in a deployed environment cannot silently succeed.
+    jwt:
+      secret: ${JWT_SECRET:cWNKFJMcbggRga1+khWjTK94037jYuxzSZf51LeOElDAa30IJtph+58whj0Elj0r}
+    users:
+      admin:
+        password: ${ADMIN_PASSWORD:admin123}
+      editor:
+        password: ${EDITOR_PASSWORD:editor123}
 logging:
   level:
     com.motorcycle.comparison: DEBUG

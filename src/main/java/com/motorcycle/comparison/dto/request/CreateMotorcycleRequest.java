@@ -62,9 +62,12 @@ public record CreateMotorcycleRequest(
         @Valid
         DimensionRequest dimension,
 
+        // Bounds mirror motorcycle_additional_specs exactly, so an oversized key or value is a
+        // 400 naming the field instead of a database error the handler can only call a conflict.
+        @Size(max = 50)
         @Schema(description = "Long-tail specs that have no dedicated column",
                 example = "{\"Rider modes\":\"4\",\"Display\":\"5-inch TFT\"}")
-        Map<String, String> additionalSpecs
+        Map<@NotBlank @Size(max = 80) String, @Size(max = 500) String> additionalSpecs
 ) {
 
     @Schema(description = "Powertrain block")

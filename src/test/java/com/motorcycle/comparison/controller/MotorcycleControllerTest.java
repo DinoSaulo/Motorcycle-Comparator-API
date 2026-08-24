@@ -26,6 +26,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -156,6 +157,75 @@ class MotorcycleControllerTest {
         mockMvc.perform(get("/api/v1/motorcycles/compare").param("ids", "1"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message").value("A comparison needs at least 2 distinct motorcycles"));
+    }
+
+    @Test
+    @DisplayName("a filter value the binder cannot convert becomes 400 without naming the entity class")
+    void unconvertibleFilterValueDoesNotLeakTheEntityClass() throws Exception {
+        // The binder's own message quotes com.motorcycle.comparison.entity.Category, which is
+        // exactly what MotorcycleService.validateSort refuses to hand an anonymous caller.
+        String body = mockMvc.perform(get("/api/v1/motorcycles").param("category", "SPACESHIP"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.violations[?(@.field == 'category')]").exists())
+                .andReturn().getResponse().getContentAsString();
+
+        assertThat(body).doesNotContain("com.motorcycle.comparison").contains("Invalid value: SPACESHIP");
+    }
+
+    @Test
+    @DisplayName("free text longer than the catalogue allows becomes 400")
+    void oversizedFreeTextBecomesBadRequest() throws Exception {
+        mockMvc.perform(get("/api/v1/motorcycles").param("q", "x".repeat(101)))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.violations[?(@.field == 'q')]").exists());
+    }
+
+    @Test
+    @DisplayName("a page larger than the cap is trimmed instead of served")
+    void oversizedPageIsCapped() throws Exception {
+        when(motorcycleService.search(any(), any())).thenReturn(new PageImpl<>(List.of(), PageRequest.of(0, 100), 0));
+
+        mockMvc.perform(get("/api/v1/motorcycles").param("size", "100000")).andExpect(status().isOk());
+
+        verify(motorcycleService).search(any(), org.mockito.ArgumentMatchers.argThat(pageable -> pageable.getPageSize() == 100));
+    }
+
+    @Test
+    @DisplayName("a body that is not JSON becomes 400, not 500")
+    void malformedBodyBecomesBadRequest() throws Exception {
+        mockMvc.perform(post("/api/v1/motorcycles").contentType(MediaType.APPLICATION_JSON).content("{\"brand\": "))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message").value("Request body is missing or is not valid JSON"));
+    }
+
+    @Test
+    @DisplayName("an unsupported content type becomes 415, not 500")
+    void unsupportedContentTypeBecomesUnsupportedMediaType() throws Exception {
+        mockMvc.perform(post("/api/v1/motorcycles").contentType(MediaType.TEXT_PLAIN).content("brand=Yamaha"))
+                .andExpect(status().isUnsupportedMediaType())
+                .andExpect(jsonPath("$.status").value(415));
+    }
+
+    @Test
+    @DisplayName("a method the endpoint does not offer becomes 405 with an Allow header")
+    void unsupportedMethodBecomesMethodNotAllowed() throws Exception {
+        mockMvc.perform(post("/api/v1/motorcycles/brands").contentType(MediaType.APPLICATION_JSON).content("{}"))
+                .andExpect(status().isMethodNotAllowed())
+                // Spring reports every method mapped under the matching patterns, /{id} included.
+                .andExpect(header().string(HttpHeaders.ALLOW, org.hamcrest.Matchers.containsString("GET")))
+                .andExpect(jsonPath("$.status").value(405));
+    }
+
+    @Test
+    @DisplayName("an oversized additional-spec key is a 400 naming the field, not a database error")
+    void oversizedAdditionalSpecKeyBecomesBadRequest() throws Exception {
+        CreateMotorcycleRequest request = MotorcycleFixtures.createRequestWithSpecs(Map.of("k".repeat(81), "4"));
+
+        mockMvc.perform(post("/api/v1/motorcycles")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.violations[?(@.field =~ /additionalSpecs.*/)]").exists());
     }
 
     @Test

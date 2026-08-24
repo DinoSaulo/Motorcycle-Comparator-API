@@ -53,7 +53,7 @@ public class MotorcycleController {
 
     @GetMapping
     @Operation(summary = "Search the catalogue", description = "Every filter is optional and combinable. Supports paging and sorting, e.g. `?sort=priceEur,asc&size=20`.")
-    public Page<MotorcycleResponse> search(@ParameterObject @ModelAttribute MotorcycleFilter filter,
+    public Page<MotorcycleResponse> search(@ParameterObject @Valid @ModelAttribute MotorcycleFilter filter,
             @ParameterObject @PageableDefault(size = 20, sort = "brand", direction = Sort.Direction.ASC) Pageable pageable) {
         return motorcycleService.search(filter, pageable);
     }
@@ -88,6 +88,7 @@ public class MotorcycleController {
 
     @GetMapping("/slug/{slug}")
     @Operation(summary = "Fetch one motorcycle by its public slug")
+    @ApiResponse(responseCode = "404", description = "Unknown slug", content = @Content(schema = @Schema(implementation = ApiError.class)))
     public MotorcycleResponse getBySlug(@PathVariable String slug) {
         return motorcycleService.getBySlug(slug);
     }

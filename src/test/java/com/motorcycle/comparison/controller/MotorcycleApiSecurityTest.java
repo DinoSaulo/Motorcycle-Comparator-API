@@ -18,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -65,8 +66,24 @@ class MotorcycleApiSecurityTest {
                         .content(objectMapper.writeValueAsString(
                                 MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024))))
                 .andExpect(status().isUnauthorized())
+                // RFC 7235: the challenge is what tells a generated client to go and get a token.
+                .andExpect(header().string(HttpHeaders.WWW_AUTHENTICATE, "Bearer"))
                 .andExpect(jsonPath("$.status").value(401))
                 .andExpect(jsonPath("$.path").value("/api/v1/motorcycles"));
+    }
+
+    @Test
+    @DisplayName("the OpenAPI document leaves the public endpoints unauthenticated")
+    void openApiDoesNotRequireATokenEverywhere() throws Exception {
+        // A document-level security requirement made springdoc mark every operation, /auth/login
+        // included, as needing a bearer token — and a generated client believes the document.
+        String body = mockMvc.perform(get("/v3/api-docs")).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        JsonNode document = objectMapper.readTree(body);
+
+        assertThat(document.has("security")).isFalse();
+        assertThat(document.at("/paths/~1api~1v1~1auth~1login/post/security").isMissingNode()).isTrue();
+        assertThat(document.at("/paths/~1api~1v1~1motorcycles/get/security").isMissingNode()).isTrue();
+        assertThat(document.at("/paths/~1api~1v1~1motorcycles/post/security/0/bearerAuth").isArray()).isTrue();
     }
 
     @Test

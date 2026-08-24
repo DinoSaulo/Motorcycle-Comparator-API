@@ -12,6 +12,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# Least privilege for the whole workflow; the one job that needs more widens it itself.
+permissions:
+  contents: read
+
 env:
   MAVEN_ARGS: -B -ntp
 
@@ -21,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
+      contents: read
       checks: write  # Needed for mikepenz/action-junit-report to create check runs
 
     strategy:
@@ -40,13 +45,15 @@ jobs:
           java-version: ${{ matrix.java }}
           cache: maven
 
+      # The pom pins maven.compiler.release to 23, and javac rejects a release newer than
+      # itself, so the floor leg has to target its own JDK or it cannot compile at all.
       - name: Compile
-        run: mvn $MAVEN_ARGS clean compile
+        run: mvn $MAVEN_ARGS clean compile -Dmaven.compiler.release=${{ matrix.java }}
 
       # ubuntu-latest ships a running Docker daemon, which is all SchemaMigrationIT needs
       # from the runner; Testcontainers pulls postgres:16-alpine itself.
       - name: Unit & integration tests
-        run: mvn $MAVEN_ARGS verify
+        run: mvn $MAVEN_ARGS verify -Dmaven.compiler.release=${{ matrix.java }}
 
       - name: Publish test report
         uses: mikepenz/action-junit-report@v5

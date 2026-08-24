@@ -105,16 +105,12 @@ public class ComparisonService {
             return List.of();
         }
         List<BigDecimal> numbers = raw.stream().map(ComparisonService::toNumber).toList();
-        if (numbers.stream().filter(Objects::nonNull).distinct().count() < 2) {
-            return List.of(); // all equal or nothing to rank: no winner worth showing
-        }
-
         Comparator<BigDecimal> comparator = ranking == Ranking.HIGHER_IS_BETTER
                 ? Comparator.naturalOrder()
                 : Comparator.reverseOrder();
         BigDecimal best = numbers.stream().filter(Objects::nonNull).max(comparator).orElse(null);
         if (best == null) {
-            return List.of();
+            return List.of(); // nothing published on this row: nothing to rank
         }
 
         List<Integer> indexes = new ArrayList<>();
@@ -123,7 +119,9 @@ public class ComparisonService {
                 indexes.add(i);
             }
         }
-        return List.copyOf(indexes);
+        // Counted by compareTo, not equals: 117 and 117.0 tie, and a row everybody ties on
+        // has no winner worth showing — BigDecimal.equals would call those two a contest.
+        return indexes.size() == numbers.stream().filter(Objects::nonNull).count() ? List.of() : List.copyOf(indexes);
     }
 
     private static BigDecimal toNumber(Object value) {

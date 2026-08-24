@@ -5,7 +5,6 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
-import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,12 +36,13 @@ public class OpenApiConfig {
                         .license(new License().name("MIT")))
                 .servers(List.of(
                         new Server().url("http://localhost:8080").description("Local development")))
+                // The scheme is only declared here, never required globally: reads and /auth/login are
+                // public, and a document-wide requirement makes a generated client send a token to all of them.
                 .components(new Components().addSecuritySchemes(BEARER_SCHEME,
                         new SecurityScheme()
                                 .type(SecurityScheme.Type.HTTP)
                                 .scheme("bearer")
                                 .bearerFormat("JWT")
-                                .description("Paste the accessToken returned by /auth/login")))
-                .addSecurityItem(new SecurityRequirement().addList(BEARER_SCHEME));
+                                .description("Paste the accessToken returned by /auth/login")));
     }
 }

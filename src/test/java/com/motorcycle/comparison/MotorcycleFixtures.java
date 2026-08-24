@@ -83,6 +83,18 @@ public final class MotorcycleFixtures {
                 220, new BigDecimal("5.00"), "Euro 5+");
     }
 
+    /** Same as {@link #createRequest} but with a caller-chosen long-tail block, for the bounds tests. */
+    public static CreateMotorcycleRequest createRequestWithSpecs(Map<String, String> additionalSpecs) {
+        CreateMotorcycleRequest full = createRequest("Yamaha", "MT-09", 2024);
+        return new CreateMotorcycleRequest(
+                full.brand(), full.model(), full.modelYear(), full.category(),
+                full.priceEur(), full.imageUrl(), full.description(),
+                full.frameType(), full.frontSuspension(), full.rearSuspension(),
+                full.frontBrake(), full.rearBrake(), full.absType(),
+                full.frontTyre(), full.rearTyre(),
+                full.engine(), full.dimension(), additionalSpecs);
+    }
+
     /** Same as {@link #createRequest} but with no dimension block, for full-replace tests. */
     public static CreateMotorcycleRequest createRequestWithoutDimension(String brand, String model, int year) {
         CreateMotorcycleRequest full = createRequest(brand, model, year);

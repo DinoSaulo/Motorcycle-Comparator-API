@@ -2,6 +2,7 @@ package com.motorcycle.comparison.dto.request;
 
 import com.motorcycle.comparison.entity.Category;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 
@@ -19,6 +20,9 @@ public record MotorcycleFilter(
         @Schema(example = "80") BigDecimal minPowerHp,
         BigDecimal minPriceEur,
         @Schema(example = "15000") BigDecimal maxPriceEur,
+        // Bounded because it reaches three trigram LIKEs from an unauthenticated request;
+        // no real catalogue search is longer than this.
+        @Size(max = 100)
         @Schema(description = "Free text matched against brand, model and slug", example = "mt-09")
         String q
 ) {}

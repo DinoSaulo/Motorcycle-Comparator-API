@@ -5,12 +5,18 @@ import com.motorcycle.comparison.dto.response.ApiError.FieldViolation;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,6 +26,8 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Single translation point from exception to HTTP response: a client error explains precisely what went wrong, a server
@@ -43,11 +51,40 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> handleValidation(MethodArgumentNotValidException ex, HttpServletRequest request) {
         List<FieldViolation> violations = ex.getBindingResult().getFieldErrors().stream()
-                .map(error -> new FieldViolation(error.getField(), error.getDefaultMessage()))
+                .map(error -> new FieldViolation(error.getField(), messageOf(error)))
                 .toList();
 
         return ResponseEntity.badRequest().body(ApiError.withViolations(HttpStatus.BAD_REQUEST.value(),
                 HttpStatus.BAD_REQUEST.getReasonPhrase(), "Request validation failed", request.getRequestURI(), violations));
+    }
+
+    /**
+     * A constraint's own message is written for the caller, but a conversion failure's names the target's
+     * fully-qualified class — the very leak {@code MotorcycleService.validateSort} exists to avoid.
+     */
+    private static String messageOf(FieldError error) {
+        return error.isBindingFailure() ? "Invalid value: " + error.getRejectedValue() : error.getDefaultMessage();
+    }
+
+    /** A body Jackson could not parse. Its message quotes the payload and internal class names, so it stays in the log. */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ApiError> handleUnreadableBody(HttpMessageNotReadableException ex, HttpServletRequest request) {
+        log.debug("Unreadable request body on {} {}: {}", request.getMethod(), request.getRequestURI(), ex.getMessage());
+        return build(HttpStatus.BAD_REQUEST, "Request body is missing or is not valid JSON", request);
+    }
+
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<ApiError> handleUnsupportedMediaType(HttpMediaTypeNotSupportedException ex, HttpServletRequest request) {
+        return build(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Content type '" + ex.getContentType() + "' is not supported; send application/json", request);
+    }
+
+    /** 405 carries the Allow header, without which a client cannot discover what the endpoint does accept. */
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<ApiError> handleMethodNotSupported(HttpRequestMethodNotSupportedException ex, HttpServletRequest request) {
+        Set<HttpMethod> allowed = Objects.requireNonNullElse(ex.getSupportedHttpMethods(), Set.of());
+        ApiError body = ApiError.of(HttpStatus.METHOD_NOT_ALLOWED.value(), HttpStatus.METHOD_NOT_ALLOWED.getReasonPhrase(), "Method " + ex.getMethod() + " is not supported by this endpoint", request.getRequestURI());
+
+        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).allow(allowed.toArray(HttpMethod[]::new)).body(body);
     }
 
     /** Domain-level argument rules, e.g. "a comparison needs at least 2 motorcycles". */
@@ -69,7 +106,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<ApiError> handleBadCredentials(BadCredentialsException ex, HttpServletRequest request) {
         // Deliberately generic: do not reveal whether the username exists.
-        return build(HttpStatus.UNAUTHORIZED, "Invalid username or password", request);
+        return unauthorized("Invalid username or password", request);
     }
 
     /**
@@ -83,7 +120,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<ApiError> handleAuthentication(AuthenticationException ex, HttpServletRequest request) {
-        return build(HttpStatus.UNAUTHORIZED, "Authentication required to access this resource", request);
+        return unauthorized("Authentication required to access this resource", request);
     }
 
     /**
@@ -135,5 +172,11 @@ public class GlobalExceptionHandler {
 
     private ResponseEntity<ApiError> build(HttpStatus status, String message, HttpServletRequest request) {
         return ResponseEntity.status(status).body(ApiError.of(status.value(), status.getReasonPhrase(), message, request.getRequestURI()));
+    }
+
+    /** Carries the challenge RFC 7235 requires on a 401, matching what SecurityConfig's entry point already sends. */
+    private ResponseEntity<ApiError> unauthorized(String message, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.UNAUTHORIZED;
+        return ResponseEntity.status(status).header(HttpHeaders.WWW_AUTHENTICATE, "Bearer").body(ApiError.of(status.value(), status.getReasonPhrase(), message, request.getRequestURI()));
     }
 }

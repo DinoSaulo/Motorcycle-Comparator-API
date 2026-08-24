@@ -114,6 +114,36 @@ class ComparisonServiceTest {
     }
 
     @Test
+    @DisplayName("treats figures that differ only in scale as a tie, not a contest")
+    void tieAcrossDecimalScales() {
+        // 117 and 117.0 are not BigDecimal.equals, so counting distinct values used to declare
+        // both bikes winners of a row nobody actually won.
+        yamaha.getEngine().setMaxPowerHp(new BigDecimal("117"));
+        honda.getEngine().setMaxPowerHp(new BigDecimal("117.00"));
+        when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
+                .thenReturn(List.of(yamaha, honda));
+
+        SpecRow power = row(comparisonService.compare(List.of(1L, 2L)), "Performance", "Max power");
+
+        assertThat(power.values()).containsExactly("117", "117");
+        assertThat(power.winnerIndexes()).isEmpty();
+        assertThat(power.differing()).isFalse();
+    }
+
+    @Test
+    @DisplayName("marks every bike tied for best, not just the first")
+    void reportsEveryTiedWinner() {
+        Motorcycle suzuki = MotorcycleFixtures.motorcycle(3L, "Suzuki", "GSX-8S", 776);
+        suzuki.getEngine().setMaxPowerHp(new BigDecimal("117.0"));
+        when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
+                .thenReturn(List.of(yamaha, honda, suzuki));
+
+        SpecRow power = row(comparisonService.compare(List.of(1L, 2L, 3L)), "Performance", "Max power");
+
+        assertThat(power.winnerIndexes()).containsExactly(0, 2); // Honda's 94 hp is the only loser
+    }
+
+    @Test
     @DisplayName("keeps a missing figure null so the table renders a dash, not a zero")
     void missingValueStaysNull() {
         honda.getEngine().setMaxPowerHp(null);

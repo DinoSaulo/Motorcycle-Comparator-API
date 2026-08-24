@@ -28,6 +28,12 @@ spring:
     init:
       mode: never
 
+  # Mirrors main: the public catalogue caps how many rows one request can ask for.
+  data:
+    web:
+      pageable:
+        max-page-size: 100
+
   jackson:
     default-property-inclusion: non_null
     serialization:
