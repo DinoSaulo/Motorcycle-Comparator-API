@@ -42,3 +42,7 @@ logs/
 .env.local
 application-local.yml
 application-local.properties
+
+# --- Postman local sync ---
+postman/postman/
+postman/.postman/

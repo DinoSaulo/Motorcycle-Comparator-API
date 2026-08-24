@@ -1,0 +1,2162 @@
+{
+  "info": {
+    "_postman_id": "e4db0da2-339b-40d8-a0b0-930bcaaaafc7",
+    "name": "Motorcycle Comparator API",
+    "description": "Collection completa para testes manuais da Motorcycle Comparator API (catálogo de motos com comparação lado a lado).\n\nGerada a partir do código-fonte dos controllers (`AuthController`, `MotorcycleController`), dos DTOs de request/response e do `SecurityConfig`/`application.yml` do projeto.\n\n### Como usar\n1. Importa esta collection e o environment `Motorcycle Comparator API - Local` incluído no zip.\n2. Garante que a API está a correr localmente (`mvn spring-boot:run`, perfil `dev`, porta 8080).\n3. Corre a pasta **1. Auth** primeiro — os pedidos de login guardam `adminToken`/`editorToken` automaticamente em variáveis da collection, reutilizados pelas pastas seguintes.\n4. Explora **2. Catalog** livremente (só leitura, sem token).\n5. Em **3. Motorcycles - Admin writes**, corre pela ordem em que os pedidos aparecem: Create → Update → Not found → Delete — o Create guarda o id criado em `createdMotorcycleId`, que o Update e o Delete reutilizam.\n\nCada pedido tem uma descrição com o comportamento esperado e testes automáticos (aba *Test Results*) que confirmam o status code e, quando relevante, a forma do corpo (`ApiError` para os erros).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Auth",
+      "description": "Login público que troca credenciais por um JWT. Corre estes pedidos primeiro — os tokens ficam guardados em variáveis da collection e são reutilizados pelas pastas seguintes.",
+      "item": [
+        {
+          "name": "Login - Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Autentica com as credenciais de administrador e guarda o token em `adminToken` para os pedidos protegidos das outras pastas.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"{{adminUsername}}\",\n    \"password\": \"{{adminPassword}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has a bearer access token\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.tokenType).to.eql('Bearer');",
+                  "    pm.expect(json.accessToken).to.be.a('string').and.not.empty;",
+                  "    pm.expect(json.roles).to.include('ROLE_ADMIN');",
+                  "    pm.collectionVariables.set('adminToken', json.accessToken);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login - Editor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Autentica com as credenciais de editor (sem `ROLE_ADMIN`) e guarda o token em `editorToken`. Útil para confirmar os 403 nos endpoints de escrita.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"{{editorUsername}}\",\n    \"password\": \"{{editorPassword}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Editor role does not include ADMIN\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.roles).to.not.include('ROLE_ADMIN');",
+                  "    pm.collectionVariables.set('editorToken', json.accessToken);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login - Invalid credentials (401)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Password errada. Confirma que a resposta nunca revela se o username existe.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"{{adminUsername}}\",\n    \"password\": \"wrong-password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login - Validation error (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Corpo inválido (username em branco) para exercitar o `@Valid` do `LoginRequest`.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"\",\n    \"password\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});",
+                  "",
+                  "pm.test(\"Violations list the blank fields\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.violations).to.be.an('array').that.is.not.empty;",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2. Catalog (public reads)",
+      "description": "Endpoints de leitura do catálogo — não precisam de token. Todos os filtros de `MotorcycleFilter` são opcionais e combináveis.",
+      "item": [
+        {
+          "name": "Search - All (defaults)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ]
+            },
+            "description": "Sem filtros: devolve a primeira página (20 itens, ordenada por `brand` ascendente) do catálogo completo."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Content-Type is JSON\", function () {",
+                  "    pm.response.to.have.header('Content-Type');",
+                  "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+                  "});",
+                  "",
+                  "pm.test(\"Response is a Page\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('content').that.is.an('array');",
+                  "    pm.expect(json).to.have.property('totalElements');",
+                  "    pm.expect(json).to.have.property('number', 0);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Search - By brand",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles?brand=Yamaha",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ],
+              "query": [
+                {
+                  "key": "brand",
+                  "value": "Yamaha"
+                }
+              ]
+            },
+            "description": "Filtra por marca exata (case-insensitive no service)."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Search - By category",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles?category=NAKED",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "NAKED"
+                }
+              ]
+            },
+            "description": "Filtra por segmento comercial. Valores válidos: SPORT, NAKED, TOURING, ADVENTURE, CRUISER, SCOOTER, OFF_ROAD, SUPERMOTO, ELECTRIC."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Search - By model year",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles?modelYear=2024",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ],
+              "query": [
+                {
+                  "key": "modelYear",
+                  "value": "2024"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Search - By displacement range",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles?minDisplacementCc=600&maxDisplacementCc=1000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ],
+              "query": [
+                {
+                  "key": "minDisplacementCc",
+                  "value": "600"
+                },
+                {
+                  "key": "maxDisplacementCc",
+                  "value": "1000"
+                }
+              ]
+            },
+            "description": "Faz join à tabela de motor apenas porque há uma faceta de motor no pedido."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Search - By power (min hp)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles?minPowerHp=80",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ],
+              "query": [
+                {
+                  "key": "minPowerHp",
+                  "value": "80"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Search - By price range",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles?minPriceEur=5000&maxPriceEur=15000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ],
+              "query": [
+                {
+                  "key": "minPriceEur",
+                  "value": "5000"
+                },
+                {
+                  "key": "maxPriceEur",
+                  "value": "15000"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Search - Free text (q)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles?q=mt-09",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "mt-09"
+                }
+              ]
+            },
+            "description": "Pesquisa textual (trigram) sobre brand, model e slug."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Search - Paging and sorting",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles?sort=priceEur,asc&size=5&page=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "priceEur,asc"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Combina paginação e ordenação nativas do Spring Data."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"At most 5 items and sorted ascending by priceEur\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.content.length).to.be.at.most(5);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Search - Combined filters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles?category=NAKED&minDisplacementCc=600&maxPriceEur=15000&sort=modelYear,desc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "NAKED"
+                },
+                {
+                  "key": "minDisplacementCc",
+                  "value": "600"
+                },
+                {
+                  "key": "maxPriceEur",
+                  "value": "15000"
+                },
+                {
+                  "key": "sort",
+                  "value": "modelYear,desc"
+                }
+              ]
+            },
+            "description": "Todos os filtros são opcionais e combináveis — este pedido junta várias facetas de uma vez."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Search - Invalid category (400)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles?category=NOT_A_CATEGORY",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "NOT_A_CATEGORY"
+                }
+              ]
+            },
+            "description": "Valor de enum inexistente: o binding falha antes de chegar ao service."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Search - Free text too long (400)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles?q=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                }
+              ]
+            },
+            "description": "`q` está limitado a 100 caracteres porque alimenta três LIKEs trigram numa rota anónima."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "List brands",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/brands",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "brands"
+              ]
+            },
+            "description": "Lista de marcas distintas, usada para alimentar a sidebar de filtros do catálogo."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is an array of strings\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/{{motorcycleId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "{{motorcycleId}}"
+              ]
+            },
+            "description": "Devolve uma moto com todas as especificações (motor + dimensões)."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contains engine and dimension blocks\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('id');",
+                  "    pm.expect(json).to.have.property('engine');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get by id - Not found (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/999999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "999999"
+              ]
+            },
+            "description": ""
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get by slug",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/slug/{{motorcycleSlug}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "slug",
+                "{{motorcycleSlug}}"
+              ]
+            },
+            "description": "Lookup pelo slug público (usado nos URLs partilháveis do frontend)."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get by slug - Not found (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/slug/does-not-exist",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "slug",
+                "does-not-exist"
+              ]
+            },
+            "description": ""
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Compare - 3 motorcycles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/compare?ids=1,2,3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "compare"
+              ],
+              "query": [
+                {
+                  "key": "ids",
+                  "value": "1,2,3"
+                }
+              ]
+            },
+            "description": "Comparação lado a lado, pré-formatada como linhas de tabela. Entre 2 e 4 ids distintos (limite configurável em `app.comparison.max-items`)."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Comparison has rows and columns for each id\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('rows');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Compare - Too few ids (400)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/compare?ids=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "compare"
+              ],
+              "query": [
+                {
+                  "key": "ids",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Um único id não forma uma comparação."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Compare - Too many ids (400)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/compare?ids=1,2,3,4,5",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "compare"
+              ],
+              "query": [
+                {
+                  "key": "ids",
+                  "value": "1,2,3,4,5"
+                }
+              ]
+            },
+            "description": "Acima de 4 colunas deixa de ser legível lado a lado — rejeitado com 400."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Compare - Duplicate ids (400)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/compare?ids=1,1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "compare"
+              ],
+              "query": [
+                {
+                  "key": "ids",
+                  "value": "1,1"
+                }
+              ]
+            },
+            "description": "Ids têm de ser distintos."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is one of [400]\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([400]);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Compare - Unknown id (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/compare?ids=1,999999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "compare"
+              ],
+              "query": [
+                {
+                  "key": "ids",
+                  "value": "1,999999"
+                }
+              ]
+            },
+            "description": "Pelo menos um id não existe no catálogo."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3. Motorcycles - Admin writes",
+      "description": "CRUD administrativo, protegido por `ROLE_ADMIN`. Corre **Login - Admin** (e, para os cenários 403, **Login - Editor**) antes desta pasta. Ordem recomendada: Create → Update → Update/Delete - Not found → Delete.",
+      "item": [
+        {
+          "name": "Create motorcycle",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ]
+            },
+            "description": "Cria uma moto nova. Requer `ROLE_ADMIN` — corre primeiro **Login - Admin**. Guarda o id criado em `createdMotorcycleId` para os pedidos de update/delete abaixo.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"brand\": \"Yamaha\",\n    \"model\": \"MT-09 SP\",\n    \"modelYear\": 2025,\n    \"category\": \"NAKED\",\n    \"priceEur\": 12299.0,\n    \"imageUrl\": \"https://example.com/images/yamaha-mt-09-sp-2025.jpg\",\n    \"description\": \"Special edition hyper naked with Ohlins semi-active suspension and forged wheels.\",\n    \"frameType\": \"Aluminium Deltabox\",\n    \"frontSuspension\": \"43mm Ohlins NPX gas fork, semi-active electronic control\",\n    \"rearSuspension\": \"Ohlins electronic monoshock, adjustable preload\",\n    \"frontBrake\": \"Dual 298mm discs, radial-mount 4-piston calipers\",\n    \"rearBrake\": \"Single 245mm disc\",\n    \"absType\": \"Dual-channel cornering ABS\",\n    \"frontTyre\": \"120/70 ZR17\",\n    \"rearTyre\": \"180/55 ZR17\",\n    \"engine\": {\n        \"engineType\": \"Inline-3, liquid-cooled, DOHC, 12 valves\",\n        \"displacementCc\": 890,\n        \"cylinders\": 3,\n        \"valvesPerCylinder\": 4,\n        \"maxPowerHp\": 119.4,\n        \"maxPowerRpm\": 10000,\n        \"maxTorqueNm\": 93,\n        \"maxTorqueRpm\": 7000,\n        \"compressionRatio\": \"11.5:1\",\n        \"boreMm\": 78,\n        \"strokeMm\": 62.1,\n        \"coolingSystem\": \"Liquid-cooled\",\n        \"fuelSystem\": \"Fuel injection with YCC-T\",\n        \"transmissionType\": \"6-speed, chain final drive\",\n        \"gears\": 6,\n        \"finalDrive\": \"Chain\",\n        \"topSpeedKph\": 220,\n        \"fuelConsumptionL100km\": 5.6,\n        \"emissionStandard\": \"Euro 5+\"\n    },\n    \"dimension\": {\n        \"lengthMm\": 2090,\n        \"widthMm\": 795,\n        \"heightMm\": 1185,\n        \"wheelbaseMm\": 1430,\n        \"seatHeightMm\": 825,\n        \"groundClearanceMm\": 135,\n        \"kerbWeightKg\": 189,\n        \"dryWeightKg\": 179,\n        \"fuelCapacityL\": 14,\n        \"payloadKg\": 190\n    },\n    \"additionalSpecs\": {\n        \"Rider modes\": \"4\",\n        \"Display\": \"5-inch TFT\",\n        \"Quickshifter\": \"Up/down\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Location header points at the new resource\", function () {",
+                  "    pm.response.to.have.header('Location');",
+                  "});",
+                  "",
+                  "pm.test(\"Body echoes the created motorcycle and its id is saved\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('id');",
+                  "    pm.collectionVariables.set('createdMotorcycleId', json.id);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create - Validation error (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ]
+            },
+            "description": "Payload inválido (brand em branco, modelYear fora do intervalo, priceEur negativo, engine em falta) com um token de admin válido — o 400 vem do `@Valid`, não da segurança.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"brand\": \"\",\n    \"modelYear\": 1800,\n    \"priceEur\": -100\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});",
+                  "",
+                  "pm.test(\"Violations name the invalid fields\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.violations).to.be.an('array').that.is.not.empty;",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create - Unauthorized, no token (401)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ]
+            },
+            "description": "Mesmo payload válido, sem `Authorization`. O SecurityConfig responde antes de chegar ao controller.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"brand\": \"Yamaha\",\n    \"model\": \"MT-09 SP\",\n    \"modelYear\": 2025,\n    \"category\": \"NAKED\",\n    \"priceEur\": 12299.0,\n    \"imageUrl\": \"https://example.com/images/yamaha-mt-09-sp-2025.jpg\",\n    \"description\": \"Special edition hyper naked with Ohlins semi-active suspension and forged wheels.\",\n    \"frameType\": \"Aluminium Deltabox\",\n    \"frontSuspension\": \"43mm Ohlins NPX gas fork, semi-active electronic control\",\n    \"rearSuspension\": \"Ohlins electronic monoshock, adjustable preload\",\n    \"frontBrake\": \"Dual 298mm discs, radial-mount 4-piston calipers\",\n    \"rearBrake\": \"Single 245mm disc\",\n    \"absType\": \"Dual-channel cornering ABS\",\n    \"frontTyre\": \"120/70 ZR17\",\n    \"rearTyre\": \"180/55 ZR17\",\n    \"engine\": {\n        \"engineType\": \"Inline-3, liquid-cooled, DOHC, 12 valves\",\n        \"displacementCc\": 890,\n        \"cylinders\": 3,\n        \"valvesPerCylinder\": 4,\n        \"maxPowerHp\": 119.4,\n        \"maxPowerRpm\": 10000,\n        \"maxTorqueNm\": 93,\n        \"maxTorqueRpm\": 7000,\n        \"compressionRatio\": \"11.5:1\",\n        \"boreMm\": 78,\n        \"strokeMm\": 62.1,\n        \"coolingSystem\": \"Liquid-cooled\",\n        \"fuelSystem\": \"Fuel injection with YCC-T\",\n        \"transmissionType\": \"6-speed, chain final drive\",\n        \"gears\": 6,\n        \"finalDrive\": \"Chain\",\n        \"topSpeedKph\": 220,\n        \"fuelConsumptionL100km\": 5.6,\n        \"emissionStandard\": \"Euro 5+\"\n    },\n    \"dimension\": {\n        \"lengthMm\": 2090,\n        \"widthMm\": 795,\n        \"heightMm\": 1185,\n        \"wheelbaseMm\": 1430,\n        \"seatHeightMm\": 825,\n        \"groundClearanceMm\": 135,\n        \"kerbWeightKg\": 189,\n        \"dryWeightKg\": 179,\n        \"fuelCapacityL\": 14,\n        \"payloadKg\": 190\n    },\n    \"additionalSpecs\": {\n        \"Rider modes\": \"4\",\n        \"Display\": \"5-inch TFT\",\n        \"Quickshifter\": \"Up/down\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});",
+                  "",
+                  "pm.test(\"WWW-Authenticate challenge is present\", function () {",
+                  "    pm.response.to.have.header('WWW-Authenticate');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create - Forbidden, editor token (403)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles"
+              ]
+            },
+            "description": "Token válido mas sem `ROLE_ADMIN` (usa **Login - Editor** primeiro).",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"brand\": \"Yamaha\",\n    \"model\": \"MT-09 SP\",\n    \"modelYear\": 2025,\n    \"category\": \"NAKED\",\n    \"priceEur\": 12299.0,\n    \"imageUrl\": \"https://example.com/images/yamaha-mt-09-sp-2025.jpg\",\n    \"description\": \"Special edition hyper naked with Ohlins semi-active suspension and forged wheels.\",\n    \"frameType\": \"Aluminium Deltabox\",\n    \"frontSuspension\": \"43mm Ohlins NPX gas fork, semi-active electronic control\",\n    \"rearSuspension\": \"Ohlins electronic monoshock, adjustable preload\",\n    \"frontBrake\": \"Dual 298mm discs, radial-mount 4-piston calipers\",\n    \"rearBrake\": \"Single 245mm disc\",\n    \"absType\": \"Dual-channel cornering ABS\",\n    \"frontTyre\": \"120/70 ZR17\",\n    \"rearTyre\": \"180/55 ZR17\",\n    \"engine\": {\n        \"engineType\": \"Inline-3, liquid-cooled, DOHC, 12 valves\",\n        \"displacementCc\": 890,\n        \"cylinders\": 3,\n        \"valvesPerCylinder\": 4,\n        \"maxPowerHp\": 119.4,\n        \"maxPowerRpm\": 10000,\n        \"maxTorqueNm\": 93,\n        \"maxTorqueRpm\": 7000,\n        \"compressionRatio\": \"11.5:1\",\n        \"boreMm\": 78,\n        \"strokeMm\": 62.1,\n        \"coolingSystem\": \"Liquid-cooled\",\n        \"fuelSystem\": \"Fuel injection with YCC-T\",\n        \"transmissionType\": \"6-speed, chain final drive\",\n        \"gears\": 6,\n        \"finalDrive\": \"Chain\",\n        \"topSpeedKph\": 220,\n        \"fuelConsumptionL100km\": 5.6,\n        \"emissionStandard\": \"Euro 5+\"\n    },\n    \"dimension\": {\n        \"lengthMm\": 2090,\n        \"widthMm\": 795,\n        \"heightMm\": 1185,\n        \"wheelbaseMm\": 1430,\n        \"seatHeightMm\": 825,\n        \"groundClearanceMm\": 135,\n        \"kerbWeightKg\": 189,\n        \"dryWeightKg\": 179,\n        \"fuelCapacityL\": 14,\n        \"payloadKg\": 190\n    },\n    \"additionalSpecs\": {\n        \"Rider modes\": \"4\",\n        \"Display\": \"5-inch TFT\",\n        \"Quickshifter\": \"Up/down\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{editorToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Update motorcycle (full replace)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/{{createdMotorcycleId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "{{createdMotorcycleId}}"
+              ]
+            },
+            "description": "Substituição completa: campos opcionais omitidos ficam a null. Usa por omissão o id criado no pedido **Create motorcycle**; muda para `motorcycleId` se preferires atualizar um registo do seed.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"brand\": \"Yamaha\",\n    \"model\": \"MT-09 SP\",\n    \"modelYear\": 2025,\n    \"category\": \"NAKED\",\n    \"priceEur\": 11999.0,\n    \"imageUrl\": \"https://example.com/images/yamaha-mt-09-sp-2025.jpg\",\n    \"description\": \"Special edition hyper naked with Ohlins semi-active suspension and forged wheels. Now with updated colourway.\",\n    \"frameType\": \"Aluminium Deltabox\",\n    \"frontSuspension\": \"43mm Ohlins NPX gas fork, semi-active electronic control\",\n    \"rearSuspension\": \"Ohlins electronic monoshock, adjustable preload\",\n    \"frontBrake\": \"Dual 298mm discs, radial-mount 4-piston calipers\",\n    \"rearBrake\": \"Single 245mm disc\",\n    \"absType\": \"Dual-channel cornering ABS\",\n    \"frontTyre\": \"120/70 ZR17\",\n    \"rearTyre\": \"180/55 ZR17\",\n    \"engine\": {\n        \"engineType\": \"Inline-3, liquid-cooled, DOHC, 12 valves\",\n        \"displacementCc\": 890,\n        \"cylinders\": 3,\n        \"valvesPerCylinder\": 4,\n        \"maxPowerHp\": 119.4,\n        \"maxPowerRpm\": 10000,\n        \"maxTorqueNm\": 93,\n        \"maxTorqueRpm\": 7000,\n        \"compressionRatio\": \"11.5:1\",\n        \"boreMm\": 78,\n        \"strokeMm\": 62.1,\n        \"coolingSystem\": \"Liquid-cooled\",\n        \"fuelSystem\": \"Fuel injection with YCC-T\",\n        \"transmissionType\": \"6-speed, chain final drive\",\n        \"gears\": 6,\n        \"finalDrive\": \"Chain\",\n        \"topSpeedKph\": 220,\n        \"fuelConsumptionL100km\": 5.6,\n        \"emissionStandard\": \"Euro 5+\"\n    },\n    \"dimension\": {\n        \"lengthMm\": 2090,\n        \"widthMm\": 795,\n        \"heightMm\": 1185,\n        \"wheelbaseMm\": 1430,\n        \"seatHeightMm\": 825,\n        \"groundClearanceMm\": 135,\n        \"kerbWeightKg\": 189,\n        \"dryWeightKg\": 179,\n        \"fuelCapacityL\": 14,\n        \"payloadKg\": 190\n    },\n    \"additionalSpecs\": {\n        \"Rider modes\": \"4\",\n        \"Display\": \"5-inch TFT\",\n        \"Quickshifter\": \"Up/down\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Price was updated\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json.priceEur).to.eql(11999.00);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Update - Not found (404)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/999999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "999999"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"brand\": \"Yamaha\",\n    \"model\": \"MT-09 SP\",\n    \"modelYear\": 2025,\n    \"category\": \"NAKED\",\n    \"priceEur\": 11999.0,\n    \"imageUrl\": \"https://example.com/images/yamaha-mt-09-sp-2025.jpg\",\n    \"description\": \"Special edition hyper naked with Ohlins semi-active suspension and forged wheels. Now with updated colourway.\",\n    \"frameType\": \"Aluminium Deltabox\",\n    \"frontSuspension\": \"43mm Ohlins NPX gas fork, semi-active electronic control\",\n    \"rearSuspension\": \"Ohlins electronic monoshock, adjustable preload\",\n    \"frontBrake\": \"Dual 298mm discs, radial-mount 4-piston calipers\",\n    \"rearBrake\": \"Single 245mm disc\",\n    \"absType\": \"Dual-channel cornering ABS\",\n    \"frontTyre\": \"120/70 ZR17\",\n    \"rearTyre\": \"180/55 ZR17\",\n    \"engine\": {\n        \"engineType\": \"Inline-3, liquid-cooled, DOHC, 12 valves\",\n        \"displacementCc\": 890,\n        \"cylinders\": 3,\n        \"valvesPerCylinder\": 4,\n        \"maxPowerHp\": 119.4,\n        \"maxPowerRpm\": 10000,\n        \"maxTorqueNm\": 93,\n        \"maxTorqueRpm\": 7000,\n        \"compressionRatio\": \"11.5:1\",\n        \"boreMm\": 78,\n        \"strokeMm\": 62.1,\n        \"coolingSystem\": \"Liquid-cooled\",\n        \"fuelSystem\": \"Fuel injection with YCC-T\",\n        \"transmissionType\": \"6-speed, chain final drive\",\n        \"gears\": 6,\n        \"finalDrive\": \"Chain\",\n        \"topSpeedKph\": 220,\n        \"fuelConsumptionL100km\": 5.6,\n        \"emissionStandard\": \"Euro 5+\"\n    },\n    \"dimension\": {\n        \"lengthMm\": 2090,\n        \"widthMm\": 795,\n        \"heightMm\": 1185,\n        \"wheelbaseMm\": 1430,\n        \"seatHeightMm\": 825,\n        \"groundClearanceMm\": 135,\n        \"kerbWeightKg\": 189,\n        \"dryWeightKg\": 179,\n        \"fuelCapacityL\": 14,\n        \"payloadKg\": 190\n    },\n    \"additionalSpecs\": {\n        \"Rider modes\": \"4\",\n        \"Display\": \"5-inch TFT\",\n        \"Quickshifter\": \"Up/down\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Update - Forbidden, editor token (403)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/{{createdMotorcycleId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "{{createdMotorcycleId}}"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"brand\": \"Yamaha\",\n    \"model\": \"MT-09 SP\",\n    \"modelYear\": 2025,\n    \"category\": \"NAKED\",\n    \"priceEur\": 11999.0,\n    \"imageUrl\": \"https://example.com/images/yamaha-mt-09-sp-2025.jpg\",\n    \"description\": \"Special edition hyper naked with Ohlins semi-active suspension and forged wheels. Now with updated colourway.\",\n    \"frameType\": \"Aluminium Deltabox\",\n    \"frontSuspension\": \"43mm Ohlins NPX gas fork, semi-active electronic control\",\n    \"rearSuspension\": \"Ohlins electronic monoshock, adjustable preload\",\n    \"frontBrake\": \"Dual 298mm discs, radial-mount 4-piston calipers\",\n    \"rearBrake\": \"Single 245mm disc\",\n    \"absType\": \"Dual-channel cornering ABS\",\n    \"frontTyre\": \"120/70 ZR17\",\n    \"rearTyre\": \"180/55 ZR17\",\n    \"engine\": {\n        \"engineType\": \"Inline-3, liquid-cooled, DOHC, 12 valves\",\n        \"displacementCc\": 890,\n        \"cylinders\": 3,\n        \"valvesPerCylinder\": 4,\n        \"maxPowerHp\": 119.4,\n        \"maxPowerRpm\": 10000,\n        \"maxTorqueNm\": 93,\n        \"maxTorqueRpm\": 7000,\n        \"compressionRatio\": \"11.5:1\",\n        \"boreMm\": 78,\n        \"strokeMm\": 62.1,\n        \"coolingSystem\": \"Liquid-cooled\",\n        \"fuelSystem\": \"Fuel injection with YCC-T\",\n        \"transmissionType\": \"6-speed, chain final drive\",\n        \"gears\": 6,\n        \"finalDrive\": \"Chain\",\n        \"topSpeedKph\": 220,\n        \"fuelConsumptionL100km\": 5.6,\n        \"emissionStandard\": \"Euro 5+\"\n    },\n    \"dimension\": {\n        \"lengthMm\": 2090,\n        \"widthMm\": 795,\n        \"heightMm\": 1185,\n        \"wheelbaseMm\": 1430,\n        \"seatHeightMm\": 825,\n        \"groundClearanceMm\": 135,\n        \"kerbWeightKg\": 189,\n        \"dryWeightKg\": 179,\n        \"fuelCapacityL\": 14,\n        \"payloadKg\": 190\n    },\n    \"additionalSpecs\": {\n        \"Rider modes\": \"4\",\n        \"Display\": \"5-inch TFT\",\n        \"Quickshifter\": \"Up/down\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{editorToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Delete motorcycle",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/{{createdMotorcycleId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "{{createdMotorcycleId}}"
+              ]
+            },
+            "description": "Apaga o registo criado pelo pedido **Create motorcycle**. Corre por último para não partir os pedidos de update acima.",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Delete - Not found (404)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/999999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "999999"
+              ]
+            },
+            "description": "",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Delete - Unauthorized, no token (401)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/motorcycles/{{motorcycleId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "motorcycles",
+                "{{motorcycleId}}"
+              ]
+            },
+            "description": "Confirma que o delete também está fechado sem token — não apaga nada porque o pedido nunca chega ao service.",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4. Actuator",
+      "description": "Health/info são públicos; qualquer outro endpoint do actuator (metrics incluído) exige `ROLE_ADMIN`.",
+      "item": [
+        {
+          "name": "Health (public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/actuator/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "actuator",
+                "health"
+              ]
+            },
+            "description": "Público por desenho — usado por load balancers/orquestradores."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Info (public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/actuator/info",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "actuator",
+                "info"
+              ]
+            },
+            "description": ""
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Metrics - With admin token",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/actuator/metrics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "actuator",
+                "metrics"
+              ]
+            },
+            "description": "Todo o resto do actuator (metrics incluído) exige `ROLE_ADMIN` — expõe detalhe operacional que um editor não tem razão para ver.",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Metrics - No token (401)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/actuator/metrics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "actuator",
+                "metrics"
+              ]
+            },
+            "description": "",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Metrics - Editor token (403)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/actuator/metrics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "actuator",
+                "metrics"
+              ]
+            },
+            "description": "",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{editorToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 403\", function () {",
+                  "    pm.response.to.have.status(403);",
+                  "});",
+                  "",
+                  "pm.test(\"Body follows the ApiError shape\", function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('status');",
+                  "    pm.expect(json).to.have.property('error');",
+                  "    pm.expect(json).to.have.property('message');",
+                  "    pm.expect(json).to.have.property('path');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "5. API Docs",
+      "description": "Endpoints públicos do springdoc-openapi.",
+      "item": [
+        {
+          "name": "OpenAPI JSON",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v3/api-docs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v3",
+                "api-docs"
+              ]
+            },
+            "description": "Documento OpenAPI gerado pelo springdoc — fonte de verdade para regenerar esta collection quando a API mudar."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Swagger UI",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/swagger-ui.html",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "swagger-ui.html"
+              ]
+            },
+            "description": "Interface interativa. Abre no browser; no Postman espera-se um redirect (3xx) para `/swagger-ui/index.html`."
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is one of [200, 302, 301]\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 302, 301]);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "adminUsername",
+      "value": "admin",
+      "type": "string"
+    },
+    {
+      "key": "adminPassword",
+      "value": "admin123",
+      "type": "string"
+    },
+    {
+      "key": "editorUsername",
+      "value": "editor",
+      "type": "string"
+    },
+    {
+      "key": "editorPassword",
+      "value": "editor123",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "editorToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "motorcycleId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "motorcycleSlug",
+      "value": "yamaha-mt-09-2024",
+      "type": "string"
+    },
+    {
+      "key": "createdMotorcycleId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
