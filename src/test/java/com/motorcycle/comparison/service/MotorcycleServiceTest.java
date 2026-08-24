@@ -320,4 +320,65 @@ class MotorcycleServiceTest {
     void slugify(String raw, String expected) {
         assertThat(MotorcycleService.slugify(raw)).isEqualTo(expected);
     }
+
+    @Nested
+    @DisplayName("slugMatchesIdentity")
+    class SlugMatchesIdentity {
+
+        @Test
+        @DisplayName("treats a null slug as never matching, e.g. an entity created before slugs existed")
+        void nullSlugNeverMatches() {
+            assertThat(MotorcycleService.slugMatchesIdentity(null, "yamaha-mt-09-2024")).isFalse();
+        }
+
+        @Test
+        @DisplayName("matches the base slug exactly")
+        void matchesExactBase() {
+            assertThat(MotorcycleService.slugMatchesIdentity("yamaha-mt-09-2024", "yamaha-mt-09-2024")).isTrue();
+        }
+
+        @Test
+        @DisplayName("matches the base with a single-digit disambiguator")
+        void matchesSingleDigitDisambiguator() {
+            assertThat(MotorcycleService.slugMatchesIdentity("yamaha-mt-09-2024-2", "yamaha-mt-09-2024")).isTrue();
+        }
+
+        @Test
+        @DisplayName("matches the base with a multi-digit disambiguator")
+        void matchesMultiDigitDisambiguator() {
+            assertThat(MotorcycleService.slugMatchesIdentity("yamaha-mt-09-2024-137", "yamaha-mt-09-2024")).isTrue();
+        }
+
+        @Test
+        @DisplayName("rejects a non-numeric suffix instead of mistaking it for a disambiguator")
+        void rejectsNonNumericSuffix() {
+            assertThat(MotorcycleService.slugMatchesIdentity("yamaha-mt-09-2024-limited", "yamaha-mt-09-2024")).isFalse();
+        }
+
+        @Test
+        @DisplayName("rejects trailing content after the disambiguator")
+        void rejectsTrailingContentAfterDisambiguator() {
+            assertThat(MotorcycleService.slugMatchesIdentity("yamaha-mt-09-2024-2-extra", "yamaha-mt-09-2024")).isFalse();
+        }
+
+        @Test
+        @DisplayName("rejects a slug that merely starts with the base without the dash separator")
+        void rejectsConcatenationWithoutSeparator() {
+            assertThat(MotorcycleService.slugMatchesIdentity("yamaha-mt-09-20245", "yamaha-mt-09-2024")).isFalse();
+        }
+
+        @Test
+        @DisplayName("rejects an unrelated slug entirely")
+        void rejectsUnrelatedSlug() {
+            assertThat(MotorcycleService.slugMatchesIdentity("honda-cb650r-2024", "yamaha-mt-09-2024")).isFalse();
+        }
+    }
+
+    @Test
+    @DisplayName("baseSlug combines brand, model and model year before slugifying")
+    void baseSlugCombinesIdentityFields() {
+        CreateMotorcycleRequest request = MotorcycleFixtures.createRequest("Ducati", "Multistrada V4 S", 2025);
+
+        assertThat(MotorcycleService.baseSlug(request)).isEqualTo("ducati-multistrada-v4-s-2025");
+    }
 }
