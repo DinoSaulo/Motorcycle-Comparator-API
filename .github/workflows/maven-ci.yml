@@ -59,8 +59,13 @@ jobs:
         uses: mikepenz/action-junit-report@v5
         if: always() && matrix.java == '23'
         with:
-          report_paths: '**/target/surefire-reports/TEST-*.xml,**/target/failsafe-reports/TEST-*.xml'
+          # report_paths feeds core.getMultilineInput, which splits on newlines, not commas —
+          # a comma-joined single line becomes one glob with a literal "," and matches nothing.
+          report_paths: |
+            **/target/surefire-reports/TEST-*.xml
+            **/target/failsafe-reports/TEST-*.xml
           check_name: Test results
+          require_tests: true
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
