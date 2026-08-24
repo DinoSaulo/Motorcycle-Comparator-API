@@ -1,4 +1,4 @@
--- Development seed: 53 motorcycles with their engine, dimension and long-tail spec rows.
+-- Development seed: 65 motorcycles with their engine, dimension and long-tail spec rows.
 -- Indicative demo figures, not an authoritative specification source.
 --
 -- Lives in classpath:db/seed, a location only the dev profile adds to
@@ -154,7 +154,35 @@ VALUES
      'Euro 5+'),
     (53, 'Inline-3, DOHC', 2458, 3, 4, 182.0, 7000, 225.0, 4000, '10.8:1', NULL, NULL, 'Liquid',
      'Electronic fuel injection, ride-by-wire', '6-speed manual', 6, 'Shaft', 225, 6.80,
-     'Euro 5+');
+     'Euro 5+'),
+    -- Fifth batch: 2026 model-year rows from official manufacturer pages, checked 2026-08-24.
+    -- max_power_hp is mechanical hp, converted from the kW/PS figure each page publishes.
+    (54, 'Inline twin, 4-stroke', 471, 2, NULL, 46.9, 8500, 43.0, 6500, '10.7:1', 67.00, 66.80, 'Liquid',
+     'PGM-FI fuel injection', '6-speed, wet multi-plate E-Clutch', 6, 'Chain', 165, 3.60, NULL),
+    (55, 'Inline twin, 4-stroke', 755, 2, NULL, 90.5, 9500, 75.0, 7250, '11.0:1', 87.00, 63.50, 'Liquid',
+     'PGM-FI fuel injection', '6-speed, wet assist/slipper E-Clutch', 6, 'Chain', 205, 4.30, NULL),
+    (56, 'Inline twin, 4-stroke', 755, 2, 4, 90.5, 9500, 75.0, 7250, '11.0:1', 87.00, 63.50, 'Liquid',
+     'PGM-FI fuel injection', '6-speed, wet assist/slipper clutch', 6, 'Chain', 195, 4.30, NULL),
+    (57, 'Inline four, 4-stroke', 649, 4, NULL, 93.9, 12000, 63.0, 9500, '11.6:1', 67.00, 46.00, 'Liquid',
+     'PGM-FI fuel injection', '6-speed, wet multi-plate clutch', 6, 'Chain', 197, 4.90, NULL),
+    (58, 'Parallel twin, DOHC 4-stroke', 776, 2, 4, 81.8, NULL, 78.0, NULL, '12.8:1', 84.00, 70.00, 'Liquid',
+     'Fuel injection', '6-speed constant mesh', 6, NULL, NULL, 4.20, 'Euro 5'),
+    (59, 'Parallel twin, DOHC 4-stroke', 776, 2, 4, 83.1, NULL, 78.0, NULL, '12.8:1', 84.00, 70.00, 'Liquid',
+     'Fuel injection', '6-speed constant mesh', 6, NULL, NULL, 4.40, 'Euro 5'),
+    (60, 'Boxer twin, 4-stroke ShiftCam', 1300, 2, NULL, 143.5, 7750, 149.0, 6500, '13.3:1', 106.50, 73.00,
+     'Air/liquid', 'Electronic port fuel injection', '6-speed dog-engagement', 6, 'Shaft', NULL, 4.80,
+     'EU 5+'),
+    (61, 'Single-cylinder, 4-stroke', 399, 1, NULL, 44.4, NULL, 39.0, NULL, NULL, NULL, NULL, 'Liquid',
+     'Bosch EMS with ride-by-wire', '6-speed manual', 6, '520 X-Ring chain', NULL, NULL, NULL),
+    (62, '90-degree V-twin, 4-stroke', 890, 2, 4, 111.0, 9000, 91.1, 7250, '13.1:1', 96.00, 61.50, 'Liquid',
+     'Electronic EFI, one injector/cyl, RBW', '6-speed, DQS up/down 2.0', 6, 'Chain 520 (16/42)', NULL, 5.20,
+     'Euro 5+'),
+    (63, 'Single-cylinder, DOHC 4-stroke', 452, 1, 4, 39.5, 8000, 40.0, 5500, '11.5:1', 84.00, 81.50, 'Liquid',
+     'EFI 42 mm, ride-by-wire', '6-speed, wet slipper clutch', 6, NULL, NULL, 3.59, NULL),
+    (64, 'Single-cylinder, DOHC 4-stroke', 452, 1, 4, 39.5, 8000, 40.0, 5500, '11.5:1', 84.00, 81.50, 'Liquid',
+     'EFI 42 mm, ride-by-wire', '6-speed, wet slipper clutch', 6, NULL, NULL, 3.39, NULL),
+    (65, 'Inline four, DOHC 4-stroke', 948, 4, 4, 122.0, 9500, 97.4, 7700, '11.8:1', 73.40, 56.00, 'Liquid',
+     'Fuel injection, 36 mm x4', '6-speed, wet multi-plate clutch', 6, 'Sealed chain', NULL, 4.80, NULL);
 
 INSERT INTO dimensions
     (id, length_mm, width_mm, height_mm, wheelbase_mm, seat_height_mm, ground_clearance_mm,
@@ -212,7 +240,21 @@ VALUES
     (50, NULL, NULL, NULL, NULL, 840, NULL, 257.0, NULL, NULL, NULL),
     (51, NULL, NULL, NULL, 1370, 820, NULL, 183.0, 169.0, NULL, NULL),
     (52, 2180, 735, 1165, 1480, 800, 125, 266.0, NULL, 20.0, NULL),
-    (53, NULL, NULL, NULL, NULL, 750, NULL, 294.0, NULL, 18.0, NULL);
+    (53, NULL, NULL, NULL, NULL, 750, NULL, 294.0, NULL, 18.0, NULL),
+    -- Fifth batch: 2026 model-year rows. Each kerb figure keeps its own manufacturer basis
+    -- (road-ready, curb mass or 90% fuel), and NULL means that page publishes no figure at all.
+    (54, 2165, 830, 1415, 1445, 830, 180, 199.0, NULL, 17.7, NULL),
+    (55, 2090, 780, 1085, 1420, 795, 140, 196.0, NULL, NULL, NULL),
+    (56, 2325, 838, 1455, 1560, 850, 210, 216.0, 210.0, NULL, NULL),
+    (57, 2120, 750, 1145, 1450, 810, 130, 209.0, NULL, 15.4, NULL),
+    (58, 2115, 775, 1105, 1465, 810, 145, 202.0, NULL, 14.0, NULL),
+    (59, 2345, 975, 1310, 1570, 855, 220, 230.0, NULL, 20.0, NULL),
+    (60, 2212, 1000, 1406, 1518, 850, NULL, 237.0, NULL, 19.0, 228.0),
+    (61, NULL, NULL, NULL, 1357, 820, NULL, 165.0, NULL, NULL, NULL),
+    (62, NULL, NULL, NULL, 1492, 815, NULL, NULL, NULL, 14.0, NULL),
+    (63, 2285, 852, 1316, 1510, 825, 230, 196.0, 181.0, 17.0, 198.0),
+    (64, 2145, 855, 1095, 1440, 780, 169, 184.0, 172.0, 11.0, 191.0),
+    (65, 2065, 830, 1075, 1450, 830, 145, 213.0, 193.0, 17.0, NULL);
 
 INSERT INTO motorcycles
     (id, slug, brand, model, model_year, category, price_eur, image_url, description,
@@ -641,7 +683,130 @@ VALUES
      'Showa piggyback reservoir monoshock, fully adjustable',
      'Dual 320mm discs, Brembo Stylema radial-mount calipers', 'Single 300mm disc',
      'Cornering ABS', '150/80 R17', '240/50 R16',
-     53, 53, NOW(), NOW());
+     53, 53, NOW(), NOW()),
+
+    -- Fifth batch: 2026 model-year machines from official manufacturer pages, with the source of
+    -- each row named above it. Five of them are new model years of bikes already in this catalogue.
+
+    -- honda.de NX500 specifications, DE market, checked 2026-08-24.
+    -- price_eur is the German ex-factory MSRP; the same page lists EUR 8,129 with transfer.
+    (54, 'honda-nx500-e-clutch-2026', 'Honda', 'NX500 E-Clutch', 2026, 'ADVENTURE', 7500.00, NULL,
+     'Crossover adventure compatível com a categoria A2, motor bicilíndrico de 471 cc, Honda E-Clutch e roda dianteira de 19 polegadas.',
+     'Steel', 'Showa 41 mm SFF-BP USD fork',
+     'Box swingarm, Pro-Link, 5-step preload',
+     'Dual 296 mm discs, 2-piston calipers', '240 mm disc, 1-piston caliper',
+     'ABS', '110/80R19 M/C (59H)', '160/60R17 M/C (69H)',
+     54, 54, NOW(), NOW()),
+
+    -- honda.de Hornet specifications, DE market, checked 2026-08-24.
+    -- price_eur is the German ex-factory MSRP; the same page lists EUR 9,289 with transfer.
+    (55, 'honda-cb750-hornet-e-clutch-2026', 'Honda', 'CB750 Hornet E-Clutch', 2026, 'NAKED', 8660.00, NULL,
+     'Naked de média cilindrada com motor bicilíndrico paralelo de 755 cc, Honda E-Clutch e chassis ágil para estrada.',
+     'Steel', 'Showa 41 mm SFF-BP USD, 130 mm travel',
+     'Pro-Link monoshock, 150 mm travel',
+     'Dual 296 mm discs, radial 4-piston calipers', '240 mm disc, 1-piston caliper',
+     'ABS', '120/70ZR17 M/C (58W)', '160/60ZR17 M/C (69W)',
+     55, 55, NOW(), NOW()),
+
+    -- honda.de XL750 Transalp specifications and overview, DE market, checked 2026-08-24.
+    -- price_eur stays NULL on purpose: that page showed two ex-factory prices, EUR 11,120 and 11,420.
+    (56, 'honda-xl750-transalp-2026', 'Honda', 'XL750 Transalp', 2026, 'ADVENTURE', NULL, NULL,
+     'Adventure touring de média cilindrada com rodas 21/18, suspensões de longo curso e motor bicilíndrico paralelo de 755 cc.',
+     'Steel', 'Showa 43 mm SFF-CA USD, 200 mm travel',
+     'Pro-Link monoshock, 190 mm travel',
+     'Dual 310 mm discs, 2-piston calipers', '256 mm disc, 1-piston caliper',
+     'Dual-channel ABS, rear switchable', '90/90-21 M/C 54H', '150/70R18 M/C 70H',
+     56, 56, NOW(), NOW()),
+
+    -- honda.de CBR650R specifications, DE market, checked 2026-08-24; 2026 revision of row 7.
+    -- price_eur is the German ex-factory MSRP; the same page lists EUR 11,339 with transfer.
+    (57, 'honda-cbr650r-2026', 'Honda', 'CBR650R', 2026, 'SPORT', 10710.00, NULL,
+     'Desportiva carenada de quatro cilindros que combina utilização diária em estrada com estilo supersport.',
+     'Steel', 'Showa 41 mm SFF-BP USD fork',
+     'Swingarm with monoshock',
+     'Dual 310 mm discs, radial 4-piston calipers', '240 mm disc, 1-piston caliper',
+     'ABS', '120/70ZR17 M/C', '180/55ZR17 M/C',
+     57, 57, NOW(), NOW()),
+
+    -- globalsuzuki.com 2026 GSX-8S plus bikes.suzuki.co.uk, checked 2026-08-24.
+    -- price_eur stays NULL: neither manufacturer page publishes a EUR figure.
+    (58, 'suzuki-gsx-8s-2026', 'Suzuki', 'GSX-8S', 2026, 'NAKED', NULL, NULL,
+     'Roadster naked construída em torno do bicilíndrico paralelo Suzuki de 776 cc com cambota a 270 graus.',
+     'Steel tube', 'KYB inverted fork, 130 mm travel',
+     'KYB link-type monoshock',
+     'Dual 310 mm discs, radial-mount calipers', '240 mm disc, 1-piston caliper',
+     'ABS', '120/70ZR17 M/C (58W), tubeless', '180/55ZR17 M/C (73W), tubeless',
+     58, 58, NOW(), NOW()),
+
+    -- globalsuzuki.com 2026 V-Strom 800DE plus bikes.suzuki.co.uk, checked 2026-08-24; revision of row 14.
+    -- price_eur stays NULL: neither manufacturer page publishes a EUR figure.
+    (59, 'suzuki-v-strom-800de-2026', 'Suzuki', 'V-Strom 800DE', 2026, 'ADVENTURE', NULL, NULL,
+     'Adventure com roda dianteira de 21 polegadas, 220 mm de curso de suspensão e depósito de 20 litros.',
+     'Steel tube', 'Showa inverted adjustable fork, 220 mm travel',
+     'Showa link-type adjustable monoshock, 220 mm',
+     'Dual 310 mm discs', '260 mm disc, 1-piston caliper',
+     'Two-mode ABS, rear switchable', '90/90-21 M/C 54H, tube type', '150/70R17 M/C 69H, tube type',
+     59, 59, NOW(), NOW()),
+
+    -- bmw-motorrad.de R 1300 GS technical data, DE market, checked 2026-08-24; the page names no model
+    -- year. price_eur is the German MSRP incl. VAT, freight and packaging excluded. Revision of row 4.
+    (60, 'bmw-r-1300-gs-2026', 'BMW', 'R 1300 GS', 2026, 'ADVENTURE', 19990.00, NULL,
+     'Maxitrail boxer com ShiftCam, transmissão por veio, suspensões Telelever/Paralever e Integral ABS Pro.',
+     'Two-part frame, load-bearing engine', 'EVO Telelever, 190 mm travel',
+     'EVO Paralever, 200 mm travel',
+     'Dual 310 mm discs, radial 4-piston calipers', '285 mm disc, 2-piston caliper',
+     'Full Integral ABS Pro, cornering', '120/70R19', '170/60R17',
+     60, 60, NOW(), NOW()),
+
+    -- ktm.com 2026 390 Duke technical specifications, global page, checked 2026-08-24.
+    -- price_eur and the tyre sizes stay NULL: that page publishes neither.
+    (61, 'ktm-390-duke-2026', 'KTM', '390 Duke', 2026, 'NAKED', NULL, NULL,
+     'Naked leve compatível com A2, monocilíndrico de 398,7 cc, suspensão WP APEX ajustável e ride-by-wire.',
+     'Steel trellis', 'WP APEX 43 mm fork, 150 mm travel',
+     '150 mm travel, rebound/preload adjustable',
+     '320 mm disc, radial 4-piston caliper', '240 mm disc',
+     'ABS', NULL, NULL,
+     61, 61, NOW(), NOW()),
+
+    -- ducati.com Monster V2 page, global, checked 2026-08-24; it names no model year and no EUR price,
+    -- and its only mass figure is a wet weight without fuel, kept in the additional specs. Revision of row 5.
+    (62, 'ducati-monster-2026', 'Ducati', 'Monster', 2026, 'NAKED', NULL, NULL,
+     'Naked leve com V2 Ducati de 890 cc, VVT na admissão, quickshifter bidirecional e ABS em curva.',
+     'Aluminium monocoque', 'Showa 43 mm USD, 130 mm travel',
+     'Showa preload-adjustable monoshock, 145 mm',
+     'Dual 320 mm Brembo discs, radial 4-piston calipers', '245 mm disc, 2-piston caliper',
+     'Bosch Cornering ABS', '120/70ZR17 Pirelli Diablo Rosso IV', '180/55ZR17 Pirelli Diablo Rosso IV',
+     62, 62, NOW(), NOW()),
+
+    -- royalenfield.com ES Himalayan 450 specification PDF and model page, checked 2026-08-24.
+    -- price_eur is an estimated Spanish retail price incl. 21% VAT, registration tax and transport.
+    (63, 'royal-enfield-himalayan-450-2026', 'Royal Enfield', 'Himalayan 450', 2026, 'ADVENTURE', 5887.00, NULL,
+     'Adventure monocilíndrica com rodas 21/17, 200 mm de curso de suspensão e banco ajustável.',
+     'Steel twin cradle', '43 mm USD fork, 200 mm travel',
+     'Link-type monoshock, 200 mm travel',
+     '320 mm disc, 2-piston caliper', '270 mm disc, 1-piston caliper',
+     'Dual-channel ABS, rear switchable', '90/90-21', '140/80R17',
+     63, 63, NOW(), NOW()),
+
+    -- royalenfield.com ES Guerrilla 450 page, checked 2026-08-24.
+    -- price_eur stays NULL: no EUR figure is visible on that page.
+    (64, 'royal-enfield-guerrilla-450-apex-2026', 'Royal Enfield', 'Guerrilla 450 Apex', 2026, 'NAKED', NULL, NULL,
+     'Roadster compacta com motor Sherpa monocilíndrico de 451,65 cc, banco baixo de 780 mm e rodas de 17 polegadas.',
+     'Steel twin cradle', '43 mm telescopic fork, 150 mm travel',
+     'Link-type monoshock, 145 mm travel',
+     '310 mm disc, 2-piston caliper', '270 mm disc, 1-piston caliper',
+     'Dual-channel ABS', '120/70-17', '160/60-17',
+     64, 64, NOW(), NOW()),
+
+    -- kawasaki.pt Z900 2026 page, checked 2026-08-24; 2026 revision of row 49.
+    -- price_eur is the Portuguese recommended retail price.
+    (65, 'kawasaki-z900-2026', 'Kawasaki', 'Z900', 2026, 'NAKED', 10990.00, NULL,
+     'Supernaked de quatro cilindros com motor de 948 cc, quadro treliça em aço e travões dianteiros radiais.',
+     'High-tensile steel trellis', '41 mm inverted fork, rebound/preload adjustable',
+     'Horizontal Back-link, preload adjustable',
+     'Dual 300 mm discs, radial opposed 4-piston calipers', '250 mm disc, 1-piston caliper',
+     'ABS', '120/70ZR17 M/C (58W)', '180/55ZR17 M/C (73W)',
+     65, 65, NOW(), NOW());
 
 INSERT INTO motorcycle_additional_specs (motorcycle_id, spec_key, spec_value)
 VALUES
@@ -788,7 +953,28 @@ VALUES
     (53, 'Rider modes', '4 (Road, Rain, Sport, Rider)'),
     (53, 'Display', '5-inch TFT'),
     (53, 'Cruise control', 'Standard'),
-    (53, 'Heated grips', 'Standard on GT');
+    (53, 'Heated grips', 'Standard on GT'),
+    -- Fifth batch: only rider-facing facts, because every key here becomes a visible row in /compare.
+    -- Source URLs, price basis and weight basis stay in the row comments of the catalogue block above.
+    (54, 'CO2 emissions', '82 g/km'),
+    (55, 'CO2 emissions', '99 g/km'),
+    (56, 'CO2 emissions', '102 g/km'),
+    (57, 'CO2 emissions', '112 g/km'),
+    (58, 'CO2 emissions', '99 g/km'),
+    (59, 'CO2 emissions', '104 g/km'),
+    (60, 'CO2 emissions', '110 g/km'),
+    (60, 'Top speed (claimed)', 'Over 200 km/h'),
+    (61, 'CO2 emissions', '79 g/km'),
+    (61, 'Exact displacement', '398.7 cc'),
+    (61, 'Seat height (low setting)', '800 mm'),
+    (62, 'CO2 emissions', '120 g/km'),
+    (62, 'Wet weight (no fuel)', '175 kg'),
+    (63, 'CO2 emissions', '86.80 g/km'),
+    (63, 'Exact displacement', '451.65 cc'),
+    (63, 'Seat height (high setting)', '845 mm'),
+    (64, 'CO2 emissions', '82.86 g/km'),
+    (64, 'Exact displacement', '451.65 cc'),
+    (65, 'CO2 emissions', '117 g/km');
 
 -- Keep API-created rows clear of the seeded ids.
 ALTER TABLE engine_specifications ALTER COLUMN id RESTART WITH 100;
