@@ -43,7 +43,7 @@ import java.util.regex.Pattern;
 public class MotorcycleService {
 
     private static final Pattern NON_SLUG_CHARS = Pattern.compile("[^a-z0-9]+");
-    private static final Pattern EDGE_DASHES = Pattern.compile("^-|-$");
+    private static final Pattern EDGE_DASHES = Pattern.compile("(^-)|(-$)");
     private static final Pattern DISAMBIGUATOR = Pattern.compile("-\\d+$");
 
     /**
