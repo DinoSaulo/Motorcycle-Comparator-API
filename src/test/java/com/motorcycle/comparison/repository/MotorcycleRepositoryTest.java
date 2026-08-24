@@ -74,6 +74,38 @@ class MotorcycleRepositoryTest {
     }
 
     @Test
+    @DisplayName("loads both specification blocks eagerly through the slug entity graph")
+    void findsBySlugWithSpecificationsEagerly() {
+        Motorcycle found = motorcycleRepository.findWithSpecificationsBySlug("yamaha-mt-09-2024").orElseThrow();
+
+        assertThat(found.getEngine().getDisplacementCc()).isEqualTo(890);
+        assertThat(found.getDimension().getSeatHeightMm()).isEqualTo(825);
+    }
+
+    @Test
+    @DisplayName("an unknown slug is an empty Optional, not an exception")
+    void returnsEmptyForAnUnknownSlug() {
+        assertThat(motorcycleRepository.findWithSpecificationsBySlug("does-not-exist")).isEmpty();
+    }
+
+    @Test
+    @DisplayName("cascades the delete: engine, dimension and additional specs all disappear with the parent")
+    void cascadeDeleteRemovesChildRows() {
+        EntityManager em = entityManager.getEntityManager();
+
+        Motorcycle managed = motorcycleRepository.findById(yamahaId).orElseThrow();
+        motorcycleRepository.delete(managed);
+        entityManager.flush();
+
+        assertThat(em.createQuery("SELECT COUNT(e) FROM EngineSpecification e", Long.class).getSingleResult()).isEqualTo(2L);
+        assertThat(em.createQuery("SELECT COUNT(d) FROM Dimension d", Long.class).getSingleResult()).isEqualTo(2L);
+        Number remainingSpecs = (Number) em.createNativeQuery("SELECT COUNT(*) FROM motorcycle_additional_specs WHERE motorcycle_id = :id")
+                .setParameter("id", yamahaId)
+                .getSingleResult();
+        assertThat(remainingSpecs.longValue()).isZero();
+    }
+
+    @Test
     @DisplayName("cascades the engine and dimension rows on save")
     void cascadesSpecificationBlocks() {
         EntityManager em = entityManager.getEntityManager();

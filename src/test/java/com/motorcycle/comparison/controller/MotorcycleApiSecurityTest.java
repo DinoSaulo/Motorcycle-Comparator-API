@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.options;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -154,6 +155,26 @@ class MotorcycleApiSecurityTest {
         mockMvc.perform(get("/actuator/metrics")
                         .header(HttpHeaders.AUTHORIZATION, "Bearer " + adminToken))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("a CORS preflight from an allowed origin gets that origin echoed back")
+    void corsPreflightFromAllowedOriginIsAccepted() throws Exception {
+        // app.security.cors.allowed-origins in the test profile is exactly this one origin.
+        mockMvc.perform(options("/api/v1/motorcycles")
+                        .header(HttpHeaders.ORIGIN, "http://localhost:3000")
+                        .header("Access-Control-Request-Method", "GET"))
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "http://localhost:3000"));
+    }
+
+    @Test
+    @DisplayName("a CORS preflight from an origin outside the allow-list is rejected")
+    void corsPreflightFromDisallowedOriginIsRejected() throws Exception {
+        mockMvc.perform(options("/api/v1/motorcycles")
+                        .header(HttpHeaders.ORIGIN, "http://evil.example.com")
+                        .header("Access-Control-Request-Method", "GET"))
+                .andExpect(status().isForbidden());
     }
 
     @Test
