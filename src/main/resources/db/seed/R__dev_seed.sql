@@ -1,11 +1,16 @@
--- Development seed data (dev profile only; see application.yml).
+-- Development seed: 53 motorcycles with their engine, dimension and long-tail spec rows.
+-- Indicative demo figures, not an authoritative specification source.
 --
--- Explicit ids keep the foreign keys readable. The identity sequences are
--- restarted at the bottom so rows created through the API do not collide with
--- these. Figures are indicative demo values, not an authoritative spec source.
+-- Lives in classpath:db/seed, a location only the dev profile adds to
+-- spring.flyway.locations, so a deployed environment can never load it.
 --
--- PostgreSQL dialect. Replaced by Flyway migrations plus a real import pipeline
--- once the model settles.
+-- Repeatable (R__) rather than versioned: an unchanged file is skipped, and editing it
+-- re-runs the whole script, which is what a seed should do while the model still moves.
+--
+-- TRUNCATE first because Flyway no longer drops the schema on every boot; a plain
+-- re-INSERT would collide on the primary keys.
+
+TRUNCATE TABLE motorcycle_additional_specs, motorcycles, engine_specifications, dimensions RESTART IDENTITY;
 
 INSERT INTO engine_specifications
     (id, engine_type, displacement_cc, cylinders, valves_per_cylinder, max_power_hp, max_power_rpm,
@@ -26,9 +31,8 @@ VALUES
     (6, 'Permanent magnet AC motor', NULL, NULL, NULL, 100.0, NULL, 190.0, NULL, NULL, NULL, NULL,
      'Air', 'Battery electric, 14.4 kWh', 'Single-speed direct drive', 1, 'Belt', 200, NULL,
      'Zero emission'),
-    -- Real-world figures gathered from manufacturer and press specifications (see
-    -- README/chat history for sources); prices are EUR estimates where no official
-    -- EU MSRP was found, same "indicative demo" status as the rows above.
+    -- Manufacturer and press specifications; prices are EUR estimates where no official
+    -- MSRP was found, so the same "indicative demo" status as the rows above applies.
     (7, 'Inline-4, DOHC', 649, 4, 4, 93.8, 12000, 57.5, 8500, '11.6:1', 67.00, 46.00, 'Liquid',
      'PGM-FI electronic injection, 32mm throttle bodies', '6-speed manual', 6, 'Chain', 225, 4.80,
      'Euro 5+'),
@@ -81,11 +85,8 @@ VALUES
     (26, 'Permanent magnet assisted synchronous reluctance motor', NULL, NULL, NULL, 102.0, 7500,
      115.0, NULL, NULL, NULL, NULL, 'Liquid', 'Battery electric, 22.5 kWh',
      'Single-speed direct drive', 1, 'Chain', 210, NULL, 'Zero emission'),
-    -- Third batch: curated from the Kaggle "nehalbirla/motorcycle-dataset" used-listing
-    -- data (name/year only -- that dataset has no technical specs), one model per brand
-    -- not already in the catalogue. Figures researched separately per model; NULL where
-    -- not found. A few of these models are discontinued in their home market -- kept as
-    -- 2024 rows for catalogue consistency, same "indicative demo" status as the rest.
+    -- Third batch: model names from the Kaggle "nehalbirla/motorcycle-dataset" listings,
+    -- specs researched per model. NULL where a figure was not found rather than guessed.
     (27, 'Single-cylinder, SOHC', 349, 1, 2, 20.2, 6100, 25.8, 4000, NULL, NULL, NULL,
      'Air/Oil', 'Electronic fuel injection', '5-speed manual', 5, 'Chain', 120, 3.20,
      'Euro 5+'),
@@ -106,9 +107,8 @@ VALUES
      'Electronic fuel injection', '5-speed manual', 5, 'Chain', 160, 4.20, 'Euro 5+'),
     (35, 'Single-cylinder, air-cooled', 279, 1, NULL, 24.8, NULL, 23.0, NULL, NULL, NULL, NULL,
      'Air', 'Electronic fuel injection', '6-speed manual', 6, 'Chain', 120, 3.50, 'Euro 5+'),
-    -- Fourth batch: brands and segments the catalogue was missing entirely, plus extra
-    -- models for under-represented marques. Researched per model; NULL where a figure
-    -- was not published in the sources consulted.
+    -- Fourth batch: brands and segments the catalogue was missing, researched per model.
+    -- NULL where a figure was not published in the sources consulted.
     (36, 'Inline-4, DOHC', 998, 4, 4, 201.0, 13500, 116.0, 11000, NULL, NULL, NULL, 'Liquid',
      'Electronic fuel injection, ride-by-wire', '6-speed manual', 6, 'Chain', 300, 7.40,
      'Euro 5+'),

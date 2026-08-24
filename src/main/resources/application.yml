@@ -12,7 +12,36 @@ spring:
     hikari:
       pool-name: motorcycle-pool
       maximum-pool-size: ${DB_POOL_SIZE:10}
+      minimum-idle: ${DB_POOL_MIN_IDLE:2}
       connection-timeout: 20000
+      validation-timeout: 5000
+      idle-timeout: 300000
+      keepalive-time: 120000
+      # Must stay below any proxy/PgBouncer idle cut-off: retire the socket here, or
+      # Hikari hands out a connection the network dropped minutes ago.
+      max-lifetime: 1200000
+      # Logs the stack trace of a connection held this long; a leak, not a slow query.
+      leak-detection-threshold: 30000
+      data-source-properties:
+        # Server-side ceilings so a runaway statement or an abandoned transaction cannot
+        # pin a connection forever; socketTimeout is the client-side backstop, in seconds.
+        socketTimeout: 30
+        tcpKeepAlive: true
+        ApplicationName: motorcycle-comparison-api
+        options: "-c statement_timeout=10000 -c idle_in_transaction_session_timeout=30000"
+
+  # Schema is owned by the migrations in db/migration; db/search is separate because
+  # CREATE EXTENSION needs privileges some managed environments do not hand out.
+  flyway:
+    enabled: true
+    locations: classpath:db/migration,classpath:db/search
+    # Greenfield: an empty schema is the only valid starting point, and baselining
+    # would falsely record V1 as already applied.
+    baseline-on-migrate: false
+
+  transaction:
+    # A request that has not finished in 15s is not going to; free the connection.
+    default-timeout: 15
 
   jpa:
     # Off by default: keeping a session open for view rendering is how lazy loading
@@ -28,6 +57,14 @@ spring:
         default_batch_fetch_size: 32
         order_inserts: true
         order_updates: true
+        order_by:
+          # A figure the manufacturer never published sorts last in both directions. PostgreSQL
+          # would otherwise open "most expensive first" with every unpriced bike.
+          default_null_ordering: last
+        query:
+          # Pads IN lists to the next power of two so the comparison endpoint reuses
+          # one prepared statement per size bucket instead of one per id count.
+          in_clause_parameter_padding: true
 
   jackson:
     default-property-inclusion: non_null
@@ -93,28 +130,26 @@ logging:
     com.motorcycle.comparison: ${LOG_LEVEL:INFO}
 
 ---
-# Local development: schema rebuilt from the entities on every boot and reseeded
-# from data.sql. Good enough while the model is still moving; replaced by Flyway
-# migrations before anything is deployed.
+# Local development: same migrated schema as production, plus the repeatable dev seed
+# and verbose SQL logging. Seeding and logging are the only differences from prod.
 spring:
   config:
     activate:
       on-profile: dev
+  flyway:
+    locations: classpath:db/migration,classpath:db/search,classpath:db/seed
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
     show-sql: true
-    defer-datasource-initialization: true
-  sql:
-    init:
-      mode: always
 logging:
   level:
     com.motorcycle.comparison: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
 
 ---
-# Deployed environments: the application never touches the schema, and never seeds.
+# Deployed environments: Flyway owns the schema, Hibernate only validates it, and the
+# dev seed location is never on the list.
 spring:
   config:
     activate:
@@ -123,9 +158,6 @@ spring:
     hibernate:
       ddl-auto: validate
     show-sql: false
-  sql:
-    init:
-      mode: never
 management:
   endpoint:
     health:

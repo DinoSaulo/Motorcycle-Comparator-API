@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
@@ -85,11 +86,27 @@ public class GlobalExceptionHandler {
         return build(HttpStatus.UNAUTHORIZED, "Authentication required to access this resource", request);
     }
 
-    /** A constraint the application layer failed to catch first. */
+    /**
+     * A constraint the application layer failed to catch first. The name decides the status, and never leaves the
+     * server: a CHECK or FK failure means the payload was wrong (400), a UNIQUE failure is a genuine conflict (409).
+     */
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ApiError> handleDataIntegrity(DataIntegrityViolationException ex, HttpServletRequest request) {
-        log.warn("Data integrity violation on {}", request.getRequestURI(), ex);
+        String constraint = ConstraintViolations.nameOf(ex);
+        log.warn("Data integrity violation on {} (constraint={})", request.getRequestURI(), constraint, ex);
+
+        if (constraint != null && (constraint.startsWith("ck_") || constraint.startsWith("fk_"))) {
+            return build(HttpStatus.BAD_REQUEST, "The request violates a data constraint on this resource", request);
+        }
+        // Unnamed or unrecognised: a conflict is the safer default, as it always was.
         return build(HttpStatus.CONFLICT, "The request conflicts with the current state of the resource", request);
+    }
+
+    /** Lost an optimistic-locking race: another admin saved the same record first, and their edit stands. */
+    @ExceptionHandler(ObjectOptimisticLockingFailureException.class)
+    public ResponseEntity<ApiError> handleOptimisticLock(ObjectOptimisticLockingFailureException ex, HttpServletRequest request) {
+        log.warn("Optimistic locking conflict on {} {}", request.getMethod(), request.getRequestURI());
+        return build(HttpStatus.CONFLICT, "The resource was modified by another request. Reload it and try again.", request);
     }
 
     /**

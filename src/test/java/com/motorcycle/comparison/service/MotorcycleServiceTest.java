@@ -7,6 +7,7 @@ import com.motorcycle.comparison.entity.Motorcycle;
 import com.motorcycle.comparison.exception.DuplicateResourceException;
 import com.motorcycle.comparison.exception.ResourceNotFoundException;
 import com.motorcycle.comparison.repository.MotorcycleRepository;
+import org.hibernate.exception.ConstraintViolationException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -17,12 +18,14 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +36,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -43,8 +47,27 @@ class MotorcycleServiceTest {
     @Mock
     private MotorcycleRepository motorcycleRepository;
 
+    @Mock
+    private MotorcycleWriter motorcycleWriter;
+
     @InjectMocks
     private MotorcycleService motorcycleService;
+
+    /** The writer owns the insert now, so the create tests capture what it was handed. */
+    private void writerEchoesBackWhatItIsGiven() {
+        when(motorcycleWriter.save(any(Motorcycle.class))).thenAnswer(invocation -> invocation.getArgument(0));
+    }
+
+    private Motorcycle savedByWriter() {
+        ArgumentCaptor<Motorcycle> captor = ArgumentCaptor.forClass(Motorcycle.class);
+        verify(motorcycleWriter).save(captor.capture());
+        return captor.getValue();
+    }
+
+    private static DataIntegrityViolationException slugCollision() {
+        return new DataIntegrityViolationException("duplicate key",
+                new ConstraintViolationException("violates unique constraint", new SQLException("23505"), "uk_motorcycles_slug"));
+    }
 
     @Nested
     @DisplayName("reads")
@@ -94,6 +117,19 @@ class MotorcycleServiceTest {
             assertThatCode(() -> motorcycleService.search(null, pageable))
                     .doesNotThrowAnyException();
         }
+
+        @Test
+        @DisplayName("passes the client's sort through untouched")
+        void passesSortThroughUntouched() {
+            // Null precedence is not set here on purpose: Spring Data throws on a criteria query, so the
+            // unpriced-last rule lives in hibernate.order_by.default_null_ordering. See MotorcycleRepositoryTest.
+            Pageable pageable = PageRequest.of(0, 20, Sort.by(Sort.Direction.DESC, "priceEur"));
+            when(motorcycleRepository.findAll(any(Specification.class), eq(pageable))).thenReturn(new PageImpl<>(List.of()));
+
+            motorcycleService.search(null, pageable);
+
+            verify(motorcycleRepository).findAll(any(Specification.class), eq(pageable));
+        }
     }
 
     @Nested
@@ -104,14 +140,11 @@ class MotorcycleServiceTest {
         @DisplayName("derives a slug from brand, model and year")
         void derivesSlug() {
             when(motorcycleRepository.existsBySlug(anyString())).thenReturn(false);
-            when(motorcycleRepository.save(any(Motorcycle.class)))
-                    .thenAnswer(invocation -> invocation.getArgument(0));
+            writerEchoesBackWhatItIsGiven();
 
             motorcycleService.create(MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024));
 
-            ArgumentCaptor<Motorcycle> captor = ArgumentCaptor.forClass(Motorcycle.class);
-            verify(motorcycleRepository).save(captor.capture());
-            assertThat(captor.getValue().getSlug()).isEqualTo("yamaha-mt-09-2024");
+            assertThat(savedByWriter().getSlug()).isEqualTo("yamaha-mt-09-2024");
         }
 
         @Test
@@ -119,14 +152,54 @@ class MotorcycleServiceTest {
         void disambiguatesCollidingSlug() {
             when(motorcycleRepository.existsBySlug("yamaha-mt-09-2024")).thenReturn(true);
             when(motorcycleRepository.existsBySlug("yamaha-mt-09-2024-2")).thenReturn(false);
-            when(motorcycleRepository.save(any(Motorcycle.class)))
-                    .thenAnswer(invocation -> invocation.getArgument(0));
+            writerEchoesBackWhatItIsGiven();
 
             motorcycleService.create(MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024));
 
-            ArgumentCaptor<Motorcycle> captor = ArgumentCaptor.forClass(Motorcycle.class);
-            verify(motorcycleRepository).save(captor.capture());
-            assertThat(captor.getValue().getSlug()).isEqualTo("yamaha-mt-09-2024-2");
+            assertThat(savedByWriter().getSlug()).isEqualTo("yamaha-mt-09-2024-2");
+        }
+
+        @Test
+        @DisplayName("retries once with the next suffix when a concurrent insert wins the slug")
+        void retriesOnceAfterLosingTheSlugRace() {
+            // The winner commits between our existsBySlug and our flush, so only the unique index ever sees it.
+            when(motorcycleRepository.existsBySlug("yamaha-mt-09-2024")).thenReturn(false, true);
+            when(motorcycleRepository.existsBySlug("yamaha-mt-09-2024-2")).thenReturn(false);
+            when(motorcycleWriter.save(any(Motorcycle.class)))
+                    .thenThrow(slugCollision())
+                    .thenAnswer(invocation -> invocation.getArgument(0));
+
+            MotorcycleResponse response = motorcycleService.create(
+                    MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024));
+
+            assertThat(response.slug()).isEqualTo("yamaha-mt-09-2024-2");
+            verify(motorcycleWriter, times(2)).save(any(Motorcycle.class));
+        }
+
+        @Test
+        @DisplayName("gives up after a second lost race instead of retrying forever")
+        void retriesAtMostOnce() {
+            when(motorcycleRepository.existsBySlug(anyString())).thenReturn(false);
+            when(motorcycleWriter.save(any(Motorcycle.class))).thenThrow(slugCollision());
+
+            assertThatThrownBy(() -> motorcycleService.create(
+                    MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024)))
+                    .isInstanceOf(DataIntegrityViolationException.class);
+            verify(motorcycleWriter, times(2)).save(any(Motorcycle.class));
+        }
+
+        @Test
+        @DisplayName("does not retry a violation of some other constraint")
+        void doesNotRetryUnrelatedConstraint() {
+            when(motorcycleRepository.existsBySlug(anyString())).thenReturn(false);
+            DataIntegrityViolationException checkViolation = new DataIntegrityViolationException("bad row",
+                    new ConstraintViolationException("violates check constraint", new SQLException("23514"), "ck_motorcycles_price_eur"));
+            when(motorcycleWriter.save(any(Motorcycle.class))).thenThrow(checkViolation);
+
+            assertThatThrownBy(() -> motorcycleService.create(
+                    MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024)))
+                    .isSameAs(checkViolation);
+            verify(motorcycleWriter, times(1)).save(any(Motorcycle.class));
         }
 
         @Test
@@ -144,8 +217,7 @@ class MotorcycleServiceTest {
         @DisplayName("copies both specification blocks onto the new entity")
         void copiesSpecificationBlocks() {
             when(motorcycleRepository.existsBySlug(anyString())).thenReturn(false);
-            when(motorcycleRepository.save(any(Motorcycle.class)))
-                    .thenAnswer(invocation -> invocation.getArgument(0));
+            writerEchoesBackWhatItIsGiven();
 
             MotorcycleResponse response = motorcycleService.create(
                     MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024));

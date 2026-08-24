@@ -13,11 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * Exercises the queries against a real (in-memory) database: Mockito cannot tell us whether an entity graph, a
@@ -104,6 +108,48 @@ class MotorcycleRepositoryTest {
     void reportsSlugAvailability() {
         assertThat(motorcycleRepository.existsBySlug("yamaha-mt-09-2024")).isTrue();
         assertThat(motorcycleRepository.existsBySlug("nothing-like-this")).isFalse();
+    }
+
+    @Test
+    @DisplayName("puts an unpriced bike last whichever way the price sort runs")
+    void unpricedBikesSortLastInBothDirections() {
+        // The default is NULLS FIRST for DESC, which would open page 1 of "most expensive" with every unpriced bike.
+        Motorcycle unpriced = MotorcycleFixtures.motorcycle(null, "Prototype", "No Price", 900);
+        unpriced.setPriceEur(null);
+        entityManager.persist(unpriced);
+        entityManager.flush();
+
+        assertThat(brandsSortedByPrice(Sort.Direction.DESC)).containsExactly("BMW", "Yamaha", "Honda", "Prototype");
+        assertThat(brandsSortedByPrice(Sort.Direction.ASC)).containsExactly("Honda", "Yamaha", "BMW", "Prototype");
+    }
+
+    private List<String> brandsSortedByPrice(Sort.Direction direction) {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by(direction, "priceEur"));
+        return motorcycleRepository.findAll(MotorcycleService.toSpecification(null), pageable).map(Motorcycle::getBrand).getContent();
+    }
+
+    @Test
+    @DisplayName("bumps the version counter on every update")
+    void bumpsVersionOnUpdate() {
+        Motorcycle managed = motorcycleRepository.findById(yamahaId).orElseThrow();
+        assertThat(managed.getVersion()).isZero();
+
+        managed.setDescription("Edited by the first admin");
+        motorcycleRepository.saveAndFlush(managed);
+
+        assertThat(managed.getVersion()).isEqualTo(1L);
+    }
+
+    @Test
+    @DisplayName("rejects a write based on a version another admin has already moved on from")
+    void rejectsStaleWrite() {
+        Motorcycle stale = motorcycleRepository.findById(yamahaId).orElseThrow();
+        // Stands in for the other admin's PUT committing first, without a second persistence context.
+        entityManager.getEntityManager().createNativeQuery("UPDATE motorcycles SET version = version + 1 WHERE id = :id").setParameter("id", yamahaId).executeUpdate();
+
+        stale.setDescription("Edited by the loser of the race");
+
+        assertThatThrownBy(() -> motorcycleRepository.saveAndFlush(stale)).isInstanceOf(ObjectOptimisticLockingFailureException.class);
     }
 
     @Test

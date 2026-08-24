@@ -7,6 +7,11 @@ spring:
     username: sa
     password: ""
 
+  # H2 cannot parse the functional and GIN indexes the migrations create; the slice tests
+  # build the schema from the entities, and SchemaMigrationIT proves the two still agree.
+  flyway:
+    enabled: false
+
   jpa:
     open-in-view: false
     hibernate:
@@ -14,6 +19,9 @@ spring:
     properties:
       hibernate:
         default_batch_fetch_size: 32
+        # Mirrors main: unpriced bikes sort last in both directions.
+        order_by:
+          default_null_ordering: last
 
   # The dev seed script is PostgreSQL-specific; tests build their own fixtures.
   sql:

@@ -10,9 +10,11 @@ import com.motorcycle.comparison.dto.response.ComparisonResponse.SpecGroup;
 import com.motorcycle.comparison.dto.response.ComparisonResponse.SpecRow;
 import com.motorcycle.comparison.dto.response.MotorcycleResponse;
 import com.motorcycle.comparison.entity.Category;
+import com.motorcycle.comparison.entity.Motorcycle;
 import com.motorcycle.comparison.exception.ResourceNotFoundException;
 import com.motorcycle.comparison.service.ComparisonService;
 import com.motorcycle.comparison.service.MotorcycleService;
+import org.hibernate.exception.ConstraintViolationException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +27,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doThrow;
@@ -41,6 +47,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -218,6 +225,67 @@ class MotorcycleControllerTest {
                                 MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024))))
                 .andExpect(status().isConflict())
                 .andExpect(jsonPath("$.status").value(409));
+    }
+
+    @Test
+    @DisplayName("a violated UNIQUE constraint is a 409")
+    void uniqueConstraintViolationBecomesConflict() throws Exception {
+        when(motorcycleService.create(any())).thenThrow(violationOf("uk_motorcycles_slug"));
+
+        postCreate().andExpect(status().isConflict()).andExpect(jsonPath("$.status").value(409));
+    }
+
+    @Test
+    @DisplayName("a violated CHECK constraint is a 400, not a conflict")
+    void checkConstraintViolationBecomesBadRequest() throws Exception {
+        // Nothing about the current state conflicts: the payload got past bean validation but is still out of bounds.
+        when(motorcycleService.create(any())).thenThrow(violationOf("ck_motorcycles_model_year"));
+
+        postCreate().andExpect(status().isBadRequest()).andExpect(jsonPath("$.status").value(400));
+    }
+
+    @Test
+    @DisplayName("a violated FOREIGN KEY constraint is a 400, not a conflict")
+    void foreignKeyViolationBecomesBadRequest() throws Exception {
+        when(motorcycleService.create(any())).thenThrow(violationOf("fk_motorcycles_engine"));
+
+        postCreate().andExpect(status().isBadRequest()).andExpect(jsonPath("$.status").value(400));
+    }
+
+    @Test
+    @DisplayName("the constraint name never reaches the client")
+    void constraintNameIsNotLeaked() throws Exception {
+        when(motorcycleService.create(any())).thenThrow(violationOf("ck_motorcycles_slug_format"));
+
+        String body = postCreate().andReturn().getResponse().getContentAsString();
+
+        assertThat(body).doesNotContain("ck_motorcycles_slug_format").doesNotContain("violates check constraint");
+    }
+
+    @Test
+    @DisplayName("losing an optimistic-locking race is a 409")
+    void optimisticLockingFailureBecomesConflict() throws Exception {
+        // Two admins editing the same bike: the second PUT is rejected instead of overwriting the first silently.
+        when(motorcycleService.update(eq(1L), any())).thenThrow(new ObjectOptimisticLockingFailureException(Motorcycle.class, 1L));
+
+        mockMvc.perform(put("/api/v1/motorcycles/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(
+                                MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024))))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.status").value(409));
+    }
+
+    private ResultActions postCreate() throws Exception {
+        return mockMvc.perform(post("/api/v1/motorcycles")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024))));
+    }
+
+    /** Shaped like what Hibernate actually wraps: the name comes from the driver, not from the message text. */
+    private static DataIntegrityViolationException violationOf(String constraintName) {
+        return new DataIntegrityViolationException("could not execute statement",
+                new ConstraintViolationException("violates check constraint", new SQLException("23514"), constraintName));
     }
 
     @Test

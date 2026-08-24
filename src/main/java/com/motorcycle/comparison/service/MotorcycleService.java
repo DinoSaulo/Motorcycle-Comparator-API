@@ -6,6 +6,7 @@ import com.motorcycle.comparison.dto.response.MotorcycleResponse;
 import com.motorcycle.comparison.entity.Dimension;
 import com.motorcycle.comparison.entity.EngineSpecification;
 import com.motorcycle.comparison.entity.Motorcycle;
+import com.motorcycle.comparison.exception.ConstraintViolations;
 import com.motorcycle.comparison.exception.DuplicateResourceException;
 import com.motorcycle.comparison.exception.ResourceNotFoundException;
 import com.motorcycle.comparison.repository.MotorcycleRepository;
@@ -13,11 +14,13 @@ import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.Normalizer;
@@ -51,9 +54,12 @@ public class MotorcycleService {
             "id", "brand", "model", "modelYear", "category", "priceEur",
             "createdAt", "updatedAt");
 
+    private static final String SLUG_UNIQUE_CONSTRAINT = "uk_motorcycles_slug";
+
     private static final char LIKE_ESCAPE = '\\';
 
     private final MotorcycleRepository motorcycleRepository;
+    private final MotorcycleWriter motorcycleWriter;
 
     public Page<MotorcycleResponse> search(MotorcycleFilter filter, Pageable pageable) {
         validateSort(pageable.getSort());
@@ -61,6 +67,10 @@ public class MotorcycleService {
                 .map(MotorcycleResponse::from);
     }
 
+    /**
+     * Null precedence is deliberately absent here: Spring Data rejects it on a criteria query, so unpriced bikes are
+     * pinned last by {@code hibernate.order_by.default_null_ordering} in application.yml instead.
+     */
     private static void validateSort(Sort sort) {
         sort.forEach(order -> {
             if (!SORTABLE_PROPERTIES.contains(order.getProperty())) {
@@ -81,13 +91,25 @@ public class MotorcycleService {
         return motorcycleRepository.findDistinctBrands();
     }
 
-    @Transactional
+    /**
+     * Deliberately not transactional itself: a violated constraint aborts the transaction it happened in, so the retry
+     * below only works because {@link MotorcycleWriter} gives every attempt a transaction of its own.
+     */
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public MotorcycleResponse create(CreateMotorcycleRequest request) {
-        Motorcycle motorcycle = new Motorcycle();
-        apply(request, motorcycle);
-        motorcycle.setSlug(uniqueSlug(request, null));
+        Motorcycle saved;
+        try {
+            saved = motorcycleWriter.save(newMotorcycle(request));
+        } catch (DataIntegrityViolationException ex) {
+            if (!ConstraintViolations.isViolationOf(ex, SLUG_UNIQUE_CONSTRAINT)) {
+                throw ex;
+            }
+            // Lost the race to a concurrent insert. The winner is committed by now, so re-deriving
+            // moves on to the next free suffix. One retry only; a second loss is an honest 409.
+            log.info("Slug collision on insert, retrying once with the next suffix");
+            saved = motorcycleWriter.save(newMotorcycle(request));
+        }
 
-        Motorcycle saved = motorcycleRepository.save(motorcycle);
         log.info("Created motorcycle id={} slug={}", saved.getId(), saved.getSlug());
         return MotorcycleResponse.from(saved);
     }
@@ -116,6 +138,14 @@ public class MotorcycleService {
     }
 
     // --- internals --------------------------------------------------------------
+
+    /** A fresh instance per attempt: an entity whose insert failed is bound to a dead session and cannot be reused. */
+    private Motorcycle newMotorcycle(CreateMotorcycleRequest request) {
+        Motorcycle motorcycle = new Motorcycle();
+        apply(request, motorcycle);
+        motorcycle.setSlug(uniqueSlug(request, null));
+        return motorcycle;
+    }
 
     private Motorcycle requireById(Long id) {
         return motorcycleRepository.findWithSpecificationsById(id).orElseThrow(() -> ResourceNotFoundException.of("Motorcycle", id));

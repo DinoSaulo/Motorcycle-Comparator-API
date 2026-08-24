@@ -18,6 +18,7 @@ import jakarta.persistence.MapKeyColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -39,10 +40,13 @@ import java.util.Map;
 @Table(
         name = "motorcycles",
         uniqueConstraints = @UniqueConstraint(name = "uk_motorcycles_slug", columnNames = "slug"),
+        // The functional lower(brand) index and the pg_trgm GIN indexes cannot be expressed
+        // as @Index; they live in V1__initial_schema.sql and V2__pg_trgm_search_indexes.sql.
         indexes = {
                 @Index(name = "idx_motorcycles_brand", columnList = "brand"),
                 @Index(name = "idx_motorcycles_category", columnList = "category"),
-                @Index(name = "idx_motorcycles_model_year", columnList = "model_year")
+                @Index(name = "idx_motorcycles_model_year", columnList = "model_year"),
+                @Index(name = "idx_motorcycles_category_price_eur", columnList = "category, price_eur")
         })
 @Getter
 @Setter
@@ -139,6 +143,11 @@ public class Motorcycle {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
+
+    /** Two admins editing the same bike: the second write is rejected instead of silently overwriting the first. */
+    @Version
+    @Column(name = "version", nullable = false)
+    private long version;
 
     /** Convenience label for logs, comparison headers and OpenAPI examples. */
     public String getDisplayName() {
