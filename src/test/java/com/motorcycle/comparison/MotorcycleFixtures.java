@@ -107,6 +107,19 @@ public final class MotorcycleFixtures {
                 full.engine(), full.dimension(), additionalSpecs);
     }
 
+    /** Same as {@link #createRequest} but with no engine block. The DTO forbids this through the API (@NotNull),
+     * so this exists only to drive the service's own defensive branch directly. */
+    public static CreateMotorcycleRequest createRequestWithoutEngine(String brand, String model, int year) {
+        CreateMotorcycleRequest full = createRequest(brand, model, year);
+        return new CreateMotorcycleRequest(
+                full.brand(), full.model(), full.modelYear(), full.category(),
+                full.priceEur(), full.imageUrl(), full.description(),
+                full.frameType(), full.frontSuspension(), full.rearSuspension(),
+                full.frontBrake(), full.rearBrake(), full.absType(),
+                full.frontTyre(), full.rearTyre(),
+                null, full.dimension(), full.additionalSpecs());
+    }
+
     /** Same as {@link #createRequest} but with no dimension block, for full-replace tests. */
     public static CreateMotorcycleRequest createRequestWithoutDimension(String brand, String model, int year) {
         CreateMotorcycleRequest full = createRequest(brand, model, year);

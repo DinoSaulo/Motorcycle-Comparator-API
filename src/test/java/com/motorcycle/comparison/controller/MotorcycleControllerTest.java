@@ -101,6 +101,36 @@ class MotorcycleControllerTest {
     }
 
     @Test
+    @DisplayName("GET /brands lists the distinct brands for the filter sidebar")
+    void brandsReturnsDistinctList() throws Exception {
+        when(motorcycleService.listBrands()).thenReturn(List.of("BMW", "Honda", "Yamaha"));
+
+        mockMvc.perform(get("/api/v1/motorcycles/brands"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()").value(3))
+                .andExpect(jsonPath("$[0]").value("BMW"));
+    }
+
+    @Test
+    @DisplayName("GET /slug/{slug} returns the full record")
+    void getBySlugReturnsRecord() throws Exception {
+        when(motorcycleService.getBySlug("yamaha-mt-09-2024")).thenReturn(response(1L, "Yamaha", "MT-09"));
+
+        mockMvc.perform(get("/api/v1/motorcycles/slug/yamaha-mt-09-2024"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.brand").value("Yamaha"));
+    }
+
+    @Test
+    @DisplayName("GET /slug/{slug} on an unknown slug becomes 404")
+    void getBySlugUnknownBecomesNotFound() throws Exception {
+        when(motorcycleService.getBySlug("does-not-exist")).thenThrow(ResourceNotFoundException.of("Motorcycle", "does-not-exist"));
+
+        mockMvc.perform(get("/api/v1/motorcycles/slug/does-not-exist")).andExpect(status().isNotFound());
+    }
+
+    @Test
     @DisplayName("GET /{id} returns the full record")
     void getByIdReturnsRecord() throws Exception {
         when(motorcycleService.getById(1L)).thenReturn(response(1L, "Yamaha", "MT-09"));
@@ -333,6 +363,32 @@ class MotorcycleControllerTest {
         String body = postCreate().andReturn().getResponse().getContentAsString();
 
         assertThat(body).doesNotContain("ck_motorcycles_slug_format").doesNotContain("violates check constraint");
+    }
+
+    @Test
+    @DisplayName("PUT replaces the record and returns it")
+    void updateReturnsUpdatedRecord() throws Exception {
+        when(motorcycleService.update(eq(1L), any())).thenReturn(response(1L, "Yamaha", "MT-09"));
+
+        mockMvc.perform(put("/api/v1/motorcycles/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(
+                                MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024))))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.brand").value("Yamaha"));
+    }
+
+    @Test
+    @DisplayName("PUT on an unknown id becomes 404")
+    void updateUnknownIdBecomesNotFound() throws Exception {
+        when(motorcycleService.update(eq(404L), any())).thenThrow(ResourceNotFoundException.of("Motorcycle", 404L));
+
+        mockMvc.perform(put("/api/v1/motorcycles/404")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(
+                                MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024))))
+                .andExpect(status().isNotFound());
     }
 
     @Test

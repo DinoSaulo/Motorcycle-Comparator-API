@@ -218,6 +218,12 @@ class MotorcycleRepositoryTest {
     }
 
     @Test
+    @DisplayName("filters by price floor")
+    void filtersByPriceFloor() {
+        assertThat(search(new MotorcycleFilter(null, null, null, null, null, null, new BigDecimal("11000"), null, null))).containsExactly("BMW");
+    }
+
+    @Test
     @DisplayName("free text matches brand, model or slug, case-insensitively")
     void freeTextSearch() {
         assertThat(search(new MotorcycleFilter(null, null, null, null, null, null, null, null, "cb650"))).containsExactly("Honda");

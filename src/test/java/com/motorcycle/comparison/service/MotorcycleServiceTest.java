@@ -137,6 +137,36 @@ class MotorcycleServiceTest {
 
             verify(motorcycleRepository).findAll(any(Specification.class), eq(pageable));
         }
+
+        @Test
+        @DisplayName("fetches by slug and maps the entity into the response")
+        void getBySlugMapsSpecifications() {
+            Motorcycle yamaha = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            when(motorcycleRepository.findWithSpecificationsBySlug("yamaha-mt-09-2024")).thenReturn(Optional.of(yamaha));
+
+            MotorcycleResponse response = motorcycleService.getBySlug("yamaha-mt-09-2024");
+
+            assertThat(response.brand()).isEqualTo("Yamaha");
+            assertThat(response.engine().displacementCc()).isEqualTo(890);
+        }
+
+        @Test
+        @DisplayName("reports the missing slug rather than returning null")
+        void getBySlugThrowsWhenAbsent() {
+            when(motorcycleRepository.findWithSpecificationsBySlug("does-not-exist")).thenReturn(Optional.empty());
+
+            assertThatThrownBy(() -> motorcycleService.getBySlug("does-not-exist"))
+                    .isInstanceOf(ResourceNotFoundException.class)
+                    .hasMessageContaining("does-not-exist");
+        }
+
+        @Test
+        @DisplayName("delegates the distinct brand list straight to the repository")
+        void listBrandsDelegatesToRepository() {
+            when(motorcycleRepository.findDistinctBrands()).thenReturn(List.of("BMW", "Honda", "Yamaha"));
+
+            assertThat(motorcycleService.listBrands()).containsExactly("BMW", "Honda", "Yamaha");
+        }
     }
 
     @Nested
@@ -337,6 +367,21 @@ class MotorcycleServiceTest {
             motorcycleService.update(1L, MotorcycleFixtures.createRequestWithImage("https://cdn.example.com/somebody-elses.jpg"));
 
             assertThat(existing.getImageUrl()).isEqualTo(STORED_IMAGE_URL);
+        }
+
+        @Test
+        @DisplayName("keeps the existing engine block when the request carries none")
+        void keepsExistingEngineWhenRequestOmitsIt() {
+            // The DTO forbids this through the API (@NotNull on engine); this exercises the service's own
+            // defensive fallback directly, the way an internal caller bypassing bean validation could hit it.
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setSlug("yamaha-mt-09-2024");
+            var originalEngine = existing.getEngine();
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            motorcycleService.update(1L, MotorcycleFixtures.createRequestWithoutEngine("Yamaha", "MT-09", 2024));
+
+            assertThat(existing.getEngine()).isSameAs(originalEngine);
         }
     }
 
