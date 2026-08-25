@@ -27,7 +27,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * Exercises the queries against a real (in-memory) database: Mockito cannot tell us whether an entity graph, a
  * criteria join or a JPQL projection actually compiles and returns the right rows — only a database can.
  */
-@DataJpaTest
+// showSql = false: @DataJpaTest defaults spring.jpa.show-sql to true regardless of application.yml.
+@DataJpaTest(showSql = false)
 @DisplayName("MotorcycleRepository")
 class MotorcycleRepositoryTest {
 

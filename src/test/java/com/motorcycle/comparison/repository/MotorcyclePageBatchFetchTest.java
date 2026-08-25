@@ -24,7 +24,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * one lazy load at a time. This proves the batch setting actually catches it, not just that it is present in a
  * config file nobody re-reads once it works.
  */
-@DataJpaTest(properties = "spring.jpa.properties.hibernate.generate_statistics=true")
+// showSql = false: @DataJpaTest defaults spring.jpa.show-sql to true regardless of application.yml.
+@DataJpaTest(showSql = false, properties = "spring.jpa.properties.hibernate.generate_statistics=true")
 @DisplayName("Catalogue page fetch")
 class MotorcyclePageBatchFetchTest {
 

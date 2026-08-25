@@ -15,7 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * javadoc, and {@code countByDisplacementCcBetween} is a derived query — easy to get an off-by-one wrong in the
  * bound and never notice, since nothing else in the codebase calls it.
  */
-@DataJpaTest
+// showSql = false: @DataJpaTest defaults spring.jpa.show-sql to true regardless of application.yml.
+@DataJpaTest(showSql = false)
 @DisplayName("EngineSpecificationRepository")
 class EngineSpecificationRepositoryTest {
 
