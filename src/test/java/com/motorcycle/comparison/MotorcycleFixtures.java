@@ -84,6 +84,18 @@ public final class MotorcycleFixtures {
     }
 
     /** Same as {@link #createRequest} but with a caller-chosen long-tail block, for the bounds tests. */
+    /** A curated, externally hosted image — the only way imageUrl can reach the entity, since uploads go through /image. */
+    public static CreateMotorcycleRequest createRequestWithImage(String imageUrl) {
+        CreateMotorcycleRequest full = createRequest("Yamaha", "MT-09", 2024);
+        return new CreateMotorcycleRequest(
+                full.brand(), full.model(), full.modelYear(), full.category(),
+                full.priceEur(), imageUrl, full.description(),
+                full.frameType(), full.frontSuspension(), full.rearSuspension(),
+                full.frontBrake(), full.rearBrake(), full.absType(),
+                full.frontTyre(), full.rearTyre(),
+                full.engine(), full.dimension(), full.additionalSpecs());
+    }
+
     public static CreateMotorcycleRequest createRequestWithSpecs(Map<String, String> additionalSpecs) {
         CreateMotorcycleRequest full = createRequest("Yamaha", "MT-09", 2024);
         return new CreateMotorcycleRequest(

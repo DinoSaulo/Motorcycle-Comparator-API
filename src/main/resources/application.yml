@@ -84,10 +84,10 @@ spring:
 
   servlet:
     multipart:
-      # Transport backstop for app.storage.images.max-file-size: Tomcat aborts the upload before any
-      # controller runs. The request cap is deliberately higher, to leave room for the MIME envelope.
-      max-file-size: ${IMAGE_MAX_FILE_SIZE:5MB}
-      max-request-size: ${IMAGE_MAX_REQUEST_SIZE:6MB}
+      # Transport backstop, deliberately above app.storage.images.max-file-size: set to the same value,
+      # Tomcat would always abort first and the business rule's own 400 could never fire.
+      max-file-size: ${IMAGE_MAX_UPLOAD_SIZE:6MB}
+      max-request-size: ${IMAGE_MAX_REQUEST_SIZE:7MB}
 
 server:
   port: ${SERVER_PORT:8080}

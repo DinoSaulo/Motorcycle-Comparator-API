@@ -52,10 +52,20 @@ which would falsely record `V1` as already applied.
 | `GET` | `/api/v1/motorcycles/slug/{slug}` | public | Same, by public slug |
 | `GET` | `/api/v1/motorcycles/brands` | public | Distinct brands, for the filter sidebar |
 | `GET` | `/api/v1/motorcycles/compare?ids=1,2,3` | public | **Side-by-side comparison** |
+| `GET` | `/api/v1/images/motorcycles/{fileName}` | public | Serve an uploaded image |
 | `POST` | `/api/v1/motorcycles` | `ROLE_ADMIN` | Create |
-| `PUT` | `/api/v1/motorcycles/{id}` | `ROLE_ADMIN` | Replace |
+| `PUT` | `/api/v1/motorcycles/{id}` | `ROLE_ADMIN` | Replace (never the image — see below) |
 | `DELETE` | `/api/v1/motorcycles/{id}` | `ROLE_ADMIN` | Delete |
+| `POST` | `/api/v1/motorcycles/{id}/image` | `ROLE_ADMIN` | Upload or replace the image (`multipart/form-data`, part `file`) |
+| `DELETE` | `/api/v1/motorcycles/{id}/image` | `ROLE_ADMIN` | Clear the image |
 | `POST` | `/api/v1/auth/login` | public | Exchange credentials for a JWT |
+
+**The image is owned by the two `/image` endpoints, not by `PUT`.** A full-replacement `PUT`
+that omitted `imageUrl` would otherwise blank the column and strand the file on disk with
+nothing left holding its name. `imageUrl` on the request body is honoured on `POST` only, for
+a curated externally hosted URL; those are never deleted, because they were never ours.
+Uploads accept JPEG, PNG and WebP, and the declared content type must match the file's
+own leading bytes.
 
 Catalogue filters, all optional and combinable:
 `brand`, `category`, `modelYear`, `minDisplacementCc`, `maxDisplacementCc`,
@@ -191,6 +201,9 @@ Everything is overridable by environment variable:
 | `CORS_ALLOWED_ORIGINS` | `localhost:3000,localhost:5173` | |
 | `DB_POOL_SIZE` / `DB_POOL_MIN_IDLE` | `10` / `2` | Hikari sizing |
 | `SPRING_FLYWAY_LOCATIONS` | see below | Migration locations |
+| `IMAGE_STORAGE_LOCATION` | `./uploads/motorcycles` | Where uploaded images are written |
+| `IMAGE_MAX_FILE_SIZE` | `5MB` | The business limit; an image above it is a 400 |
+| `IMAGE_MAX_UPLOAD_SIZE` / `IMAGE_MAX_REQUEST_SIZE` | `6MB` / `7MB` | Transport backstop, deliberately above the business limit so Tomcat's 413 does not pre-empt it |
 
 The catalogue caps `?size=` at 100 rows (`spring.data.web.pageable.max-page-size`): the
 endpoint is public and every row carries both specification blocks, so Spring's own
@@ -224,8 +237,13 @@ These are deliberate iteration-1 boundaries, not oversights:
    The TTL is short for that reason.
 3. **Seed figures in `db/seed/R__dev_seed.sql` are indicative demo values**, not an
    authoritative specification source. A real catalogue needs a vetted import pipeline.
-4. **No rate limiting** on the public endpoints yet.
-5. **Optimistic locking covers `motorcycles` only, and only writes that genuinely overlap.**
+4. **No rate limiting** on the public endpoints yet — image serving included.
+5. **Images live on the local file system**, under `IMAGE_STORAGE_LOCATION`. A deployed
+   environment must point that at a mounted volume: a container's own file system is
+   discarded on every redeploy, and a second replica would not see the first one's uploads.
+   `FileStorageService` deals in file names precisely so an S3 adapter can replace it without
+   touching anything above.
+6. **Optimistic locking covers `motorcycles` only, and only writes that genuinely overlap.**
    `version` is not yet in `MotorcycleResponse` nor accepted by `PUT` (no `If-Match`), so two
    admin edits racing each other still get a 409, but two sequential ones — edit, walk away,
    edit again later against what is by then stale data — silently overwrite each other. The

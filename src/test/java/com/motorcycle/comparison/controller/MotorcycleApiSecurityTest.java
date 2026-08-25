@@ -47,8 +47,8 @@ class MotorcycleApiSecurityTest {
     @Test
     @DisplayName("image serving is public: an unknown image is 404, never 401")
     void imagesArePublic() throws Exception {
-        // The React app loads these through <img src>, which carries no Authorization header. Asserting
-        // "not 401" is the durable check: the serving endpoint itself arrives in a later step.
+        // The React app loads these through <img src>, which carries no Authorization header, so the
+        // filter chain must let the request reach ImageController and answer 404 on its own terms.
         mockMvc.perform(get("/api/v1/images/motorcycles/does-not-exist.png")).andExpect(status().isNotFound());
     }
 

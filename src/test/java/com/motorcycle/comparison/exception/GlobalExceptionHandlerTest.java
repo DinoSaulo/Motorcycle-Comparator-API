@@ -30,6 +30,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.multipart.MultipartException;
+import org.springframework.web.multipart.support.MissingServletRequestPartException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
@@ -149,6 +151,47 @@ class GlobalExceptionHandlerTest {
         ResponseEntity<ApiError> response = handler.handleUploadTooLarge(new MaxUploadSizeExceededException(-1), request);
 
         assertUniform(response, HttpStatus.PAYLOAD_TOO_LARGE, "Uploaded file exceeds the maximum allowed size of 5 MB", PATH);
+    }
+
+    @Test
+    @DisplayName("quotes a sub-megabyte limit in KB instead of rounding it to '0 MB'")
+    void quotesSmallLimitsInKilobytes() {
+        when(request.getMethod()).thenReturn("POST");
+        GlobalExceptionHandler tightHandler = new GlobalExceptionHandler(DataSize.ofKilobytes(512));
+
+        ResponseEntity<ApiError> response = tightHandler.handleUploadTooLarge(new MaxUploadSizeExceededException(-1), request);
+
+        assertUniform(response, HttpStatus.PAYLOAD_TOO_LARGE, "Uploaded file exceeds the maximum allowed size of 512 KB", PATH);
+    }
+
+    @Test
+    @DisplayName("names the accepted types when the endpoint declares them, instead of always saying JSON")
+    void namesTheAcceptedTypes() {
+        HttpMediaTypeNotSupportedException ex = mock(HttpMediaTypeNotSupportedException.class);
+        when(ex.getContentType()).thenReturn(MediaType.APPLICATION_JSON);
+        when(ex.getSupportedMediaTypes()).thenReturn(List.of(MediaType.MULTIPART_FORM_DATA));
+
+        ResponseEntity<ApiError> response = handler.handleUnsupportedMediaType(ex, request);
+
+        assertUniform(response, HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Content type 'application/json' is not supported; send multipart/form-data", PATH);
+    }
+
+    @Test
+    @DisplayName("a missing file part is a 400 naming the part, not the generic 500")
+    void handlesMissingPart() {
+        ResponseEntity<ApiError> response = handler.handleMissingPart(new MissingServletRequestPartException("file"), request);
+
+        assertUniform(response, HttpStatus.BAD_REQUEST, "Missing required file part 'file'", PATH);
+    }
+
+    @Test
+    @DisplayName("a malformed multipart envelope is a 400 that keeps the container's own message in the log")
+    void handlesMalformedMultipart() {
+        when(request.getMethod()).thenReturn("POST");
+
+        ResponseEntity<ApiError> response = handler.handleMalformedMultipart(new MultipartException("Failed to parse multipart servlet request"), request);
+
+        assertUniform(response, HttpStatus.BAD_REQUEST, "Request is not a valid multipart/form-data upload", PATH);
     }
 
     @Nested

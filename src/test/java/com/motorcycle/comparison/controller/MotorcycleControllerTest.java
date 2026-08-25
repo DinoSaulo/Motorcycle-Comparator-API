@@ -28,6 +28,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
@@ -43,10 +44,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
@@ -374,13 +377,85 @@ class MotorcycleControllerTest {
         mockMvc.perform(delete("/api/v1/motorcycles/404")).andExpect(status().isNotFound());
     }
 
+    @Test
+    @DisplayName("POST /{id}/image returns the record carrying its new imageUrl")
+    void uploadImageReturnsUpdatedRecord() throws Exception {
+        when(motorcycleService.updateImage(eq(1L), any())).thenReturn(response(1L, "Yamaha", "MT-09", STORED_IMAGE_URL));
+
+        mockMvc.perform(multipart("/api/v1/motorcycles/1/image").file(imagePart()))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.imageUrl").value(STORED_IMAGE_URL));
+    }
+
+    @Test
+    @DisplayName("POST /{id}/image without the file part is a 400 naming the part, not a 500")
+    void uploadWithoutFilePartBecomesBadRequest() throws Exception {
+        mockMvc.perform(multipart("/api/v1/motorcycles/1/image"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message").value("Missing required file part 'file'"));
+
+        verify(motorcycleService, never()).updateImage(any(), any());
+    }
+
+    @Test
+    @DisplayName("a file the storage service rejects becomes 400 with its own message")
+    void rejectedUploadBecomesBadRequest() throws Exception {
+        when(motorcycleService.updateImage(eq(1L), any()))
+                .thenThrow(new IllegalArgumentException("File content does not match its declared type image/png"));
+
+        mockMvc.perform(multipart("/api/v1/motorcycles/1/image").file(imagePart()))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message").value("File content does not match its declared type image/png"));
+    }
+
+    @Test
+    @DisplayName("POST /{id}/image on an unknown id becomes 404")
+    void uploadOnUnknownIdBecomesNotFound() throws Exception {
+        when(motorcycleService.updateImage(eq(404L), any())).thenThrow(ResourceNotFoundException.of("Motorcycle", 404L));
+
+        mockMvc.perform(multipart("/api/v1/motorcycles/404/image").file(imagePart()))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.status").value(404));
+    }
+
+    @Test
+    @DisplayName("DELETE /{id}/image returns 200 with the record, and imageUrl is gone from the body")
+    void deleteImageReturnsRecordWithoutImage() throws Exception {
+        // non_null inclusion is on, so a cleared image is an absent field rather than an explicit null.
+        when(motorcycleService.removeImage(1L)).thenReturn(response(1L, "Yamaha", "MT-09", null));
+
+        mockMvc.perform(delete("/api/v1/motorcycles/1/image"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.imageUrl").doesNotExist());
+    }
+
+    @Test
+    @DisplayName("DELETE /{id}/image on an unknown id becomes 404")
+    void deleteImageOnUnknownIdBecomesNotFound() throws Exception {
+        when(motorcycleService.removeImage(404L)).thenThrow(ResourceNotFoundException.of("Motorcycle", 404L));
+
+        mockMvc.perform(delete("/api/v1/motorcycles/404/image")).andExpect(status().isNotFound());
+    }
+
     // --- fixtures ---------------------------------------------------------------
 
+    private static final String STORED_IMAGE_URL = "/api/v1/images/motorcycles/2f4c8f1a-0b2e-4d3c-9a1b-7e6d5c4b3a29.jpg";
+
+    private static MockMultipartFile imagePart() {
+        return new MockMultipartFile("file", "photo.jpg", MediaType.IMAGE_JPEG_VALUE, new byte[] {(byte) 0xFF, (byte) 0xD8, (byte) 0xFF});
+    }
+
     private static MotorcycleResponse response(Long id, String brand, String model) {
+        return response(id, brand, model, null);
+    }
+
+    private static MotorcycleResponse response(Long id, String brand, String model, String imageUrl) {
         return new MotorcycleResponse(
                 id, brand.toLowerCase() + "-" + model.toLowerCase() + "-2024",
                 brand, model, 2024, Category.NAKED, brand + " " + model + " (2024)",
-                new BigDecimal("10499.00"), null, null,
+                new BigDecimal("10499.00"), imageUrl, null,
                 null, null, null, "Dual 298mm discs", null, "Dual-channel ABS", null, null,
                 new MotorcycleResponse.EngineResponse(
                         "Inline-3", 890, 3, 4, new BigDecimal("117.0"), 10000,

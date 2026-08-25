@@ -24,6 +24,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.mock.web.MockMultipartFile;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -50,8 +51,14 @@ class MotorcycleServiceTest {
     @Mock
     private MotorcycleWriter motorcycleWriter;
 
+    @Mock
+    private FileStorageService fileStorageService;
+
     @InjectMocks
     private MotorcycleService motorcycleService;
+
+    private static final String STORED_IMAGE_NAME = "3fa85f64-5717-4562-b3fc-2c963f66afa6.jpg";
+    private static final String STORED_IMAGE_URL = "/api/v1/images/motorcycles/" + STORED_IMAGE_NAME;
 
     /** The writer owns the insert now, so the create tests capture what it was handed. */
     private void writerEchoesBackWhatItIsGiven() {
@@ -145,6 +152,17 @@ class MotorcycleServiceTest {
             motorcycleService.create(MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024));
 
             assertThat(savedByWriter().getSlug()).isEqualTo("yamaha-mt-09-2024");
+        }
+
+        @Test
+        @DisplayName("honours a curated imageUrl, which update deliberately ignores")
+        void honoursCuratedImageUrl() {
+            when(motorcycleRepository.existsBySlug(anyString())).thenReturn(false);
+            writerEchoesBackWhatItIsGiven();
+
+            motorcycleService.create(MotorcycleFixtures.createRequestWithImage("https://cdn.example.com/mt-09.jpg"));
+
+            assertThat(savedByWriter().getImageUrl()).isEqualTo("https://cdn.example.com/mt-09.jpg");
         }
 
         @Test
@@ -290,6 +308,36 @@ class MotorcycleServiceTest {
             // omitted field, it does not silently keep the previous value.
             assertThat(existing.getDimension()).isNull();
         }
+
+        @Test
+        @DisplayName("the image is the one field a full-replace PUT does not touch")
+        void keepsUploadedImageWhenRequestOmitsIt() {
+            // Regression: the image belongs to the /image endpoints. Clearing it here stranded the file on
+            // disk with nothing left holding its name, so nothing could ever delete it.
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setSlug("yamaha-mt-09-2024");
+            existing.setImageUrl(STORED_IMAGE_URL);
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            MotorcycleResponse response = motorcycleService.update(1L, MotorcycleFixtures.createRequest("Yamaha", "MT-09", 2024));
+
+            assertThat(existing.getImageUrl()).isEqualTo(STORED_IMAGE_URL);
+            assertThat(response.imageUrl()).isEqualTo(STORED_IMAGE_URL);
+            verify(fileStorageService, never()).deleteFile(anyString());
+        }
+
+        @Test
+        @DisplayName("an imageUrl sent on a PUT is ignored rather than applied")
+        void ignoresImageUrlOnTheRequest() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setSlug("yamaha-mt-09-2024");
+            existing.setImageUrl(STORED_IMAGE_URL);
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            motorcycleService.update(1L, MotorcycleFixtures.createRequestWithImage("https://cdn.example.com/somebody-elses.jpg"));
+
+            assertThat(existing.getImageUrl()).isEqualTo(STORED_IMAGE_URL);
+        }
     }
 
     @Nested
@@ -316,6 +364,131 @@ class MotorcycleServiceTest {
             motorcycleService.delete(1L);
 
             verify(motorcycleRepository).delete(existing);
+        }
+
+        @Test
+        @DisplayName("also removes the uploaded image so the file does not outlive its row")
+        void deletesUploadedImageWithTheMotorcycle() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setImageUrl(STORED_IMAGE_URL);
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            motorcycleService.delete(1L);
+
+            verify(motorcycleRepository).delete(existing);
+            verify(fileStorageService).deleteFile(STORED_IMAGE_NAME);
+        }
+
+        @Test
+        @DisplayName("leaves an externally hosted image alone")
+        void doesNotDeleteExternalImageWithTheMotorcycle() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setImageUrl("https://cdn.example.com/mt-09.jpg");
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            motorcycleService.delete(1L);
+
+            verify(fileStorageService, never()).deleteFile(anyString());
+        }
+    }
+
+    @Nested
+    @DisplayName("images")
+    class Images {
+
+        private static MockMultipartFile upload() {
+            return new MockMultipartFile("file", "photo.jpg", "image/jpeg", new byte[] {1, 2, 3});
+        }
+
+        @Test
+        @DisplayName("stores the upload and points imageUrl at the serving endpoint")
+        void storesUploadAndSetsUrl() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+            when(fileStorageService.storeFile(any())).thenReturn(STORED_IMAGE_NAME);
+
+            MotorcycleResponse response = motorcycleService.updateImage(1L, upload());
+
+            assertThat(existing.getImageUrl()).isEqualTo(STORED_IMAGE_URL);
+            assertThat(response.imageUrl()).isEqualTo(STORED_IMAGE_URL);
+        }
+
+        @Test
+        @DisplayName("discards the image it is replacing")
+        void deletesThePreviousUpload() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setImageUrl("/api/v1/images/motorcycles/11111111-1111-1111-1111-111111111111.png");
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+            when(fileStorageService.storeFile(any())).thenReturn(STORED_IMAGE_NAME);
+
+            motorcycleService.updateImage(1L, upload());
+
+            verify(fileStorageService).deleteFile("11111111-1111-1111-1111-111111111111.png");
+        }
+
+        @Test
+        @DisplayName("never deletes a file it did not store")
+        void doesNotDeleteAnExternalUrlOnReplace() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setImageUrl("https://cdn.example.com/mt-09.jpg");
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+            when(fileStorageService.storeFile(any())).thenReturn(STORED_IMAGE_NAME);
+
+            motorcycleService.updateImage(1L, upload());
+
+            verify(fileStorageService, never()).deleteFile(anyString());
+        }
+
+        @Test
+        @DisplayName("rejects an unknown id before touching storage")
+        void unknownIdStoresNothing() {
+            when(motorcycleRepository.findWithSpecificationsById(9L)).thenReturn(Optional.empty());
+
+            assertThatThrownBy(() -> motorcycleService.updateImage(9L, upload()))
+                    .isInstanceOf(ResourceNotFoundException.class);
+            verify(fileStorageService, never()).storeFile(any());
+        }
+
+        @Test
+        @DisplayName("a rejected upload leaves the existing image in place")
+        void rejectedUploadKeepsCurrentImage() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setImageUrl(STORED_IMAGE_URL);
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+            when(fileStorageService.storeFile(any())).thenThrow(new IllegalArgumentException("Unsupported image type"));
+
+            assertThatThrownBy(() -> motorcycleService.updateImage(1L, upload()))
+                    .isInstanceOf(IllegalArgumentException.class);
+
+            assertThat(existing.getImageUrl()).isEqualTo(STORED_IMAGE_URL);
+            verify(fileStorageService, never()).deleteFile(anyString());
+        }
+
+        @Test
+        @DisplayName("clearing the image unsets the column and deletes the file")
+        void removeImageClearsAndDeletes() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setImageUrl(STORED_IMAGE_URL);
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            MotorcycleResponse response = motorcycleService.removeImage(1L);
+
+            assertThat(existing.getImageUrl()).isNull();
+            assertThat(response.imageUrl()).isNull();
+            verify(fileStorageService).deleteFile(STORED_IMAGE_NAME);
+        }
+
+        @Test
+        @DisplayName("clearing an externally hosted image unsets it without deleting anything")
+        void removeImageLeavesExternalFilesAlone() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setImageUrl("https://cdn.example.com/mt-09.jpg");
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            motorcycleService.removeImage(1L);
+
+            assertThat(existing.getImageUrl()).isNull();
+            verify(fileStorageService, never()).deleteFile(anyString());
         }
     }
 
