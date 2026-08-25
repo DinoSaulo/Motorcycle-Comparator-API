@@ -58,13 +58,15 @@ class SchemaMigrationIT {
                 "SELECT count(*) FROM flyway_schema_history WHERE success = true AND version IS NULL", Integer.class);
 
         assertThat(applied).containsExactly("1", "2", "3");
-        assertThat(repeatables).isEqualTo(1);
+        // R__dev_seed.sql and R__motorcycles_brazil_fipe_2026_08.sql.
+        assertThat(repeatables).isEqualTo(2);
     }
 
     @Test
     @DisplayName("loads the dev seed")
     void loadsTheDevSeed() {
-        assertThat(motorcycleRepository.count()).isEqualTo(53);
+        // 53 curated dev-seed bikes plus the Brazil/FIPE 08/2026 snapshot; see R__motorcycles_brazil_fipe_2026_08.sql.
+        assertThat(motorcycleRepository.count()).isEqualTo(8454);
         assertThat(motorcycleRepository.findWithSpecificationsBySlug("yamaha-mt-09-2024")).isPresent();
     }
 
@@ -87,7 +89,8 @@ class SchemaMigrationIT {
     @Test
     @DisplayName("an unpriced bike sorts last on real PostgreSQL, whichever way the price sort runs")
     void unpricedBikesSortLast() {
-        // H2 hides this: PostgreSQL defaults DESC to NULLS FIRST, so page 1 of "most expensive" would be the unpriced ones.
+        // H2 hides this: PostgreSQL defaults DESC to NULLS FIRST, so without hibernate.order_by.default_null_ordering
+        // (application.yml) the unpriced ones would surface on page 1 of "most expensive" instead of sorting last.
         Motorcycle unpriced = MotorcycleFixtures.motorcycle(null, "Prototype", "No Price", 900);
         unpriced.setPriceEur(null);
         Long id = motorcycleRepository.save(unpriced).getId();
@@ -100,8 +103,14 @@ class SchemaMigrationIT {
         }
     }
 
+    // A fixed-size page can't be trusted to reach the tail once the catalogue outgrows it, so the page is sized to
+    // the whole table: the point is asserting where nulls land, not exercising pagination. The dev seed already
+    // ships a handful of unpriced 2026 models, so price alone ties with the sentinel; break the tie by id so the
+    // sentinel we just inserted (the highest id) is deterministically the last of the unpriced group.
     private String lastBrandSortedByPrice(Sort.Direction direction) {
-        List<Motorcycle> page = motorcycleRepository.findAll(PageRequest.of(0, 100, Sort.by(direction, "priceEur"))).getContent();
+        int total = (int) motorcycleRepository.count();
+        Sort sort = Sort.by(direction, "priceEur").and(Sort.by(Sort.Direction.ASC, "id"));
+        List<Motorcycle> page = motorcycleRepository.findAll(PageRequest.of(0, total, sort)).getContent();
         return page.get(page.size() - 1).getBrand();
     }
 

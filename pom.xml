@@ -191,6 +191,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <configuration>
+                    <!-- Same self-attach fix as the surefire plugin above: Mockito must load as a proper agent. -->
+                    <argLine>@{argLine} -javaagent:${org.mockito:mockito-core:jar}</argLine>
                     <systemPropertyVariables>
                         <!-- docker-java sends unversioned paths, which Docker Desktop 29 rejects with a 400.
                              Pinning the oldest API every daemon since 19.03 accepts makes Testcontainers connect. -->
