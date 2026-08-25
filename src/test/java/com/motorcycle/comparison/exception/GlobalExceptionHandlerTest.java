@@ -21,6 +21,7 @@ import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.util.unit.DataSize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
@@ -28,6 +29,7 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
@@ -54,7 +56,7 @@ class GlobalExceptionHandlerTest {
     @Mock
     private HttpServletRequest request;
 
-    private final GlobalExceptionHandler handler = new GlobalExceptionHandler();
+    private final GlobalExceptionHandler handler = new GlobalExceptionHandler(DataSize.ofMegabytes(5));
 
     @BeforeEach
     void stubPath() {
@@ -137,6 +139,16 @@ class GlobalExceptionHandlerTest {
         ResponseEntity<ApiError> response = handler.handleUnsupportedMediaType(ex, request);
 
         assertUniform(response, HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Content type 'text/plain' is not supported; send application/json", PATH);
+    }
+
+    @Test
+    @DisplayName("maps an oversized upload to 413, quoting the configured limit rather than the exception's own -1")
+    void handlesUploadTooLarge() {
+        when(request.getMethod()).thenReturn("POST");
+
+        ResponseEntity<ApiError> response = handler.handleUploadTooLarge(new MaxUploadSizeExceededException(-1), request);
+
+        assertUniform(response, HttpStatus.PAYLOAD_TOO_LARGE, "Uploaded file exceeds the maximum allowed size of 5 MB", PATH);
     }
 
     @Nested

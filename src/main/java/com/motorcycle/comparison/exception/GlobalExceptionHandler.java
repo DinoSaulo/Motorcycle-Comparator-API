@@ -4,6 +4,7 @@ import com.motorcycle.comparison.dto.response.ApiError;
 import com.motorcycle.comparison.dto.response.ApiError.FieldViolation;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -14,6 +15,7 @@ import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.util.unit.DataSize;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
@@ -36,6 +39,12 @@ import java.util.Set;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
+
+    private final DataSize maxUploadSize;
+
+    public GlobalExceptionHandler(@Value("${spring.servlet.multipart.max-file-size:1MB}") DataSize maxUploadSize) {
+        this.maxUploadSize = maxUploadSize;
+    }
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiError> handleNotFound(ResourceNotFoundException ex, HttpServletRequest request) {
@@ -76,6 +85,16 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     public ResponseEntity<ApiError> handleUnsupportedMediaType(HttpMediaTypeNotSupportedException ex, HttpServletRequest request) {
         return build(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Content type '" + ex.getContentType() + "' is not supported; send application/json", request);
+    }
+
+    /**
+     * The container aborts the transfer mid-stream, so this fires before any controller runs. The limit quoted is the
+     * configured one, because the size carried on the exception is -1 whenever the servlet layer raised it.
+     */
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<ApiError> handleUploadTooLarge(MaxUploadSizeExceededException ex, HttpServletRequest request) {
+        log.debug("Rejected oversized upload on {} {}: {}", request.getMethod(), request.getRequestURI(), ex.getMessage());
+        return build(HttpStatus.PAYLOAD_TOO_LARGE, "Uploaded file exceeds the maximum allowed size of " + maxUploadSize.toMegabytes() + " MB", request);
     }
 
     /** 405 carries the Allow header, without which a client cannot discover what the endpoint does accept. */

@@ -45,6 +45,14 @@ class MotorcycleApiSecurityTest {
     }
 
     @Test
+    @DisplayName("image serving is public: an unknown image is 404, never 401")
+    void imagesArePublic() throws Exception {
+        // The React app loads these through <img src>, which carries no Authorization header. Asserting
+        // "not 401" is the durable check: the serving endpoint itself arrives in a later step.
+        mockMvc.perform(get("/api/v1/images/motorcycles/does-not-exist.png")).andExpect(status().isNotFound());
+    }
+
+    @Test
     @DisplayName("a path outside the public prefix is 401, not a stack trace, when it doesn't exist either")
     void unmappedPathOutsidePublicPrefixRequiresAuth() throws Exception {
         // anyRequest().authenticated() is deny-by-default: a caller cannot tell "wrong URL" from "real endpoint, no token" — that is the point, not a bug.

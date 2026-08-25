@@ -82,6 +82,13 @@ spring:
     problemdetails:
       enabled: false
 
+  servlet:
+    multipart:
+      # Transport backstop for app.storage.images.max-file-size: Tomcat aborts the upload before any
+      # controller runs. The request cap is deliberately higher, to leave room for the MIME envelope.
+      max-file-size: ${IMAGE_MAX_FILE_SIZE:5MB}
+      max-request-size: ${IMAGE_MAX_REQUEST_SIZE:6MB}
+
 server:
   port: ${SERVER_PORT:8080}
   error:
@@ -115,6 +122,13 @@ app:
   comparison:
     # Four columns is where a side-by-side table stops being readable on a laptop.
     max-items: 4
+  storage:
+    images:
+      # Resolved against the process working directory. A deployed environment must point this at a
+      # mounted volume: a container's own file system is discarded on every redeploy.
+      location: ${IMAGE_STORAGE_LOCATION:./uploads/motorcycles}
+      # The business rule. spring.servlet.multipart above only stops the transfer earlier and cheaper.
+      max-file-size: ${IMAGE_MAX_FILE_SIZE:5MB}
   security:
     cors:
       allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173}

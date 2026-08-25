@@ -306,6 +306,17 @@ class MotorcycleServiceTest {
             // Typed matcher: JpaSpecificationExecutor also declares delete(Specification).
             verify(motorcycleRepository, never()).delete(any(Motorcycle.class));
         }
+
+        @Test
+        @DisplayName("deletes an existing id")
+        void deletesExistingId() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            motorcycleService.delete(1L);
+
+            verify(motorcycleRepository).delete(existing);
+        }
     }
 
     @ParameterizedTest(name = "\"{0}\" -> \"{1}\"")

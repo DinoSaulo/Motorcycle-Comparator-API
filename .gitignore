@@ -43,6 +43,9 @@ logs/
 application-local.yml
 application-local.properties
 
+# --- Uploaded media (see app.storage.images.location) ---
+uploads/
+
 # --- Postman local sync ---
 postman/postman/
 postman/.postman/

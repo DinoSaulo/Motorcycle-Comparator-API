@@ -44,7 +44,10 @@ import java.util.List;
 public class SecurityConfig {
 
     private static final String[] PUBLIC_GET_PATHS = {
-            "/api/v1/motorcycles/**"
+            "/api/v1/motorcycles/**",
+            // The catalogue is public, so its images have to be too: a browser sends no
+            // Authorization header for an <img src>, and a 401 there renders as a broken image.
+            "/api/v1/images/**"
     };
 
     private static final String[] PUBLIC_PATHS = {

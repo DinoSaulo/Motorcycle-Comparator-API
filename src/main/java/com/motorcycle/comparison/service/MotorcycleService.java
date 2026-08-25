@@ -10,8 +10,10 @@ import com.motorcycle.comparison.exception.ConstraintViolations;
 import com.motorcycle.comparison.exception.DuplicateResourceException;
 import com.motorcycle.comparison.exception.ResourceNotFoundException;
 import com.motorcycle.comparison.repository.MotorcycleRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -46,12 +48,15 @@ public class MotorcycleService {
     private static final Pattern EDGE_DASHES = Pattern.compile("(^-)|(-$)");
     private static final Pattern DISAMBIGUATOR = Pattern.compile("-\\d+$");
 
+    private static final String FIELD_BRAND = "brand";
+    private static final String FIELD_PRICE_EUR = "priceEur";
+
     /**
      * Properties a client is allowed to sort the catalogue by. Anything else is rejected with a clean 400 instead
      * of reaching Hibernate, whose own error would name the entity's fully-qualified class to an anonymous caller.
      */
     private static final Set<String> SORTABLE_PROPERTIES = Set.of(
-            "id", "brand", "model", "modelYear", "category", "priceEur",
+            "id", FIELD_BRAND, "model", "modelYear", "category", FIELD_PRICE_EUR,
             "createdAt", "updatedAt");
 
     private static final String SLUG_UNIQUE_CONSTRAINT = "uk_motorcycles_slug";
@@ -156,53 +161,83 @@ public class MotorcycleService {
      * an engine facet is in play, so the plain "list everything" query stays join-free.
      */
     public static Specification<Motorcycle> toSpecification(MotorcycleFilter filter) {
+        if (filter == null) {
+            return (root, query, cb) -> cb.conjunction();
+        }
         return (root, query, cb) -> {
-            if (filter == null) {
-                return cb.conjunction();
-            }
             List<Predicate> predicates = new ArrayList<>();
-
-            if (hasText(filter.brand())) {
-                predicates.add(cb.equal(cb.lower(root.get("brand")), filter.brand().toLowerCase(Locale.ROOT)));
-            }
-            if (filter.category() != null) {
-                predicates.add(cb.equal(root.get("category"), filter.category()));
-            }
-            if (filter.modelYear() != null) {
-                predicates.add(cb.equal(root.get("modelYear"), filter.modelYear()));
-            }
-            if (filter.minPriceEur() != null) {
-                predicates.add(cb.greaterThanOrEqualTo(root.get("priceEur"), filter.minPriceEur()));
-            }
-            if (filter.maxPriceEur() != null) {
-                predicates.add(cb.lessThanOrEqualTo(root.get("priceEur"), filter.maxPriceEur()));
-            }
-            if (hasText(filter.q())) {
-                // Escape the client's own '%'/'_' so free text is matched literally;
-                // otherwise "q=%" would match every row instead of being a no-op search.
-                String pattern = "%" + escapeLike(filter.q().toLowerCase(Locale.ROOT)) + "%";
-                predicates.add(cb.or(
-                        cb.like(cb.lower(root.get("brand")), pattern, LIKE_ESCAPE),
-                        cb.like(cb.lower(root.get("model")), pattern, LIKE_ESCAPE),
-                        cb.like(cb.lower(root.get("slug")), pattern, LIKE_ESCAPE)));
-            }
-
-            boolean needsEngine = filter.minDisplacementCc() != null || filter.maxDisplacementCc() != null || filter.minPowerHp() != null;
-            if (needsEngine) {
-                var engine = root.join("engine", JoinType.INNER);
-                if (filter.minDisplacementCc() != null) {
-                    predicates.add(cb.greaterThanOrEqualTo(engine.get("displacementCc"), filter.minDisplacementCc()));
-                }
-                if (filter.maxDisplacementCc() != null) {
-                    predicates.add(cb.lessThanOrEqualTo(engine.get("displacementCc"), filter.maxDisplacementCc()));
-                }
-                if (filter.minPowerHp() != null) {
-                    predicates.add(cb.greaterThanOrEqualTo(engine.get("maxPowerHp"), filter.minPowerHp()));
-                }
-            }
-
+            addBrandPredicate(predicates, root, cb, filter);
+            addCategoryPredicate(predicates, root, cb, filter);
+            addModelYearPredicate(predicates, root, cb, filter);
+            addPricePredicates(predicates, root, cb, filter);
+            addFreeTextPredicate(predicates, root, cb, filter);
+            addEnginePredicates(predicates, root, cb, filter);
             return predicates.isEmpty() ? cb.conjunction() : cb.and(predicates.toArray(Predicate[]::new));
         };
+    }
+
+    private static void addBrandPredicate(List<Predicate> predicates, Root<Motorcycle> root, CriteriaBuilder cb,
+                                            MotorcycleFilter filter) {
+        if (hasText(filter.brand())) {
+            predicates.add(cb.equal(cb.lower(root.get(FIELD_BRAND)), filter.brand().toLowerCase(Locale.ROOT)));
+        }
+    }
+
+    private static void addCategoryPredicate(List<Predicate> predicates, Root<Motorcycle> root, CriteriaBuilder cb,
+                                                MotorcycleFilter filter) {
+        if (filter.category() != null) {
+            predicates.add(cb.equal(root.get("category"), filter.category()));
+        }
+    }
+
+    private static void addModelYearPredicate(List<Predicate> predicates, Root<Motorcycle> root, CriteriaBuilder cb,
+                                                MotorcycleFilter filter) {
+        if (filter.modelYear() != null) {
+            predicates.add(cb.equal(root.get("modelYear"), filter.modelYear()));
+        }
+    }
+
+    private static void addPricePredicates(List<Predicate> predicates, Root<Motorcycle> root, CriteriaBuilder cb,
+                                                MotorcycleFilter filter) {
+        if (filter.minPriceEur() != null) {
+            predicates.add(cb.greaterThanOrEqualTo(root.get(FIELD_PRICE_EUR), filter.minPriceEur()));
+        }
+        if (filter.maxPriceEur() != null) {
+            predicates.add(cb.lessThanOrEqualTo(root.get(FIELD_PRICE_EUR), filter.maxPriceEur()));
+        }
+    }
+
+    private static void addFreeTextPredicate(List<Predicate> predicates, Root<Motorcycle> root, CriteriaBuilder cb,
+                                                MotorcycleFilter filter) {
+        if (!hasText(filter.q())) {
+            return;
+        }
+        // Escape the client's own '%'/'_' so free text is matched literally;
+        // otherwise "q=%" would match every row instead of being a no-op search.
+        String pattern = "%" + escapeLike(filter.q().toLowerCase(Locale.ROOT)) + "%";
+        predicates.add(cb.or(
+                cb.like(cb.lower(root.get(FIELD_BRAND)), pattern, LIKE_ESCAPE),
+                cb.like(cb.lower(root.get("model")), pattern, LIKE_ESCAPE),
+                cb.like(cb.lower(root.get("slug")), pattern, LIKE_ESCAPE)));
+    }
+
+    private static void addEnginePredicates(List<Predicate> predicates, Root<Motorcycle> root, CriteriaBuilder cb,
+                                                MotorcycleFilter filter) {
+        boolean needsEngine = filter.minDisplacementCc() != null || filter.maxDisplacementCc() != null
+                || filter.minPowerHp() != null;
+        if (!needsEngine) {
+            return;
+        }
+        var engine = root.join("engine", JoinType.INNER);
+        if (filter.minDisplacementCc() != null) {
+            predicates.add(cb.greaterThanOrEqualTo(engine.get("displacementCc"), filter.minDisplacementCc()));
+        }
+        if (filter.maxDisplacementCc() != null) {
+            predicates.add(cb.lessThanOrEqualTo(engine.get("displacementCc"), filter.maxDisplacementCc()));
+        }
+        if (filter.minPowerHp() != null) {
+            predicates.add(cb.greaterThanOrEqualTo(engine.get("maxPowerHp"), filter.minPowerHp()));
+        }
     }
 
     private void apply(CreateMotorcycleRequest request, Motorcycle target) {
