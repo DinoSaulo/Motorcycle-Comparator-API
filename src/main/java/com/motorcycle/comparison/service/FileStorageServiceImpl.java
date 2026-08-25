@@ -16,7 +16,6 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Optional;
@@ -61,14 +60,16 @@ public class FileStorageServiceImpl implements FileStorageService {
             throw new IllegalArgumentException("An image file is required and cannot be empty");
         }
         if (file.getSize() > maxFileSize.toBytes()) {
-            throw new IllegalArgumentException("Image exceeds the maximum size of " + maxFileSize.toMegabytes() + " MB");
+            throw new IllegalArgumentException("Image exceeds the maximum size of " + describe(maxFileSize));
         }
 
         ImageFormat format = resolveFormat(file);
         String fileName = UUID.randomUUID() + format.extension;
         Path target = storageRoot.resolve(fileName);
+        // No REPLACE_EXISTING: the name is a UUID nobody else holds, so a collision is a bug worth
+        // failing on rather than a previous upload worth silently overwriting.
         try (InputStream in = file.getInputStream()) {
-            Files.copy(in, target, StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(in, target);
         } catch (IOException ex) {
             throw new FileStorageException("Could not store image " + fileName, ex);
         }
@@ -111,6 +112,11 @@ public class FileStorageServiceImpl implements FileStorageService {
         }
     }
 
+    /** Kilobytes below one megabyte: a limit configured as 512KB must not be reported to the client as "0 MB". */
+    private static String describe(DataSize size) {
+        return size.toBytes() >= DataSize.ofMegabytes(1).toBytes() ? size.toMegabytes() + " MB" : size.toKilobytes() + " KB";
+    }
+
     /**
      * Accepting only the exact shape this service generates is what keeps a crafted name such as {@code ../../pom.xml}
      * out of the file system; the {@code startsWith} check below is the belt to that regex's braces.
@@ -135,6 +141,10 @@ public class FileStorageServiceImpl implements FileStorageService {
         return declared;
     }
 
+    /**
+     * Opens the part a second time — storeFile reads it again to copy it. Safe with the servlet multipart resolver
+     * Spring Boot configures, whose getInputStream() hands out a fresh stream over the buffered part every call.
+     */
     private static byte[] readSignature(MultipartFile file) {
         try (InputStream in = file.getInputStream()) {
             return in.readNBytes(SIGNATURE_BYTES);

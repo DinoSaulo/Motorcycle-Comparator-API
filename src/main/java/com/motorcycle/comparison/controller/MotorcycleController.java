@@ -21,6 +21,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +33,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -120,5 +123,38 @@ public class MotorcycleController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         motorcycleService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    /**
+     * Image upload is its own endpoint rather than a field on the JSON body: multipart and a full-replacement PUT do
+     * not mix, and this way editing a specification never forces the client to re-send the binary it did not change.
+     */
+    @PostMapping(path = "/{id}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PreAuthorize("hasRole('ADMIN')")
+    @SecurityRequirement(name = "bearerAuth")
+    @Operation(summary = "Upload or replace the image of a motorcycle",
+            description = "Accepts JPEG, PNG or WebP. The declared content type must agree with the file's own bytes. Any previously uploaded image is discarded.")
+    @ApiResponse(responseCode = "200", description = "Image stored; the motorcycle carries its new imageUrl")
+    @ApiResponse(responseCode = "400", description = "Empty, oversized or unsupported image", content = @Content(schema = @Schema(implementation = ApiError.class)))
+    @ApiResponse(responseCode = "404", description = "Unknown id", content = @Content(schema = @Schema(implementation = ApiError.class)))
+    @ApiResponse(responseCode = "413", description = "Image exceeds the configured maximum size", content = @Content(schema = @Schema(implementation = ApiError.class)))
+    public MotorcycleResponse uploadImage(@PathVariable Long id,
+            @Parameter(description = "The image file", required = true)
+            @RequestPart("file") MultipartFile file) {
+        return motorcycleService.updateImage(id, file);
+    }
+
+    /**
+     * 200 with the record, not the 204 that deleting the motorcycle itself returns: this deletes a field of a resource
+     * that survives the call, and the client needs the updated record anyway to re-render without the image.
+     */
+    @DeleteMapping("/{id}/image")
+    @PreAuthorize("hasRole('ADMIN')")
+    @SecurityRequirement(name = "bearerAuth")
+    @Operation(summary = "Remove the image of a motorcycle")
+    @ApiResponse(responseCode = "200", description = "Image cleared")
+    @ApiResponse(responseCode = "404", description = "Unknown id", content = @Content(schema = @Schema(implementation = ApiError.class)))
+    public MotorcycleResponse deleteImage(@PathVariable Long id) {
+        return motorcycleService.removeImage(id);
     }
 }

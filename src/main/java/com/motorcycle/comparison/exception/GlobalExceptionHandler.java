@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
@@ -25,12 +26,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.multipart.MultipartException;
+import org.springframework.web.multipart.support.MissingServletRequestPartException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Single translation point from exception to HTTP response: a client error explains precisely what went wrong, a server
@@ -40,10 +44,14 @@ import java.util.Set;
 @Slf4j
 public class GlobalExceptionHandler {
 
-    private final DataSize maxUploadSize;
+    private final DataSize maxImageSize;
 
-    public GlobalExceptionHandler(@Value("${spring.servlet.multipart.max-file-size:1MB}") DataSize maxUploadSize) {
-        this.maxUploadSize = maxUploadSize;
+    /**
+     * The business limit, not the servlet one: {@code spring.servlet.multipart} sits deliberately above it, so quoting
+     * the transport cap would tell a client its 5.5 MB photo is acceptable when the storage service will still reject it.
+     */
+    public GlobalExceptionHandler(@Value("${app.storage.images.max-file-size:5MB}") DataSize maxImageSize) {
+        this.maxImageSize = maxImageSize;
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
@@ -82,9 +90,12 @@ public class GlobalExceptionHandler {
         return build(HttpStatus.BAD_REQUEST, "Request body is missing or is not valid JSON", request);
     }
 
+    /** The accepted types come from the endpoint that rejected the request: this advice covers multipart uploads too, not only JSON. */
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     public ResponseEntity<ApiError> handleUnsupportedMediaType(HttpMediaTypeNotSupportedException ex, HttpServletRequest request) {
-        return build(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Content type '" + ex.getContentType() + "' is not supported; send application/json", request);
+        List<MediaType> supported = ex.getSupportedMediaTypes();
+        String accepted = supported.isEmpty() ? MediaType.APPLICATION_JSON_VALUE : supported.stream().map(MediaType::toString).collect(Collectors.joining(", "));
+        return build(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Content type '" + ex.getContentType() + "' is not supported; send " + accepted, request);
     }
 
     /**
@@ -94,7 +105,28 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     public ResponseEntity<ApiError> handleUploadTooLarge(MaxUploadSizeExceededException ex, HttpServletRequest request) {
         log.debug("Rejected oversized upload on {} {}: {}", request.getMethod(), request.getRequestURI(), ex.getMessage());
-        return build(HttpStatus.PAYLOAD_TOO_LARGE, "Uploaded file exceeds the maximum allowed size of " + maxUploadSize.toMegabytes() + " MB", request);
+        return build(HttpStatus.PAYLOAD_TOO_LARGE, "Uploaded file exceeds the maximum allowed size of " + describe(maxImageSize), request);
+    }
+
+    /**
+     * A part the endpoint requires but the request did not carry. Without this the generic handler answers 500, which
+     * blames the server for what is a malformed form — and contradicts the 400 the endpoint documents.
+     */
+    @ExceptionHandler(MissingServletRequestPartException.class)
+    public ResponseEntity<ApiError> handleMissingPart(MissingServletRequestPartException ex, HttpServletRequest request) {
+        return build(HttpStatus.BAD_REQUEST, "Missing required file part '" + ex.getRequestPartName() + "'", request);
+    }
+
+    /** Any other malformed multipart envelope. Its own message quotes container internals, so it stays in the log. */
+    @ExceptionHandler(MultipartException.class)
+    public ResponseEntity<ApiError> handleMalformedMultipart(MultipartException ex, HttpServletRequest request) {
+        log.debug("Malformed multipart request on {} {}: {}", request.getMethod(), request.getRequestURI(), ex.getMessage());
+        return build(HttpStatus.BAD_REQUEST, "Request is not a valid multipart/form-data upload", request);
+    }
+
+    /** Kilobytes below one megabyte: a limit configured as 512KB must not be reported to the client as "0 MB". */
+    private static String describe(DataSize size) {
+        return size.toBytes() >= DataSize.ofMegabytes(1).toBytes() ? size.toMegabytes() + " MB" : size.toKilobytes() + " KB";
     }
 
     /** 405 carries the Allow header, without which a client cannot discover what the endpoint does accept. */

@@ -24,6 +24,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -63,8 +64,17 @@ public class MotorcycleService {
 
     private static final char LIKE_ESCAPE = '\\';
 
+    /**
+     * Uploaded images are referenced by a host-relative path, never an absolute URL: the API cannot know the origin it
+     * is reached on once a proxy or CDN is in front of it, and a baked-in {@code localhost:8080} would outlive dev.
+     * Clients resolve it against their configured API origin. Externally hosted {@code http(s)://} values pass through
+     * untouched, so a curated URL set by hand still works.
+     */
+    private static final String IMAGE_URL_PREFIX = "/api/v1/images/motorcycles/";
+
     private final MotorcycleRepository motorcycleRepository;
     private final MotorcycleWriter motorcycleWriter;
+    private final FileStorageService fileStorageService;
 
     public Page<MotorcycleResponse> search(MotorcycleFilter filter, Pageable pageable) {
         validateSort(pageable.getSort());
@@ -119,6 +129,10 @@ public class MotorcycleService {
         return MotorcycleResponse.from(saved);
     }
 
+    /**
+     * A full replacement of the specification, with one exception: the image is owned by the {@code /image} endpoints.
+     * Honouring {@code imageUrl} here would let an edit that omits it clear the column and strand the file on disk.
+     */
     @Transactional
     public MotorcycleResponse update(Long id, CreateMotorcycleRequest request) {
         Motorcycle motorcycle = requireById(id);
@@ -138,16 +152,78 @@ public class MotorcycleService {
     @Transactional
     public void delete(Long id) {
         Motorcycle motorcycle = requireById(id);
+        String orphan = storedFileNameOf(motorcycle.getImageUrl());
+
         motorcycleRepository.delete(motorcycle);
+        // Queued, not yet committed — the same trade-off updateImage takes, and never fatal: deleteFile
+        // reports rather than throws, so an unreadable directory cannot block an admin from deleting a row.
+        if (orphan != null) {
+            fileStorageService.deleteFile(orphan);
+        }
+
         log.info("Deleted motorcycle id={}", id);
     }
 
+    /**
+     * Replaces the image of an existing motorcycle.
+     *
+     * The upload is validated and written first: a rejected file (wrong type, oversized, bytes disagreeing with the
+     * declared type) must fail before the row is touched, so a bad request never half-applies.
+     */
+    @Transactional
+    public MotorcycleResponse updateImage(Long id, MultipartFile file) {
+        Motorcycle motorcycle = requireById(id);
+        String previous = storedFileNameOf(motorcycle.getImageUrl());
+
+        String storedName = fileStorageService.storeFile(file);
+        motorcycle.setImageUrl(IMAGE_URL_PREFIX + storedName);
+
+        // The old file is dropped here rather than after commit. The trade-off is deliberate: this
+        // transaction only updates one column, so a rollback that would strand the previous image is
+        // far less likely than the disk slowly filling with superseded uploads.
+        if (previous != null) {
+            fileStorageService.deleteFile(previous);
+        }
+
+        log.info("Updated image of motorcycle id={} to {}", id, storedName);
+        return MotorcycleResponse.from(motorcycle);
+    }
+
+    /** Clears the image. An externally hosted URL is unset but obviously not deleted — it was never ours. */
+    @Transactional
+    public MotorcycleResponse removeImage(Long id) {
+        Motorcycle motorcycle = requireById(id);
+        String stored = storedFileNameOf(motorcycle.getImageUrl());
+
+        motorcycle.setImageUrl(null);
+        if (stored != null) {
+            fileStorageService.deleteFile(stored);
+        }
+
+        log.info("Removed image of motorcycle id={}", id);
+        return MotorcycleResponse.from(motorcycle);
+    }
+
     // --- internals --------------------------------------------------------------
+
+    /**
+     * @return the stored file name behind an image URL this API issued, or {@code null} when the value is absent or
+     *         points somewhere else — the caller must not delete a file it did not store.
+     */
+    private static String storedFileNameOf(String imageUrl) {
+        if (imageUrl == null || !imageUrl.startsWith(IMAGE_URL_PREFIX)) {
+            return null;
+        }
+        String fileName = imageUrl.substring(IMAGE_URL_PREFIX.length());
+        return fileName.isBlank() ? null : fileName;
+    }
 
     /** A fresh instance per attempt: an entity whose insert failed is bound to a dead session and cannot be reused. */
     private Motorcycle newMotorcycle(CreateMotorcycleRequest request) {
         Motorcycle motorcycle = new Motorcycle();
         apply(request, motorcycle);
+        // Set on create only, and never by apply(): see update() for why a PUT must not carry the image.
+        motorcycle.setImageUrl(request.imageUrl());
         motorcycle.setSlug(uniqueSlug(request, null));
         return motorcycle;
     }
@@ -246,7 +322,6 @@ public class MotorcycleService {
         target.setModelYear(request.modelYear());
         target.setCategory(request.category());
         target.setPriceEur(request.priceEur());
-        target.setImageUrl(request.imageUrl());
         target.setDescription(request.description());
         target.setFrameType(request.frameType());
         target.setFrontSuspension(request.frontSuspension());
