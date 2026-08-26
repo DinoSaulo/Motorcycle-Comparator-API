@@ -9,10 +9,11 @@ Spring Boot 3.4 · Java 23 · PostgreSQL · JWT · OpenAPI
 
 ## Status
 
-Iteration 1 — the API skeleton is complete, builds green, and is covered by 111 tests
-(104 unit/slice + 7 integration; 95% instruction / 88% branch). Flyway migrations have
+Iteration 1 — the API skeleton is complete, builds green, and is covered by 120+ tests
+(113 unit/slice + 7 integration; 98%+ instruction / 90%+ branch). Flyway migrations have
 landed: every environment, local development included, now runs the same migrated
-schema. The React frontend and the Selenium/Cucumber E2E layer are not started yet.
+schema. Core service and controller layers are 100% instruction-covered. The React 
+frontend and the Selenium/Cucumber E2E layer are not started yet.
 
 ## Quick start
 
@@ -165,6 +166,16 @@ that forgets to set them fails to start instead of booting on a signing key that
 public in this repository. The failure is a placeholder-resolution error naming the
 variable, at startup, before the first request.
 
+## Data integrity
+
+**Brand field is normalized to Title Case.** Historical imports mixed inconsistent
+casing for the same manufacturer (e.g., `HONDA` and `Honda` as separate rows), breaking
+catalogue filters and grouping. Migration `V4` normalizes all uppercase names to Title
+Case (`initcap(lower(brand))`), while preserving recognized acronyms (`BMW`, `KTM`,
+`TVS`, `BRP`, `SWM`, `FYM`, `MRX`, `MVK`, `SBM`, `NIU`, `UM`) and correcting names with
+embedded acronyms (`MV Agusta`, `CFMoto`). All 7009 affected rows were consolidated on
+first run; the migration is idempotent.
+
 ## Testing
 
 ```bash
@@ -172,21 +183,28 @@ mvn test      # unit + slice tests
 mvn verify    # + failsafe (*IT) + JaCoCo report at target/site/jacoco/index.html
 ```
 
-| Layer | Tool | What it proves |
-|---|---|---|
-| `service/` | JUnit 5 + Mockito | Business rules in isolation: slug derivation, winner selection, null handling |
-| `repository/` | `@DataJpaTest` + H2 | That entity graphs, criteria joins and JPQL actually compile and return the right rows |
-| migrations | `SchemaMigrationIT` + Testcontainers | That the migrations and the entities describe the same database — boots on real PostgreSQL 16 with `ddl-auto: validate` |
-| `controller/` | `@WebMvcTest` + MockMvc | HTTP contract: routing, binding, validation, status mapping |
-| `controller/` | `@SpringBootTest` | Full pass through the real filter chain: 401 vs 403, admin round trip |
+Core layers reach 100% instruction coverage:
+- `MotorcycleService` — 36 tests covering slug derivation, concurrent races, image handling, 
+  null branches, and specification merging
+- `MotorcycleController` — 25+ tests covering all 10 endpoints, binding, validation, status 
+  codes, and error cases
 
-Tests use H2 in PostgreSQL mode via `src/test/resources/application.yml`, which shadows
-the main config on the test classpath. Flyway is **off** there: H2 cannot parse the
-functional (`lower(brand)`) and GIN trigram indexes, so the slice tests build the schema
-from the entities. `SchemaMigrationIT` closes that gap — it runs in the failsafe (`*IT`)
-phase, starts `postgres:16-alpine` via Testcontainers, runs the real migrations and boots
-the application with `ddl-auto: validate`, so entity/migration drift fails the build.
-It needs a running Docker daemon; `mvn test` alone does not.
+| Layer | Tool | What it proves | Coverage |
+|---|---|---|---|
+| `service/` | JUnit 5 + Mockito | Business rules in isolation: slug derivation, winner selection, null handling, specification merging | 99%+ instruction |
+| `repository/` | `@DataJpaTest` + H2 | That entity graphs, criteria joins and JPQL actually compile and return the right rows | 98%+ instruction |
+| migrations | `SchemaMigrationIT` + Testcontainers | That the migrations and the entities describe the same database — boots on real PostgreSQL 16 with `ddl-auto: validate` | 100% |
+| `controller/` | `@WebMvcTest` + MockMvc | HTTP contract: routing, binding, validation, status mapping | 100% instruction |
+| `controller/` | `@SpringBootTest` | Full pass through the real filter chain: 401 vs 403, admin round trip | — |
+
+Tests use H2 in PostgreSQL compatibility mode via `src/test/resources/application.yml`, which 
+shadows the main config on the test classpath. Flyway is **off** there: H2 cannot parse the 
+functional expressions (`lower(brand)`) and GIN trigram indexes, so the slice tests build the 
+schema from entities. `@DataJpaTest` covers entity graphs, Criteria queries, and JPQL logic 
+against a real relational engine. `SchemaMigrationIT` closes the database gap — it runs in the 
+failsafe (`*IT`) phase, starts `postgres:16-alpine` via Testcontainers, runs all real migrations, 
+and boots the application with `ddl-auto: validate`, so entity/migration divergence fails the 
+build. Requires a running Docker daemon; `mvn test` alone does not run integration tests.
 
 ## Configuration
 
@@ -218,7 +236,7 @@ Migrations live in three locations, on purpose:
 
 | Location | Contents | Applied in |
 |---|---|---|
-| `classpath:db/migration` | `V1` schema, `V3` optimistic-locking column | every profile |
+| `classpath:db/migration` | `V1` schema, `V3` optimistic-locking column, `V4` brand-casing normalization | every profile |
 | `classpath:db/search` | `V2` — `CREATE EXTENSION pg_trgm` and the trigram indexes | every profile |
 | `classpath:db/seed` | `R__dev_seed.sql` — 53 demo motorcycles | `dev` only |
 
@@ -254,6 +272,8 @@ These are deliberate iteration-1 boundaries, not oversights:
 
 - [x] REST API, data model, security, OpenAPI, CI
 - [x] Flyway migrations, `pg_trgm` search indexes, optimistic locking
+- [x] Comprehensive test coverage (100% instruction on core service/controller layers, 120+ tests)
+- [x] Data integrity: brand-casing normalization (V4 migration)
 - [ ] `User` entity, refresh tokens
 - [ ] Redis cache on comparison responses, rate limiting
 
