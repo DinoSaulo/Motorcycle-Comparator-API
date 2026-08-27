@@ -80,7 +80,20 @@ public class GlobalExceptionHandler {
      * fully-qualified class — the very leak {@code MotorcycleService.validateSort} exists to avoid.
      */
     private static String messageOf(FieldError error) {
-        return error.isBindingFailure() ? "Invalid value: " + error.getRejectedValue() : error.getDefaultMessage();
+        return error.isBindingFailure() ? "Invalid value: " + truncate(error.getRejectedValue()) : error.getDefaultMessage();
+    }
+
+    /** Longest value echoed back to a caller in an error body; see {@link #truncate}. */
+    private static final int MAX_ECHOED_VALUE_LENGTH = 200;
+
+    /**
+     * Renders a caller-supplied value for inclusion in an error body, capped at {@link #MAX_ECHOED_VALUE_LENGTH}:
+     * without a limit, an unbounded echo lets a caller choose how much of its own payload the server serialises
+     * back to it, which costs the server work for free and grows the response with attacker-controlled content.
+     */
+    private static String truncate(Object value) {
+        String text = String.valueOf(value);
+        return text.length() > MAX_ECHOED_VALUE_LENGTH ? text.substring(0, MAX_ECHOED_VALUE_LENGTH) + "..." : text;
     }
 
     /** A body Jackson could not parse. Its message quotes the payload and internal class names, so it stays in the log. */
@@ -138,10 +151,25 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).allow(allowed.toArray(HttpMethod[]::new)).body(body);
     }
 
-    /** Domain-level argument rules, e.g. "a comparison needs at least 2 motorcycles". */
+    /**
+     * Domain-level argument rules the application deliberately writes for the caller, e.g. "a comparison needs at
+     * least 2 motorcycles". A dedicated type, not a plain {@link IllegalArgumentException}: only code that has
+     * chosen this exception on purpose gets its message forwarded verbatim.
+     */
+    @ExceptionHandler(DomainValidationException.class)
+    public ResponseEntity<ApiError> handleDomainValidation(DomainValidationException ex, HttpServletRequest request) {
+        return build(HttpStatus.BAD_REQUEST, ex.getMessage(), request);
+    }
+
+    /**
+     * Any other {@link IllegalArgumentException}, e.g. one raised by a library on the call path rather than by
+     * domain code. Its message was never reviewed for a client audience — it might quote a file path or a
+     * configuration detail — so only a fixed, generic message leaves the server; the real one goes to the log.
+     */
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiError> handleIllegalArgument(IllegalArgumentException ex, HttpServletRequest request) {
-        return build(HttpStatus.BAD_REQUEST, ex.getMessage(), request);
+        log.warn("Illegal argument on {} {}: {}", request.getMethod(), request.getRequestURI(), ex.getMessage());
+        return build(HttpStatus.BAD_REQUEST, "The request contains an invalid value", request);
     }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
@@ -151,7 +179,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<ApiError> handleTypeMismatch(MethodArgumentTypeMismatchException ex, HttpServletRequest request) {
-        return build(HttpStatus.BAD_REQUEST, "Parameter '" + ex.getName() + "' has an invalid value: " + ex.getValue(), request);
+        return build(HttpStatus.BAD_REQUEST, "Parameter '" + ex.getName() + "' has an invalid value: " + truncate(ex.getValue()), request);
     }
 
     @ExceptionHandler(BadCredentialsException.class)

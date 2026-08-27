@@ -226,9 +226,21 @@ class GlobalExceptionHandlerTest {
     }
 
     @Test
-    @DisplayName("maps a domain rule violation to 400 with the rule's own message")
+    @DisplayName("a bare IllegalArgumentException never reaches the client verbatim, even when its own message looks harmless")
     void handlesIllegalArgument() {
+        // Deliberately NOT a DomainValidationException: this is exactly the "library on the call
+        // path" scenario handleIllegalArgument exists for, so even a plausible-looking message
+        // must not be forwarded — only handleDomainValidation is allowed to do that (see below).
         ResponseEntity<ApiError> response = handler.handleIllegalArgument(new IllegalArgumentException("A comparison needs at least 2 distinct motorcycles"), request);
+
+        assertUniform(response, HttpStatus.BAD_REQUEST, "The request contains an invalid value", PATH);
+    }
+
+    @Test
+    @DisplayName("a DomainValidationException, by contrast, is forwarded verbatim: the boundary is a type decision, not an accident")
+    void handlesDomainValidation() {
+        ResponseEntity<ApiError> response = handler.handleDomainValidation(
+                new DomainValidationException("A comparison needs at least 2 distinct motorcycles"), request);
 
         assertUniform(response, HttpStatus.BAD_REQUEST, "A comparison needs at least 2 distinct motorcycles", PATH);
     }
