@@ -26,6 +26,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter.ReferrerPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -76,6 +77,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PUBLIC_PATHS).permitAll()
                         .requestMatchers(HttpMethod.GET, PUBLIC_GET_PATHS).permitAll()
+                        // Spring Security's requestMatchers(GET, ...) does not imply HEAD the way an
+                        // MVC @GetMapping does, so a CDN/health-checker probing with HEAD needs it listed too.
+                        .requestMatchers(HttpMethod.HEAD, PUBLIC_GET_PATHS).permitAll()
                         // health/info above are public; every other actuator endpoint (metrics
                         // included) exposes operational detail an editor has no business reading.
                         .requestMatchers("/actuator/**").hasRole("ADMIN")
@@ -86,6 +90,15 @@ public class SecurityConfig {
                 .exceptionHandling(ex -> ex
                         .authenticationEntryPoint(this::writeUnauthorized)
                         .accessDeniedHandler(this::writeForbidden))
+                // 'self' rather than 'none': Swagger UI is served from this same origin and needs to load its
+                // own scripts/styles/images; style-src also needs 'unsafe-inline' for the CSS the bundled React
+                // app injects at runtime. No-referrer keeps an externally hosted imageUrl out of the Referer header.
+                .headers(headers -> headers
+                        .contentSecurityPolicy(csp -> csp.policyDirectives(
+                                "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
+                                        + "img-src 'self' data:; font-src 'self'; connect-src 'self'; "
+                                        + "frame-ancestors 'none'; base-uri 'none'; object-src 'none'"))
+                        .referrerPolicy(referrer -> referrer.policy(ReferrerPolicy.NO_REFERRER)))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

@@ -91,6 +91,13 @@ spring:
 
 server:
   port: ${SERVER_PORT:8080}
+  # This API is meant to sit behind a TLS-terminating reverse proxy/ingress. Without this, request.isSecure() is
+  # always false for a proxied request, so Spring Security's HSTS writer never emits Strict-Transport-Security, and
+  # the Location header POST /api/v1/motorcycles returns is built from the request's own (internal, http) scheme and
+  # host instead of the public https one — actively downgrading the client's follow-up request. Override to "none"
+  # in a deployment that is NOT behind a trusted proxy: trusting X-Forwarded-* when nothing strips it at the edge
+  # lets any client spoof its own scheme/host.
+  forward-headers-strategy: ${FORWARD_HEADERS_STRATEGY:framework}
   error:
     include-stacktrace: never
     include-message: never
@@ -107,6 +114,10 @@ management:
   endpoint:
     health:
       show-details: when-authorized
+      # Without this, "authorized" means any authenticated principal, including the non-admin editor account:
+      # /actuator/health is the one actuator endpoint SecurityConfig's PUBLIC_PATHS lets a non-admin reach at all,
+      # so this is what stops an editor from reading DB connectivity, disk space and component-level detail.
+      roles: ADMIN
 
 springdoc:
   api-docs:
@@ -130,6 +141,10 @@ app:
       # The business rule. spring.servlet.multipart above only stops the transfer earlier and cheaper.
       max-file-size: ${IMAGE_MAX_FILE_SIZE:5MB}
   security:
+    # Explicit opt-in for booting on the dev fallbacks below with no profile active at all; see
+    # DevDefaultsGuard. A deployment that forgets SPRING_PROFILES_ACTIVE must fail, not silently
+    # inherit the committed secret and admin123/editor123.
+    allow-dev-defaults: ${ALLOW_DEV_DEFAULTS:false}
     cors:
       allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173}
     jwt:
@@ -194,3 +209,12 @@ management:
   endpoint:
     health:
       show-details: never
+# The exact shape of the write endpoints and their validation rules (max sizes, additionalSpecs limits, etc.) is
+# reconnaissance a prod deployment should not publish, even though the catalogue reads are deliberately public.
+# Dev/local keeps the docs; with springdoc disabled, PUBLIC_PATHS' /v3/api-docs/** and /swagger-ui/** simply have
+# no handler left and fall through to a plain 404.
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false

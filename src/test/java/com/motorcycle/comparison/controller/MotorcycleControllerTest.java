@@ -11,6 +11,7 @@ import com.motorcycle.comparison.dto.response.ComparisonResponse.SpecRow;
 import com.motorcycle.comparison.dto.response.MotorcycleResponse;
 import com.motorcycle.comparison.entity.Category;
 import com.motorcycle.comparison.entity.Motorcycle;
+import com.motorcycle.comparison.exception.DomainValidationException;
 import com.motorcycle.comparison.exception.ResourceNotFoundException;
 import com.motorcycle.comparison.service.ComparisonService;
 import com.motorcycle.comparison.service.MotorcycleService;
@@ -185,11 +186,26 @@ class MotorcycleControllerTest {
     @Test
     @DisplayName("a domain rule violation becomes 400 with the rule's own message")
     void tooFewIdsBecomesBadRequest() throws Exception {
-        when(comparisonService.compare(any())).thenThrow(new IllegalArgumentException("A comparison needs at least 2 distinct motorcycles"));
+        when(comparisonService.compare(any())).thenThrow(new DomainValidationException("A comparison needs at least 2 distinct motorcycles"));
 
         mockMvc.perform(get("/api/v1/motorcycles/compare").param("ids", "1"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message").value("A comparison needs at least 2 distinct motorcycles"));
+    }
+
+    @Test
+    @DisplayName("an ids list past the controller's own hard cap is rejected before the service ever sees it")
+    void oversizedIdsListBecomesBadRequestBeforeReachingTheService() throws Exception {
+        StringBuilder ids = new StringBuilder("1");
+        for (int i = 2; i <= 101; i++) {
+            ids.append(',').append(i);
+        }
+
+        mockMvc.perform(get("/api/v1/motorcycles/compare").param("ids", ids.toString()))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status").value(400));
+
+        verify(comparisonService, never()).compare(any());
     }
 
     @Test
@@ -259,6 +275,20 @@ class MotorcycleControllerTest {
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.violations[?(@.field =~ /additionalSpecs.*/)]").exists());
+    }
+
+    @Test
+    @DisplayName("a javascript: imageUrl is a 400 naming the field, never reaching the service")
+    void malformedImageUrlSchemeBecomesBadRequest() throws Exception {
+        CreateMotorcycleRequest request = MotorcycleFixtures.createRequestWithImage("javascript:alert(1)");
+
+        mockMvc.perform(post("/api/v1/motorcycles")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.violations[?(@.field == 'imageUrl')]").exists());
+
+        verify(motorcycleService, never()).create(any());
     }
 
     @Test
@@ -458,7 +488,7 @@ class MotorcycleControllerTest {
     @DisplayName("a file the storage service rejects becomes 400 with its own message")
     void rejectedUploadBecomesBadRequest() throws Exception {
         when(motorcycleService.updateImage(eq(1L), any()))
-                .thenThrow(new IllegalArgumentException("File content does not match its declared type image/png"));
+                .thenThrow(new DomainValidationException("File content does not match its declared type image/png"));
 
         mockMvc.perform(multipart("/api/v1/motorcycles/1/image").file(imagePart()))
                 .andExpect(status().isBadRequest())

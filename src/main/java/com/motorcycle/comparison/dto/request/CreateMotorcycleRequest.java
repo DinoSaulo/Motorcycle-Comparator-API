@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
@@ -41,7 +42,11 @@ public record CreateMotorcycleRequest(
         @Schema(example = "10499.00")
         BigDecimal priceEur,
 
+        // Only the two shapes MotorcycleService actually honours: a curated external http(s):// URL, or this
+        // API's own host-relative upload path — never a javascript:/data: scheme reaching an anonymous reader.
         @Size(max = 512)
+        @Pattern(regexp = "^(https?://.+|/api/v1/images/motorcycles/.+)$",
+                message = "must be an http(s):// URL or a /api/v1/images/motorcycles/... path issued by this API")
         String imageUrl,
 
         @Size(max = 2000)

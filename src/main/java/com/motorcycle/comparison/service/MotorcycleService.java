@@ -7,6 +7,7 @@ import com.motorcycle.comparison.entity.Dimension;
 import com.motorcycle.comparison.entity.EngineSpecification;
 import com.motorcycle.comparison.entity.Motorcycle;
 import com.motorcycle.comparison.exception.ConstraintViolations;
+import com.motorcycle.comparison.exception.DomainValidationException;
 import com.motorcycle.comparison.exception.DuplicateResourceException;
 import com.motorcycle.comparison.exception.ResourceNotFoundException;
 import com.motorcycle.comparison.repository.MotorcycleRepository;
@@ -89,7 +90,7 @@ public class MotorcycleService {
     private static void validateSort(Sort sort) {
         sort.forEach(order -> {
             if (!SORTABLE_PROPERTIES.contains(order.getProperty())) {
-                throw new IllegalArgumentException("Cannot sort by '" + order.getProperty() + "'. Allowed fields: " + String.join(", ", SORTABLE_PROPERTIES));
+                throw new DomainValidationException("Cannot sort by '" + order.getProperty() + "'. Allowed fields: " + String.join(", ", SORTABLE_PROPERTIES));
             }
         });
     }

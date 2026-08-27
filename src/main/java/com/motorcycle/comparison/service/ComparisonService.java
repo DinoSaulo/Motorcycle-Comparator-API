@@ -7,6 +7,7 @@ import com.motorcycle.comparison.dto.response.MotorcycleResponse;
 import com.motorcycle.comparison.entity.Dimension;
 import com.motorcycle.comparison.entity.EngineSpecification;
 import com.motorcycle.comparison.entity.Motorcycle;
+import com.motorcycle.comparison.exception.DomainValidationException;
 import com.motorcycle.comparison.exception.ResourceNotFoundException;
 import com.motorcycle.comparison.repository.MotorcycleRepository;
 import lombok.RequiredArgsConstructor;
@@ -76,10 +77,10 @@ public class ComparisonService {
 
     private void validateSize(List<Long> ids) {
         if (ids.size() < MIN_ITEMS) {
-            throw new IllegalArgumentException("A comparison needs at least " + MIN_ITEMS + " distinct motorcycles");
+            throw new DomainValidationException("A comparison needs at least " + MIN_ITEMS + " distinct motorcycles");
         }
         if (ids.size() > maxItems) {
-            throw new IllegalArgumentException("A comparison accepts at most " + maxItems + " motorcycles");
+            throw new DomainValidationException("A comparison accepts at most " + maxItems + " motorcycles");
         }
     }
 

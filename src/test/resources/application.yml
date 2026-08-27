@@ -71,6 +71,9 @@ app:
       location: ${java.io.tmpdir}/motorcycle-comparison-test-uploads
       max-file-size: 5MB
   security:
+    # This file activates no profile at all on the test classpath, so DevDefaultsGuard would otherwise
+    # refuse every @SpringBootTest; true here is honest, since concrete secrets follow below regardless.
+    allow-dev-defaults: true
     cors:
       allowed-origins: http://localhost:3000
     jwt:

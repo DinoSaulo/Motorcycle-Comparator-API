@@ -58,16 +58,48 @@ class SchemaMigrationIT {
                 "SELECT count(*) FROM flyway_schema_history WHERE success = true AND version IS NULL", Integer.class);
 
         assertThat(applied).containsExactly("1", "2", "3");
-        // R__dev_seed.sql and R__motorcycles_brazil_fipe_2026_08.sql.
-        assertThat(repeatables).isEqualTo(2);
+        // R__dev_seed.sql, R__motorcycles_brazil_fipe_2026_08.sql and R__motorcycles_honda_specs_2026_08.sql.
+        assertThat(repeatables).isEqualTo(3);
     }
 
     @Test
     @DisplayName("loads the dev seed")
     void loadsTheDevSeed() {
         // 53 curated dev-seed bikes plus the Brazil/FIPE 08/2026 snapshot; see R__motorcycles_brazil_fipe_2026_08.sql.
+        // The Honda specification import adds no rows: every model it carries is already one of these.
         assertThat(motorcycleRepository.count()).isEqualTo(8454);
         assertThat(motorcycleRepository.findWithSpecificationsBySlug("yamaha-mt-09-2024")).isPresent();
+    }
+
+    @Test
+    @DisplayName("the Honda import fills the specification blocks the FIPE seed leaves empty")
+    void loadsTheHondaSpecifications() {
+        // The FIPE snapshot carries price and model only, so before this import every Honda row had a
+        // near-empty engine block and no dimension row at all. Asserting on one known model keeps the
+        // check readable; the counts below are what stops a silently truncated import passing.
+        Motorcycle hornet = motorcycleRepository.findWithSpecificationsBySlug("honda-cb-600f-hornet-2005").orElseThrow();
+
+        assertThat(hornet.getFrontTyre()).isEqualTo("130/70ZR16 (61W) (Michelin Bridgestone)");
+        assertThat(hornet.getEngine().getDisplacementCc()).isEqualTo(599);
+        assertThat(hornet.getEngine().getGears()).isEqualTo(6);
+        // 97.5 hp read from "97.5 hp / 71.1 kW @ 12000 rpm"; the parser prefers the hp figure over the kW one.
+        assertThat(hornet.getEngine().getMaxPowerHp()).isEqualByComparingTo("97.5");
+        assertThat(hornet.getDimension().getKerbWeightKg()).isEqualByComparingTo("198.0");
+
+        Integer hondaWithDimensions = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'honda' AND dimension_id IS NOT NULL", Integer.class);
+        assertThat(hondaWithDimensions).isEqualTo(898);
+    }
+
+    @Test
+    @DisplayName("no imported figure violates the weight CHECK the source data would otherwise trip")
+    void importedWeightsRespectTheDryBelowKerbCheck() {
+        // 70 source rows publish a dry weight above their own kerb weight (the CG 125 is listed at
+        // 114 kg dry against 100 kg wet). The import drops the dry figure rather than the whole row,
+        // so a regenerated seed that stopped doing that would fail here instead of at COMMIT.
+        Integer impossible = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM dimensions WHERE dry_weight_kg > kerb_weight_kg", Integer.class);
+        assertThat(impossible).isZero();
     }
 
     @Test

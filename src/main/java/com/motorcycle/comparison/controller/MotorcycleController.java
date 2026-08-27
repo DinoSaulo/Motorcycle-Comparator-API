@@ -5,6 +5,7 @@ import com.motorcycle.comparison.dto.request.MotorcycleFilter;
 import com.motorcycle.comparison.dto.response.ApiError;
 import com.motorcycle.comparison.dto.response.ComparisonResponse;
 import com.motorcycle.comparison.dto.response.MotorcycleResponse;
+import com.motorcycle.comparison.exception.DomainValidationException;
 import com.motorcycle.comparison.service.ComparisonService;
 import com.motorcycle.comparison.service.MotorcycleService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -51,6 +52,14 @@ import java.util.List;
 @Tag(name = "Motorcycles", description = "Browse and administer the motorcycle catalogue")
 public class MotorcycleController {
 
+    /**
+     * A resource guard, not the business rule: generous on purpose so it never fires for a genuine caller, since
+     * {@link ComparisonService#compare} already rejects anything past {@code app.comparison.max-items} (4). This
+     * only stops an anonymous caller from making the server bind and de-duplicate an arbitrarily long id list
+     * before that authoritative check ever runs.
+     */
+    private static final int MAX_COMPARE_IDS = 100;
+
     private final MotorcycleService motorcycleService;
     private final ComparisonService comparisonService;
 
@@ -79,6 +88,11 @@ public class MotorcycleController {
     public ComparisonResponse compare(
             @Parameter(description = "Motorcycle ids, in the order the columns should appear", example = "1,2,3")
             @RequestParam("ids") List<Long> ids) {
+        // Rejected here, before de-duplication builds a Set out of it: an unbounded list is cheap for an
+        // anonymous caller to send and is otherwise fully bound and hashed before validateSize sees it.
+        if (ids.size() > MAX_COMPARE_IDS) {
+            throw new DomainValidationException("A comparison request accepts at most " + MAX_COMPARE_IDS + " ids");
+        }
         return comparisonService.compare(ids);
     }
 

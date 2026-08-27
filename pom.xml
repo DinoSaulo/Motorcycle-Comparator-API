@@ -143,6 +143,11 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <!-- Gives a plain "mvn spring-boot:run" a genuinely active profile, so DevDefaultsGuard
+                         sees it and does not mistake local development for a forgotten SPRING_PROFILES_ACTIVE. -->
+                    <profiles>
+                        <profile>dev</profile>
+                    </profiles>
                 </configuration>
             </plugin>
 

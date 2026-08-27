@@ -1,5 +1,6 @@
 package com.motorcycle.comparison.service;
 
+import com.motorcycle.comparison.exception.DomainValidationException;
 import com.motorcycle.comparison.exception.FileStorageException;
 import com.motorcycle.comparison.exception.ResourceNotFoundException;
 import lombok.extern.slf4j.Slf4j;
@@ -57,10 +58,10 @@ public class FileStorageServiceImpl implements FileStorageService {
     @Override
     public String storeFile(MultipartFile file) {
         if (file == null || file.isEmpty()) {
-            throw new IllegalArgumentException("An image file is required and cannot be empty");
+            throw new DomainValidationException("An image file is required and cannot be empty");
         }
         if (file.getSize() > maxFileSize.toBytes()) {
-            throw new IllegalArgumentException("Image exceeds the maximum size of " + describe(maxFileSize));
+            throw new DomainValidationException("Image exceeds the maximum size of " + describe(maxFileSize));
         }
 
         ImageFormat format = resolveFormat(file);
@@ -131,12 +132,12 @@ public class FileStorageServiceImpl implements FileStorageService {
 
     private ImageFormat resolveFormat(MultipartFile file) {
         ImageFormat declared = ImageFormat.ofContentType(file.getContentType())
-                .orElseThrow(() -> new IllegalArgumentException("Unsupported image type " + file.getContentType() + ". Supported types: " + ImageFormat.supportedContentTypes()));
+                .orElseThrow(() -> new DomainValidationException("Unsupported image type " + file.getContentType() + ". Supported types: " + ImageFormat.supportedContentTypes()));
 
         // The declared content type is just another client-supplied header: confirm the bytes agree before
         // committing a name and an extension that the serving endpoint will later trust.
         if (!declared.signature.test(readSignature(file))) {
-            throw new IllegalArgumentException("File content does not match its declared type " + declared.contentType);
+            throw new DomainValidationException("File content does not match its declared type " + declared.contentType);
         }
         return declared;
     }
