@@ -24,12 +24,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * Asserts what Spring Security actually emits on this filter chain: the framework's own default hardening headers,
- * plus the {@code Content-Security-Policy} and {@code Referrer-Policy} {@code SecurityConfig} now adds explicitly.
- * The CSP is {@code 'self'}-based rather than {@code 'none'} specifically so Swagger UI, served from this same
- * origin, keeps working — see {@code swaggerUiCspDoesNotForbidItsOwnAssets} below.
- */
+/** Asserts what Spring Security actually emits on this filter chain: its own default hardening headers plus the explicit
+ *  {@code Content-Security-Policy} and {@code Referrer-Policy}. The CSP is {@code 'self'}-based so Swagger UI keeps working. */
 @SpringBootTest
 @AutoConfigureMockMvc
 @DisplayName("Security headers")
@@ -96,9 +92,8 @@ class SecurityHeadersTest {
     @DisplayName("the image endpoint's long Cache-Control override replaces the default, but does not " +
             "strip nosniff or the frame-denial header — that override is scoped to Cache-Control alone")
     void imageCacheControlOverrideDoesNotDisableOtherHardeningHeaders() throws Exception {
-        // An unknown name still passes through the same header-writing filter chain as a real
-        // image would; only the status differs, and ImageController never reaches its own
-        // .cacheControl(...) call on a 404, so this proves the *default* header survives regardless.
+        // An unknown name still passes through the same header-writing filter chain as a real image; only the status differs,
+        // and ImageController never reaches its own .cacheControl(...) call on a 404, so the *default* header survives.
         mockMvc.perform(get("/api/v1/images/motorcycles/00000000-0000-0000-0000-000000000000.png"))
                 .andExpect(status().isNotFound())
                 .andExpect(header().string("X-Content-Type-Options", "nosniff"))
@@ -122,16 +117,8 @@ class SecurityHeadersTest {
                 .contains("max-age=31536000").contains("immutable").doesNotContain("no-store");
     }
 
-    /**
-     * {@code style-src 'self' 'unsafe-inline'} is a deliberate, narrow concession for Swagger UI's runtime-injected
-     * CSS (see the class javadoc and {@link #swaggerUiCspDoesNotForbidItsOwnAssets}). This test is the tripwire
-     * that the concession stops there: {@code script-src} carries no such loosening. Isolating the {@code
-     * script-src} directive's own value (rather than searching the whole policy string) matters because {@code
-     * 'unsafe-inline'} legitimately appears elsewhere, under {@code style-src} — a whole-string
-     * {@code doesNotContain("'unsafe-inline'")} would be a false failure today and a false pass tomorrow if a
-     * future edit ever renamed the directives around. A future change that widens {@code script-src} becomes a
-     * failing assertion here instead of a silent regression.
-     */
+    /** {@code style-src 'unsafe-inline'} is a deliberate, narrow concession for Swagger UI's runtime CSS; this is the tripwire
+     *  that {@code script-src} carries none. Isolating that directive avoids a false pass from the loosening under style-src. */
     @Test
     @DisplayName("CSP's script-src stays 'self' with no unsafe-eval/unsafe-inline, and the fixed hardening directives survive")
     void cspScriptSrcConcessionStopsAtStyleSrc() throws Exception {
@@ -145,34 +132,15 @@ class SecurityHeadersTest {
         assertThat(csp).contains("object-src 'none'").contains("base-uri 'none'").contains("frame-ancestors 'none'");
     }
 
-    /**
-     * {@code server.forward-headers-strategy=framework} in the real {@code application.yml} registers Spring's
-     * {@link org.springframework.web.filter.ForwardedHeaderFilter}, without which {@code request.isSecure()} is
-     * always {@code false} behind a TLS-terminating proxy — silencing HSTS and downgrading the {@code Location}
-     * header a create returns to an internal, {@code http}, {@code localhost} URL.
-     *
-     * <p><b>Why the property is supplied explicitly here:</b> {@code src/test/resources/application.yml} never sets
-     * {@code server.forward-headers-strategy} at all (unlike most other keys, it is not even present to be
-     * overridden), so on the shared test classpath it silently falls back to Spring Boot's own default
-     * ({@code none}) and the filter is never registered — confirmed empirically: with no override, no
-     * {@code ForwardedHeaderFilter}/{@code FilterRegistrationBean} of that type exists in the context at all, and
-     * neither the HSTS header nor the forwarded {@code Location} ever appear, regardless of the request headers
-     * sent. The {@code @TestPropertySource} below forks a dedicated context that actually registers it, the same
-     * technique (and the same underlying gap in the test classpath's {@code application.yml}) as
-     * {@code AuthorizationMatrixTest.HealthDetailVisibility}. Once registered, {@code MockMvc}'s
-     * {@code webAppContextSetup} picks it up on its own — Boot unwraps {@code FilterRegistrationBean}s into the
-     * {@code MockMvc} filter chain automatically, so no manual filter registration was needed here (verified
-     * empirically before writing the assertions below).
-     */
+    /** {@code server.forward-headers-strategy=framework} registers {@code ForwardedHeaderFilter}, without which
+     *  {@code isSecure()} is false behind a proxy. Supplied here because the test yml never sets it and Boot defaults to none. */
     @Nested
     @DisplayName("forwarded-header handling behind a TLS-terminating proxy (server.forward-headers-strategy=framework, supplied explicitly)")
     @TestPropertySource(properties = "server.forward-headers-strategy=framework")
     class ForwardedHeaderHandling {
 
-        // Shadows the outer field for the same reason as AuthorizationMatrixTest.HealthDetailVisibility's own
-        // shadowed mockMvc: a @Nested class has no Java-level inheritance from its enclosing class, so Spring
-        // re-injects fields only where they are declared. Reusing the outer mockMvc here would silently exercise
-        // the outer, un-overridden context, where the property above never took effect.
+        // Shadows the outer field for the same reason as AuthorizationMatrixTest.HealthDetailVisibility: a @Nested class has
+        // no Java-level inheritance from its enclosing class, so reusing the outer mockMvc exercises the un-overridden context.
         @Autowired
         private MockMvc mockMvc;
 

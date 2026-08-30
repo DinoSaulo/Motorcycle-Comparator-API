@@ -18,10 +18,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Issues and validates the bearer tokens used by the API. Stateless by design: the token carries username and
- * authorities so no request costs a session lookup — the trade-off is it cannot be revoked before it expires, hence the short TTL.
- */
+/** Issues and validates the bearer tokens used by the API. Stateless by design: the token carries username and authorities
+ *  so no request costs a session lookup; the trade-off is it cannot be revoked before it expires, hence the short TTL. */
 @Service
 @Slf4j
 public class JwtService {
@@ -68,10 +66,8 @@ public class JwtService {
         return ttl;
     }
 
-    /**
-     * @return the token claims, or empty when the token is malformed, unsigned by
-     *         us, or expired — the filter treats all three the same way
-     */
+    /** @return the token claims, or empty when the token is malformed, unsigned by
+     *          us, or expired: the filter treats all three the same way */
     public Optional<Claims> parse(String token) {
         try {
             return Optional.of(Jwts.parser()

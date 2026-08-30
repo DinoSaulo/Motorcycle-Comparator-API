@@ -17,12 +17,8 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Pure bean-validation tests: no Spring context, just {@link Validator} against the boundary values the
- * annotations encode as business decisions (1885 as the earliest model year, a strictly positive price, the
- * additional-specs bounds that mirror {@code motorcycle_additional_specs}). The HTTP-level equivalents in
- * {@code MotorcycleControllerTest} check that a violation becomes a 400; these check exactly where the line is.
- */
+/** Pure bean-validation tests: no Spring context, just {@link Validator} against the boundary values the annotations
+ *  encode (1885, a strictly positive price, the {@code motorcycle_additional_specs} bounds); the 400 is checked elsewhere. */
 @DisplayName("CreateMotorcycleRequest validation")
 class CreateMotorcycleRequestValidationTest {
 

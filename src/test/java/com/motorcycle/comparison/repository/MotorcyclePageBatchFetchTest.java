@@ -17,13 +17,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * {@code engine} and {@code dimension} are {@code FetchType.LAZY}, and the paginated search path — unlike
- * {@code findWithSpecificationsById} — has no {@code @EntityGraph}. Without {@code default_batch_fetch_size: 32}
- * (application.yml), mapping a page of N motorcycles to {@link MotorcycleResponse} would fire 2N extra selects,
- * one lazy load at a time. This proves the batch setting actually catches it, not just that it is present in a
- * config file nobody re-reads once it works.
- */
+/** {@code engine} and {@code dimension} are LAZY and the paginated search path has no {@code @EntityGraph}, so without
+ *  {@code default_batch_fetch_size: 32} mapping a page of N to {@link MotorcycleResponse} fires 2N extra selects. */
 // showSql = false: @DataJpaTest defaults spring.jpa.show-sql to true regardless of application.yml.
 @DataJpaTest(showSql = false, properties = "spring.jpa.properties.hibernate.generate_statistics=true")
 @DisplayName("Catalogue page fetch")

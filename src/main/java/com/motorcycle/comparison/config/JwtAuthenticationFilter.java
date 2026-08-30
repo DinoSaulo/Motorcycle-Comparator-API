@@ -19,10 +19,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Populates the security context from a {@code Authorization: Bearer <jwt>} header.
- * An absent or invalid token is not an error here — it just leaves the context empty and lets the authorization rules decide.
- */
+/** Populates the security context from an {@code Authorization: Bearer <jwt>} header. An absent or
+ *  invalid token is not an error: it leaves the context empty and lets the authorization rules decide. */
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {

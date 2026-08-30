@@ -27,14 +27,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * The method x path x role matrix through the real filter chain: for every combination this asserts the exact
- * status (never a softer or harsher one) and, where relevant, that the body is still the uniform {@code ApiError}
- * shape. {@code MotorcycleApiSecurityTest} already proves the representative happy/sad paths for the "normal" verbs;
- * this class adds the corners it does not touch — actuator exposure beyond {@code /metrics}, an unmapped verb
- * (PATCH) both before and after authentication, the documentation endpoints as plain HTTP, not just as JSON, and
- * HEAD on the public catalogue, which {@code SecurityConfig} now permits alongside GET.
- */
+/** The method x path x role matrix through the real filter chain, asserting the exact status (never a softer or harsher
+ *  one) and the uniform {@code ApiError} shape. Adds the corners {@code MotorcycleApiSecurityTest} misses: actuator, PATCH, HEAD. */
 @SpringBootTest
 @AutoConfigureMockMvc
 @DisplayName("Authorization matrix")
@@ -192,23 +186,8 @@ class AuthorizationMatrixTest {
         }
     }
 
-    /**
-     * {@code /actuator/health} is the one actuator path {@code SecurityConfig.PUBLIC_PATHS} lets a non-admin reach
-     * at all, so {@code management.endpoint.health.show-details}/{@code roles} in the real
-     * {@code application.yml} are the only thing standing between an anonymous or editor caller and DB
-     * connectivity/disk-space/component-level detail.
-     *
-     * <p><b>Why the properties are supplied explicitly below, not just inherited from the shared context:</b>
-     * {@code src/test/resources/application.yml} overrides {@code management.endpoints.web.exposure.include} but
-     * never sets {@code management.endpoint.health.show-details} or {@code management.endpoint.health.roles} at
-     * all — and since that file fully shadows the real one on the test classpath rather than merging with it (see
-     * its own header comment, and {@code SecretsAndProfileTest}'s javadoc for the same point), the shared
-     * {@code @SpringBootTest} context the rest of this class uses actually runs on Boot's own default for
-     * {@code show-details} ({@code never}), which would make every case below identical and prove nothing. The
-     * {@code @TestPropertySource} below forks a dedicated cached context carrying the two properties the real
-     * {@code application.yml} ships, so this nested class is the one place in the suite that genuinely exercises
-     * that configuration rather than the test classpath's stand-in for it.
-     */
+    /** {@code /actuator/health} is the one actuator path a non-admin can reach, so {@code show-details}/{@code roles} are
+     *  all that hide DB and component detail. Supplied explicitly below: the test yml shadows the real one and never sets them. */
     @Nested
     @DisplayName("actuator health detail visibility (management.endpoint.health.show-details/roles from the real application.yml, supplied explicitly)")
     @org.springframework.test.context.TestPropertySource(properties = {
@@ -217,16 +196,8 @@ class AuthorizationMatrixTest {
     })
     class HealthDetailVisibility {
 
-        /**
-         * Deliberately shadows the outer {@code mockMvc} field rather than reusing it: a {@code @Nested} class has
-         * no Java-level inheritance relationship with its enclosing class, so Spring re-injects fields only where
-         * they are declared. The outer {@code mockMvc} field is wired exactly once, against the outer (shared,
-         * un-overridden) context; every nested test method that referenced it — even from inside a nested class
-         * carrying its own {@code @TestPropertySource} — would silently exercise the WRONG context and the
-         * {@code show-details}/{@code roles} override above would never take effect. Re-declaring the field here
-         * forces Spring to autowire it against this nested class's own (correctly forked) context instead. Verified
-         * empirically: without this shadowing, the admin case below still saw no component detail.
-         */
+        /** Deliberately shadows the outer {@code mockMvc}: a {@code @Nested} class has no Java-level inheritance from its
+         *  enclosing class, so Spring re-injects only where declared and the outer field carries the un-overridden context. */
         @Autowired
         private MockMvc mockMvc;
 

@@ -19,10 +19,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-/**
- * Thin as the class itself: the only behaviour worth locking in is that it delegates to
- * {@code saveAndFlush} — never plain {@code save} — and neither swallows nor wraps what comes back.
- */
+/** Thin as the class itself: the only behaviour worth locking in is that it delegates to
+ *  {@code saveAndFlush}, never plain {@code save}, and neither swallows nor wraps what comes back. */
 @ExtendWith(MockitoExtension.class)
 @DisplayName("MotorcycleWriter")
 class MotorcycleWriterTest {

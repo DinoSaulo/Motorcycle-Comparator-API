@@ -11,10 +11,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * {@link JpaSpecificationExecutor} powers the catalogue filters: the facets a comparison site offers (brand,
- * category, displacement range, price range, free text) combine arbitrarily, and a derived query per combination would not scale.
- */
+/** {@link JpaSpecificationExecutor} powers the catalogue filters: the facets a comparison site offers (brand, category,
+ *  displacement range, price range, free text) combine arbitrarily, and a derived query per combination would not scale. */
 @Repository
 public interface MotorcycleRepository extends JpaRepository<Motorcycle, Long>, JpaSpecificationExecutor<Motorcycle> {
 

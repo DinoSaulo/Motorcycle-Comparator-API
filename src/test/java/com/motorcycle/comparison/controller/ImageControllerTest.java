@@ -26,11 +26,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * The serving contract: the content type is derived from the extension, the response is cacheable forever, and a name
- * the storage service never issued is a 404 in the uniform error shape. Anonymous access is proven by
- * {@link MotorcycleApiSecurityTest}, which runs the real filter chain.
- */
+/** The serving contract: content type derived from the extension, cacheable forever, and a name the storage service
+ *  never issued is a 404 in the uniform error shape. Anonymous access is proven by {@link MotorcycleApiSecurityTest}. */
 @WebMvcTest(controllers = ImageController.class,
         excludeFilters = @ComponentScan.Filter(
                 type = FilterType.ASSIGNABLE_TYPE,

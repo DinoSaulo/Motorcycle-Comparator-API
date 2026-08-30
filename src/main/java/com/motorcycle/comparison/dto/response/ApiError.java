@@ -6,9 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.Instant;
 import java.util.List;
 
-/**
- * One error shape for the whole API, so clients only ever write one handler.
- */
+/** One error shape for the whole API, so clients only ever write one handler. */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Schema(description = "Uniform error payload")
 public record ApiError(

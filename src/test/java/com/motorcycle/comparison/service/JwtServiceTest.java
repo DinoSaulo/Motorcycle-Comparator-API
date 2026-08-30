@@ -19,10 +19,8 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-/**
- * The token is the only thing standing between an anonymous caller and the admin endpoints, so every way one can be
- * wrong — foreign signature, wrong issuer, expired, truncated — has to end as an empty Optional, never as an identity.
- */
+/** The token is the only thing standing between an anonymous caller and the admin endpoints, so every way one can be
+ *  wrong (foreign signature, wrong issuer, expired, truncated) has to end as an empty Optional, never an identity. */
 @DisplayName("JwtService")
 class JwtServiceTest {
 

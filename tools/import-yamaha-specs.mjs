@@ -1,17 +1,6 @@
 #!/usr/bin/env node
-// Regenerates src/main/resources/db/seed/R__motorcycles_yamaha_specs_2026_08.sql from the
-// zontes-scraper Yamaha snapshot, and materialises the images that seed points at.
-//
-// Two outputs, one run, because they have to agree: the SQL stores an image URL whose file name
-// is derived from the motorcycle slug, and the copy step writes exactly those names. Re-running
-// on another machine reproduces both byte-for-byte.
-//
-//   node tools/import-yamaha-specs.mjs [--source <dir>] [--sql-only] [--images-only]
-//
-// --source defaults to ../zontes-scraper relative to the repository root.
-//
-// Nothing here estimates. A figure the sources never published stays NULL, and a parsed figure
-// outside the plausible range for its column is dropped rather than stored.
+// Regenerates db/seed/R__motorcycles_yamaha_specs_2026_08.sql from the zontes-scraper Yamaha snapshot plus the images it
+// points at, reproducibly; nothing is estimated. Usage: node <this> [--source <dir, default ../zontes-scraper>] [--sql-only|--images-only]
 
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
@@ -38,9 +27,7 @@ const doSql = !flag('--images-only');
 const doImages = !flag('--sql-only');
 
 // --- number parsing -----------------------------------------------------------------------
-// The sources mix Portuguese and English conventions in the same file ("68,9 cv" next to
-// "84.6 kW", "13.500 RPM" next to "10000 rpm"), so a separator is read from its own shape:
-// exactly three trailing digits means a thousands group, anything else means a decimal point.
+// Sources mix PT and EN conventions ("68,9 cv" next to "84.6 kW"), so a separator is read from its own shape: exactly three trailing digits is a thousands group.
 function toNumber(token) {
     if (token == null) return null;
     let t = String(token).trim();
@@ -60,10 +47,8 @@ function toNumber(token) {
     return Number.isFinite(n) ? n : null;
 }
 
-// A handful of source strings space out their digits: "1 135.3 mm" is the SI thousands separator and
-// means 1135.3, but "2 40 kg" and "@ 4 75 0 rpm" are simply garbled. The first is repaired, and the
-// second is then refused by NUMBER_START below rather than read as 40 kg and 0 rpm — a plausibility
-// bound cannot catch a wrong figure that happens to land inside the range.
+// Some sources space out digits: "1 135.3 mm" is an SI thousands separator meaning 1135.3, but "2 40 kg" is garbled.
+// The first is repaired; the second is refused by NUMBER_START rather than read as 40 kg, which no bound would catch.
 const MALFORMED = { count: 0 };
 const repairDigitGroups = (text) => String(text).replace(/(\d) (\d{3})(?!\d)/g, '$1$2');
 
@@ -234,9 +219,8 @@ const emissionOf = (extra) => {
     return raw ? EMISSION_ALIASES[raw.toUpperCase().replace(/\s+/g, '')] || raw : null;
 };
 
-// The catalogue enum has no Street/Trail/Racing member, and the source labels do not partition
-// cleanly onto it, so this only ever feeds the (currently empty) insert path for a slug the
-// catalogue does not already hold. Existing rows keep the category they were seeded with.
+// The catalogue enum has no Street/Trail/Racing member and the source labels do not partition onto it, so this only
+// feeds the (currently empty) insert path for a slug the catalogue lacks. Existing rows keep the category they were seeded with.
 const CATEGORY_BY_SOURCE_LABEL = {
     naked: 'NAKED', street: 'NAKED', 'naked / street': 'NAKED', 'street / sport': 'NAKED',
     sport: 'SPORT', esportiva: 'SPORT', racing: 'SPORT',
@@ -245,10 +229,7 @@ const CATEGORY_BY_SOURCE_LABEL = {
 };
 
 // --- long-tail specs ----------------------------------------------------------------------
-// Deliberately a curated subset, and deliberately the same key names the Honda import uses, so a
-// side-by-side comparison of a Yamaha and a Honda lines its long-tail rows up instead of doubling
-// them. Ratios, reduction gears, braking-distance tests and the scraper's own bookkeeping are
-// dropped: they are not rider-facing catalogue facts.
+// A curated subset under the same key names the Honda import uses, so a side-by-side comparison lines up instead of doubling; ratios and bookkeeping are dropped.
 const TOP_LEVEL_SPEC_KEYS = [
     'Pressão do Pneu Dianteiro', 'Pressão do Pneu Traseiro', 'Iluminação', 'Painel', 'Marcha Lenta',
     'Sistema de Partida', 'Sistema de Chave de Ignição', 'Modos de Condução', 'Rodas', 'Tomada USB',
@@ -297,8 +278,7 @@ function longTailSpecs(moto) {
 }
 
 // --- image naming -------------------------------------------------------------------------
-// A UUID v5 over the slug: the file name the seed stores has to be reproducible on any machine,
-// and FileStorageServiceImpl only reads names matching UUID + jpg/png/webp.
+// A UUID v5 over the slug: reproducible on any machine, and FileStorageServiceImpl only reads UUID + jpg/png/webp.
 const UUID_NAMESPACE = Buffer.from('6ba7b8119dad11d180b400c04fd430c8', 'hex');
 
 function uuidV5(name) {
@@ -310,11 +290,8 @@ function uuidV5(name) {
     return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }
 
-/**
- * One stored copy per motorcycle, even where several model-years share a source photo. The app
- * treats the file as owned by the row — deleting a motorcycle or clearing its image deletes the
- * file — so a shared name would blank the other rows' images.
- */
+/** One stored copy per motorcycle, even where several model-years share a source photo. The app treats the file as
+ *  owned by the row (deleting the row deletes the file), so a shared name would blank the other rows' images. */
 function imageFor(moto) {
     for (const relative of moto.imagens_locais || []) {
         const absolute = path.join(SOURCE_DIR, relative);

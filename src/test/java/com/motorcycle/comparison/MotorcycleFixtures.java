@@ -10,10 +10,8 @@ import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * Shared test data builders. Every factory returns a fully valid object; each test then mutates only the one
- * field it is actually about, keeping the intent of a test visible instead of buried in twenty lines of setup.
- */
+/** Shared test data builders. Every factory returns a fully valid object; each test then mutates only the one field
+ *  it is actually about, keeping the intent of a test visible instead of buried in twenty lines of setup. */
 public final class MotorcycleFixtures {
 
     private MotorcycleFixtures() {

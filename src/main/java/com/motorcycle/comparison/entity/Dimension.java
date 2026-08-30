@@ -14,10 +14,8 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
-/**
- * Physical envelope, mass and capacities. Every field is nullable, since manufacturers publish wildly different
- * subsets of these figures, and a missing value must render as "n/a" in the comparison table rather than a zero.
- */
+/** Physical envelope, mass and capacities. Every field is nullable, since manufacturers publish wildly different
+ *  subsets, and a missing value must render as "n/a" in the comparison table rather than a zero. */
 @Entity
 @Table(name = "dimensions")
 @Getter

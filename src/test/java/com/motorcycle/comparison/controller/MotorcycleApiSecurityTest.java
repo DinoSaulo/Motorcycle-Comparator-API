@@ -23,10 +23,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * End-to-end pass through the real filter chain, controllers, services and an in-memory database — the test that
- * would catch a security rule that only looks right in isolation, e.g. a blocked public path or an anonymous write.
- */
+/** End-to-end pass through the real filter chain, controllers, services and an in-memory database: the test that would
+ *  catch a security rule that only looks right in isolation, e.g. a blocked public path or an anonymous write. */
 @SpringBootTest
 @AutoConfigureMockMvc
 @DisplayName("Motorcycle API security")

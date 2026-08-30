@@ -23,13 +23,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * Black-box proof, one representative request per reachable status code, that no response body ever carries a stack
- * trace, an internal package name, a SQL fragment or a file-system path — only the uniform {@code ApiError} shape.
- * {@code GlobalExceptionHandlerTest} already proves this exhaustively at the unit level, including the 409 and 500
- * branches a pure black-box HTTP test cannot force without either a genuine race or an artificial fault; this class
- * complements it for every status an anonymous or authenticated HTTP call can actually reach today.
- */
+/** Black-box proof, one representative request per reachable status, that no body ever carries a stack trace, an internal
+ *  package name, a SQL fragment or a path. {@code GlobalExceptionHandlerTest} covers the 409/500 branches HTTP cannot force. */
 @SpringBootTest
 @AutoConfigureMockMvc
 @Import(ErrorDisclosureTest.LegacyLibraryFailureController.class)
@@ -130,18 +125,8 @@ class ErrorDisclosureTest {
                 .andExpect(jsonPath("$.path").value("/api/v1/motorcycles/999999999"));
     }
 
-    /**
-     * Every real production throw site now raises {@code DomainValidationException}, not a bare
-     * {@link IllegalArgumentException} — so, as of this fix, there is no longer a genuine controller/service code
-     * path left in this application that reaches {@code handleIllegalArgument} through an HTTP call (deliberately
-     * verified by hand against every remaining {@code throw new IllegalArgumentException} in {@code src/main}: there
-     * are none outside {@code JwtService}, which catches its own). That is the fix working, not a gap in this test.
-     * {@link LegacyLibraryFailureController} exists only to still exercise the handler end to end, through the real
-     * filter chain and dispatcher rather than by calling the method directly the way
-     * {@code GlobalExceptionHandlerTest} does: it stands in for "a library on the call path" the handler's own
-     * javadoc names as the scenario it defends against, proving the allow-list boundary holds application-wide for
-     * code that does not exist yet, not merely for the specific call sites this audit happened to review.
-     */
+    /** No production throw site reaches {@code handleIllegalArgument} any more: every one was converted to
+     *  {@code DomainValidationException}. {@link LegacyLibraryFailureController} keeps the handler exercised end to end. */
     @Test
     @DisplayName("an unreviewed IllegalArgumentException from anywhere in the app is generic and clean, even through the real dispatch path")
     void unreviewedIllegalArgumentIsGenericThroughRealDispatch() throws Exception {
@@ -154,14 +139,8 @@ class ErrorDisclosureTest {
                 .andReturn());
     }
 
-    /**
-     * {@code GlobalExceptionHandler} truncates any caller-supplied value it echoes into an error body: without a
-     * limit, a caller decides how much of its own payload the server serialises back to it, which is free work for
-     * the server and a response that grows with attacker-controlled content. Truncation is applied in two places —
-     * {@code handleTypeMismatch}'s raw echo of {@code ex.getValue()}, and {@code messageOf(FieldError)}'s "Invalid
-     * value: " prefix — and both are exercised here through a query parameter, since that is the only place a
-     * binding failure is actually reachable in this API.
-     */
+    /** {@code GlobalExceptionHandler} truncates any caller-supplied value it echoes, so a caller cannot decide how much of
+     *  its own payload comes back. Both sites ({@code handleTypeMismatch} and {@code messageOf}) are exercised via query params. */
     @Nested
     @DisplayName("bounded echo of caller-supplied values")
     class BoundedEcho {
@@ -183,12 +162,8 @@ class ErrorDisclosureTest {
                     .hasSizeLessThan(300).endsWith("...");
         }
 
-        /**
-         * category/modelYear/etc. bind through {@code @ModelAttribute}, not {@code @RequestParam} directly, so a
-         * conversion failure here surfaces as a binding-failure {@link org.springframework.validation.FieldError}
-         * inside a {@code MethodArgumentNotValidException} — {@code messageOf(FieldError)}'s branch, not
-         * {@code handleTypeMismatch}'s.
-         */
+        /** category/modelYear/etc. bind through {@code @ModelAttribute}, so a conversion failure surfaces as a binding-failure
+         *  {@link org.springframework.validation.FieldError}: {@code messageOf}'s branch, not {@code handleTypeMismatch}'s. */
         @Test
         @DisplayName("a huge value for a non-String filter field (modelYear) is bounded via messageOf(FieldError)")
         void oversizedFilterFieldBindingFailureIsBounded() throws Exception {
@@ -203,21 +178,13 @@ class ErrorDisclosureTest {
                     .hasSizeLessThan(300).endsWith("...");
         }
 
-        /**
-         * Not reachable, and deliberately not faked: {@code RequestResponseBodyMethodProcessor} either deserialises
-         * a {@code @RequestBody} successfully via Jackson or fails the whole body at once with
-         * {@code HttpMessageNotReadableException} (handled separately, message never echoed) — unlike
-         * {@code @ModelAttribute}'s per-property {@link org.springframework.validation.WebDataBinder}, JSON body
-         * binding never produces a partial, per-field {@code isBindingFailure()} {@code FieldError}. The query-param
-         * case above is therefore the only route to {@code messageOf}'s binding-failure branch this API has.
-         */
+        /** Not reachable, and deliberately not faked: a {@code @RequestBody} either deserialises or fails wholesale with
+         *  {@code HttpMessageNotReadableException}, never a per-field {@code isBindingFailure()} {@code FieldError}. */
         @Test
         @DisplayName("documents why a @RequestBody binding failure cannot reach messageOf(FieldError) here")
         void requestBodyBindingFailureIsNotAReachableRouteToMessageOf() throws Exception {
-            // A JSON body whose modelYear cannot become an Integer fails Jackson's own deserialisation of the
-            // whole record before any BindingResult exists, so this is HttpMessageNotReadableException's fixed
-            // generic message, never messageOf(FieldError)'s "Invalid value: " echo — the negative control for
-            // the claim above. Authenticated as admin so the body actually gets parsed instead of denied at 401.
+            // A JSON body whose modelYear cannot become an Integer fails Jackson before any BindingResult exists, so this is
+            // HttpMessageNotReadableException's fixed message, the negative control. Admin so the body is parsed at all.
             String adminToken = login("admin", "admin123");
             String malformedJson = "{\"brand\":\"Yamaha\",\"model\":\"MT-09\",\"modelYear\":\"" + "9".repeat(PAYLOAD_LENGTH) + "\"}";
 
@@ -232,13 +199,8 @@ class ErrorDisclosureTest {
         }
     }
 
-    /**
-     * Stands in for "a library on the call path" whose message was never reviewed for a client audience — every
-     * genuine throw site in {@code src/main} was converted to {@code DomainValidationException} by this audit's own
-     * fix (see {@link #unreviewedIllegalArgumentIsGenericThroughRealDispatch}), so nothing in the shipped application
-     * still reaches {@code handleIllegalArgument} today. This exists solely to keep that handler exercised through a
-     * real HTTP dispatch rather than only by direct method invocation.
-     */
+    /** Stands in for "a library on the call path" whose message was never reviewed for a client audience: no shipped code
+     *  still reaches {@code handleIllegalArgument}, so this keeps the handler exercised through a real HTTP dispatch. */
     @RestController
     static class LegacyLibraryFailureController {
 

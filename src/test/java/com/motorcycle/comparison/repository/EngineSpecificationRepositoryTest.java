@@ -10,11 +10,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Untouched by any other test: this repository exists purely for the analytics-style read described in its
- * javadoc, and {@code countByDisplacementCcBetween} is a derived query — easy to get an off-by-one wrong in the
- * bound and never notice, since nothing else in the codebase calls it.
- */
+/** Untouched by any other test: this repository exists purely for the analytics-style read described in its javadoc,
+ *  and {@code countByDisplacementCcBetween} is a derived query whose bound is easy to get off by one unnoticed. */
 // showSql = false: @DataJpaTest defaults spring.jpa.show-sql to true regardless of application.yml.
 @DataJpaTest(showSql = false)
 @DisplayName("EngineSpecificationRepository")

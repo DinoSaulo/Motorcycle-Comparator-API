@@ -4,10 +4,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.Locale;
 
-/**
- * Reads the name of the database constraint a write violated. Every constraint in the migrations is explicitly
- * named so callers can branch on the name instead of scraping a driver message that changes between versions.
- */
+/** Reads the name of the database constraint a write violated. Every constraint in the migrations is explicitly named
+ *  so callers can branch on the name instead of scraping a driver message that changes between versions. */
 public final class ConstraintViolations {
 
     private ConstraintViolations() {

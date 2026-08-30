@@ -5,12 +5,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-/**
- * Fails startup when no Spring profile was explicitly activated, unless an operator opted in on purpose.
- * {@code spring.profiles.default: dev} never populates {@link Environment#getActiveProfiles()} — only an
- * explicit {@code SPRING_PROFILES_ACTIVE} does — so this is the one place that can tell "forgot to set it"
- * apart from "deliberately running dev locally".
- */
+/** Fails startup when no profile was explicitly activated, unless an operator opted in on purpose: only
+ *  {@code SPRING_PROFILES_ACTIVE} populates {@link Environment#getActiveProfiles()}, never the default. */
 @Component
 public class DevDefaultsGuard {
 

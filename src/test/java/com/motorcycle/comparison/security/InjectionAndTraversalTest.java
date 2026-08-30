@@ -23,12 +23,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * Injection and traversal attempts through the real catalogue query pipeline (JPA Criteria, not raw SQL) and the
- * real image storage service, both wired end to end. Every payload here already fails for a structural reason —
- * bind-parameterised Criteria queries, a sort whitelist, {@code List<Long>} type conversion, a UUID-shaped file name
- * regex — so this class is a regression suite pinning defences that already exist, not a hunt for new ones.
- */
+/** Injection and traversal attempts through the real catalogue query pipeline (JPA Criteria, not raw SQL) and the real
+ *  image storage. Every payload already fails structurally, so this pins defences that exist rather than hunting new ones. */
 @SpringBootTest
 @AutoConfigureMockMvc
 @DisplayName("Injection and path traversal")

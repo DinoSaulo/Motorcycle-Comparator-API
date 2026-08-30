@@ -32,10 +32,8 @@ import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * Aggregate root of the catalogue: structured columns ({@link EngineSpecification}, {@link Dimension}, chassis
- * fields) back the comparison engine, while {@code additionalSpecs} holds the long tail until it earns a real column.
- */
+/** Aggregate root of the catalogue: structured columns ({@link EngineSpecification}, {@link Dimension}, chassis fields)
+ *  back the comparison engine, while {@code additionalSpecs} holds the long tail until it earns a real column. */
 @Entity
 @Table(
         name = "motorcycles",

@@ -25,13 +25,8 @@ import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * Drives forged and malformed bearer tokens through the real filter chain — {@code JwtAuthenticationFilter}, wired
- * to the real {@code JwtService} and its real {@code SecurityFilterChain} — rather than the parser in isolation, which
- * {@link com.motorcycle.comparison.service.JwtServiceTest} already covers exhaustively. Every payload here targets
- * {@code POST /api/v1/motorcycles}, an admin-only write, so success has exactly one acceptable shape: 401 or 403,
- * never 201.
- */
+/** Drives forged and malformed bearer tokens through the real filter chain rather than the parser in isolation, which
+ *  {@code JwtServiceTest} covers. Every payload targets an admin-only write, so the only acceptable shape is 401 or 403. */
 @SpringBootTest
 @AutoConfigureMockMvc
 @DisplayName("Token forgery")

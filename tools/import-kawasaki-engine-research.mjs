@@ -1,16 +1,5 @@
-// Builds R__motorcycles_kawasaki_specs_research_2026_08.sql from the engine-spec research set.
-//
-// Unlike its siblings in this folder, the input here is not a scrape of one site. It is a
-// researched set assembled per engine family from manufacturer sheets and press material, so
-// the guard rails below are the only thing standing between a plausible-looking number and the
-// catalogue. Every check is derived from the row itself rather than from a list of expected
-// values, so a future re-run with different input is checked just as hard.
-//
-// The input lives next to this file rather than in the zontes-scraper directory the sibling
-// importers read from. There is no scrape to re-run for it, so the research set is the artefact -
-// lose it and the seed can never be regenerated, only edited by hand.
-//
-// Usage: node tools/import-kawasaki-engine-research.mjs [research.json] [--out <path>]
+// Builds R__motorcycles_kawasaki_specs_research_2026_08.sql from the engine-spec research set beside this file: not a
+// scrape, so that set is the artefact. Guards derive from each row. Usage: node <this> [research.json] [--out <path>]
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import { argv } from 'node:process';
@@ -33,10 +22,8 @@ const WIDTH = {
     emission_standard: 30,
 };
 
-// Errata. Each entry is a published factory figure that the researched row contradicts, and each
-// one is provable from the row itself: displacement, stroke and cylinder count determine bore, so
-// a pair that does not reproduce the stated displacement has an arithmetic error in it, not a
-// difference of opinion. Nothing is corrected here that the row's own numbers do not settle.
+// Errata. Each entry is a published factory figure the researched row contradicts, and each is provable from the row
+// itself: displacement, stroke and cylinder count determine bore, so a pair that misses it has an arithmetic error.
 const ERRATA = [
     {
         // 748 cc over 4 cylinders at a 50.9 mm stroke needs a 68.39 mm bore; the source says 63.4,
@@ -46,9 +33,8 @@ const ERRATA = [
         why: 'Z 750: bore 63.4 -> 68.4 mm (63.4 gives 643 cc, not the 748 cc the row states)',
     },
     {
-        // First-generation Z 1000 is 953 cc from 77.2 x 50.9 mm. The source's 77.0 x 51.8 computes
-        // to 965 cc. 51.8 mm is the Ninja 400 stroke, so this looks like a carry-over rather than a
-        // rounding difference; both figures are put back to the published pair.
+        // First-generation Z 1000 is 953 cc from 77.2 x 50.9 mm; the source's 77.0 x 51.8 computes to 965 cc. 51.8 mm is
+        // the Ninja 400 stroke, so this is a carry-over rather than rounding; both figures go back to the published pair.
         match: (slug, r) => /^kawasaki-z-1000-/.test(slug) && r.displacement_cc === 953
             && r.bore_mm === 77 && r.stroke_mm === 51.8,
         apply: (r) => { r.bore_mm = 77.2; r.stroke_mm = 50.9; },
@@ -73,9 +59,7 @@ const raw = JSON.parse(readFileSync(SRC, 'utf8'));
 const log = [];
 const dropped = [];
 
-// ---------------------------------------------------------------------------
-// Errata, then the checks.
-// ---------------------------------------------------------------------------
+// --- errata, then the checks ----------------------------------------------------------------
 let erratumCount = 0;
 for (const [slug, row] of Object.entries(raw)) {
     for (const e of ERRATA) {
@@ -87,10 +71,8 @@ for (const e of ERRATA) {
     if (n !== 0) throw new Error(`erratum did not take on ${n} rows: ${e.why}`);
 }
 
-// The bore/stroke/cylinder/displacement quartet has one algebraic relation, so it checks itself.
-// Rounding in published figures runs to a few tenths of a percent; 1% is comfortably outside that
-// and still catches a transposed digit. A pair that fails loses bore and stroke rather than the
-// whole row - displacement is the figure the model is named for and the one worth keeping.
+// The bore/stroke/cylinder/displacement quartet has one algebraic relation, so it checks itself. 1% sits outside published
+// rounding and still catches a transposed digit. A failing pair loses bore and stroke, never the displacement.
 const GEOMETRY_TOLERANCE_PCT = 1.0;
 let geometryDropped = 0;
 for (const [slug, r] of Object.entries(raw)) {
@@ -158,9 +140,7 @@ for (const [slug, r] of Object.entries(raw)) {
     }
 }
 
-// ---------------------------------------------------------------------------
-// SQL.
-// ---------------------------------------------------------------------------
+// --- SQL ------------------------------------------------------------------------------------
 const lit = (v, col) => {
     if (v === null || v === undefined || v === '') return 'NULL';
     if (NUMERIC.has(col)) {

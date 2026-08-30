@@ -18,10 +18,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-/**
- * The only test that proves the migrations and the entities describe the same database: the slice tests run on H2
- * with {@code create-drop}, which cannot parse the functional and GIN indexes and so never sees the schema for real.
- */
+/** The only test that proves the migrations and the entities describe the same database: the slice tests run on H2
+ *  with {@code create-drop}, which cannot parse the functional and GIN indexes and so never sees the schema for real. */
 @SpringBootTest(properties = {
         "spring.flyway.enabled=true",
         "spring.flyway.locations=classpath:db/migration,classpath:db/search,classpath:db/seed",
@@ -32,10 +30,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @DisplayName("Schema migrations")
 class SchemaMigrationIT {
 
-    /**
-     * Testcontainers' singleton pattern: one static container started here and reaped by Ryuk at JVM exit, so the
-     * image is pulled once and no junit-jupiter integration artifact is needed just to call start().
-     */
+    /** Testcontainers' singleton pattern: one static container started here and reaped by Ryuk at JVM exit, so the
+     *  image is pulled once and no junit-jupiter integration artifact is needed just to call start(). */
     @ServiceConnection
     static final PostgreSQLContainer<?> POSTGRES = new PostgreSQLContainer<>("postgres:16-alpine");
 
@@ -57,27 +53,19 @@ class SchemaMigrationIT {
         Integer repeatables = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM flyway_schema_history WHERE success = true AND version IS NULL", Integer.class);
 
-        // V4 normalises brand casing; it was added without this list being updated, so the assertion
-        // has been failing since. See the seed header for what V4 cannot reach: it runs before any
-        // repeatable seed, so the rows those seeds insert never pass through it.
+        // V4 normalises brand casing and was added without this list being updated, so the assertion has been failing
+        // since. See the seed header: V4 runs before any repeatable seed, so rows those seeds insert never reach it.
         assertThat(applied).containsExactly("1", "2", "3", "4");
-        // R__dev_seed.sql, R__motorcycles_brazil_fipe_2026_08.sql, R__motorcycles_harley_davidson_specs_2026_08.sql,
-        // R__motorcycles_honda_specs_2026_08.sql, R__motorcycles_kawasaki_specs_2026_08.sql,
-        // R__motorcycles_kawasaki_specs_research_2026_08.sql, R__motorcycles_royal_enfield_specs_2026_08.sql,
-        // R__motorcycles_specs_bmw_2026_08.sql and R__motorcycles_yamaha_specs_2026_08.sql.
+        // R__dev_seed.sql, R__motorcycles_brazil_fipe_2026_08.sql, and the harley_davidson, honda, kawasaki (specs and
+        // specs_research), royal_enfield, specs_bmw and yamaha *_2026_08.sql seeds.
         assertThat(repeatables).isEqualTo(9);
     }
 
     @Test
     @DisplayName("every brand import runs after the FIPE seed that creates the rows it fills")
     void brandImportsRunAfterTheFipeSeed() {
-        // Flyway runs repeatable migrations in description order, so the order below is decided by the
-        // file names alone. Every brand import only gap-fills - it needs the FIPE seed to have created
-        // the catalogue rows first. h, k, r and y sort after "brazil" on their own; BMW does not, which
-        // is why its file is named R__motorcycles_specs_bmw_* and not R__motorcycles_bmw_specs_*.
-        // Renaming it to match its siblings would run it first, and the FIPE seed's
-        // (brand, model, model_year) rerun guard would then drop all 200 BMW rows from its own load,
-        // leaving them priceless.
+        // Flyway orders repeatable migrations by description, so the file names alone decide it: every brand import only
+        // gap-fills and needs FIPE first. BMW is named R__motorcycles_specs_bmw_* to sort after "brazil"; renaming loses 200 rows.
         List<String> order = jdbcTemplate.queryForList(
                 "SELECT description FROM flyway_schema_history WHERE success = true AND version IS NULL ORDER BY installed_rank", String.class);
 
@@ -93,10 +81,8 @@ class SchemaMigrationIT {
                 "motorcycles yamaha specs 2026 08");
         assertThat(order.indexOf("motorcycles brazil fipe 2026 08"))
                 .isLessThan(order.indexOf("motorcycles specs bmw 2026 08"));
-        // Both Kawasaki files gap-fill with COALESCE, so whichever runs first wins every column they
-        // share. The scraped seed cites a page per model year; the research seed generalises from the
-        // engine family, so the scraped one has to go first. That is what "specs 2026 08" sorting
-        // ahead of "specs research 2026 08" buys, and it is the only thing holding the order.
+        // Both Kawasaki files gap-fill with COALESCE, so whichever runs first wins every column they share. The scraped
+        // seed cites a page per model year and must precede the research seed, which generalises from the engine family.
         assertThat(order.indexOf("motorcycles kawasaki specs 2026 08"))
                 .isLessThan(order.indexOf("motorcycles kawasaki specs research 2026 08"));
     }
@@ -113,9 +99,8 @@ class SchemaMigrationIT {
     @Test
     @DisplayName("the Honda import fills the specification blocks the FIPE seed leaves empty")
     void loadsTheHondaSpecifications() {
-        // The FIPE snapshot carries price and model only, so before this import every Honda row had a
-        // near-empty engine block and no dimension row at all. Asserting on one known model keeps the
-        // check readable; the counts below are what stops a silently truncated import passing.
+        // The FIPE snapshot carries price and model only, so before this import every Honda row had a near-empty engine
+        // block and no dimension row. One known model keeps the check readable; the counts below catch a truncated import.
         Motorcycle hornet = motorcycleRepository.findWithSpecificationsBySlug("honda-cb-600f-hornet-2005").orElseThrow();
 
         assertThat(hornet.getFrontTyre()).isEqualTo("130/70ZR16 (61W) (Michelin Bridgestone)");
@@ -144,9 +129,8 @@ class SchemaMigrationIT {
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'yamaha' AND dimension_id IS NOT NULL", Integer.class);
         assertThat(withDimensions).isEqualTo(617);
 
-        // Every image URL the import stores has to be a name ImageController can serve: FileStorageServiceImpl
-        // reads a UUID plus jpg/png/webp and nothing else, so a name outside that shape is a silent 404. The
-        // files themselves are not in the repository - see the seed header for how to materialise them.
+        // Every image URL stored must be a name ImageController can serve: FileStorageServiceImpl reads a UUID plus
+        // jpg/png/webp and nothing else, so anything else is a silent 404. Files are not in the repo; see the seed header.
         Integer servableImages = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'yamaha' AND image_url ~ "
                         + "'^/api/v1/images/motorcycles/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|png|webp)$'",
@@ -170,10 +154,8 @@ class SchemaMigrationIT {
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'royal enfield' AND dimension_id IS NOT NULL", Integer.class);
         assertThat(withDimensions).isEqualTo(152);
 
-        // See the seed header: the source prose captions the 648 cc twin a single and the 349 cc single a
-        // twin, and the import overrules both from the bore, stroke and displacement printed beside them.
-        // Asserting per engine family rather than "no big single" on purpose - the 535 cc Continental
-        // really is a single, so a blanket rule would fail on a row whose source was right all along.
+        // See the seed header: the source prose captions the 648 cc twin a single and the 349 cc single a twin, and the
+        // import overrules both from bore, stroke and displacement. Per engine family, since the 535 cc Continental is a single.
         assertThat(interceptor.getEngine().getCylinders()).isEqualTo(2);
         Integer miscountedCylinders = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles m JOIN engine_specifications e ON e.id = m.engine_specification_id "
@@ -182,10 +164,8 @@ class SchemaMigrationIT {
                 Integer.class);
         assertThat(miscountedCylinders).isZero();
 
-        // Every image URL the import stores has to be a name ImageController can serve: FileStorageServiceImpl
-        // reads a UUID plus jpg/png/webp and nothing else, so a name outside that shape is a silent 404. The
-        // files themselves are not in the repository - see the seed header for how to materialise them. The
-        // nine rows short of 152 are the Bullet 500 and the Classic Chrome 500 EFI, which no source photographed.
+        // Every image URL stored must be a name ImageController can serve (a UUID plus jpg/png/webp), so anything else is a
+        // silent 404; the files are not in the repo. The nine short of 152 are the Bullet 500 and the Classic Chrome 500 EFI.
         Integer servableImages = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'royal enfield' AND image_url ~ "
                         + "'^/api/v1/images/motorcycles/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|png|webp)$'",
@@ -201,16 +181,13 @@ class SchemaMigrationIT {
         assertThat(fatBoy.getFrontTyre()).isEqualTo("D402F MT90B16 72H");
         assertThat(fatBoy.getEngine().getDisplacementCc()).isEqualTo(1449);
         assertThat(fatBoy.getEngine().getGears()).isEqualTo(5);
-        // Every engine in the snapshot is a V-twin, and none of the source prose ever writes "cylinder":
-        // the count is read from "45° V-Twin" / "Twin Cam 88", and the 2 in "2 valves per cylinder" is not
-        // mistaken for it.
+        // Every engine in the snapshot is a V-twin and none of the source prose ever writes "cylinder": the count is read
+        // from "45° V-Twin" / "Twin Cam 88", and the 2 in "2 valves per cylinder" is not mistaken for it.
         assertThat(fatBoy.getEngine().getCylinders()).isEqualTo(2);
         assertThat(fatBoy.getDimension().getKerbWeightKg()).isEqualByComparingTo("324.0");
 
-        // See the seed header. This row's source reads "Laden2 645.2 mm / 25.4 in Unladen 698.5mm / 27.5 in",
-        // so the assertion is really three things at once: the unladen figure is the one stored (every other
-        // brand's single seat height means that), the trailing 2 on "Laden" is a footnote marker and not part
-        // of the number, and the laden figure is kept rather than discarded.
+        // See the seed header. This row reads "Laden2 645.2 mm / 25.4 in Unladen 698.5mm / 27.5 in": the unladen figure is
+        // the one stored, the trailing 2 on "Laden" is a footnote marker, and the laden figure is kept rather than discarded.
         assertThat(fatBoy.getDimension().getSeatHeightMm()).isEqualTo(699);
         String ladenSeatHeight = jdbcTemplate.queryForObject(
                 "SELECT s.spec_value FROM motorcycle_additional_specs s JOIN motorcycles m ON m.id = s.motorcycle_id "
@@ -223,9 +200,8 @@ class SchemaMigrationIT {
         Motorcycle sportster883 = motorcycleRepository.findWithSpecificationsBySlug("harley-davidson-xl-883-std-low-1991").orElseThrow();
         assertThat(sportster883.getDimension().getSeatHeightMm()).isEqualTo(655);
 
-        // The one row of the 200 that R__dev_seed.sql curated by hand, and so the only one where gap-fill is
-        // not the same thing as full population: the import supplies the bore and compression ratio the dev
-        // seed left NULL, and does not touch the torque figure the dev seed already had (its own is 118).
+        // The one row of the 200 that R__dev_seed.sql curated by hand, and so the only one where gap-fill is not full
+        // population: the import supplies the bore and compression ratio left NULL and does not touch the torque figure.
         Motorcycle sportsterS = motorcycleRepository.findWithSpecificationsBySlug("harley-davidson-sportster-s-2024").orElseThrow();
         assertThat(sportsterS.getEngine().getCompressionRatio()).isEqualTo("12:1");
         assertThat(sportsterS.getEngine().getBoreMm()).isEqualByComparingTo("105.00");
@@ -236,9 +212,8 @@ class SchemaMigrationIT {
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'harley-davidson' AND dimension_id IS NOT NULL", Integer.class);
         assertThat(withDimensions).isEqualTo(199);
 
-        // Every image URL the import stores has to be a name ImageController can serve: FileStorageServiceImpl
-        // reads a UUID plus jpg/png/webp and nothing else, so a name outside that shape is a silent 404. The
-        // files themselves are not in the repository - see the seed header for how to materialise them.
+        // Every image URL stored must be a name ImageController can serve: FileStorageServiceImpl reads a UUID plus
+        // jpg/png/webp and nothing else, so anything else is a silent 404. Files are not in the repo; see the seed header.
         Integer servableImages = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'harley-davidson' AND image_url ~ "
                         + "'^/api/v1/images/motorcycles/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|png|webp)$'",
@@ -249,24 +224,21 @@ class SchemaMigrationIT {
     @Test
     @DisplayName("the BMW import fills the specification blocks and the images the FIPE seed leaves empty")
     void loadsTheBmwSpecifications() {
-        // The extractor split this row's capacity into "11 72 cc / 71.5 cu in". Reading the first fragment
-        // would have stored 11 cc - small enough that no plausibility bound would have questioned it - so the
-        // metric read is refused and the cubic-inch figure beside it is converted instead. 10 rows land here.
+        // The extractor split this row's capacity into "11 72 cc / 71.5 cu in"; reading the first fragment would store
+        // 11 cc, small enough that no plausibility bound would question it, so cubic inches are converted instead. 10 rows.
         Motorcycle k1200lt = motorcycleRepository.findWithSpecificationsBySlug("bmw-k-1200-lt-1999").orElseThrow();
         assertThat(k1200lt.getEngine().getDisplacementCc()).isEqualTo(1172);
         assertThat(k1200lt.getEngine().getCylinders()).isEqualTo(4);
         assertThat(k1200lt.getEngine().getGears()).isEqualTo(5);
         assertThat(k1200lt.getDimension().getKerbWeightKg()).isEqualByComparingTo("378.0");
 
-        // "6-speed gearbox" is how most of these sheets write it, so the gear count has to survive a hyphen;
-        // a whitespace-only separator reads "5 Speed" and silently misses every BMW written the other way.
-        // Six cylinders, from prose that says "transverse six cylinder" and arithmetic that agrees.
+        // "6-speed gearbox" is how most of these sheets write it, so the gear count has to survive a hyphen; whitespace-only
+        // reads "5 Speed" and misses every BMW written the other way. Six cylinders, from prose and arithmetic that agree.
         Motorcycle k1600gt = motorcycleRepository.findWithSpecificationsBySlug("bmw-k-1600-gt-2011").orElseThrow();
         assertThat(k1600gt.getEngine().getGears()).isEqualTo(6);
         assertThat(k1600gt.getEngine().getCylinders()).isEqualTo(6);
-        // "C hill-cast" in the source is an extractor fault, not a word: repaired to "Chill-cast" on the way
-        // in. Only four such forms are repaired, because "BMS-K with", "M forged" and "a hydraulic" are all
-        // correct as printed and a general rule would corrupt them.
+        // "C hill-cast" in the source is an extractor fault, not a word: repaired to "Chill-cast" on the way in. Only four
+        // such forms are repaired, because "BMS-K with", "M forged" and "a hydraulic" are all correct as printed.
         assertThat(k1600gt.getFrameType()).startsWith("Chill-cast rear frame");
 
         // A Boxer is a flat twin and the prose never writes the count, so "Boxer" has to be read as two -
@@ -297,9 +269,8 @@ class SchemaMigrationIT {
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'bmw' AND price_eur IS NULL", Integer.class);
         assertThat(withoutPrice).isZero();
 
-        // Every image URL the import stores has to be a name ImageController can serve: FileStorageServiceImpl
-        // reads a UUID plus jpg/png/webp and nothing else, so a name outside that shape is a silent 404. The
-        // files themselves are not in the repository - see the seed header for how to materialise them.
+        // Every image URL stored must be a name ImageController can serve: FileStorageServiceImpl reads a UUID plus
+        // jpg/png/webp and nothing else, so anything else is a silent 404. Files are not in the repo; see the seed header.
         Integer servableImages = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'bmw' AND image_url ~ "
                         + "'^/api/v1/images/motorcycles/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|png|webp)$'",
@@ -310,23 +281,17 @@ class SchemaMigrationIT {
     @Test
     @DisplayName("the Kawasaki import fills the specification blocks and the images the FIPE seed leaves empty")
     void loadsTheKawasakiSpecifications() {
-        // Many rows publish torque twice and most of the pairs agree; this one does not. Its source
-        // reads "3.6 kgf-m / 103 Nm @ 9000 rpm", where 103 Nm is 10.5 kgf.m, so taking the first unit
-        // printed would have stored a third of the real figure. Nm is read first for exactly this.
+        // Many rows publish torque twice and most pairs agree; this one reads "3.6 kgf-m / 103 Nm @ 9000 rpm", where 103 Nm
+        // is 10.5 kgf.m. Taking the first unit printed would have stored a third of the real figure, so Nm is read first.
         Motorcycle zx10 = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-1990").orElseThrow();
         assertThat(zx10.getEngine().getMaxTorqueNm()).isEqualByComparingTo("103.0");
         assertThat(zx10.getEngine().getCylinders()).isEqualTo(4);
-        // 1000, not the 997 this import carries, and that is the gap-fill rule working rather than
-        // failing. displacement_cc is the one engine column the FIPE seed already fills, and it fills it
-        // from the model descriptor - "ZX-10/ ZX-10R 1000cc" - so COALESCE keeps the rounder number the
-        // model is named after. See the Kawasaki seed header for how many rows this covers.
+        // 1000, not the 997 this import carries, and that is the gap-fill rule working: displacement_cc is the one engine
+        // column the FIPE seed fills, from the descriptor "ZX-10/ ZX-10R 1000cc", so COALESCE keeps the rounder number.
         assertThat(zx10.getEngine().getDisplacementCc()).isEqualTo(1000);
 
-        // The ZX-11's sheet has two labels transposed: it prints "Bore x Stroke: 11.0:1" and "Compression
-        // Ratio: 76 x 58 mm". The snapshot inherited half the swap - bore and stroke came from a sheet
-        // that labels them correctly, compression from the one that does not - so the shape check refuses
-        // the dimension pair and the errata table puts the published ratio back. Asserting all three
-        // together is the point: the pair below is what proves the cell above was a bore and stroke.
+        // The ZX-11's sheet transposes two labels ("Bore x Stroke: 11.0:1", "Compression Ratio: 76 x 58 mm") and the snapshot
+        // inherited half the swap, so the shape check refuses the pair and the errata table puts the published ratio back.
         Motorcycle zx11 = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-ninja-zx-11-1100cc-1990").orElseThrow();
         assertThat(zx11.getEngine().getCompressionRatio()).isEqualTo("11.0:1");
         assertThat(zx11.getEngine().getBoreMm()).isEqualByComparingTo("76.00");
@@ -335,33 +300,26 @@ class SchemaMigrationIT {
         // the figure sits among the km/lit readings its sibling rows carry, so only the "k" is restored.
         assertThat(zx11.getEngine().getFuelConsumptionL100km()).isEqualByComparingTo("6.54");
 
-        // "337 .0 kg / 739 lbs" - a space in front of the decimal point. Left alone the unit-anchored
-        // read walks past the stranded "337" and takes "0 kg", which the weight bound then drops, so
-        // the row would lose a figure it published perfectly clearly.
+        // "337 .0 kg / 739 lbs": a space in front of the decimal point. Left alone the unit-anchored read walks past the
+        // stranded "337" and takes "0 kg", which the weight bound drops, losing a figure the row published perfectly clearly.
         Motorcycle nomad = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-vulcan-nomad-1500cc-1998").orElseThrow();
         assertThat(nomad.getDimension().getDryWeightKg()).isEqualByComparingTo("337.0");
 
-        // "V-Twin" names the cylinder count without ever writing it next to the word "cylinder", while
-        // the "Four" in "Four stroke" - which opens every sheet in this snapshot - must not be read as
-        // one. A rule that took the first number word would have called the whole catalogue a four.
+        // "V-Twin" names the cylinder count without ever writing it next to "cylinder", while the "Four" in "Four stroke"
+        // that opens every sheet must not be read as one: a rule taking the first number word would call the catalogue a four.
         Motorcycle vulcan750 = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-vulcan-vn-750cc-1991").orElseThrow();
         assertThat(vulcan750.getEngine().getCylinders()).isEqualTo(2);
         assertThat(vulcan750.getEngine().getFinalDrive()).isEqualTo("Shaft");
 
-        // Gear counts are spelled out on the motocross sheets ("Five-speed with wet multi-disc manual
-        // clutch"), and this row's seat height is published in inches only, so it is the one path that
-        // converts. Its source names "Chassis" as the final drive - the next heading of its table rather
-        // than a drivetrain - so the shape check refuses it and the errata table restores the chain.
+        // Gear counts are spelled out on the motocross sheets and this row's seat height is published in inches only, so it
+        // is the one path that converts. Its source names "Chassis" as final drive, so the shape check refuses it and errata restores the chain.
         Motorcycle kx250 = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-kx-250-250-f-2005").orElseThrow();
         assertThat(kx250.getEngine().getGears()).isEqualTo(5);
         assertThat(kx250.getEngine().getFinalDrive()).isEqualTo("Chain");
         assertThat(kx250.getDimension().getSeatHeightMm()).isEqualTo(950);
 
-        // The remaining two errata. The KLX 650's stroke is published as "S3mm" - a letter where a digit
-        // belongs, and a fault still visible on moto-data.net today - so the bound drops the "3mm"
-        // fragment and the published 83 mm goes in, which is also what this row's own bore and
-        // displacement require. The Versys 650 gives its consumption as "1 9.3 km/lit", refused whole
-        // because reading the fragment would store 3 km/l; 19.3 km/l is 5.18 l/100km.
+        // The remaining two errata: the KLX 650's stroke is published as "S3mm", so the bound drops the fragment and the
+        // published 83 mm goes in; the Versys 650's "1 9.3 km/lit" is refused whole (19.3 km/l is 5.18 l/100km).
         Motorcycle klx650 = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-klx-650-1995").orElseThrow();
         assertThat(klx650.getEngine().getStrokeMm()).isEqualByComparingTo("83.00");
         assertThat(klx650.getEngine().getBoreMm()).isEqualByComparingTo("100.00");
@@ -370,11 +328,8 @@ class SchemaMigrationIT {
         Motorcycle versys = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-versys-650cc-2010").orElseThrow();
         assertThat(versys.getEngine().getFuelConsumptionL100km()).isEqualByComparingTo("5.18");
 
-        // One of the four rows R__dev_seed.sql curated by hand, and so the only Kawasakis where gap-fill
-        // is not the same thing as full population. Its engine block was already complete, so nothing in
-        // it moves: the tyre stays the dev seed's spaced "120/70 ZR17" rather than the scraped
-        // "120/70ZR17". What the import does add is the photo, which the dev seed left NULL - a gap-fill
-        // on a hand-curated row rather than a rewrite of one.
+        // One of the four rows R__dev_seed.sql curated by hand, so the only Kawasakis where gap-fill is not full population:
+        // the engine block is untouched (the tyre stays the spaced "120/70 ZR17") and only the photo left NULL is added.
         Motorcycle zx6r = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-ninja-zx-6r-2024").orElseThrow();
         assertThat(zx6r.getFrontTyre()).isEqualTo("120/70 ZR17");
         assertThat(zx6r.getEngine().getDisplacementCc()).isEqualTo(636);
@@ -386,16 +341,8 @@ class SchemaMigrationIT {
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'kawasaki' AND dimension_id IS NOT NULL", Integer.class);
         assertThat(withDimensions).isEqualTo(187);
 
-        // No sheet in this snapshot names a Euro or Proconve level anywhere, and nothing is inferred from
-        // the model year, so this import sets no emission standard at all. The dev seed's own curated
-        // rows are excluded because theirs is hand-written and gap-fill leaves it alone - counting them
-        // would be asserting about R__dev_seed.sql rather than about this import.
-        //
-        // This used to assert zero. It no longer can: R__motorcycles_kawasaki_specs_research_2026_08.sql
-        // runs after this seed and sets emission_standard on 420 of the 424 slugs it covers, so what is
-        // left to assert is that none of them came from here. The two files are disjoint on this column -
-        // the scraped seed writes it nowhere - which is exactly what a count of 420 and not 421 shows.
-        // The 4 short of 424 are the 1990s AV100 and Maxi II mopeds, which no source documents.
+        // No sheet names a Euro or Proconve level and nothing is inferred from the model year, so this import sets no emission
+        // standard at all. The research seed sets it on 420 of its 424 slugs: a count of 420 and not 421 shows they are disjoint.
         Integer withEmission = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles m JOIN engine_specifications e ON e.id = m.engine_specification_id "
                         + "WHERE lower(m.brand) = 'kawasaki' AND e.emission_standard IS NOT NULL "
@@ -403,11 +350,8 @@ class SchemaMigrationIT {
                         + "'kawasaki-versys-1000-se-2024', 'kawasaki-z900-2026')", Integer.class);
         assertThat(withEmission).isEqualTo(420);
 
-        // Every image URL the import stores has to be a name ImageController can actually serve:
-        // FileStorageServiceImpl reads a UUID plus jpg/png/webp and nothing else, so a name outside that
-        // shape is a silent 404. The files themselves are not in the repository - see the seed header
-        // for how to materialise them. The four short of 194 are the KX 250 F and KX 450 F of 2006 and
-        // 2007, which no source photographed.
+        // Every image URL stored must be a name ImageController can serve (a UUID plus jpg/png/webp), so anything else is a
+        // silent 404; files are not in the repo. The four short of 194 are the KX 250 F and KX 450 F of 2006 and 2007.
         Integer servableImages = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'kawasaki' AND image_url ~ "
                         + "'^/api/v1/images/motorcycles/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|png|webp)$'",
@@ -418,22 +362,16 @@ class SchemaMigrationIT {
     @Test
     @DisplayName("the researched Kawasaki engine import fills the engine blocks the FIPE seed leaves empty")
     void loadsTheResearchedKawasakiEngineSpecifications() {
-        // 424 model-years the FIPE snapshot left with a thin or empty engine block, imported in two
-        // passes: 348 first, then the 76 whose FIPE slug carries the displacement in its name
-        // (er-6n-650cc, ninja-650r-649cc, versys-650cc, zx-14-zx-14r-1352cc). The scraped Kawasaki seed
-        // reaches 75 of the first group and none of the second; because both files are COALESCE
-        // gap-fills, the scraped figures survive wherever the two overlap.
+        // 424 model-years the FIPE snapshot left with a thin or empty engine block, imported in two passes: 348 first, then
+        // the 76 whose FIPE slug carries the displacement. Both files gap-fill, so the scraped figures survive any overlap.
         Integer withDisplacement = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles m JOIN engine_specifications e "
                         + "ON e.id = m.engine_specification_id "
                         + "WHERE lower(m.brand) = 'kawasaki' AND e.displacement_cc IS NOT NULL", Integer.class);
         assertThat(withDisplacement).isGreaterThanOrEqualTo(424);
 
-        // The second pass had to sit beside displacements the FIPE seed derived from the model name,
-        // and COALESCE keeps those. Where the name rounds (650cc for a 649 cc twin, 1000cc for a 998 cc
-        // four) the imported bore and stroke land against the rounded figure, which is why the geometry
-        // tolerance below is 2% and not tighter: 39 of these rows disagree with their own catalogue
-        // displacement by 0.2%, and every one of them is the model name rounding rather than an error.
+        // The second pass sits beside displacements the FIPE seed derived from the model name, and COALESCE keeps those.
+        // Where the name rounds, the imported bore and stroke land against the rounded figure: hence a 2% tolerance, not tighter.
         Integer roundedButConsistent = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM engine_specifications e "
                         + "JOIN motorcycles m ON m.engine_specification_id = e.id "
@@ -447,10 +385,8 @@ class SchemaMigrationIT {
                         + "AND engine_specification_id IS NULL", Integer.class);
         assertThat(withoutEngine).isZero();
 
-        // Bore, stroke, cylinders and displacement have one algebraic relation, so the quartet proves
-        // itself. This is the assertion that caught the Z 750 in the source data - 63.4 mm across four
-        // 50.9 mm cylinders is 643 cc, not the 748 cc the same row published - and it is what stops a
-        // regenerated seed from reintroducing a transposed digit. 2% absorbs published rounding.
+        // Bore, stroke, cylinders and displacement have one algebraic relation, so the quartet proves itself. This caught the
+        // Z 750 in the source data (63.4 mm across four 50.9 mm cylinders is 643 cc, not 748 cc). 2% absorbs published rounding.
         List<String> contradictoryGeometry = jdbcTemplate.queryForList(
                 "SELECT m.slug FROM engine_specifications e "
                         + "JOIN motorcycles m ON m.engine_specification_id = e.id "
@@ -460,12 +396,8 @@ class SchemaMigrationIT {
                         + "AND abs(pi() / 4 * e.bore_mm * e.bore_mm * e.stroke_mm * e.cylinders / 1000.0 "
                         + "        - e.displacement_cc) > 0.02 * e.displacement_cc "
                         + "ORDER BY m.slug", String.class);
-        // 22 rows fail this catalogue-wide, and every one of them predates this import: they come from
-        // R__motorcycles_kawasaki_specs_2026_08.sql and none is among the 348 slugs imported here, so
-        // this seed neither caused them nor reaches them. They are pinned rather than tolerated - the
-        // assertion fails if the set grows, if a new model family joins it, or if any row this import
-        // is responsible for appears in it. Fixing them means correcting the scraped seed's generator
-        // and deliberately updating this expectation, which is the point.
+        // 22 rows fail this catalogue-wide, all from R__motorcycles_kawasaki_specs_2026_08.sql and none among the 348 imported
+        // here. Pinned, not tolerated: it fails if the set grows or if any row this import is responsible for appears in it.
         assertThat(contradictoryGeometry).hasSize(22);
         assertThat(contradictoryGeometry).allSatisfy(slug -> assertThat(slug)
                 .matches("kawasaki-(ninja-zx-11|ninja-zx-6r|ninja-zz-r|zx-14)-.*"));
@@ -486,9 +418,8 @@ class SchemaMigrationIT {
                 Integer.class);
         assertThat(swappedRpm).isZero();
 
-        // A spot-check that the researched figures land intact: the supercharged Z H2 is the only
-        // Kawasaki here making 200 hp from under a litre, so it is the row most likely to be mangled
-        // by a parser that assumed naturally aspirated.
+        // A spot-check that the researched figures land intact: the supercharged Z H2 is the only Kawasaki here making 200 hp
+        // from under a litre, so it is the row most likely to be mangled by a parser that assumed naturally aspirated.
         assertThat(jdbcTemplate.queryForObject(
                 "SELECT e.max_power_hp FROM engine_specifications e JOIN motorcycles m "
                         + "ON m.engine_specification_id = e.id WHERE m.slug = 'kawasaki-z-1000-h2-2025'",
@@ -498,9 +429,8 @@ class SchemaMigrationIT {
     @Test
     @DisplayName("no imported figure violates the weight CHECK the source data would otherwise trip")
     void importedWeightsRespectTheDryBelowKerbCheck() {
-        // 70 source rows publish a dry weight above their own kerb weight (the CG 125 is listed at
-        // 114 kg dry against 100 kg wet). The import drops the dry figure rather than the whole row,
-        // so a regenerated seed that stopped doing that would fail here instead of at COMMIT.
+        // 70 source rows publish a dry weight above their own kerb weight (the CG 125 is listed at 114 kg dry against 100 kg
+        // wet). The import drops the dry figure rather than the whole row, so a regenerated seed that stopped would fail here.
         Integer impossible = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM dimensions WHERE dry_weight_kg > kerb_weight_kg", Integer.class);
         assertThat(impossible).isZero();
@@ -541,10 +471,8 @@ class SchemaMigrationIT {
         }
     }
 
-    // A fixed-size page can't be trusted to reach the tail once the catalogue outgrows it, so the page is sized to
-    // the whole table: the point is asserting where nulls land, not exercising pagination. The dev seed already
-    // ships a handful of unpriced 2026 models, so price alone ties with the sentinel; break the tie by id so the
-    // sentinel we just inserted (the highest id) is deterministically the last of the unpriced group.
+    // A fixed-size page can't be trusted to reach the tail once the catalogue outgrows it, so the page is sized to the whole
+    // table. The dev seed ships unpriced 2026 models, so price alone ties: break it by id, and the sentinel has the highest.
     private String lastBrandSortedByPrice(Sort.Direction direction) {
         int total = (int) motorcycleRepository.count();
         Sort sort = Sort.by(direction, "priceEur").and(Sort.by(Sort.Direction.ASC, "id"));

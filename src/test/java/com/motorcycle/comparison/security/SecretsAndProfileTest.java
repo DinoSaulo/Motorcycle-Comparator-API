@@ -23,15 +23,8 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-/**
- * Loads the real, non-test {@code application.yml} directly by file path rather than through the classpath: the
- * committed {@code src/test/resources/application.yml} deliberately shadows it on the test classpath (see that
- * file's own header comment) and supplies concrete secrets regardless of profile, which would defeat the very
- * thing under test here. Only the two {@code @Value} bindings that actually carry the no-fallback contract are
- * reproduced in {@link MinimalSecurityBeans} — {@code JwtService} itself, and a probe for the admin password — so
- * this never needs a datasource, a web server, or any other part of the real application context, and never
- * reaches the network.
- */
+/** Loads the real, non-test {@code application.yml} by file path: the committed test copy shadows it on the classpath and
+ *  supplies secrets regardless of profile. Only the two no-fallback {@code @Value} bindings are reproduced, so no datasource. */
 @DisplayName("Secrets and profile isolation")
 class SecretsAndProfileTest {
 
@@ -96,19 +89,8 @@ class SecretsAndProfileTest {
         }
     }
 
-    /**
-     * <b>What this proves, and what it deliberately does not:</b> these tests assert that the real
-     * {@code application.yml}'s {@code prod} document resolves {@code springdoc.api-docs.enabled}/
-     * {@code springdoc.swagger-ui.enabled} to {@code "false"}, and that {@code dev} leaves them unset — a
-     * property-resolution check, not an HTTP one. A full {@code MockMvc} proof that {@code GET /v3/api-docs}
-     * actually answers 404 under {@code prod} would need a booted servlet web context, which under the real
-     * {@code prod} document also means the real (PostgreSQL-only) datasource defaults and Flyway migrations that
-     * use functional/GIN indexes {@code src/test/resources/application.yml}'s own header comment already notes H2
-     * cannot parse — exactly the impracticality the task anticipated. So this class stays consistent with the rest
-     * of {@code SecretsAndProfileTest}: {@link WebApplicationType#NONE}, no datasource, no servlet container, a
-     * property probe rather than a running server. {@code AuthorizationMatrixTest.Documentation} already proves
-     * the HTTP-level 200/redirect behaviour on the test classpath's own (non-prod-shaped) configuration.
-     */
+    /** A property-resolution check, not an HTTP one: {@code prod} resolves the springdoc flags to {@code "false"} and {@code dev}
+     *  leaves them unset. A booted prod context would need PostgreSQL and Flyway; {@code AuthorizationMatrixTest} proves the HTTP side. */
     @Nested
     @DisplayName("OpenAPI documentation exposure by profile (property resolution, not a booted server)")
     class OpenApiExposureByProfile {
@@ -165,21 +147,13 @@ class SecretsAndProfileTest {
         return combined.toString();
     }
 
-    /**
-     * Reproduces only the two property bindings {@code SecurityConfig} and {@code JwtService} declare with no
-     * fallback outside the {@code dev}/{@code prod} activate-on blocks — deliberately not the real
-     * {@code SecurityConfig}, which needs a servlet {@code HttpSecurity} this NONE-web context never provides.
-     */
+    /** Reproduces only the two property bindings {@code SecurityConfig} and {@code JwtService} declare with no fallback:
+     *  deliberately not the real {@code SecurityConfig}, which needs a servlet {@code HttpSecurity} this NONE-web context lacks. */
     @Configuration
     static class MinimalSecurityBeans {
 
-        /**
-         * A plain {@code @Configuration} source triggers none of Boot's autoconfiguration, so without this bean
-         * {@code @Value} would fall back to {@code Environment.resolvePlaceholders} — the lenient variant
-         * {@code AbstractApplicationContext} always registers, which leaves an unresolvable placeholder as its
-         * literal text instead of failing. Registering the same kind of bean {@code PropertyPlaceholderAutoConfiguration}
-         * would have registered restores the strict, fail-fast behaviour the real application actually has.
-         */
+        /** A plain {@code @Configuration} triggers none of Boot's autoconfiguration, so without this bean {@code @Value} falls
+         *  back to the lenient {@code Environment.resolvePlaceholders}; registering it restores the real fail-fast behaviour. */
         @Bean
         static org.springframework.context.support.PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
             return new org.springframework.context.support.PropertySourcesPlaceholderConfigurer();
@@ -199,11 +173,8 @@ class SecretsAndProfileTest {
         }
     }
 
-    /**
-     * Isolates {@link DevDefaultsGuard} from the no-fallback JWT/admin-password properties {@link MinimalSecurityBeans}
-     * exercises: with no active profile those would fail to resolve regardless of the guard, which would mask
-     * exactly the behaviour under test here.
-     */
+    /** Isolates {@link DevDefaultsGuard} from the no-fallback JWT/admin-password properties {@link MinimalSecurityBeans} uses:
+     *  with no active profile those would fail to resolve regardless of the guard, masking the behaviour under test. */
     @Configuration
     static class MinimalGuardBeans {
 
@@ -219,12 +190,8 @@ class SecretsAndProfileTest {
         }
     }
 
-    /**
-     * No {@code @Value} bindings at all, unlike {@link MinimalSecurityBeans}: {@link OpenApiExposureByProfile}
-     * only ever calls {@link Environment#getProperty(String)} directly, so it has no reason to force resolution of
-     * (and therefore no reason to supply) the no-fallback JWT/admin-password properties — keeping it orthogonal to
-     * the secret-resolution tests above.
-     */
+    /** No {@code @Value} bindings at all, unlike {@link MinimalSecurityBeans}: {@link OpenApiExposureByProfile} only calls
+     *  {@link Environment#getProperty(String)}, so it never forces resolution of the no-fallback properties. */
     @Configuration
     static class EmptyConfig {
     }

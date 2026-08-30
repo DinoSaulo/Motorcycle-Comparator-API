@@ -1,17 +1,6 @@
 #!/usr/bin/env node
-// Regenerates src/main/resources/db/seed/R__motorcycles_specs_bmw_2026_08.sql from the
-// zontes-scraper BMW snapshot, and materialises the images that seed points at.
-//
-// Two outputs, one run, because they have to agree: the SQL stores an image URL whose file name
-// is derived from the motorcycle slug, and the copy step writes exactly those names. Re-running
-// on another machine reproduces both byte-for-byte.
-//
-//   node tools/import-bmw-specs.mjs [--source <dir>] [--sql-only] [--images-only]
-//
-// --source defaults to ../zontes-scraper relative to the repository root.
-//
-// Nothing here estimates. A figure the sources never published stays NULL, and a parsed figure
-// outside the plausible range for its column is dropped rather than stored.
+// Regenerates db/seed/R__motorcycles_specs_bmw_2026_08.sql from the zontes-scraper BMW snapshot plus the images it points
+// at, reproducibly; nothing is estimated. Usage: node <this> [--source <dir, default ../zontes-scraper>] [--sql-only|--images-only]
 
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
@@ -30,12 +19,8 @@ const option = (name, fallback) => {
 
 const SOURCE_DIR = path.resolve(option('--source', path.join(REPO_ROOT, '..', 'zontes-scraper')));
 const JSON_PATH = path.join(SOURCE_DIR, 'bmw_motos.json');
-// Named "specs_bmw" and not "bmw_specs" like its siblings, and the difference is load-bearing.
-// Flyway orders repeatable migrations by description (MigrationInfoImpl.compareTo: "Two repeatable
-// migrations: sort by description"), so a file called R__motorcycles_bmw_specs_* would run BEFORE
-// R__motorcycles_brazil_fipe_* - "bmw" sorts before "brazil". Every other brand import gets the
-// right order by luck, because h/r/y all sort after b. This one has to be spelled differently to
-// earn it. See the generated header for what running first would have cost.
+// Named "specs_bmw" and not "bmw_specs" like its siblings, and the difference is load-bearing: Flyway orders repeatable
+// migrations by description, so R__motorcycles_bmw_specs_* would run BEFORE the FIPE seed. See the generated header.
 const SQL_PATH = path.join(REPO_ROOT, 'src/main/resources/db/seed/R__motorcycles_specs_bmw_2026_08.sql');
 const IMAGE_DIR = path.join(REPO_ROOT, 'uploads/motorcycles');
 const IMAGE_URL_PREFIX = '/api/v1/images/motorcycles/';
@@ -44,9 +29,7 @@ const doSql = !flag('--images-only');
 const doImages = !flag('--sql-only');
 
 // --- number parsing -----------------------------------------------------------------------
-// The sources mix Portuguese and English conventions in the same file ("17,5 kgf.m" next to
-// "107 Nm", "7.750 RPM" next to "7500 rpm"), so a separator is read from its own shape:
-// exactly three trailing digits means a thousands group, anything else means a decimal point.
+// Sources mix PT and EN conventions ("17,5 kgf.m" next to "107 Nm"), so a separator is read from its own shape: exactly three trailing digits is a thousands group.
 function toNumber(token) {
     if (token == null) return null;
     let t = String(token).trim();
@@ -66,10 +49,8 @@ function toNumber(token) {
     return Number.isFinite(n) ? n : null;
 }
 
-// A source string that spaces out its digits is garbled, not SI-formatted. The repair below only
-// joins a digit to a following group of exactly three, and anything still spaced is refused by
-// NUMBER_START rather than read as its first fragment — a plausibility bound cannot catch a wrong
-// figure that happens to land inside the range.
+// A source string that spaces out its digits is garbled, not SI-formatted. The repair only joins a digit to a following
+// group of exactly three; anything still spaced is refused by NUMBER_START rather than read as its first fragment.
 const MALFORMED = { count: 0 };
 const repairDigitGroups = (text) => String(text).replace(/(\d) (\d{3})(?!\d)/g, '$1$2');
 
@@ -87,13 +68,8 @@ function countMalformed(text) {
 
 const MM_PER_INCH = 25.4;
 
-/**
- * First number carrying one of the given units. These are metric sheets, so `inches` is a last
- * resort that fires only where the metric figure is unreadable — in this snapshot that is the one
- * row whose length reads "2324 m / 91.5 in", with the unit itself mistyped. Metric always wins
- * where both are printed, so "2212 mm / 87.1 in" reads 2212 and never 2212.2. `bare` allows a
- * unitless value as a last resort.
- */
+/** First number carrying one of the given units. These are metric sheets, so `inches` fires only where the metric figure
+ *  is unreadable (one row reads "2324 m / 91.5 in"); metric wins where both appear, and `bare` is a last resort. */
 function measure(rawText, unitPattern, { bare = false, inches = false } = {}) {
     if (!rawText) return null;
     const text = collapseRanges(repairDigitGroups(rawText));
@@ -108,10 +84,8 @@ function measure(rawText, unitPattern, { bare = false, inches = false } = {}) {
         }
     }
     if (!bare) return countMalformed(text);
-    // The bare read has to refuse a garbled string too. NUMBER_START stops the unit-anchored read
-    // from taking a fragment, but without this the unitless fallback would walk straight past that
-    // guard and take the first one: "11 72 cc" is 1172 cc, and reading it as 11 is worse than
-    // reading nothing, because 11 is a number a plausibility bound might well have let through.
+    // The bare read has to refuse a garbled string too: NUMBER_START stops the unit-anchored read from taking a fragment,
+    // but the unitless fallback would walk past it. "11 72 cc" is 1172 cc, and 11 is a number a bound might let through.
     if (/\d\s+\d/.test(text)) {
         MALFORMED.count++;
         return null;
@@ -123,13 +97,8 @@ function measure(rawText, unitPattern, { bare = false, inches = false } = {}) {
 const CC_PER_CUBIC_INCH = 16.387064;
 const CUBIC_INCHES = { count: 0 };
 
-/**
- * Displacement in cc, from the imperial figure where the metric one is unreadable. 10 rows here
- * publish "11 72 cc / 71.5 cu in": the extractor has split 1172 into two fragments that no repair
- * can safely rejoin, but the cubic-inch figure beside it is intact and independent of that split,
- * so it is converted rather than leaving the whole row's displacement NULL. Same principle as the
- * inch fallback on the dimension fields - a published figure in the other unit, never an estimate.
- */
+/** Displacement in cc, from the imperial figure where the metric one is unreadable: 10 rows publish "11 72 cc / 71.5 cu in",
+ *  a split no repair can rejoin, so the intact cubic-inch figure is converted instead. A published figure, never an estimate. */
 function displacementOf(text) {
     const cc = measure(text, 'cc|cm³|cm3|ccm', { bare: true });
     if (cc != null) return cc;
@@ -169,13 +138,8 @@ const TRUNCATED = { count: 0 };
 const REPAIRED = { count: 0 };
 const CONVERTED = { count: 0 };
 
-/**
- * The extractor that produced this snapshot occasionally emits a word with a space after its first
- * letter. Only the four forms it actually damages are repaired, and each is repaired to a word that
- * exists: a blanket "single letter followed by a word" rule would corrupt the legitimate text this
- * snapshot also carries — "BMS-K with overrun fuel cut off", "Optional M forged aluminum wheels",
- * "by mean of a hydraulic handwheel" are all correct as printed.
- */
+/** The extractor occasionally emits a word with a space after its first letter. Only the four forms it actually damages are
+ *  repaired: a blanket rule would corrupt "BMS-K with", "Optional M forged" and "by mean of a hydraulic", all correct. */
 const SPLIT_WORDS = [
     [/\bF our\b/g, 'Four'],
     [/\bE lectric\b/g, 'Electric'],
@@ -208,9 +172,8 @@ const PT_CYLINDERS = { um: 1, uma: 1, dois: 2, duas: 2, três: 3, tres: 3, quatr
 function cylindersOf(engineText, explicit) {
     if (explicit != null) return { count: explicit, phrase: null };
     if (!engineText) return { count: null, phrase: null };
-    // Adjacency to "cylinder"/"cilindro" is required. "Four stroke, two cylinder horizontally
-    // opposed Boxer" is a twin: the "Four" belongs to the stroke count and must not be read, and
-    // the 4 in "4 valves per cylinder" must not be read either.
+    // Adjacency to "cylinder"/"cilindro" is required. "Four stroke, two cylinder horizontally opposed Boxer" is a twin:
+    // the "Four" belongs to the stroke count, and the 4 in "4 valves per cylinder" must not be read either.
     const en = /\b(single|mono|one|two|twin|three|triple|four|six|\d)[\s-]*cylinders?\b/i.exec(engineText);
     if (en) return { count: WORD_CYLINDERS[en[1].toLowerCase()] ?? (Number(en[1]) || null), phrase: en[0] };
     const pt = /\b(um|uma|dois|duas|tr[êe]s|quatro|seis|\d)\s*cilindros?\b/i.exec(engineText);
@@ -228,10 +191,8 @@ function cylindersOf(engineText, explicit) {
     return twin ? { count: 2, phrase: twin[0] } : { count: null, phrase: null };
 }
 
-// Bore, stroke and displacement are printed on the same sheet, so their product decides the cylinder
-// count whenever the prose on that sheet disagrees with it. This range spans singles, flat twins,
-// parallel twins, inline fours and the K 1600's inline six, so the arithmetic is the only check
-// that holds across all of them.
+// Bore, stroke and displacement are printed on the same sheet, so their product decides the cylinder count whenever the
+// prose disagrees. This range spans singles to the K 1600's inline six, so the arithmetic is the only check that holds.
 const CORRECTED = { count: 0 };
 
 function cylindersFromSweptVolume(displacementCc, boreMm, strokeMm) {
@@ -247,10 +208,8 @@ function cylindersFromSweptVolume(displacementCc, boreMm, strokeMm) {
 
 const LAYOUT_NAME = { 1: 'Single cylinder', 2: 'Twin cylinder', 3: 'Three cylinder', 4: 'Four cylinder', 6: 'Six cylinder' };
 
-/**
- * Rewrites the layout phrase the cylinder parser read, and only that phrase, so a description whose
- * count the swept volume has just overruled does not go on contradicting the column beside it.
- */
+/** Rewrites the layout phrase the cylinder parser read, and only that phrase, so a description whose count the swept
+ *  volume has just overruled does not go on contradicting the column beside it. */
 function relabelLayout(engineText, phrase, count) {
     const name = LAYOUT_NAME[count];
     if (!engineText || !name || !phrase) return engineText;
@@ -275,11 +234,8 @@ function valvesPerCylinderOf(engineText, cylinders) {
 function powerOf(text, dropped) {
     if (!text) return [null, null];
     const rpm = rpmOf(text, dropped, 'max_power_rpm');
-    // hp/bhp/cv/PS are all read as horsepower, matching how the sources use them interchangeably.
-    // Where a row publishes both ("72.9 kW / 100 hp @ 7500 rpm") the horsepower figure is the
-    // published one and the kW conversion below never runs. The crank figure is always printed
-    // first, so the parenthesised "(70.8 kW 94.9 hp @ 7400 rpm at rear wheel)" some rows append
-    // is never the one read.
+    // hp/bhp/cv/PS are all read as horsepower, as the sources use them interchangeably; where a row publishes both
+    // ("72.9 kW / 100 hp") the hp figure wins. The crank figure is printed first, so the rear-wheel one is never read.
     const hp = unit(text, 'hp|bhp|cv|ps\\b');
     if (hp != null) return [bounded(round(hp, 1), 0.5, 350, dropped, 'max_power_hp'), rpm];
     const kw = unit(text, 'kw\\b');
@@ -339,13 +295,8 @@ function compressionOf(text) {
     return clean(text, 20);
 }
 
-/**
- * BMW never prints a bare "Euro 5" here: the standard is named inside a sentence about the catalytic
- * converter ("Closed-loop 3-way catalytic converter, EU5"), and on some rows only under Exhaust.
- * Only the standard itself is stored. A row that describes the converter without naming a standard
- * ("Fully-controlled three-way catalytic converter") yields NULL rather than a truncated sentence:
- * emission_standard is a filter facet, and a device description is not a standard.
- */
+/** BMW never prints a bare "Euro 5": the standard is named inside a sentence about the catalytic converter, on some rows
+ *  only under Exhaust. Only the standard is stored; a converter description naming none yields NULL, not a truncated sentence. */
 function emissionOf(extra) {
     for (const key of ['Emission', 'Emissions', 'Emission control', 'Exhaust management', 'Exhaust']) {
         const raw = extra[key];
@@ -356,11 +307,8 @@ function emissionOf(extra) {
     return null;
 }
 
-// Category is only ever used by the insert path below, which is dead for this snapshot: all 200
-// rows already exist in the catalogue and their category is never overwritten. It is derived
-// properly anyway, so a re-scrape that adds a model lands it in the right segment rather than in a
-// blanket default. The source's own label wins where it published one; otherwise the designation
-// decides, in this order, because BMW's suffixes overlap ("GS" before "S", "RR" before "R").
+// Category only feeds the insert path below, dead for this snapshot, but it is derived properly so a re-scrape lands a new
+// model in the right segment. The source's label wins; otherwise the designation decides ("GS" before "S", "RR" before "R").
 const CATEGORY_BY_SOURCE_LABEL = {
     adventure: 'ADVENTURE', supersport: 'SPORT', sport: 'SPORT', touring: 'TOURING',
     naked: 'NAKED', roadster: 'NAKED', enduro: 'OFF_ROAD', supermoto: 'SUPERMOTO', cruiser: 'CRUISER',
@@ -386,10 +334,7 @@ function categoryOf(model, label) {
 }
 
 // --- long-tail specs ----------------------------------------------------------------------
-// Deliberately a curated subset, and deliberately the same key names the Honda, Yamaha, Royal
-// Enfield and Harley-Davidson imports use, so a side-by-side comparison of a BMW and a Honda lines
-// its long-tail rows up instead of doubling them. The scraper's own bookkeeping is dropped: it is
-// not a rider-facing fact.
+// A curated subset under the same key names the Honda, Yamaha, Royal Enfield and Harley-Davidson imports use, so a comparison lines up instead of doubling; the scraper's bookkeeping is dropped.
 const TOP_LEVEL_SPEC_KEYS = [
     'Pressão do Pneu Dianteiro', 'Pressão do Pneu Traseiro', 'Iluminação', 'Painel', 'Marcha Lenta',
     'Sistema de Partida', 'Sistema de Chave de Ignição', 'Modos de Condução', 'Rodas', 'Tomada USB',
@@ -413,14 +358,12 @@ const EXTRA_SPEC_KEYS = {
     'Spark Plug': 'Vela de Ignição',
     'Spark Plugs': 'Vela de Ignição',
     Exhaust: 'Escape',
-    // Trail and Castor are the same measurement under two of the source's names and never appear on
-    // the same row (52 rows carry one, 55 the other, 0 both), so they share a key rather than
-    // splitting one fact across two rows of the comparison table.
+    // Trail and Castor are the same measurement under two of the source's names and never appear on the same row (52 carry
+    // one, 55 the other, 0 both), so they share a key rather than splitting one fact across two rows of the table.
     Trail: 'Trail',
     Castor: 'Trail',
-    // Rake and Steering Head Angle are NOT merged. Both are angles, but the source measures rake
-    // from the vertical (26.2°) and the steering head angle from the horizontal (66.4°). They never
-    // co-occur either, so merging would silently mix two conventions under one label.
+    // Rake and Steering Head Angle are NOT merged. Both are angles, but the source measures rake from the vertical (26.2°)
+    // and the steering head angle from the horizontal (66.4°). They never co-occur, so merging would mix two conventions.
     Rake: 'Ângulo de Cáster',
     'Fork Angle': 'Ângulo de Cáster',
     'Steering Head Angle': 'Ângulo da Coluna de Direção',
@@ -445,9 +388,8 @@ const EXTRA_SPEC_KEYS = {
     'Permitted Total Weight': 'Peso Bruto Total',
     'Throttle Valve Diameter': 'Diâmetro do Corpo de Borboleta',
     'Engine Control': 'Gerenciamento do Motor',
-    // BMW's own "Fuel" is a fuel GRADE ("Unleaded super, octane number 95 (RON)"). The FIPE seed
-    // already stores a key called 'Fuel' meaning the fuel TYPE (Gasolina/Álcool), so this one is
-    // named apart rather than colliding with it under ON CONFLICT DO NOTHING.
+    // BMW's own "Fuel" is a fuel GRADE ("Unleaded super, octane number 95 (RON)"), but the FIPE seed already stores a 'Fuel'
+    // key meaning the fuel TYPE (Gasolina/Álcool), so this one is named apart rather than colliding under ON CONFLICT DO NOTHING.
     Fuel: 'Combustível Recomendado',
     // Road-test figures, published by motorcyclespecs on a minority of rows. The source writes the
     // same measurement under several spellings; each is normalised to one label so the rows stack.
@@ -501,8 +443,7 @@ function longTailSpecs(moto) {
 }
 
 // --- image naming -------------------------------------------------------------------------
-// A UUID v5 over the slug: the file name the seed stores has to be reproducible on any machine,
-// and FileStorageServiceImpl only reads names matching UUID + jpg/png/webp.
+// A UUID v5 over the slug: reproducible on any machine, and FileStorageServiceImpl only reads UUID + jpg/png/webp.
 const UUID_NAMESPACE = Buffer.from('6ba7b8119dad11d180b400c04fd430c8', 'hex');
 
 function uuidV5(name) {
@@ -514,11 +455,8 @@ function uuidV5(name) {
     return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }
 
-/**
- * One stored copy per motorcycle, even where several model-years share a source photo. The app
- * treats the file as owned by the row — deleting a motorcycle or clearing its image deletes the
- * file — so a shared name would blank the other rows' images.
- */
+/** One stored copy per motorcycle, even where several model-years share a source photo. The app treats the file as
+ *  owned by the row (deleting the row deletes the file), so a shared name would blank the other rows' images. */
 function imageFor(moto) {
     for (const relative of moto.imagens_locais || []) {
         const absolute = path.join(SOURCE_DIR, relative);
@@ -562,9 +500,8 @@ for (const moto of snapshot.motos) {
         dry = null;
     }
 
-    // "6-speed gearbox" is how these sheets write it, so the separator has to admit a hyphen; a
-    // whitespace-only rule reads the gear count off "5 Speed" and misses every BMW written the
-    // other way, which is most of them.
+    // "6-speed gearbox" is how these sheets write it, so the separator has to admit a hyphen; a whitespace-only rule reads
+    // the gear count off "5 Speed" and misses every BMW written the other way, which is most of them.
     const gearsText = moto['Transmissão'];
     const gearsMatch = gearsText && /(\d+)[\s-]*(?:speed|velocidades|marchas)/i.exec(gearsText);
 
@@ -612,9 +549,8 @@ for (const moto of snapshot.motos) {
         ground_clearance_mm: bounded(Math.round(measure(moto['Distância do Solo'], 'mm', { bare: true, inches: true }) ?? NaN) || null, 50, 400, dropped, 'ground_clearance_mm'),
         kerb_weight_kg: kerb,
         dry_weight_kg: dry,
-        // Litres only. "22 L / 5.8 US gal" must never fall through to the gallon figure. The sheets
-        // spell the unit four ways - "L", "Litres", "Liters", "litros" - and the American spelling
-        // is not a rounding error to leave out: 28 rows publish the tank only as "24 Liters".
+        // Litres only: "22 L / 5.8 US gal" must never fall through to the gallon figure. The sheets spell the unit four ways
+        // ("L", "Litres", "Liters", "litros"), and the American spelling matters: 28 rows publish the tank as "24 Liters".
         fuel_capacity_l: bounded(round(measure(moto['Capacidade do Tanque'], 'l\\b|lt\\b|litros?|litres?|liters?'), 1), 1, 50, dropped, 'fuel_capacity_l'),
 
         image: imageFor(moto),

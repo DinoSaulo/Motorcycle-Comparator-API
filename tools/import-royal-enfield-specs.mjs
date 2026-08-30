@@ -1,17 +1,6 @@
 #!/usr/bin/env node
-// Regenerates src/main/resources/db/seed/R__motorcycles_royal_enfield_specs_2026_08.sql from the
-// zontes-scraper Royal Enfield snapshot, and materialises the images that seed points at.
-//
-// Two outputs, one run, because they have to agree: the SQL stores an image URL whose file name
-// is derived from the motorcycle slug, and the copy step writes exactly those names. Re-running
-// on another machine reproduces both byte-for-byte.
-//
-//   node tools/import-royal-enfield-specs.mjs [--source <dir>] [--sql-only] [--images-only]
-//
-// --source defaults to ../zontes-scraper relative to the repository root.
-//
-// Nothing here estimates. A figure the sources never published stays NULL, and a parsed figure
-// outside the plausible range for its column is dropped rather than stored.
+// Regenerates db/seed/R__motorcycles_royal_enfield_specs_2026_08.sql from the zontes-scraper snapshot plus the images it
+// points at, reproducibly; nothing is estimated. Usage: node <this> [--source <dir, default ../zontes-scraper>] [--sql-only|--images-only]
 
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
@@ -38,9 +27,7 @@ const doSql = !flag('--images-only');
 const doImages = !flag('--sql-only');
 
 // --- number parsing -----------------------------------------------------------------------
-// The sources mix Portuguese and English conventions in the same file ("15,7 litros" next to
-// "13.5 Litres", "2,8 litros" next to "2.5 litros"), so a separator is read from its own shape:
-// exactly three trailing digits means a thousands group, anything else means a decimal point.
+// Sources mix PT and EN conventions ("15,7 litros" next to "13.5 Litres"), so a separator is read from its own shape: exactly three trailing digits is a thousands group.
 function toNumber(token) {
     if (token == null) return null;
     let t = String(token).trim();
@@ -60,16 +47,13 @@ function toNumber(token) {
     return Number.isFinite(n) ? n : null;
 }
 
-// A source string that spaces out its digits is garbled, not SI-formatted: this snapshot carries
-// "curso 20 0 mm" for a 200 mm shock. The repair below only joins a digit to a following group of
-// exactly three, and anything still spaced is refused by NUMBER_START rather than read as its first
-// fragment — a plausibility bound cannot catch a wrong figure that happens to land inside the range.
+// A source string that spaces out its digits is garbled, not SI-formatted ("curso 20 0 mm" for a 200 mm shock): the repair
+// only joins a digit to a following group of exactly three, and anything still spaced is refused by NUMBER_START.
 const MALFORMED = { count: 0 };
 const repairDigitGroups = (text) => String(text).replace(/(\d) (\d{3})(?!\d)/g, '$1$2');
 
-// "825 - 845 mm" is an adjustable seat published as its range. Collapse it to the low end: that is
-// the height the bike stands at as delivered, and storing 845 would overstate it for every rider
-// who never raises the seat. Applied to measurements only, never to power, torque or rpm.
+// "825 - 845 mm" is an adjustable seat published as its range. Collapse it to the low end: that is the height the bike
+// stands at as delivered, and 845 would overstate it. Applied to measurements only, never to power, torque or rpm.
 const collapseRanges = (text) => text.replace(/(\d[\d.,]*)\s*[-–—]\s*\d[\d.,]*(\s*)(?=[a-z°])/gi, '$1$2');
 
 /** A number may not begin immediately after a digit, or after a digit and a space. */
@@ -120,11 +104,8 @@ function rpmOf(text, dropped, label) {
 const TRUNCATED = { count: 0 };
 const REPAIRED = { count: 0 };
 
-/**
- * Collapses whitespace, drops trailing punctuation the scraper carried over from the source table,
- * and repairs the two encoding faults this snapshot carries. Both are extraction damage, not source
- * content: the manufacturer's brake sheet reads "flutuante", and the power sheet reads "@ 7250 rpm".
- */
+/** Collapses whitespace, drops trailing punctuation from the source table, and repairs the two encoding faults this
+ *  snapshot carries: the brake sheet reads "flutuante" and the power sheet "@ 7250 rpm". Extraction damage, not content. */
 function clean(text, maxLength) {
     if (text == null) return null;
     const before = String(text);
@@ -165,19 +146,14 @@ function cylindersOf(engineText, explicit) {
     if (tri) return { count: 3, phrase: tri[0] };
     const v = /\bV[\s-]?(\d)\b/i.exec(engineText);
     if (v) return { count: Number(v[1]), phrase: v[0] };
-    // "Parallel Twin, 4 stroke, SOHC" names the layout without ever writing "cylinder". A bare
-    // "twin" in an engine description is a two-cylinder and nothing else, so it is read last,
-    // after every construction that states the count outright.
+    // "Parallel Twin, 4 stroke, SOHC" names the layout without ever writing "cylinder". A bare "twin" is a two-cylinder
+    // and nothing else, so it is read last, after every construction that states the count outright.
     const twin = /\btwin\b/i.exec(engineText);
     return twin ? { count: 2, phrase: twin[0] } : { count: null, phrase: null };
 }
 
-// Bore, stroke and displacement are printed on the same sheet, so their product decides the cylinder
-// count whenever the prose on that sheet disagrees with it. This snapshot needs it: the 648 cc engine
-// (78 x 67.8 mm, exactly two cylinders' worth) is captioned "Single cylinder" on 18 rows, and the
-// 349 cc engine (72 x 85.8 mm, exactly one) is captioned "Parallel Twin" on 15. Neither is a
-// judgement call - the arithmetic lands within 0.1% of a whole number both times, and a 648 cc
-// single would be a visible absurdity in the comparison table.
+// Bore, stroke and displacement share a sheet, so their product decides the cylinder count when the prose disagrees. This
+// snapshot needs it: the 648 cc twin is captioned "Single cylinder" on 18 rows and the 349 cc single "Parallel Twin" on 15.
 const CORRECTED = { count: 0 };
 
 function cylindersFromSweptVolume(displacementCc, boreMm, strokeMm) {
@@ -193,12 +169,8 @@ function cylindersFromSweptVolume(displacementCc, boreMm, strokeMm) {
 
 const LAYOUT_NAME = { 1: 'Single cylinder', 2: 'Twin cylinder', 3: 'Three cylinder', 4: 'Four cylinder', 6: 'Six cylinder' };
 
-/**
- * Rewrites the layout phrase the cylinder parser read, and only that phrase, so a description whose
- * count the swept volume has just overruled does not go on contradicting the column beside it. A
- * qualifier standing in front of the phrase goes with it: "Parallel Twin" corrected to a single
- * would otherwise read "Parallel Single cylinder".
- */
+/** Rewrites the layout phrase the cylinder parser read, and only that phrase, so a description the swept volume has just
+ *  overruled stops contradicting the column beside it. A leading qualifier goes with it, so never "Parallel Single cylinder". */
 function relabelLayout(engineText, phrase, count) {
     const name = LAYOUT_NAME[count];
     if (!engineText || !name || !phrase) return engineText;
@@ -224,9 +196,8 @@ function valvesPerCylinderOf(engineText, cylinders) {
 function powerOf(text, dropped) {
     if (!text) return [null, null];
     const rpm = rpmOf(text, dropped, 'max_power_rpm');
-    // hp/bhp/cv/PS are all read as horsepower, matching how the sources use them interchangeably.
-    // Where a row publishes both ("20.3 kW / 27.2 hp"), the horsepower figure is the published one
-    // and the kW conversion below never runs.
+    // hp/bhp/cv/PS are all read as horsepower, matching how the sources use them interchangeably. Where a row publishes
+    // both ("20.3 kW / 27.2 hp") the horsepower figure is the published one and the kW conversion below never runs.
     const hp = unit(text, 'hp|bhp|cv|ps\\b');
     if (hp != null) return [bounded(round(hp, 1), 0.5, 350, dropped, 'max_power_hp'), rpm];
     const kw = unit(text, 'kw\\b');
@@ -285,19 +256,16 @@ function compressionOf(text) {
     return clean(text, 20);
 }
 
-// Royal Enfield builds for India first, so its sheets quote BS6 where a European sheet would quote
-// Euro 5. Both are stored verbatim: mapping BS6 onto a Euro number would assert an equivalence the
-// manufacturer never published.
+// Royal Enfield builds for India first, so its sheets quote BS6 where a European sheet would quote Euro 5. Both are stored
+// verbatim: mapping BS6 onto a Euro number would assert an equivalence the manufacturer never published.
 const EMISSION_ALIASES = { EURO5: 'Euro 5', EURO4: 'Euro 4', EURO3: 'Euro 3' };
 const emissionOf = (extra) => {
     const raw = clean(extra['Emission'] || extra['Emissions'], 30);
     return raw ? EMISSION_ALIASES[raw.toUpperCase().replace(/\s+/g, '')] || raw : null;
 };
 
-// The catalogue enum has no Classic, Cafe Racer or Roadster member, so this only ever feeds the
-// (currently empty) insert path for a slug the catalogue does not already hold. Existing rows keep
-// the category they were seeded with. CRUISER is the fallback because it is what the FIPE seed
-// assigned to 87 of the 149 Royal Enfield rows already in the catalogue.
+// The catalogue enum has no Classic, Cafe Racer or Roadster member, so this only ever feeds the (currently empty) insert
+// path for a new slug; existing rows keep their category. CRUISER is the fallback: FIPE gave it to 87 of the 149 rows.
 const CATEGORY_BY_SOURCE_LABEL = {
     cruiser: 'CRUISER', custom: 'CRUISER', classic: 'CRUISER', 'classic / retro': 'CRUISER',
     naked: 'NAKED', roadster: 'NAKED', 'cafe racer': 'NAKED', 'café racer': 'NAKED',
@@ -305,9 +273,7 @@ const CATEGORY_BY_SOURCE_LABEL = {
 };
 
 // --- long-tail specs ----------------------------------------------------------------------
-// Deliberately a curated subset, and deliberately the same key names the Honda and Yamaha imports
-// use, so a side-by-side comparison of a Royal Enfield and a Honda lines its long-tail rows up
-// instead of doubling them. The scraper's own bookkeeping is dropped: it is not a rider-facing fact.
+// A curated subset under the same key names the Honda and Yamaha imports use, so a side-by-side comparison lines up instead of doubling; the scraper's bookkeeping is dropped.
 const TOP_LEVEL_SPEC_KEYS = [
     'Pressão do Pneu Dianteiro', 'Pressão do Pneu Traseiro', 'Iluminação', 'Painel', 'Marcha Lenta',
     'Sistema de Partida', 'Sistema de Chave de Ignição', 'Modos de Condução', 'Rodas', 'Tomada USB',
@@ -359,8 +325,7 @@ function longTailSpecs(moto) {
 }
 
 // --- image naming -------------------------------------------------------------------------
-// A UUID v5 over the slug: the file name the seed stores has to be reproducible on any machine,
-// and FileStorageServiceImpl only reads names matching UUID + jpg/png/webp.
+// A UUID v5 over the slug: reproducible on any machine, and FileStorageServiceImpl only reads UUID + jpg/png/webp.
 const UUID_NAMESPACE = Buffer.from('6ba7b8119dad11d180b400c04fd430c8', 'hex');
 
 function uuidV5(name) {
@@ -372,11 +337,8 @@ function uuidV5(name) {
     return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }
 
-/**
- * One stored copy per motorcycle, even where several model-years share a source photo. The app
- * treats the file as owned by the row — deleting a motorcycle or clearing its image deletes the
- * file — so a shared name would blank the other rows' images.
- */
+/** One stored copy per motorcycle, even where several model-years share a source photo. The app treats the file as
+ *  owned by the row (deleting the row deletes the file), so a shared name would blank the other rows' images. */
 function imageFor(moto) {
     for (const relative of moto.imagens_locais || []) {
         const absolute = path.join(SOURCE_DIR, relative);
@@ -400,9 +362,8 @@ for (const moto of snapshot.motos) {
     const bore = bounded(round(measure(moto['Diâmentro do Cilindro'], 'mm', { bare: true }), 2), 20, 150, dropped, 'bore_mm');
     const stroke = bounded(round(measure(moto['Curso'], 'mm', { bare: true }), 2), 20, 150, dropped, 'stroke_mm');
 
-    // The prose is read first, then checked against the sheet's own bore, stroke and displacement.
-    // Where the two disagree the arithmetic wins and the prose is relabelled to match it, so the
-    // description and the cylinder count never tell a reader two different things.
+    // The prose is read first, then checked against the sheet's own bore, stroke and displacement. Where the two disagree
+    // the arithmetic wins and the prose is relabelled to match, so description and cylinder count never disagree.
     const stated = cylindersOf(moto['Motor'], toNumber(extra['[Motor] Cilindros']));
     const swept = cylindersFromSweptVolume(displacement, bore, stroke);
     const contradicted = swept != null && stated.count != null && swept !== stated.count;

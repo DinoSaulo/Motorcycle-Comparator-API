@@ -35,10 +35,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Stateless security for a public catalogue with an administrative back office: reads are open, writes need {@code ROLE_ADMIN} from a JWT.
- * <p><b>Iteration 1 caveat:</b> the two accounts below live in {@code application.yml}; a future {@code User} entity only swaps the {@link UserDetailsService} bean.
- */
+/** Stateless security for a public catalogue with an admin back office: reads open, writes need {@code ROLE_ADMIN} from a JWT.
+ *  <p><b>Iteration 1 caveat:</b> the two accounts live in {@code application.yml}; a {@code User} entity only swaps the {@link UserDetailsService} bean. */
 @Configuration
 @EnableMethodSecurity
 @RequiredArgsConstructor
@@ -90,9 +88,8 @@ public class SecurityConfig {
                 .exceptionHandling(ex -> ex
                         .authenticationEntryPoint(this::writeUnauthorized)
                         .accessDeniedHandler(this::writeForbidden))
-                // 'self' rather than 'none': Swagger UI is served from this same origin and needs to load its
-                // own scripts/styles/images; style-src also needs 'unsafe-inline' for the CSS the bundled React
-                // app injects at runtime. No-referrer keeps an externally hosted imageUrl out of the Referer header.
+                // 'self' rather than 'none': Swagger UI loads its own scripts/styles/images from this same origin,
+                // and style-src needs 'unsafe-inline' for React's runtime CSS. No-referrer hides imageUrl from Referer.
                 .headers(headers -> headers
                         .contentSecurityPolicy(csp -> csp.policyDirectives(
                                 "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "

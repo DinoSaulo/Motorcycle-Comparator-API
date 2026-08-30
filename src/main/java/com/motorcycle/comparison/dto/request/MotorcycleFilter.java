@@ -6,10 +6,8 @@ import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 
-/**
- * Catalogue facets, bound from the query string. Every field is optional and an
- * absent field means "no constraint" — the service composes only what is present.
- */
+/** Catalogue facets, bound from the query string. Every field is optional and an absent field
+ *  means "no constraint": the service composes only what is present. */
 @Schema(description = "Optional catalogue filters; omitted fields are unconstrained")
 public record MotorcycleFilter(
         @Schema(example = "Yamaha") String brand,

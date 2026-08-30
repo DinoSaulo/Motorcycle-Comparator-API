@@ -43,12 +43,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-/**
- * Exercises the translation table directly, one exception type at a time, including the branches an HTTP-level
- * test cannot reach on purpose: {@link NoHandlerFoundException} is shadowed by Spring's static-resource fallback
- * before it ever leaves the dispatcher (see the class javadoc), and an unnamed constraint is not something any
- * fixture in {@code MotorcycleControllerTest} bothers to fake because a real database always names its constraints.
- */
+/** Exercises the translation table directly, one exception type at a time, including the branches an HTTP-level test
+ *  cannot reach: {@link NoHandlerFoundException}, shadowed by the static-resource fallback, and an unnamed constraint. */
 @ExtendWith(MockitoExtension.class)
 @DisplayName("GlobalExceptionHandler")
 class GlobalExceptionHandlerTest {
@@ -228,9 +224,8 @@ class GlobalExceptionHandlerTest {
     @Test
     @DisplayName("a bare IllegalArgumentException never reaches the client verbatim, even when its own message looks harmless")
     void handlesIllegalArgument() {
-        // Deliberately NOT a DomainValidationException: this is exactly the "library on the call
-        // path" scenario handleIllegalArgument exists for, so even a plausible-looking message
-        // must not be forwarded — only handleDomainValidation is allowed to do that (see below).
+        // Deliberately NOT a DomainValidationException: this is exactly the "library on the call path" scenario
+        // handleIllegalArgument exists for, so even a plausible-looking message must not be forwarded (see below).
         ResponseEntity<ApiError> response = handler.handleIllegalArgument(new IllegalArgumentException("A comparison needs at least 2 distinct motorcycles"), request);
 
         assertUniform(response, HttpStatus.BAD_REQUEST, "The request contains an invalid value", PATH);

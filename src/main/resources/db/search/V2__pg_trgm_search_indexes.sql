@@ -1,8 +1,5 @@
--- Free-text search support, kept in its own location (classpath:db/search) because
--- CREATE EXTENSION needs privileges some managed environments do not hand out.
---
--- Skip: drop this location from spring.flyway.locations. Pre-provision: have a DBA run
--- CREATE EXTENSION pg_trgm once, after which the statement below is a no-op.
+-- Free-text search support, kept in its own location (classpath:db/search) because CREATE EXTENSION needs privileges
+-- some managed environments withhold. Skip: drop the location. Pre-provision: a DBA runs CREATE EXTENSION pg_trgm once.
 
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
 

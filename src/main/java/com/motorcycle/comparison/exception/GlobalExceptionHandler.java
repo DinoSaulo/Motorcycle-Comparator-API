@@ -36,20 +36,16 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * Single translation point from exception to HTTP response: a client error explains precisely what went wrong, a server
- * error says nothing beyond a correlation hint — the stack trace goes to the log, never to the caller.
- */
+/** Single translation point from exception to HTTP response: a client error explains precisely what went wrong, a
+ *  server error says nothing beyond a correlation hint; the stack trace goes to the log, never to the caller. */
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
 
     private final DataSize maxImageSize;
 
-    /**
-     * The business limit, not the servlet one: {@code spring.servlet.multipart} sits deliberately above it, so quoting
-     * the transport cap would tell a client its 5.5 MB photo is acceptable when the storage service will still reject it.
-     */
+    /** The business limit, not the servlet one: {@code spring.servlet.multipart} sits deliberately above it, so quoting
+     *  the transport cap would tell a client its 5.5 MB photo is fine when the storage service will still reject it. */
     public GlobalExceptionHandler(@Value("${app.storage.images.max-file-size:5MB}") DataSize maxImageSize) {
         this.maxImageSize = maxImageSize;
     }
@@ -75,10 +71,8 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST.getReasonPhrase(), "Request validation failed", request.getRequestURI(), violations));
     }
 
-    /**
-     * A constraint's own message is written for the caller, but a conversion failure's names the target's
-     * fully-qualified class — the very leak {@code MotorcycleService.validateSort} exists to avoid.
-     */
+    /** A constraint's own message is written for the caller, but a conversion failure's names the target's
+     *  fully-qualified class: the very leak {@code MotorcycleService.validateSort} exists to avoid. */
     private static String messageOf(FieldError error) {
         return error.isBindingFailure() ? "Invalid value: " + truncate(error.getRejectedValue()) : error.getDefaultMessage();
     }
@@ -86,11 +80,8 @@ public class GlobalExceptionHandler {
     /** Longest value echoed back to a caller in an error body; see {@link #truncate}. */
     private static final int MAX_ECHOED_VALUE_LENGTH = 200;
 
-    /**
-     * Renders a caller-supplied value for inclusion in an error body, capped at {@link #MAX_ECHOED_VALUE_LENGTH}:
-     * without a limit, an unbounded echo lets a caller choose how much of its own payload the server serialises
-     * back to it, which costs the server work for free and grows the response with attacker-controlled content.
-     */
+    /** Renders a caller-supplied value for an error body, capped at {@link #MAX_ECHOED_VALUE_LENGTH}: an unbounded echo
+     *  lets a caller choose how much of its own payload the server serialises back, for free and attacker-controlled. */
     private static String truncate(Object value) {
         String text = String.valueOf(value);
         return text.length() > MAX_ECHOED_VALUE_LENGTH ? text.substring(0, MAX_ECHOED_VALUE_LENGTH) + "..." : text;
@@ -111,20 +102,16 @@ public class GlobalExceptionHandler {
         return build(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Content type '" + ex.getContentType() + "' is not supported; send " + accepted, request);
     }
 
-    /**
-     * The container aborts the transfer mid-stream, so this fires before any controller runs. The limit quoted is the
-     * configured one, because the size carried on the exception is -1 whenever the servlet layer raised it.
-     */
+    /** The container aborts the transfer mid-stream, so this fires before any controller runs. The limit quoted is the
+     *  configured one, because the size carried on the exception is -1 whenever the servlet layer raised it. */
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     public ResponseEntity<ApiError> handleUploadTooLarge(MaxUploadSizeExceededException ex, HttpServletRequest request) {
         log.debug("Rejected oversized upload on {} {}: {}", request.getMethod(), request.getRequestURI(), ex.getMessage());
         return build(HttpStatus.PAYLOAD_TOO_LARGE, "Uploaded file exceeds the maximum allowed size of " + describe(maxImageSize), request);
     }
 
-    /**
-     * A part the endpoint requires but the request did not carry. Without this the generic handler answers 500, which
-     * blames the server for what is a malformed form — and contradicts the 400 the endpoint documents.
-     */
+    /** A part the endpoint requires but the request did not carry. Without this the generic handler answers 500, which
+     *  blames the server for what is a malformed form and contradicts the 400 the endpoint documents. */
     @ExceptionHandler(MissingServletRequestPartException.class)
     public ResponseEntity<ApiError> handleMissingPart(MissingServletRequestPartException ex, HttpServletRequest request) {
         return build(HttpStatus.BAD_REQUEST, "Missing required file part '" + ex.getRequestPartName() + "'", request);
@@ -151,21 +138,15 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).allow(allowed.toArray(HttpMethod[]::new)).body(body);
     }
 
-    /**
-     * Domain-level argument rules the application deliberately writes for the caller, e.g. "a comparison needs at
-     * least 2 motorcycles". A dedicated type, not a plain {@link IllegalArgumentException}: only code that has
-     * chosen this exception on purpose gets its message forwarded verbatim.
-     */
+    /** Domain-level argument rules written for the caller, e.g. "a comparison needs at least 2 motorcycles". A dedicated
+     *  type, not a plain {@link IllegalArgumentException}: only code that chose it on purpose is forwarded verbatim. */
     @ExceptionHandler(DomainValidationException.class)
     public ResponseEntity<ApiError> handleDomainValidation(DomainValidationException ex, HttpServletRequest request) {
         return build(HttpStatus.BAD_REQUEST, ex.getMessage(), request);
     }
 
-    /**
-     * Any other {@link IllegalArgumentException}, e.g. one raised by a library on the call path rather than by
-     * domain code. Its message was never reviewed for a client audience — it might quote a file path or a
-     * configuration detail — so only a fixed, generic message leaves the server; the real one goes to the log.
-     */
+    /** Any other {@link IllegalArgumentException}, e.g. one raised by a library on the call path. Its message was never
+     *  reviewed for a client audience, so only a fixed generic message leaves the server; the real one goes to the log. */
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiError> handleIllegalArgument(IllegalArgumentException ex, HttpServletRequest request) {
         log.warn("Illegal argument on {} {}: {}", request.getMethod(), request.getRequestURI(), ex.getMessage());
@@ -188,10 +169,8 @@ public class GlobalExceptionHandler {
         return unauthorized("Invalid username or password", request);
     }
 
-    /**
-     * {@code @PreAuthorize} throws inside the controller invocation, so it is resolved here rather than by Spring
-     * Security's ExceptionTranslationFilter; without these two handlers the catch-all below would turn 401/403 into 500.
-     */
+    /** {@code @PreAuthorize} throws inside the controller invocation, so it is resolved here rather than by Spring
+     *  Security's ExceptionTranslationFilter; without these two handlers the catch-all would turn 401/403 into 500. */
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<ApiError> handleAccessDenied(AccessDeniedException ex, HttpServletRequest request) {
         return build(HttpStatus.FORBIDDEN, "Your account is not allowed to perform this operation", request);
@@ -202,10 +181,8 @@ public class GlobalExceptionHandler {
         return unauthorized("Authentication required to access this resource", request);
     }
 
-    /**
-     * A constraint the application layer failed to catch first. The name decides the status, and never leaves the
-     * server: a CHECK or FK failure means the payload was wrong (400), a UNIQUE failure is a genuine conflict (409).
-     */
+    /** A constraint the application layer failed to catch first. The name decides the status, and never leaves the
+     *  server: a CHECK or FK failure means the payload was wrong (400), a UNIQUE failure is a genuine conflict (409). */
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ApiError> handleDataIntegrity(DataIntegrityViolationException ex, HttpServletRequest request) {
         String constraint = ConstraintViolations.nameOf(ex);
@@ -225,19 +202,15 @@ public class GlobalExceptionHandler {
         return build(HttpStatus.CONFLICT, "The resource was modified by another request. Reload it and try again.", request);
     }
 
-    /**
-     * Without {@code spring.mvc.throw-exception-if-no-handler-found}, an unmapped path never reaches this: the
-     * static-resource handler on {@code /**} claims it first and throws {@link NoResourceFoundException} instead.
-     */
+    /** Without {@code spring.mvc.throw-exception-if-no-handler-found}, an unmapped path never reaches this: the
+     *  static-resource handler on {@code /**} claims it first and throws {@link NoResourceFoundException} instead. */
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<ApiError> handleNoHandler(NoHandlerFoundException ex, HttpServletRequest request) {
         return build(HttpStatus.NOT_FOUND, "No endpoint " + ex.getHttpMethod() + " " + ex.getRequestURL(), request);
     }
 
-    /**
-     * The exception actually thrown for an unmapped sub-path under a public prefix: Spring's static-resource fallback
-     * claims it before routing gives up, so this keeps it a clean 404 instead of a 500 with a logged stack trace.
-     */
+    /** The exception actually thrown for an unmapped sub-path under a public prefix: Spring's static-resource fallback
+     *  claims it before routing gives up, so this keeps it a clean 404 instead of a 500 with a logged stack trace. */
     @ExceptionHandler(NoResourceFoundException.class)
     public ResponseEntity<ApiError> handleNoResource(NoResourceFoundException ex, HttpServletRequest request) {
         return build(HttpStatus.NOT_FOUND, "No endpoint " + request.getMethod() + " " + request.getRequestURI(), request);

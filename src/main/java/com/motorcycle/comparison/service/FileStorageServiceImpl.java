@@ -25,10 +25,8 @@ import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-/**
- * Stores motorcycle images on the local file system. Every name it hands out is a UUID plus a known extension, which
- * is also the only shape it will read or delete — the client's own file name is never trusted, or even kept.
- */
+/** Stores motorcycle images on the local file system. Every name it hands out is a UUID plus a known extension, which
+ *  is also the only shape it will read or delete: the client's own file name is never trusted, or even kept. */
 @Service
 @Slf4j
 public class FileStorageServiceImpl implements FileStorageService {
@@ -118,10 +116,8 @@ public class FileStorageServiceImpl implements FileStorageService {
         return size.toBytes() >= DataSize.ofMegabytes(1).toBytes() ? size.toMegabytes() + " MB" : size.toKilobytes() + " KB";
     }
 
-    /**
-     * Accepting only the exact shape this service generates is what keeps a crafted name such as {@code ../../pom.xml}
-     * out of the file system; the {@code startsWith} check below is the belt to that regex's braces.
-     */
+    /** Accepting only the exact shape this service generates is what keeps a crafted name such as {@code ../../pom.xml}
+     *  out of the file system; the {@code startsWith} check below is the belt to that regex's braces. */
     private Optional<Path> resolveStoredPath(String fileName) {
         if (fileName == null || !STORED_FILE_NAME.matcher(fileName).matches()) {
             return Optional.empty();
@@ -142,10 +138,8 @@ public class FileStorageServiceImpl implements FileStorageService {
         return declared;
     }
 
-    /**
-     * Opens the part a second time — storeFile reads it again to copy it. Safe with the servlet multipart resolver
-     * Spring Boot configures, whose getInputStream() hands out a fresh stream over the buffered part every call.
-     */
+    /** Opens the part a second time, since storeFile reads it again to copy it. Safe with the servlet multipart resolver
+     *  Spring Boot configures, whose getInputStream() hands out a fresh stream over the buffered part every call. */
     private static byte[] readSignature(MultipartFile file) {
         try (InputStream in = file.getInputStream()) {
             return in.readNBytes(SIGNATURE_BYTES);

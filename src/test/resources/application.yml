@@ -50,9 +50,8 @@ spring:
       max-file-size: 6MB
       max-request-size: 7MB
 
-# Mirrors main's exposure so a test can actually exercise the actuator authorization
-# rule in SecurityConfig; the default (health only) would hide the gap instead of
-# testing it.
+# Mirrors main's exposure so a test can actually exercise the actuator authorization rule in
+# SecurityConfig; the default (health only) would hide the gap instead of testing it.
 management:
   endpoints:
     web:

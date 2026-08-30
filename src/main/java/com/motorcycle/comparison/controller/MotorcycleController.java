@@ -42,22 +42,16 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-/**
- * Public catalogue and administrative CRUD. The controller stays thin on purpose: bind, delegate, map to a status
- * code — business rules and persistence concerns belong to the services below it.
- */
+/** Public catalogue and administrative CRUD. The controller stays thin on purpose: bind, delegate, map to a
+ *  status code; business rules and persistence concerns belong to the services below it. */
 @RestController
 @RequestMapping("/api/v1/motorcycles")
 @RequiredArgsConstructor
 @Tag(name = "Motorcycles", description = "Browse and administer the motorcycle catalogue")
 public class MotorcycleController {
 
-    /**
-     * A resource guard, not the business rule: generous on purpose so it never fires for a genuine caller, since
-     * {@link ComparisonService#compare} already rejects anything past {@code app.comparison.max-items} (4). This
-     * only stops an anonymous caller from making the server bind and de-duplicate an arbitrarily long id list
-     * before that authoritative check ever runs.
-     */
+    /** A resource guard, not the business rule: {@link ComparisonService#compare} already enforces
+     *  {@code app.comparison.max-items} (4); this only stops binding an arbitrarily long id list first. */
     private static final int MAX_COMPARE_IDS = 100;
 
     private final MotorcycleService motorcycleService;
@@ -76,10 +70,8 @@ public class MotorcycleController {
         return motorcycleService.listBrands();
     }
 
-    /**
-     * Comparison is exposed under the collection it operates on, and as GET, so it is a shareable, cacheable
-     * URL — no second base path needed, and that is how people actually use these pages.
-     */
+    /** Comparison is exposed under the collection it operates on, and as GET, so it is a shareable, cacheable
+     *  URL: no second base path needed, and that is how people actually use these pages. */
     @GetMapping("/compare")
     @Operation(summary = "Compare motorcycles side by side", description = "Returns the comparison pre-shaped as table rows. Between 2 and 4 distinct ids.")
     @ApiResponse(responseCode = "200", description = "Comparison table")
@@ -139,10 +131,8 @@ public class MotorcycleController {
         return ResponseEntity.noContent().build();
     }
 
-    /**
-     * Image upload is its own endpoint rather than a field on the JSON body: multipart and a full-replacement PUT do
-     * not mix, and this way editing a specification never forces the client to re-send the binary it did not change.
-     */
+    /** Image upload is its own endpoint rather than a field on the JSON body: multipart and a full-replacement
+     *  PUT do not mix, and editing a specification never forces the client to re-send the untouched binary. */
     @PostMapping(path = "/{id}/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasRole('ADMIN')")
     @SecurityRequirement(name = "bearerAuth")
@@ -158,10 +148,8 @@ public class MotorcycleController {
         return motorcycleService.updateImage(id, file);
     }
 
-    /**
-     * 200 with the record, not the 204 that deleting the motorcycle itself returns: this deletes a field of a resource
-     * that survives the call, and the client needs the updated record anyway to re-render without the image.
-     */
+    /** 200 with the record, not the 204 that deleting the motorcycle itself returns: this deletes a field of a
+     *  resource that survives the call, and the client needs the updated record to re-render without the image. */
     @DeleteMapping("/{id}/image")
     @PreAuthorize("hasRole('ADMIN')")
     @SecurityRequirement(name = "bearerAuth")

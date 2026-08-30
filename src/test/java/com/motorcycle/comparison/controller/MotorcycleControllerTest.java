@@ -57,10 +57,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * HTTP-contract tests: routing, binding, serialisation and status mapping. The security chain is deliberately
- * switched off so a failure points at the web layer alone; auth is covered end to end by {@link MotorcycleApiSecurityTest}.
- */
+/** HTTP-contract tests: routing, binding, serialisation and status mapping. The security chain is deliberately
+ *  switched off so a failure points at the web layer alone; auth is covered by {@link MotorcycleApiSecurityTest}. */
 @WebMvcTest(controllers = MotorcycleController.class,
         excludeFilters = @ComponentScan.Filter(
                 type = FilterType.ASSIGNABLE_TYPE,

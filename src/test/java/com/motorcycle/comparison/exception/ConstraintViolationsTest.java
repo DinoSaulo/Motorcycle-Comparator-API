@@ -9,10 +9,8 @@ import java.sql.SQLException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Every constraint in the migrations is named, but the parsing here still has to survive whatever a driver or a
- * test double hands it: a missing cause, a cause of the wrong type, or a constraint the exception itself never named.
- */
+/** Every constraint in the migrations is named, but the parsing here still has to survive whatever a driver or a test
+ *  double hands it: a missing cause, a cause of the wrong type, or a constraint the exception itself never named. */
 @DisplayName("ConstraintViolations")
 class ConstraintViolationsTest {
 

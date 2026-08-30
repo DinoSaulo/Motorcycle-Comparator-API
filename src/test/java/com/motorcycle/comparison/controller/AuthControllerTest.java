@@ -35,10 +35,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * HTTP contract of the credential exchange. The security chain is off so a failure points at the endpoint alone;
- * that a real token then opens the admin routes is covered end to end by {@link MotorcycleApiSecurityTest}.
- */
+/** HTTP contract of the credential exchange. The security chain is off so a failure points at the endpoint alone;
+ *  that a real token then opens the admin routes is covered end to end by {@link MotorcycleApiSecurityTest}. */
 @WebMvcTest(controllers = AuthController.class,
         excludeFilters = @ComponentScan.Filter(
                 type = FilterType.ASSIGNABLE_TYPE,

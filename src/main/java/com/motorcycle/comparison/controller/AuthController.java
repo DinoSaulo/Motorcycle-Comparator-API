@@ -24,10 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
 
-/**
- * Credential exchange for the administrative endpoints. Authentication is delegated to Spring Security's
- * {@link AuthenticationManager}, so swapping the in-memory users for a database-backed service needs no change here.
- */
+/** Credential exchange for the administrative endpoints. Authentication is delegated to Spring Security's
+ *  {@link AuthenticationManager}, so swapping the in-memory users for a database service needs no change here. */
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor

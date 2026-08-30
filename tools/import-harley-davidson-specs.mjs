@@ -1,17 +1,6 @@
 #!/usr/bin/env node
-// Regenerates src/main/resources/db/seed/R__motorcycles_harley_davidson_specs_2026_08.sql from the
-// zontes-scraper Harley-Davidson snapshot, and materialises the images that seed points at.
-//
-// Two outputs, one run, because they have to agree: the SQL stores an image URL whose file name
-// is derived from the motorcycle slug, and the copy step writes exactly those names. Re-running
-// on another machine reproduces both byte-for-byte.
-//
-//   node tools/import-harley-davidson-specs.mjs [--source <dir>] [--sql-only] [--images-only]
-//
-// --source defaults to ../zontes-scraper relative to the repository root.
-//
-// Nothing here estimates. A figure the sources never published stays NULL, and a parsed figure
-// outside the plausible range for its column is dropped rather than stored.
+// Regenerates db/seed/R__motorcycles_harley_davidson_specs_2026_08.sql from the zontes-scraper snapshot plus the images
+// it points at, reproducibly; nothing is estimated. Usage: node <this> [--source <dir, default ../zontes-scraper>] [--sql-only|--images-only]
 
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
@@ -38,9 +27,7 @@ const doSql = !flag('--images-only');
 const doImages = !flag('--sql-only');
 
 // --- number parsing -----------------------------------------------------------------------
-// The sources mix Portuguese and English conventions in the same file ("11,7 l" next to
-// "18.5 Litres", "1.252 cm³" next to "1252 cc"), so a separator is read from its own shape:
-// exactly three trailing digits means a thousands group, anything else means a decimal point.
+// Sources mix PT and EN conventions ("11,7 l" next to "18.5 Litres"), so a separator is read from its own shape: exactly three trailing digits is a thousands group.
 function toNumber(token) {
     if (token == null) return null;
     let t = String(token).trim();
@@ -60,12 +47,8 @@ function toNumber(token) {
     return Number.isFinite(n) ? n : null;
 }
 
-// A source string that spaces out its digits is garbled, not SI-formatted. The repair below only
-// joins a digit to a following group of exactly three, and anything still spaced is refused by
-// NUMBER_START rather than read as its first fragment — a plausibility bound cannot catch a wrong
-// figure that happens to land inside the range. The one field in this snapshot where a *correct*
-// digit sits next to a three-digit group is the seat height ("Laden2 693.4 mm", where the 2 is a
-// footnote marker), and that field never reaches this function: it has its own parser below.
+// A source string that spaces out its digits is garbled, not SI-formatted: the repair only joins a digit to a following
+// group of exactly three, and anything still spaced is refused by NUMBER_START. Seat height has its own parser below.
 const MALFORMED = { count: 0 };
 const repairDigitGroups = (text) => String(text).replace(/(\d) (\d{3})(?!\d)/g, '$1$2');
 
@@ -83,12 +66,8 @@ function countMalformed(text) {
 
 const MM_PER_INCH = 25.4;
 
-/**
- * First number carrying one of the given units. `inches` converts an imperial figure where the
- * source published no metric one — these sheets are American, and 9 of them quote the seat height
- * only in inches. Metric always wins where both are printed, so "673 mm / 26.5 in" reads 673 and
- * never 673.1. `bare` allows a unitless value as a last resort ("1534 / 60.4 in").
- */
+/** First number carrying one of the given units. `inches` converts where the source published no metric figure (9 sheets
+ *  quote seat height in inches only); metric wins where both appear, and `bare` allows a unitless value as a last resort. */
 function measure(rawText, unitPattern, { bare = false, inches = false } = {}) {
     if (!rawText) return null;
     const text = collapseRanges(repairDigitGroups(rawText));
@@ -137,12 +116,8 @@ const TRUNCATED = { count: 0 };
 const REPAIRED = { count: 0 };
 const CONVERTED = { count: 0 };
 
-/**
- * Collapses whitespace, drops trailing punctuation the scraper carried over from the source table,
- * and repairs the one encoding fault this snapshot carries: the micron sign in the oil-filter
- * rating was decoded as "ì", so 97 lubrication rows read "spin on 10ì pressurized oil filter"
- * where the source sheet reads "10µ". That is extraction damage, not source content.
- */
+/** Collapses whitespace, drops trailing punctuation from the source table, and repairs this snapshot's one encoding fault:
+ *  the micron sign was decoded as "ì", so 97 rows read "spin on 10ì pressurized oil filter" where the sheet reads "10µ". */
 function clean(text, maxLength) {
     if (text == null) return null;
     const before = String(text);
@@ -158,15 +133,8 @@ function clean(text, maxLength) {
     return t || null;
 }
 
-// --- seat height --------------------------------------------------------------------------
-// Harley publishes two seat heights on the same line - "Laden2 693.4 mm / 27.3 in Unladen 779.8 mm
-// / 30.7 in" - where the trailing 2 on "Laden" is a footnote marker and not part of the figure.
-// 51 of the 170 rows that carry a seat height are written this way.
-//
-// The unladen figure is the one stored. Every other brand in this catalogue publishes a single
-// seat height and it is the unladen one, so storing Harley's laden figure would make these bikes
-// read 40-60 mm lower than their rivals in a comparison that is the whole point of the table. The
-// laden figure is not discarded - it goes to the long tail, where it is labelled for what it is.
+// --- seat height: Harley prints both on one line ("Laden2 693.4 mm ... Unladen 779.8 mm", the 2 a footnote marker), on
+// 51 of the 170 rows that carry one. The unladen figure is stored, as every other brand publishes; the laden one goes to the long tail.
 const LADEN = /\bladen(\d)?\s+(\d[\d.,]*)\s*mm/i;
 const UNLADEN = /\bunladen(\d)?\s*\.?\s*(\d[\d.,]*)\s*mm/i;
 
@@ -205,18 +173,14 @@ function cylindersOf(engineText, explicit) {
     if (bi) return { count: 2, phrase: bi[0] };
     const v = /\bV[\s-]?(\d)\b/i.exec(engineText);
     if (v) return { count: Number(v[1]), phrase: v[0] };
-    // "45° V-Twin" and "Twin Cam 88" both name the layout without ever writing "cylinder". A bare
-    // "twin" in an engine description is a two-cylinder and nothing else, so it is read last,
-    // after every construction that states the count outright.
+    // "45° V-Twin" and "Twin Cam 88" both name the layout without ever writing "cylinder". A bare "twin" is a
+    // two-cylinder and nothing else, so it is read last, after every construction that states the count outright.
     const twin = /\btwin\b/i.exec(engineText);
     return twin ? { count: 2, phrase: twin[0] } : { count: null, phrase: null };
 }
 
-// Bore, stroke and displacement are printed on the same sheet, so their product decides the cylinder
-// count whenever the prose on that sheet disagrees with it. Every engine in this snapshot is a
-// V-twin, so this is a check rather than a correction here - but it is the same check the Royal
-// Enfield import runs, and leaving it in means a future re-scrape that mislabels a sheet is caught
-// rather than stored.
+// Bore, stroke and displacement are printed on the same sheet, so their product decides the cylinder count whenever the
+// prose disagrees. Every engine here is a V-twin, so this is a check rather than a correction; a re-scrape may need it.
 const CORRECTED = { count: 0 };
 
 function cylindersFromSweptVolume(displacementCc, boreMm, strokeMm) {
@@ -232,10 +196,8 @@ function cylindersFromSweptVolume(displacementCc, boreMm, strokeMm) {
 
 const LAYOUT_NAME = { 1: 'Single cylinder', 2: 'Twin cylinder', 3: 'Three cylinder', 4: 'Four cylinder', 6: 'Six cylinder' };
 
-/**
- * Rewrites the layout phrase the cylinder parser read, and only that phrase, so a description whose
- * count the swept volume has just overruled does not go on contradicting the column beside it.
- */
+/** Rewrites the layout phrase the cylinder parser read, and only that phrase, so a description whose count the swept
+ *  volume has just overruled does not go on contradicting the column beside it. */
 function relabelLayout(engineText, phrase, count) {
     const name = LAYOUT_NAME[count];
     if (!engineText || !name || !phrase) return engineText;
@@ -260,9 +222,8 @@ function valvesPerCylinderOf(engineText, cylinders) {
 function powerOf(text, dropped) {
     if (!text) return [null, null];
     const rpm = rpmOf(text, dropped, 'max_power_rpm');
-    // hp/bhp/cv/PS are all read as horsepower, matching how the sources use them interchangeably.
-    // Where a row publishes both ("48 hp / 35.0 kW @ 5000 rpm") the horsepower figure is the
-    // published one and the kW conversion below never runs.
+    // hp/bhp/cv/PS are all read as horsepower, matching how the sources use them interchangeably. Where a row publishes
+    // both ("48 hp / 35.0 kW @ 5000 rpm") the horsepower figure is the published one and the kW conversion never runs.
     const hp = unit(text, 'hp|bhp|cv|ps\\b');
     if (hp != null) return [bounded(round(hp, 1), 0.5, 350, dropped, 'max_power_hp'), rpm];
     const kw = unit(text, 'kw\\b');
@@ -328,19 +289,15 @@ const emissionOf = (extra) => {
     return raw ? EMISSION_ALIASES[raw.toUpperCase().replace(/\s+/g, '')] || raw : null;
 };
 
-// The catalogue enum has no Cruiser sub-segment, so "Sport Cruiser" folds into CRUISER. This only
-// ever feeds the (currently empty) insert path for a slug the catalogue does not already hold;
-// existing rows keep the category they were seeded with.
+// The catalogue enum has no Cruiser sub-segment, so "Sport Cruiser" folds into CRUISER. This only ever feeds the
+// (currently empty) insert path for a slug the catalogue lacks; existing rows keep the category they were seeded with.
 const CATEGORY_BY_SOURCE_LABEL = {
     cruiser: 'CRUISER', 'sport cruiser': 'CRUISER', custom: 'CRUISER', classic: 'CRUISER',
     naked: 'NAKED', roadster: 'NAKED', adventure: 'ADVENTURE', touring: 'TOURING',
 };
 
 // --- long-tail specs ----------------------------------------------------------------------
-// Deliberately a curated subset, and deliberately the same key names the Honda, Yamaha and Royal
-// Enfield imports use, so a side-by-side comparison of a Harley and a Honda lines its long-tail
-// rows up instead of doubling them. The scraper's own bookkeeping is dropped: it is not a
-// rider-facing fact.
+// A curated subset under the same key names the Honda, Yamaha and Royal Enfield imports use, so a side-by-side comparison lines up instead of doubling; the scraper's bookkeeping is dropped.
 const TOP_LEVEL_SPEC_KEYS = [
     'Pressão do Pneu Dianteiro', 'Pressão do Pneu Traseiro', 'Iluminação', 'Painel', 'Marcha Lenta',
     'Sistema de Partida', 'Sistema de Chave de Ignição', 'Modos de Condução', 'Rodas', 'Tomada USB',
@@ -407,8 +364,7 @@ function longTailSpecs(moto, ladenSeatHeight) {
 }
 
 // --- image naming -------------------------------------------------------------------------
-// A UUID v5 over the slug: the file name the seed stores has to be reproducible on any machine,
-// and FileStorageServiceImpl only reads names matching UUID + jpg/png/webp.
+// A UUID v5 over the slug: reproducible on any machine, and FileStorageServiceImpl only reads UUID + jpg/png/webp.
 const UUID_NAMESPACE = Buffer.from('6ba7b8119dad11d180b400c04fd430c8', 'hex');
 
 function uuidV5(name) {
@@ -420,11 +376,8 @@ function uuidV5(name) {
     return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }
 
-/**
- * One stored copy per motorcycle, even where several model-years share a source photo. The app
- * treats the file as owned by the row — deleting a motorcycle or clearing its image deletes the
- * file — so a shared name would blank the other rows' images.
- */
+/** One stored copy per motorcycle, even where several model-years share a source photo. The app treats the file as
+ *  owned by the row (deleting the row deletes the file), so a shared name would blank the other rows' images. */
 function imageFor(moto) {
     for (const relative of moto.imagens_locais || []) {
         const absolute = path.join(SOURCE_DIR, relative);

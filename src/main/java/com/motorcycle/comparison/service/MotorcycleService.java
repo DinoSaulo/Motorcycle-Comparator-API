@@ -36,10 +36,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-/**
- * Catalogue use cases: browse, read, and administer motorcycles. Reads are {@code readOnly} so Hibernate skips
- * dirty checking and the connection can be routed to a replica later without touching this class.
- */
+/** Catalogue use cases: browse, read, and administer motorcycles. Reads are {@code readOnly} so Hibernate skips
+ *  dirty checking and the connection can be routed to a replica later without touching this class. */
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -53,10 +51,8 @@ public class MotorcycleService {
     private static final String FIELD_BRAND = "brand";
     private static final String FIELD_PRICE_EUR = "priceEur";
 
-    /**
-     * Properties a client is allowed to sort the catalogue by. Anything else is rejected with a clean 400 instead
-     * of reaching Hibernate, whose own error would name the entity's fully-qualified class to an anonymous caller.
-     */
+    /** Properties a client is allowed to sort the catalogue by. Anything else is rejected with a clean 400 instead
+     *  of reaching Hibernate, whose own error would name the entity's fully-qualified class to an anonymous caller. */
     private static final Set<String> SORTABLE_PROPERTIES = Set.of(
             "id", FIELD_BRAND, "model", "modelYear", "category", FIELD_PRICE_EUR,
             "createdAt", "updatedAt");
@@ -65,12 +61,8 @@ public class MotorcycleService {
 
     private static final char LIKE_ESCAPE = '\\';
 
-    /**
-     * Uploaded images are referenced by a host-relative path, never an absolute URL: the API cannot know the origin it
-     * is reached on once a proxy or CDN is in front of it, and a baked-in {@code localhost:8080} would outlive dev.
-     * Clients resolve it against their configured API origin. Externally hosted {@code http(s)://} values pass through
-     * untouched, so a curated URL set by hand still works.
-     */
+    /** Uploaded images are referenced by a host-relative path, never an absolute URL: the API cannot know its own origin
+     *  behind a proxy, and a baked-in {@code localhost:8080} would outlive dev. External {@code http(s)://} values pass through. */
     private static final String IMAGE_URL_PREFIX = "/api/v1/images/motorcycles/";
 
     private final MotorcycleRepository motorcycleRepository;
@@ -83,10 +75,8 @@ public class MotorcycleService {
                 .map(MotorcycleResponse::from);
     }
 
-    /**
-     * Null precedence is deliberately absent here: Spring Data rejects it on a criteria query, so unpriced bikes are
-     * pinned last by {@code hibernate.order_by.default_null_ordering} in application.yml instead.
-     */
+    /** Null precedence is deliberately absent here: Spring Data rejects it on a criteria query, so unpriced bikes are
+     *  pinned last by {@code hibernate.order_by.default_null_ordering} in application.yml instead. */
     private static void validateSort(Sort sort) {
         sort.forEach(order -> {
             if (!SORTABLE_PROPERTIES.contains(order.getProperty())) {
@@ -107,10 +97,8 @@ public class MotorcycleService {
         return motorcycleRepository.findDistinctBrands();
     }
 
-    /**
-     * Deliberately not transactional itself: a violated constraint aborts the transaction it happened in, so the retry
-     * below only works because {@link MotorcycleWriter} gives every attempt a transaction of its own.
-     */
+    /** Deliberately not transactional itself: a violated constraint aborts the transaction it happened in, so the retry
+     *  below only works because {@link MotorcycleWriter} gives every attempt a transaction of its own. */
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public MotorcycleResponse create(CreateMotorcycleRequest request) {
         Motorcycle saved;
@@ -130,10 +118,8 @@ public class MotorcycleService {
         return MotorcycleResponse.from(saved);
     }
 
-    /**
-     * A full replacement of the specification, with one exception: the image is owned by the {@code /image} endpoints.
-     * Honouring {@code imageUrl} here would let an edit that omits it clear the column and strand the file on disk.
-     */
+    /** A full replacement of the specification, with one exception: the image is owned by the {@code /image} endpoints.
+     *  Honouring {@code imageUrl} here would let an edit that omits it clear the column and strand the file on disk. */
     @Transactional
     public MotorcycleResponse update(Long id, CreateMotorcycleRequest request) {
         Motorcycle motorcycle = requireById(id);
@@ -165,12 +151,8 @@ public class MotorcycleService {
         log.info("Deleted motorcycle id={}", id);
     }
 
-    /**
-     * Replaces the image of an existing motorcycle.
-     *
-     * The upload is validated and written first: a rejected file (wrong type, oversized, bytes disagreeing with the
-     * declared type) must fail before the row is touched, so a bad request never half-applies.
-     */
+    /** Replaces the image of an existing motorcycle. The upload is validated and written first: a rejected file (wrong
+     *  type, oversized, bytes disagreeing with the declared type) must fail before the row is touched. */
     @Transactional
     public MotorcycleResponse updateImage(Long id, MultipartFile file) {
         Motorcycle motorcycle = requireById(id);
@@ -179,9 +161,8 @@ public class MotorcycleService {
         String storedName = fileStorageService.storeFile(file);
         motorcycle.setImageUrl(IMAGE_URL_PREFIX + storedName);
 
-        // The old file is dropped here rather than after commit. The trade-off is deliberate: this
-        // transaction only updates one column, so a rollback that would strand the previous image is
-        // far less likely than the disk slowly filling with superseded uploads.
+        // The old file is dropped here rather than after commit, deliberately: this transaction updates one column,
+        // so a rollback stranding the previous image is far less likely than the disk filling with superseded uploads.
         if (previous != null) {
             fileStorageService.deleteFile(previous);
         }
@@ -207,10 +188,8 @@ public class MotorcycleService {
 
     // --- internals --------------------------------------------------------------
 
-    /**
-     * @return the stored file name behind an image URL this API issued, or {@code null} when the value is absent or
-     *         points somewhere else — the caller must not delete a file it did not store.
-     */
+    /** @return the stored file name behind an image URL this API issued, or {@code null} when the value is absent or
+     *          points somewhere else: the caller must not delete a file it did not store. */
     private static String storedFileNameOf(String imageUrl) {
         if (imageUrl == null || !imageUrl.startsWith(IMAGE_URL_PREFIX)) {
             return null;
@@ -233,10 +212,8 @@ public class MotorcycleService {
         return motorcycleRepository.findWithSpecificationsById(id).orElseThrow(() -> ResourceNotFoundException.of("Motorcycle", id));
     }
 
-    /**
-     * Composes only the predicates the caller actually supplied. The join to the engine table is added only when
-     * an engine facet is in play, so the plain "list everything" query stays join-free.
-     */
+    /** Composes only the predicates the caller actually supplied. The join to the engine table is added only when
+     *  an engine facet is in play, so the plain "list everything" query stays join-free. */
     public static Specification<Motorcycle> toSpecification(MotorcycleFilter filter) {
         if (filter == null) {
             return (root, query, cb) -> cb.conjunction();
@@ -410,10 +387,8 @@ public class MotorcycleService {
         return slugify(request.brand() + " " + request.model() + " " + request.modelYear());
     }
 
-    /**
-     * Whether {@code currentSlug} was derived from {@code base}, exactly or with a numeric disambiguator appended.
-     * Not a trailing-{@code -\d+} strip: the base ends in the model year, so that would turn a rename into a no-op.
-     */
+    /** Whether {@code currentSlug} was derived from {@code base}, exactly or with a numeric disambiguator appended.
+     *  Not a trailing-{@code -\d+} strip: the base ends in the model year, so that would turn a rename into a no-op. */
     static boolean slugMatchesIdentity(String currentSlug, String base) {
         if (currentSlug == null) {
             return false;

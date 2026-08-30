@@ -13,10 +13,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
-/**
- * OpenAPI descriptor and the contract the React client is generated from, so the bearer
- * scheme is declared explicitly rather than left to springdoc's defaults.
- */
+/** OpenAPI descriptor and the contract the React client is generated from, so the bearer scheme
+ *  is declared explicitly rather than left to springdoc's defaults. */
 @Configuration
 public class OpenApiConfig {
 

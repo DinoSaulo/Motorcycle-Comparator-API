@@ -1,17 +1,6 @@
 #!/usr/bin/env node
-// Regenerates src/main/resources/db/seed/R__motorcycles_kawasaki_specs_2026_08.sql from the
-// zontes-scraper Kawasaki snapshot, and materialises the images that seed points at.
-//
-// Two outputs, one run, because they have to agree: the SQL stores an image URL whose file name
-// is derived from the motorcycle slug, and the copy step writes exactly those names. Re-running
-// on another machine reproduces both byte-for-byte.
-//
-//   node tools/import-kawasaki-specs.mjs [--source <dir>] [--sql-only] [--images-only]
-//
-// --source defaults to ../zontes-scraper relative to the repository root.
-//
-// Nothing here estimates. A figure the sources never published stays NULL, and a parsed figure
-// outside the plausible range for its column is dropped rather than stored.
+// Regenerates db/seed/R__motorcycles_kawasaki_specs_2026_08.sql from the zontes-scraper Kawasaki snapshot plus the images
+// it points at, reproducibly; nothing is estimated. Usage: node <this> [--source <dir, default ../zontes-scraper>] [--sql-only|--images-only]
 
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
@@ -30,10 +19,8 @@ const option = (name, fallback) => {
 
 const SOURCE_DIR = path.resolve(option('--source', path.join(REPO_ROOT, '..', 'zontes-scraper')));
 const JSON_PATH = path.join(SOURCE_DIR, 'kawasaki_motos.json');
-// Flyway orders repeatable migrations by description, and this import only gap-fills, so it has to
-// run after the FIPE seed that creates the rows it fills. "motorcycles kawasaki specs ..." sorts
-// after "motorcycles brazil fipe ..." because k > b, so the sibling naming works here and no rename
-// is needed - unlike BMW, which had to become R__motorcycles_specs_bmw_* to clear the same bar.
+// Flyway orders repeatable migrations by description and this import only gap-fills, so it has to run after the FIPE seed.
+// "motorcycles kawasaki specs" sorts after "motorcycles brazil fipe" (k > b), so no rename is needed here, unlike BMW.
 const SQL_PATH = path.join(REPO_ROOT, 'src/main/resources/db/seed/R__motorcycles_kawasaki_specs_2026_08.sql');
 const IMAGE_DIR = path.join(REPO_ROOT, 'uploads/motorcycles');
 const IMAGE_URL_PREFIX = '/api/v1/images/motorcycles/';
@@ -42,9 +29,7 @@ const doSql = !flag('--images-only');
 const doImages = !flag('--sql-only');
 
 // --- number parsing -----------------------------------------------------------------------
-// The sources mix Portuguese and English conventions in the same file ("7.1 kgf.m @ 13.500 RPM"
-// next to "103 Nm @ 9000 rpm"), so a separator is read from its own shape: exactly three trailing
-// digits means a thousands group, anything else means a decimal point.
+// Sources mix PT and EN conventions ("7.1 kgf.m @ 13.500 RPM" next to "103 Nm @ 9000 rpm"), so a separator is read from its own shape: exactly three trailing digits is a thousands group.
 function toNumber(token) {
     if (token == null) return null;
     let t = String(token).trim();
@@ -64,16 +49,11 @@ function toNumber(token) {
     return Number.isFinite(n) ? n : null;
 }
 
-// A source string that spaces out its digits is garbled, not SI-formatted. The repair below only
-// joins a digit to a following group of exactly three, and anything still spaced is refused by
-// NUMBER_START rather than read as its first fragment - a plausibility bound cannot catch a wrong
-// figure that happens to land inside the range. This snapshot carries no such damage, but the guard
-// costs nothing and a re-scrape is not promised to stay clean.
+// A source string that spaces out its digits is garbled, not SI-formatted. The repair only joins a digit to a following
+// group of exactly three; anything still spaced is refused by NUMBER_START. No damage here, but a re-scrape may bring it.
 const MALFORMED = { count: 0 };
-// A space in front of a decimal point is damage too, and unlike a split integer it can be rejoined
-// safely: "337 .0 kg" is 337.0 kg and cannot be read as two numbers, because ".0" is not one. Left
-// alone it is actively harmful rather than merely lossy - the unit-anchored read walks past the
-// stranded "337" and takes "0 kg", a figure that is wrong rather than absent.
+// A space in front of a decimal point is damage too, and unlike a split integer it rejoins safely: "337 .0 kg" is 337.0 kg,
+// since ".0" is not a number. Left alone the unit-anchored read takes "0 kg", a figure that is wrong rather than absent.
 const DECIMAL_REPAIRED = { count: 0 };
 const repairDigitGroups = (text) => {
     const joined = String(text).replace(/(\d) (\d{3})(?!\d)/g, '$1$2');
@@ -97,12 +77,8 @@ function countMalformed(text) {
 const MM_PER_INCH = 25.4;
 const CONVERTED = { count: 0 };
 
-/**
- * First number carrying one of the given units. These sheets print both systems - "830.5 mm / 32.7
- * in", "790 mm (31.1 inches)" - so metric always wins where both appear, and `inches` is a last
- * resort for a row whose metric figure is unreadable. `bare` allows a unitless value as a last
- * resort.
- */
+/** First number carrying one of the given units. These sheets print both systems ("830.5 mm / 32.7 in"), so metric always
+ *  wins where both appear; `inches` is a last resort for an unreadable metric figure, and `bare` allows a unitless value. */
 function measure(rawText, unitPattern, { bare = false, inches = false } = {}) {
     if (!rawText) return null;
     const text = collapseRanges(repairDigitGroups(rawText));
@@ -117,9 +93,8 @@ function measure(rawText, unitPattern, { bare = false, inches = false } = {}) {
         }
     }
     if (!bare) return countMalformed(text);
-    // The bare read has to refuse a garbled string too. NUMBER_START stops the unit-anchored read
-    // from taking a fragment, but without this the unitless fallback would walk straight past that
-    // guard and take the first one, and a wrong small number is worse than no number at all.
+    // The bare read has to refuse a garbled string too: NUMBER_START stops the unit-anchored read from taking a fragment,
+    // but without this the unitless fallback would walk straight past that guard, and a wrong small number is worse than none.
     if (/\d\s+\d/.test(text)) {
         MALFORMED.count++;
         return null;
@@ -131,12 +106,8 @@ function measure(rawText, unitPattern, { bare = false, inches = false } = {}) {
 const CC_PER_CUBIC_INCH = 16.387064;
 const CUBIC_INCHES = { count: 0 };
 
-/**
- * Displacement in cc. Every row here publishes the metric figure, so the cubic-inch fallback never
- * fires on this snapshot; it is kept because the sheets do print "1052 cc / 64.1 cu-in" and a
- * re-scrape that loses the metric half should convert rather than store nothing. The separator has
- * to admit a hyphen: Kawasaki's sheets write "cu-in" where BMW's wrote "cu in".
- */
+/** Displacement in cc. Every row here publishes the metric figure, so the cubic-inch fallback never fires; it is kept for a
+ *  re-scrape that loses the metric half. The separator must admit a hyphen: Kawasaki writes "cu-in" where BMW wrote "cu in". */
 function displacementOf(text) {
     const cc = measure(text, 'cc|cm³|cm3|ccm', { bare: true });
     if (cc != null) return cc;
@@ -195,9 +166,8 @@ const PT_CYLINDERS = { um: 1, uma: 1, dois: 2, duas: 2, 'três': 3, tres: 3, qua
 function cylindersOf(engineText, explicit) {
     if (explicit != null) return { count: explicit, phrase: null };
     if (!engineText) return { count: null, phrase: null };
-    // Adjacency to "cylinder"/"cilindro" is required. Every one of these sheets opens with "Four
-    // stroke", so a rule that read the first number word would call the entire catalogue a four;
-    // the 4 in "4 valves per cylinder" must not be read either.
+    // Adjacency to "cylinder"/"cilindro" is required. Every one of these sheets opens with "Four stroke", so a rule reading
+    // the first number word would call the entire catalogue a four; the 4 in "4 valves per cylinder" must not be read either.
     const en = /\b(single|mono|one|two|twin|three|triple|four|six|\d)[\s-]*cylinders?\b/i.exec(engineText);
     if (en) return { count: WORD_CYLINDERS[en[1].toLowerCase()] ?? (Number(en[1]) || null), phrase: en[0] };
     const pt = /\b(um|uma|dois|duas|tr[êe]s|quatro|seis|\d)\s*cilindros?\b/i.exec(engineText);
@@ -230,10 +200,8 @@ function cylindersFromSweptVolume(displacementCc, boreMm, strokeMm) {
 
 const LAYOUT_NAME = { 1: 'Single cylinder', 2: 'Twin cylinder', 3: 'Three cylinder', 4: 'Four cylinder', 6: 'Six cylinder' };
 
-/**
- * Rewrites the layout phrase the cylinder parser read, and only that phrase, so a description whose
- * count the swept volume has just overruled does not go on contradicting the column beside it.
- */
+/** Rewrites the layout phrase the cylinder parser read, and only that phrase, so a description whose count the swept
+ *  volume has just overruled does not go on contradicting the column beside it. */
 function relabelLayout(engineText, phrase, count) {
     const name = LAYOUT_NAME[count];
     if (!engineText || !name || !phrase) return engineText;
@@ -258,10 +226,8 @@ function valvesPerCylinderOf(engineText, cylinders) {
 function powerOf(text, dropped) {
     if (!text) return [null, null];
     const rpm = rpmOf(text, dropped, 'max_power_rpm');
-    // hp/bhp/cv/PS are all read as horsepower, matching how the sources use them interchangeably.
-    // Where a row publishes both ("76.5 kW / 105 hp @ 12500 rpm") the horsepower figure is the
-    // published one and the kW conversion below never runs. The crank figure is always printed
-    // first, so the parenthesised "(rear tyre 54.2 hp @ 9500 rpm)" some rows append is never read.
+    // hp/bhp/cv/PS are all read as horsepower, as the sources use them interchangeably; where a row publishes both
+    // ("76.5 kW / 105 hp") the hp figure wins. The crank figure is printed first, so an appended rear-tyre one is never read.
     const hp = unit(text, 'hp|bhp|cv|ps\\b');
     if (hp != null) return [bounded(round(hp, 1), 0.5, 350, dropped, 'max_power_hp'), rpm];
     const kw = unit(text, 'kw\\b');
@@ -272,10 +238,8 @@ function powerOf(text, dropped) {
 function torqueOf(text, dropped) {
     if (!text) return [null, null];
     const rpm = rpmOf(text, dropped, 'max_torque_rpm');
-    // Nm wins wherever the source printed it, however far along the string it sits. That ordering
-    // is load-bearing here: several rows read "3.6 kgf-m / 103 Nm @ 9000 rpm", where the kgf-m
-    // figure is the source's own error (103 Nm is 10.5 kgf.m, not 3.6) and taking the first unit
-    // printed would store a third of the real torque. Reading Nm first sidesteps the bad figure.
+    // Nm wins wherever the source printed it, however far along the string: several rows read "3.6 kgf-m / 103 Nm @ 9000 rpm",
+    // where the kgf-m figure is the source's own error (103 Nm is 10.5 kgf.m), so the first unit printed would store a third.
     const nm = unit(text, 'n[\\s.-]?m\\b');
     if (nm != null) return [bounded(round(nm, 1), 1, 300, dropped, 'max_torque_nm'), rpm];
     const kgf = unit(text, 'kgf?[\\s.·-]?m\\b');
@@ -294,10 +258,8 @@ function topSpeedOf(text, dropped) {
     return null;
 }
 
-// One unit label in this snapshot is damaged rather than merely unfamiliar: 5 rows publish their
-// consumption as "15.3 lm/lit". There is no such unit, the figure sits squarely among the "15.2
-// km/lit" and "16.5 km/lit" its sibling rows carry, and the denominator is intact - only the "k"
-// of "km" is wrong. Repaired to the unit that exists, exactly as written and nothing broader.
+// One unit label here is damaged rather than merely unfamiliar: 5 rows publish consumption as "15.3 lm/lit". No such unit
+// exists, the figure sits among its siblings' "km/lit", and only the "k" is wrong. Repaired to that unit and nothing broader.
 const REPAIRED = { count: 0 };
 
 function repairConsumptionUnit(text) {
@@ -306,21 +268,14 @@ function repairConsumptionUnit(text) {
     return fixed;
 }
 
-/**
- * l/100km from the explicit l/100km and km/l forms only. A bare "mpg" is ambiguous UK vs US and is
- * refused - which is also what happens to the one row reading "34.5 mp/g", a typo this import does
- * not repair because the unit it was meant to be is exactly the one that would be ambiguous anyway.
- */
+/** l/100km from the explicit l/100km and km/l forms only. A bare "mpg" is ambiguous UK vs US and is refused, as is the one
+ *  row reading "34.5 mp/g": the unit it was meant to be is exactly the one that would be ambiguous anyway. */
 function consumptionOf(extra, dropped) {
     for (const key of ['Consumption Average', 'Consumption average', 'Fuel Consumption', 'Average Consumption']) {
         if (!extra[key]) continue;
         const raw = repairConsumptionUnit(extra[key]);
-        // The only field in this snapshot that carries a split integer is this one ("1 9.3 km/lit"),
-        // and it is the one field where reading the fragment can survive the plausibility bound.
-        // NUMBER_START does not save it: in "1 9.3" the trailing "3" is preceded by "9.", not by a
-        // digit and a space, so the guard lets it through and the row reads 3 km/l. Here that lands
-        // at 33 l/100km and the bound rejects it, but "1 2.5 km/lit" would read 5 km/l and store
-        // 20 l/100km - wrong, and comfortably inside the range. Refused as garbled instead.
+        // The only field carrying a split integer is this one ("1 9.3 km/lit"), and the only one where reading the fragment
+        // survives the bound: NUMBER_START lets it through, so "1 2.5 km/lit" would store a plausible 20 l/100km. Refused.
         if (/\d\s+\d/.test(raw)) {
             MALFORMED.count++;
             continue;
@@ -338,10 +293,8 @@ function consumptionOf(extra, dropped) {
 /** The snapshot files the ABS description under two labels depending on which sheet supplied it. */
 const absTypeOf = (extra) => extra['ABS'] || extra['ABS System'] || null;
 
-// A final drive is a chain, a shaft or a belt, and one row says "Chassis" - the scraper's extraction
-// has run on into the next heading of the source table. Every other value across the snapshot names
-// a real drive type, so requiring one costs nothing and stops a table heading being published as a
-// drivetrain fact. Same principle as the compression-ratio check: the column has a shape.
+// A final drive is a chain, a shaft or a belt, and one row says "Chassis": the extraction ran on into the next heading of
+// the table. Every other value names a real drive type, so requiring one costs nothing. Same principle as the ratio check.
 const FINAL_DRIVE_KEYS = ['Final Drive', 'Final drive', 'Drivetrain Final Drive',
     'Drivetrain Final drive', 'Final Driv', 'Drive'];
 const DRIVE_TYPE = /chain|shaft|belt|cardan|corrente|correia|eixo/i;
@@ -358,11 +311,8 @@ function finalDriveOf(extra) {
     return null;
 }
 
-// A compression ratio has a shape, and 14 rows in this snapshot do not have it: motorcyclespecs
-// prints "76 x 58 mm" in the ZX-11's Compression Ratio cell, which is that engine's bore and stroke
-// - the same 76 mm and 58 mm the row's own bore and stroke fields already carry. Anything that is
-// not a ratio is refused rather than stored, because compression_ratio is a row of the comparison
-// table and a dimension pair rendered there is worse than a dash.
+// A compression ratio has a shape, and 14 rows do not have it: motorcyclespecs prints "76 x 58 mm" in the ZX-11's ratio cell,
+// which is that engine's own bore and stroke. Anything not a ratio is refused: a dimension pair rendered there is worse than a dash.
 const NOT_A_RATIO = { count: 0 };
 
 function compressionOf(text) {
@@ -377,12 +327,8 @@ function compressionOf(text) {
     return null;
 }
 
-/**
- * No source in this snapshot names an emission standard on any row - not in the Brazilian sheet, not
- * in the global one, not under any exhaust or catalytic-converter heading. The parser is kept so a
- * re-scrape that reaches a sheet carrying one stores it, but on today's data it returns NULL 200
- * times. Nothing is inferred from the model year: compliance is a published fact.
- */
+/** No source in this snapshot names an emission standard on any row, under any exhaust or catalytic-converter heading. The
+ *  parser is kept so a re-scrape that reaches one stores it, but today it returns NULL 200 times. Nothing is inferred. */
 function emissionOf(extra) {
     for (const key of ['Emission', 'Emissions', 'Emission control', 'Exhaust management', 'Exhaust']) {
         const raw = extra[key];
@@ -393,12 +339,8 @@ function emissionOf(extra) {
     return null;
 }
 
-// Category is only ever used by the insert path below, which is dead for this snapshot: all 200 rows
-// already exist in the catalogue and their category is never overwritten. It is derived properly
-// anyway, so a re-scrape that adds a model lands it in the right segment rather than in a blanket
-// default. The source's own label wins where it published one; otherwise the designation decides,
-// in this order, because Kawasaki's names overlap - "D-TRACKER" is a KLX underneath and has to be
-// tested before it, and "NINJA ZX-6R" contains a Z that must not read as a Z-series naked.
+// Category only feeds the insert path below, dead for this snapshot, but it is derived properly so a re-scrape lands a new
+// model in the right segment. Order matters: "D-TRACKER" is a KLX underneath, and the Z in "NINJA ZX-6R" is not a naked.
 const CATEGORY_BY_SOURCE_LABEL = {
     supersport: 'SPORT', esportiva: 'SPORT', sport: 'SPORT', naked: 'NAKED', standard: 'NAKED',
     street: 'NAKED', roadster: 'NAKED', adventure: 'ADVENTURE', 'sport-touring': 'TOURING',
@@ -425,9 +367,8 @@ function categoryOf(model, label) {
     return 'NAKED';
 }
 
-// "6 Speed", "6-speed", "5-speed, return" and "Five-speed with wet multi-disc manual clutch" are all
-// how these sheets write the same fact, so the separator has to admit a hyphen and the count has to
-// admit a word. A digits-only rule silently misses every row written the spelled-out way.
+// "6 Speed", "6-speed", "5-speed, return" and "Five-speed with wet multi-disc manual clutch" are all how these sheets write
+// the same fact, so the separator has to admit a hyphen and the count a word. A digits-only rule misses the spelled-out rows.
 const WORD_GEARS = { three: 3, four: 4, five: 5, six: 6 };
 
 function gearsOf(text) {
@@ -439,12 +380,7 @@ function gearsOf(text) {
 }
 
 // --- long-tail specs ----------------------------------------------------------------------
-// Deliberately a curated subset, and deliberately the same key names the Honda, Yamaha, Royal
-// Enfield, Harley-Davidson and BMW imports use, so a side-by-side comparison of a Kawasaki and a
-// Honda lines its long-tail rows up instead of doubling them. The scraper's own bookkeeping is
-// dropped, and so is every price field totalmotorcycle.com publishes (MSRP, USA/Canadian/Australian
-// MSRP): those are dealer prices in three currencies, the catalogue already carries FIPE's reference
-// price under its own key, and a second disagreeing price on the same row helps nobody.
+// A curated subset under the same key names the other brand imports use, so a comparison lines up instead of doubling. The scraper's bookkeeping and totalmotorcycle's three MSRP currencies are dropped: FIPE's reference price is already carried.
 const TOP_LEVEL_SPEC_KEYS = [
     'Pressão do Pneu Dianteiro', 'Pressão do Pneu Traseiro', 'Iluminação', 'Painel', 'Marcha Lenta',
     'Sistema de Partida', 'Sistema de Chave de Ignição', 'Modos de Condução', 'Rodas', 'Tomada USB',
@@ -454,9 +390,8 @@ const TOP_LEVEL_SPEC_KEYS = [
 const EXTRA_SPEC_KEYS = {
     'Pressão do Pneu Dianteiro (com garupa)': 'Pressão do Pneu Dianteiro (com garupa)',
     'Pressão do Pneu Traseiro (com garupa)': 'Pressão do Pneu Traseiro (com garupa)',
-    // Kawasaki's "Engine Oil" is a GRADE ("10W/40", "Semi-Synthetic, 10W/40"), not a capacity, so it
-    // joins 'Óleo Recomendado' rather than 'Capacidade de Óleo' the way the BMW import mapped it.
-    // The Brazilian sheet's own capacity field keeps that key to itself.
+    // Kawasaki's "Engine Oil" is a GRADE ("10W/40", "Semi-Synthetic, 10W/40"), not a capacity, so it joins 'Óleo Recomendado'
+    // rather than 'Capacidade de Óleo' the way BMW's import mapped it. The Brazilian sheet's own capacity field keeps that key.
     'Óleo Recomendado': 'Óleo Recomendado',
     'Engine Oil': 'Óleo Recomendado',
     'Motor Oil': 'Óleo Recomendado',
@@ -566,10 +501,8 @@ const EXTRA_SPEC_KEYS = {
     'Braking 60 - 0 / 100 - 0': 'Frenagem 60-0 / 100-0 km/h',
 };
 
-// totalmotorcycle.com publishes rake and trail as one string - "27.5 degrees / 4.7 in." - while the
-// other sheets publish them as two. Splitting it feeds each half to the key it belongs in, so the
-// rows carrying only the combined form line up with those that publish them separately, instead of
-// landing a rake-and-trail sentence under a key labelled for one of them.
+// totalmotorcycle.com publishes rake and trail as one string ("27.5 degrees / 4.7 in.") while the other sheets publish two.
+// Splitting it feeds each half to its own key, so those rows line up instead of landing a sentence under one of the labels.
 const COMBINED_RAKE_TRAIL = ['Rake / trail', 'Rake / Trail', 'Rake/Trail'];
 
 function splitRakeAndTrail(extra) {
@@ -604,56 +537,34 @@ function longTailSpecs(moto) {
 }
 
 // --- researched overrides -------------------------------------------------------------------
-// The one place in this file where a value does not come from kawasaki_motos.json. Every figure
-// below is published by a named source, cited beside it, and recovers a specific column that the
-// snapshot either damaged beyond safe repair or never carried. The table is deliberately tiny and
-// row-specific: it is an errata list, not a second data source, and it is applied ONLY where the
-// parsed value is already NULL, so it can never overwrite something the snapshot did publish.
-//
-// Each entry has to clear the same bar the parsers do - the figure must be one somebody published,
-// not one computed here - and each is corroborated by at least one source that labels it correctly.
+// The one place a value does not come from kawasaki_motos.json: a tiny, row-specific errata list of published figures, each cited, applied ONLY where the parsed value is already NULL, so it can never overwrite what the snapshot published.
 const RESEARCHED = { count: 0, byField: {} };
 
 const RESEARCHED_SPECS = [
     {
-        // The ZZ-R1100/ZX-11 sheet has two of its labels transposed at source. motorcyclespecifications.com
-        // prints, verbatim, "Bore x Stroke: 11.0:1" followed by "Compression Ratio: 76 x 58 mm" - a ratio
-        // filed as a dimension pair and a dimension pair filed as a ratio. The snapshot inherited only the
-        // second half of that swap, because the scraper took bore and stroke from totalmotorcycle.com
-        // (which labels them correctly, giving the 76 mm and 58 mm this row already stores) and took
-        // compression from the sheet with the swap. So the ratio was published on the row's own sheet and
-        // then dropped in transit; it is restored here rather than being imported from elsewhere.
-        // Corroborated by the 2000-01 sheet, which carries the same 11.0:1 under the correct label, and
-        // by BikesWiki. Both ZX1100C (1990-92) and ZX1100D (1993-2001) run 11.0:1.
+        // The ZZ-R1100/ZX-11 sheet transposes two labels at source ("Bore x Stroke: 11.0:1", "Compression Ratio: 76 x 58 mm").
+        // The snapshot inherited only the second half, so the ratio was published on the row's own sheet and dropped in transit.
         source: 'motorcyclespecifications.com/kawasaki-zzr1100-2000-01/ and bikeswiki.com/Kawasaki_ZZR1100',
         applies: (row) => /^kawasaki-ninja-(zx-11|zz-r)-1100cc-\d{4}$/.test(row.slug),
         values: { compression_ratio: '11.0:1' },
     },
     {
-        // "100 x S3mm" on the KLX 650 sheet - a letter where a digit belongs, which the stroke bound
-        // rightly refuses because "3mm" is a number in its own right. The fault is upstream rather than
-        // in this scrape: moto-data.net publishes the same "S3mm" string today. BikesWiki gives the pair
-        // as 100.0 x 83.0 mm, and 83 mm is also what this row's own bore (100 mm) and displacement
-        // (651 cc) require, so the published figure and the arithmetic agree. Stored because it is
-        // published, not because it can be derived.
+        // "100 x S3mm" on the KLX 650 sheet, a letter where a digit belongs, still published by moto-data.net today. BikesWiki
+        // gives 100.0 x 83.0 mm, which this row's own bore and displacement require. Stored because published, not derived.
         source: 'bikeswiki.com/Kawasaki_KLX650 (100.0 x 83.0 mm)',
         applies: (row) => /^kawasaki-klx-650-199[456]$/.test(row.slug),
         values: { stroke_mm: 83 },
     },
     {
-        // The source files this row's final drive as "Chassis", which is the next heading of its table
-        // rather than a drivetrain, so the shape check refuses it. Every KX250F of this generation runs a
-        // chain, as every motocrosser does.
+        // The source files this row's final drive as "Chassis", the next heading of its table rather than a drivetrain, so
+        // the shape check refuses it. Every KX250F of this generation runs a chain, as every motocrosser does.
         source: 'en.wikipedia.org/wiki/Kawasaki_KX250F and autoevolution KX250F (2005-2006)',
         applies: (row) => row.slug === 'kawasaki-kx-250-250-f-2005',
         values: { final_drive: 'Chain' },
     },
     {
-        // Consumption published as "1 9.3 km/lit" - a split integer, refused by the garbled-digit rule
-        // because reading the fragment would store 3 km/l. Rejoining gives 19.3 km/l, which is 5.18
-        // l/100km, and motorcyclespecs.com independently puts this bike at 48 mpg (20 km/l). The rejoin
-        // is done here as a one-row erratum rather than as a parsing rule, because "1 9.3" is not
-        // distinguishable from two numbers by shape alone and a blanket rule would be unsafe.
+        // Consumption published as "1 9.3 km/lit", refused by the garbled-digit rule because reading the fragment stores 3 km/l.
+        // Rejoined here as a one-row erratum (19.3 km/l is 5.18 l/100km): by shape alone a blanket rule would be unsafe.
         source: 'motorcyclespecs.com/kawasaki-versys-650-2010/ (48 mpg / 20 km/l) corroborating 19.3 km/lit',
         applies: (row) => row.slug === 'kawasaki-versys-650cc-2010',
         values: { fuel_consumption_l_100km: round(100 / 19.3, 2) },
@@ -674,8 +585,7 @@ function applyResearched(row) {
 }
 
 // --- image naming -------------------------------------------------------------------------
-// A UUID v5 over the slug: the file name the seed stores has to be reproducible on any machine,
-// and FileStorageServiceImpl only reads names matching UUID + jpg/png/webp.
+// A UUID v5 over the slug: reproducible on any machine, and FileStorageServiceImpl only reads UUID + jpg/png/webp.
 const UUID_NAMESPACE = Buffer.from('6ba7b8119dad11d180b400c04fd430c8', 'hex');
 
 function uuidV5(name) {
@@ -687,11 +597,8 @@ function uuidV5(name) {
     return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }
 
-/**
- * One stored copy per motorcycle, even where several model-years share a source photo. The app
- * treats the file as owned by the row - deleting a motorcycle or clearing its image deletes the
- * file - so a shared name would blank the other rows' images.
- */
+/** One stored copy per motorcycle, even where several model-years share a source photo. The app treats the file as
+ *  owned by the row (deleting the row deletes the file), so a shared name would blank the other rows' images. */
 function imageFor(moto) {
     for (const relative of moto.imagens_locais || []) {
         const absolute = path.join(SOURCE_DIR, relative);
@@ -779,9 +686,8 @@ for (const moto of snapshot.motos) {
         ground_clearance_mm: bounded(Math.round(measure(moto['Distância do Solo'], 'mm', { bare: true, inches: true }) ?? NaN) || null, 50, 400, dropped, 'ground_clearance_mm'),
         kerb_weight_kg: kerb,
         dry_weight_kg: dry,
-        // Litres only. "22 Litres / 5.8 US gal" must never fall through to the gallon figure. The
-        // sheets spell the unit four ways - "L", "Litres", "Liters", "litros" - and the American
-        // spelling is not a rounding error to leave out.
+        // Litres only: "22 Litres / 5.8 US gal" must never fall through to the gallon figure. The sheets spell the unit four
+        // ways ("L", "Litres", "Liters", "litros"), and the American spelling is not a rounding error to leave out.
         fuel_capacity_l: bounded(round(measure(moto['Capacidade do Tanque'], 'l\\b|lt\\b|litros?|litres?|liters?'), 1), 1, 50, dropped, 'fuel_capacity_l'),
 
         image: imageFor(moto),
@@ -868,12 +774,8 @@ const skipped = rows.filter((row) => !emitted.includes(row)).map((r) => r.slug);
 const grades = snapshot.resumo;
 const droppedEntries = Object.entries(dropped).sort((a, b) => b[1] - a[1]);
 
-// displacement_cc is the one engine column the FIPE seed already fills, and it fills it by parsing the
-// cc out of the model descriptor - so "NINJA ZX-11 1100cc" stores 1100 for an engine that is actually
-// 1052 cc. Gap-fill means FIPE's figure wins wherever it has one, so most of the displacements below
-// never land. That is a deliberate consequence of the COALESCE rule rather than an oversight, but it
-// is worth counting rather than leaving for someone to discover in the comparison table, so the FIPE
-// seed is read here purely to report the overlap in the header.
+// displacement_cc is the one engine column the FIPE seed already fills, by parsing the cc out of the model descriptor, so
+// "NINJA ZX-11 1100cc" stores 1100 for an engine that is 1052 cc. Gap-fill means FIPE wins; the header counts the overlap.
 function fipeDisplacementOverlap() {
     const fipePath = path.join(REPO_ROOT, 'src/main/resources/db/seed/R__motorcycles_brazil_fipe_2026_08.sql');
     if (!fs.existsSync(fipePath)) return null;

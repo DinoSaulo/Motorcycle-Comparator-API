@@ -29,10 +29,8 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-/**
- * The filter never rejects a request itself — it only ever populates or leaves empty the security context — so
- * every case here ends in {@code filterChain.doFilter} being called exactly once, token or no token.
- */
+/** The filter never rejects a request itself, it only populates or leaves empty the security context, so every
+ *  case here ends in {@code filterChain.doFilter} being called exactly once, token or no token. */
 @ExtendWith(MockitoExtension.class)
 @DisplayName("JwtAuthenticationFilter")
 class JwtAuthenticationFilterTest {

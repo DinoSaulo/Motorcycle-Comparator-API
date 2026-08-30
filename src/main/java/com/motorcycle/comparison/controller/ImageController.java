@@ -20,11 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.Duration;
 import java.util.Locale;
 
-/**
- * Serves the images written by {@link FileStorageService}. Public by design: the catalogue is anonymous, a browser
- * sends no Authorization header for an {@code <img src>}, and a 401 there renders as a broken image rather than a
- * login prompt — which is why {@code SecurityConfig} already permits {@code /api/v1/images/**}.
- */
+/** Serves the images written by {@link FileStorageService}. Public by design: a browser sends no Authorization
+ *  header for an {@code <img src>}, so a 401 renders as a broken image; {@code SecurityConfig} permits the path. */
 @RestController
 @RequestMapping("/api/v1/images/motorcycles")
 @RequiredArgsConstructor
@@ -51,10 +48,8 @@ public class ImageController {
                 .body(image);
     }
 
-    /**
-     * Derived from the extension rather than probed from disk: the storage service only ever issues the three
-     * extensions below, and {@code Files.probeContentType} is platform-dependent — it returns null on some JREs.
-     */
+    /** Derived from the extension rather than probed from disk: storage only ever issues the three extensions
+     *  below, and {@code Files.probeContentType} is platform-dependent (it returns null on some JREs). */
     private static MediaType mediaTypeOf(String fileName) {
         String lower = fileName.toLowerCase(Locale.ROOT);
         if (lower.endsWith(".png")) {

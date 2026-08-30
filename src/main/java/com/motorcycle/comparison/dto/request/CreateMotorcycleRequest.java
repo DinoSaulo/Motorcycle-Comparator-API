@@ -15,10 +15,8 @@ import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Map;
 
-/**
- * Write model for the catalogue, kept separate from the entity so the persistence model can evolve (new columns,
- * split tables) without silently changing the public contract.
- */
+/** Write model for the catalogue, kept separate from the entity so the persistence model can evolve
+ *  (new columns, split tables) without silently changing the public contract. */
 @Schema(description = "Payload to create or fully replace a motorcycle")
 public record CreateMotorcycleRequest(
 

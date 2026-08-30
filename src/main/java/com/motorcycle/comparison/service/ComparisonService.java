@@ -28,10 +28,8 @@ import java.util.TreeSet;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/**
- * Turns N motorcycles into the row-oriented table the frontend renders. All display knowledge — which specs
- * appear, in what order, heading, unit and "better" direction — lives in the {@link #GROUPS} registry below.
- */
+/** Turns N motorcycles into the row-oriented table the frontend renders. All display knowledge (which specs
+ *  appear, in what order, heading, unit and "better" direction) lives in the {@link #GROUPS} registry below. */
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -42,10 +40,8 @@ public class ComparisonService {
 
     private final MotorcycleRepository motorcycleRepository;
 
-    /**
-     * Guard against someone asking for the whole catalogue side by side. The field
-     * initialiser is the value plain unit tests see; Spring overwrites it at startup.
-     */
+    /** Guard against someone asking for the whole catalogue side by side. The field
+     *  initialiser is the value plain unit tests see; Spring overwrites it at startup. */
     @Value("${app.comparison.max-items:4}")
     private int maxItems = 4;
 
@@ -97,10 +93,8 @@ public class ComparisonService {
                 winners(raw, spec.ranking()), differing);
     }
 
-    /**
-     * @return every index holding the best value, so the UI can highlight a tie
-     *         instead of arbitrarily crowning the first bike
-     */
+    /** @return every index holding the best value, so the UI can highlight a tie
+     *          instead of arbitrarily crowning the first bike */
     private static List<Integer> winners(List<Object> raw, Ranking ranking) {
         if (ranking == Ranking.NONE) {
             return List.of();
@@ -145,10 +139,8 @@ public class ComparisonService {
         };
     }
 
-    /**
-     * The long tail: the union of every compared bike's ad-hoc specs, alphabetised
-     * so the section is stable across requests. Bikes missing a key get a null cell.
-     */
+    /** The long tail: the union of every compared bike's ad-hoc specs, alphabetised
+     *  so the section is stable across requests. Bikes missing a key get a null cell. */
     private Optional<SpecGroup> additionalSpecsGroup(List<Motorcycle> bikes) {
         Set<String> keys = new TreeSet<>();
         bikes.forEach(b -> keys.addAll(b.getAdditionalSpecs().keySet()));
