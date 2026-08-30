@@ -22,6 +22,7 @@
         <springdoc.version>2.7.0</springdoc.version>
         <jjwt.version>0.12.6</jjwt.version>
         <jacoco.version>0.8.12</jacoco.version>
+        <testcontainers.version>1.21.4</testcontainers.version>
     </properties>
 
     <dependencies>
