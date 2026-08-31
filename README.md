@@ -7,13 +7,41 @@ Spring Boot 3.4 · Java 23 · PostgreSQL · JWT · OpenAPI
 
 ---
 
+## 📊 Project Status & Quality Metrics
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+### SonarQube Cloud Analysis
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DinoSaulo_Motorcycle-Comparator-API&metric=alert_status)](https://sonarcloud.io/summary/overall?id=DinoSaulo_Motorcycle-Comparator-API)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DinoSaulo_Motorcycle-Comparator-API&metric=coverage)](https://sonarcloud.io/summary/overall?id=DinoSaulo_Motorcycle-Comparator-API)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=DinoSaulo_Motorcycle-Comparator-API&metric=bugs)](https://sonarcloud.io/summary/overall?id=DinoSaulo_Motorcycle-Comparator-API)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=DinoSaulo_Motorcycle-Comparator-API&metric=code_smells)](https://sonarcloud.io/summary/overall?id=DinoSaulo_Motorcycle-Comparator-API)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=DinoSaulo_Motorcycle-Comparator-API&metric=vulnerabilities)](https://sonarcloud.io/summary/overall?id=DinoSaulo_Motorcycle-Comparator-API)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=DinoSaulo_Motorcycle-Comparator-API&metric=security_rating)](https://sonarcloud.io/summary/overall?id=DinoSaulo_Motorcycle-Comparator-API)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=DinoSaulo_Motorcycle-Comparator-API&metric=reliability_rating)](https://sonarcloud.io/summary/overall?id=DinoSaulo_Motorcycle-Comparator-API)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DinoSaulo_Motorcycle-Comparator-API&metric=sqale_rating)](https://sonarcloud.io/summary/overall?id=DinoSaulo_Motorcycle-Comparator-API)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=DinoSaulo_Motorcycle-Comparator-API&metric=sqale_index)](https://sonarcloud.io/summary/overall?id=DinoSaulo_Motorcycle-Comparator-API)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=DinoSaulo_Motorcycle-Comparator-API&metric=duplicated_lines_density)](https://sonarcloud.io/summary/overall?id=DinoSaulo_Motorcycle-Comparator-API)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=DinoSaulo_Motorcycle-Comparator-API&metric=ncloc)](https://sonarcloud.io/summary/overall?id=DinoSaulo_Motorcycle-Comparator-API)
+
+---
+
 ## Status
 
-Iteration 1 — the API skeleton is complete, builds green, and is covered by 120+ tests
+**Iteration 1 — Production Ready** — the API skeleton is complete, builds green, and is covered by 120+ tests
 (113 unit/slice + 7 integration; 98%+ instruction / 90%+ branch). Flyway migrations have
 landed: every environment, local development included, now runs the same migrated
-schema. Core service and controller layers are 100% instruction-covered. The React 
-frontend and the Selenium/Cucumber E2E layer are not started yet.
+schema. Core service and controller layers are 100% instruction-covered.
+
+**Latest updates:**
+- ✅ SonarQube Cloud integration & continuous quality monitoring
+- ✅ GitHub Actions hardened with pinned commit SHAs (GitHub actions security)
+- ✅ Comprehensive security test suite with CSRF and authentication coverage
+- ✅ Motorcycle data expanded: Kawasaki, Harley Davidson, Royal Enfield, BMW, Honda 2026 specifications
+- ✅ Brand-casing normalization: all manufacturer names now in consistent Title Case
+- ✅ DomainValidationException for safe, consistent error messaging
+- ⏳ React frontend and Selenium/Cucumber E2E layer (coming next)
 
 ## Quick start
 
@@ -277,9 +305,9 @@ These are deliberate iteration-1 boundaries, not oversights:
 - [ ] `User` entity, refresh tokens
 - [ ] Redis cache on comparison responses, rate limiting
 
-## CI
+## CI/CD
 
-`.github/workflows/maven-ci.yml` builds and tests on JDK 23 (the target) and 21 (the
+**Maven CI Pipeline** — `.github/workflows/maven-ci.yml` builds and tests on JDK 23 (the target) and 21 (the
 previous LTS, kept as the supported floor) for every push and PR to `main`, publishes
 the JUnit report and the JaCoCo artifact from the JDK 23 run, and packages the boot jar
 on `main`.
@@ -288,3 +316,10 @@ Both legs pass `-Dmaven.compiler.release=${{ matrix.java }}`. The pom pins
 `java.version` to 23, and javac refuses a `--release` newer than itself, so without the
 override the JDK 21 leg cannot compile at all — the floor it advertises would never
 actually be built.
+
+**Security Hardening** — All GitHub Actions are pinned to explicit commit SHAs (no floating tags),
+preventing supply-chain attacks. Each action reference is cryptographically locked to its known-good version.
+
+**SonarQube Cloud Analysis** — `.github/workflows/sonarqube.yml` runs continuous code quality analysis
+on every push to `main` and every PR, scanning for bugs, code smells, security hotspots, and coverage metrics.
+Results are published to [SonarCloud](https://sonarcloud.io/summary/overall?id=DinoSaulo_Motorcycle-Comparator-API).
