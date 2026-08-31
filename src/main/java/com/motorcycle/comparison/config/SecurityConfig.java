@@ -42,8 +42,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
+    private static final String MOTORCYCLES_PATH = "/api/v1/motorcycles/**";
+
     private static final String[] PUBLIC_GET_PATHS = {
-            "/api/v1/motorcycles/**",
+            MOTORCYCLES_PATH,
             // The catalogue is public, so its images have to be too: a browser sends no
             // Authorization header for an <img src>, and a 401 there renders as a broken image.
             "/api/v1/images/**"
@@ -81,9 +83,9 @@ public class SecurityConfig {
                         // health/info above are public; every other actuator endpoint (metrics
                         // included) exposes operational detail an editor has no business reading.
                         .requestMatchers("/actuator/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/v1/motorcycles/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/api/v1/motorcycles/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/api/v1/motorcycles/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, MOTORCYCLES_PATH).hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, MOTORCYCLES_PATH).hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, MOTORCYCLES_PATH).hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .exceptionHandling(ex -> ex
                         .authenticationEntryPoint(this::writeUnauthorized)
