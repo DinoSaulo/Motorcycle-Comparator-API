@@ -48,5 +48,5 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn $MAVEN_ARGS clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+        run: mvn $MAVEN_ARGS clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=DinoSaulo_Motorcycle-Comparator-API -Dsonar.organization=dinosaulo
 
