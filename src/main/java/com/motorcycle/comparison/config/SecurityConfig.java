@@ -67,8 +67,8 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                // No browser-session state to protect, and the token never rides in a
-                // cookie, so CSRF has nothing to defend here.
+                // Safe only while no request carries an ambient credential: no cookie, no session, token in the
+                // Authorization header alone. CsrfExposureTest is the tripwire on all three (Sonar java:S4502).
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

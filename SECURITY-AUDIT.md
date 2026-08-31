@@ -32,6 +32,7 @@
 | 17 | Ausência de fuga de stack traces / nomes de classes / SQL / caminhos nas respostas de erro | — | ✅ Já defendido, com teste |
 | 18 | `prod` sem `JWT_SECRET`/`ADMIN_PASSWORD` falha ao arrancar; segredo de `dev` não vaza | — | ✅ Já defendido, com teste |
 | 19 | Utilizadores em memória, tokens não revogáveis, sem rate limiting, imagens em disco local | — | 📋 Fronteira deliberada, documentada no README |
+| 20 | CSRF desativado no filter chain (hotspot Sonar `java:S4502`) | — | ✅ Revisto como *safe*, com teste |
 
 ---
 
@@ -120,6 +121,23 @@
 
 ---
 
+## Hotspots de análise estática revistos
+
+### 20. CSRF desativado no filter chain — `java:S4502` *(levantado por análise SonarQube)*
+
+- **Severidade:** — · **Estado:** ✅ revisto e classificado como *safe*, fixado por teste de regressão
+- **Localização:** `config/SecurityConfig.securityFilterChain`, na chamada `.csrf(AbstractHttpConfigurer::disable)`
+- **O que a regra diz:** `java:S4502` ("Make sure disabling Spring Security's CSRF protection is safe here") é um *Security Hotspot*, não um *bug*. Não afirma que existe uma vulnerabilidade — pede que um humano confirme que a desativação é segura neste contexto, e resolve-se em **Review → Safe** com justificação, não com uma alteração de código. `//NOSONAR` e `@SuppressWarnings` não são a via prevista para hotspots (ao contrário do que fazem com *issues*) e o seu efeito varia entre versões; a revisão é a resolução fiável.
+- **Revisão:** um ataque CSRF depende de o browser anexar automaticamente uma **credencial ambiente** a um pedido cross-site. Esta API não tem nenhuma:
+  1. `SessionCreationPolicy.STATELESS` — nenhum `HttpSession` é criado, logo nunca há `JSESSIONID` para reenviar.
+  2. Nenhum cookie é escrito ou lido em todo o `src/main` — `JwtAuthenticationFilter` lê exclusivamente o cabeçalho `Authorization: Bearer`, e o `/auth/login` devolve o token no corpo JSON.
+  3. Não há `formLogin` nem `httpBasic` no filter chain — não existe um segundo caminho de autenticação que o browser possa reenviar sozinho.
+  4. `CorsConfiguration` nunca ativa `allowCredentials`, pelo que nem um pedido cross-origin com script consegue anexar credenciais.
+- **Conclusão:** um POST forjado a partir de um site atacante chega sem `Authorization` e leva **401 no filter chain**, antes de tocar no controller. Ativar CSRF não acrescentaria defesa — acrescentaria um token que o cliente React teria de ir buscar e reenviar, e um repositório de tokens **com estado**, contradizendo a decisão de a API ser stateless. A desativação é, portanto, uma escolha correta e não uma omissão.
+- **O que fixa a conclusão:** `CsrfExposureTest` (6 testes). A justificação acima só é verdadeira enquanto as quatro premissas se mantiverem, e cada uma tem lá o seu teste. Mover o token para um cookie, ligar `allowCredentials` ou voltar a criar sessão faz falhar este teste — a revisão deixa de ser uma afirmação num documento e passa a ser uma condição verificada no CI.
+
+---
+
 ## Fronteiras deliberadas da iteração 1
 
 Já documentadas em `README.md` §"Known limitations" — não são reportadas aqui como descobertas:
@@ -146,6 +164,7 @@ Em `src/test/java/com/motorcycle/comparison/security/` (agrupamento deliberado, 
 | `ErrorDisclosureTest` | Ausência de stack traces, nomes de pacote, SQL e caminhos em 400/401/403/404/405/415; **`IllegalArgumentException` não revista é genérica pelo dispatch real**; **`BoundedEcho`** — eco truncado a 200 caracteres |
 | `SecurityHeadersTest` | `nosniff`, `X-Frame-Options`, `Cache-Control: no-store` no login, override de cache nas imagens; **tripwire da CSP**; **`ForwardedHeaderHandling`** — HSTS e `Location` atrás de proxy TLS |
 | `SecretsAndProfileTest` | `prod` sem segredos falha a arrancar; perfil não relacionado não herda o segredo de `dev`; `DevDefaultsGuard`; **`OpenApiExposureByProfile`** — springdoc desativado em `prod` |
+| `CsrfExposureTest` | Login sem `Set-Cookie`; escrita autenticada sem `HttpSession`; POST/DELETE/multipart só com cookies → 401; preflight CORS sem `Access-Control-Allow-Credentials` |
 
 Fora deste pacote, com relevância de segurança: `GlobalExceptionHandlerTest` (par `handleDomainValidation` / `handleIllegalArgument`), `MotorcycleControllerTest` (esquema do `imageUrl`, teto de `ids`), `JwtServiceTest`, `JwtAuthenticationFilterTest`, `FileStorageServiceImplTest`, `MotorcycleApiSecurityTest` (preflight CORS de origem permitida e não permitida).
 
@@ -158,8 +177,8 @@ Além disso, uma classe `@Nested` do JUnit não tem herança Java da classe que 
 ## Resultado de `mvn test`
 
 ```
-Tests run: 378, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 384, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
 ```
 
-(356 na revisão 1 → 378 nesta.)
+(356 na revisão 1 → 378 na revisão 2 → 384 com `CsrfExposureTest`.)
