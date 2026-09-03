@@ -44,6 +44,11 @@ public class SecurityConfig {
 
     private static final String MOTORCYCLES_PATH = "/api/v1/motorcycles/**";
 
+    /** A namespace of its own, not nested under {@link #MOTORCYCLES_PATH}: that path's GET is public via
+     *  {@link #PUBLIC_GET_PATHS}, and layering an ADMIN-only GET under the same wildcard would depend on matcher
+     *  order instead of being obviously correct. */
+    private static final String ADMIN_PATH = "/api/v1/admin/**";
+
     private static final String[] PUBLIC_GET_PATHS = {
             MOTORCYCLES_PATH,
             // The catalogue is public, so its images have to be too: a browser sends no
@@ -83,6 +88,7 @@ public class SecurityConfig {
                         // health/info above are public; every other actuator endpoint (metrics
                         // included) exposes operational detail an editor has no business reading.
                         .requestMatchers("/actuator/**").hasRole("ADMIN")
+                        .requestMatchers(ADMIN_PATH).hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, MOTORCYCLES_PATH).hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, MOTORCYCLES_PATH).hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, MOTORCYCLES_PATH).hasRole("ADMIN")

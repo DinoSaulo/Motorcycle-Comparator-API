@@ -56,9 +56,9 @@ class SchemaMigrationIT {
         // V4 normalises brand casing and was added without this list being updated, so the assertion has been failing
         // since. See the seed header: V4 runs before any repeatable seed, so rows those seeds insert never reach it.
         assertThat(applied).containsExactly("1", "2", "3", "4");
-        // R__dev_seed.sql, R__motorcycles_brazil_fipe_2026_08.sql, and the harley_davidson, honda, kawasaki (specs and
-        // specs_research), royal_enfield, specs_bmw and yamaha *_2026_08.sql seeds.
-        assertThat(repeatables).isEqualTo(9);
+        // R__dev_seed.sql, R__motorcycles_brazil_fipe_2026_08.sql, the harley_davidson, honda, kawasaki (specs and
+        // specs_research), royal_enfield, specs_bmw, triumph and yamaha *_2026_0[89].sql seeds, and zz_*_specs_gapfill.
+        assertThat(repeatables).isEqualTo(11);
     }
 
     @Test
@@ -78,9 +78,14 @@ class SchemaMigrationIT {
                 "motorcycles kawasaki specs research 2026 08",
                 "motorcycles royal enfield specs 2026 08",
                 "motorcycles specs bmw 2026 08",
-                "motorcycles yamaha specs 2026 08");
+                "motorcycles triumph specs 2026 09",
+                "motorcycles yamaha specs 2026 08",
+                "zz motorcycles specs gapfill");
         assertThat(order.indexOf("motorcycles brazil fipe 2026 08"))
                 .isLessThan(order.indexOf("motorcycles specs bmw 2026 08"));
+        // The consolidated gap-fill covers brands that have a dedicated seed too, and COALESCE gives the first writer the
+        // column for good, so a brand's own scrape has to claim it first. Its "zz" prefix is what puts it last of all.
+        assertThat(order.indexOf("zz motorcycles specs gapfill")).isEqualTo(order.size() - 1);
         // Both Kawasaki files gap-fill with COALESCE, so whichever runs first wins every column they share. The scraped
         // seed cites a page per model year and must precede the research seed, which generalises from the engine family.
         assertThat(order.indexOf("motorcycles kawasaki specs 2026 08"))
@@ -110,9 +115,11 @@ class SchemaMigrationIT {
         assertThat(hornet.getEngine().getMaxPowerHp()).isEqualByComparingTo("97.5");
         assertThat(hornet.getDimension().getKerbWeightKg()).isEqualByComparingTo("198.0");
 
+        // A floor rather than an equality: the cross-brand gap-fill runs after this seed and adds dimension blocks to
+        // Honda rows this scrape had nothing for. What this seed claims is that all 898 of its own rows got one.
         Integer hondaWithDimensions = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'honda' AND dimension_id IS NOT NULL", Integer.class);
-        assertThat(hondaWithDimensions).isEqualTo(898);
+        assertThat(hondaWithDimensions).isGreaterThanOrEqualTo(898);
     }
 
     @Test
@@ -125,9 +132,11 @@ class SchemaMigrationIT {
         assertThat(xt660.getEngine().getGears()).isEqualTo(5);
         assertThat(xt660.getDimension().getKerbWeightKg()).isEqualByComparingTo("181.0");
 
+        // A floor rather than an equality: the cross-brand gap-fill runs after this seed and adds dimension blocks to
+        // Yamaha rows this scrape had nothing for. What this seed claims is that all 617 of its own rows got one.
         Integer withDimensions = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'yamaha' AND dimension_id IS NOT NULL", Integer.class);
-        assertThat(withDimensions).isEqualTo(617);
+        assertThat(withDimensions).isGreaterThanOrEqualTo(617);
 
         // Every image URL stored must be a name ImageController can serve: FileStorageServiceImpl reads a UUID plus
         // jpg/png/webp and nothing else, so anything else is a silent 404. Files are not in the repo; see the seed header.
@@ -207,10 +216,11 @@ class SchemaMigrationIT {
         assertThat(sportsterS.getEngine().getBoreMm()).isEqualByComparingTo("105.00");
         assertThat(sportsterS.getEngine().getMaxTorqueNm()).isEqualByComparingTo("125.0");
 
-        // 199 of the 200 scraped rows; the Softail Custom 1995 matched no source sheet and is not emitted.
+        // 199 of the 200 scraped rows; the Softail Custom 1995 matched no source sheet and is not emitted. The bound is a
+        // floor rather than an equality because the cross-brand gap-fill also reaches this brand and adds its own blocks.
         Integer withDimensions = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'harley-davidson' AND dimension_id IS NOT NULL", Integer.class);
-        assertThat(withDimensions).isEqualTo(199);
+        assertThat(withDimensions).isGreaterThanOrEqualTo(199);
 
         // Every image URL stored must be a name ImageController can serve: FileStorageServiceImpl reads a UUID plus
         // jpg/png/webp and nothing else, so anything else is a silent 404. Files are not in the repo; see the seed header.
@@ -261,10 +271,11 @@ class SchemaMigrationIT {
         assertThat(trailRows).isEqualTo(107);
 
         // All 200 scraped rows carry something dimensional, and the FIPE seed gave none of them a price this
-        // import could overwrite - it only ever gap-fills, so every BMW row keeps the price FIPE set.
+        // import could overwrite - it only ever gap-fills, so every BMW row keeps the price FIPE set. The bound is a
+        // floor rather than an equality because the cross-brand gap-fill also reaches this brand and adds its own blocks.
         Integer withDimensions = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'bmw' AND dimension_id IS NOT NULL", Integer.class);
-        assertThat(withDimensions).isEqualTo(200);
+        assertThat(withDimensions).isGreaterThanOrEqualTo(200);
         Integer withoutPrice = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'bmw' AND price_eur IS NULL", Integer.class);
         assertThat(withoutPrice).isZero();
@@ -276,6 +287,137 @@ class SchemaMigrationIT {
                         + "'^/api/v1/images/motorcycles/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|png|webp)$'",
                 Integer.class);
         assertThat(servableImages).isEqualTo(200);
+    }
+
+    @Test
+    @DisplayName("the Triumph import gap-fills existing rows and invents no new motorcycle")
+    void loadsTheTriumphSpecifications() {
+        // A FIPE-only row (no dev-seed curation): the import is a near-full population of both blocks.
+        Motorcycle triple2017 = motorcycleRepository.findWithSpecificationsBySlug("triumph-street-triple-765-rs-2017").orElseThrow();
+        assertThat(triple2017.getFrontTyre()).isEqualTo("120/70ZR17");
+        assertThat(triple2017.getEngine().getDisplacementCc()).isEqualTo(765);
+        // "8.0 kgf.m @ 9.500 RPM" converted: kgf.m to Nm, and "9.500" read as 9500 rpm, not 9.5.
+        assertThat(triple2017.getEngine().getMaxTorqueNm()).isEqualByComparingTo("78.5");
+        assertThat(triple2017.getEngine().getMaxTorqueRpm()).isEqualTo(9500);
+        assertThat(triple2017.getDimension().getKerbWeightKg()).isEqualByComparingTo("189.0");
+        assertThat(triple2017.getDimension().getFuelCapacityL()).isEqualByComparingTo("15.0");
+
+        // The 2024 Tiger Sport 660 is one of the three Triumphs R__dev_seed.sql curated by hand, so gap-fill
+        // here must leave every already-populated column alone (frame, brakes, tyres, seat height, tank)...
+        Motorcycle tigerSport = motorcycleRepository.findWithSpecificationsBySlug("triumph-tiger-sport-660-2024").orElseThrow();
+        assertThat(tigerSport.getFrontTyre()).isEqualTo("120/70 ZR17");
+        assertThat(tigerSport.getFrameType()).isEqualTo("Tubular steel perimeter");
+        assertThat(tigerSport.getDimension().getSeatHeightMm()).isEqualTo(835);
+        assertThat(tigerSport.getDimension().getFuelCapacityL()).isEqualByComparingTo("17.2");
+        // ...while filling the two dimension columns the curated row left NULL. The scraper writes a bare
+        // trail figure ("97,1 mm") into "Chassis" instead of real chassis prose (memory: scraper-source-defects),
+        // so frame_type keeps the curated value rather than being overwritten with a rejected measurement.
+        assertThat(tigerSport.getDimension().getWidthMm()).isEqualTo(834);
+        assertThat(tigerSport.getDimension().getHeightMm()).isEqualTo(1398);
+
+        // Long-tail specs are additive: these keys do not collide with the dev seed's own ('Rider modes',
+        // 'Display', ...), so both scraped values land as new rows rather than being suppressed.
+        String rodas = jdbcTemplate.queryForObject(
+                "SELECT s.spec_value FROM motorcycle_additional_specs s JOIN motorcycles m ON m.id = s.motorcycle_id "
+                        + "WHERE m.slug = 'triumph-tiger-sport-660-2024' AND s.spec_key = 'Rodas'", String.class);
+        assertThat(rodas).isEqualTo("Alumínio fundido, 17 x 5,5 pol.");
+
+        // No new motorcycle row is ever created by this import; see loadsTheDevSeed's fixed catalogue
+        // count, which would fail if this seed inserted rather than only gap-filled.
+        Integer triumphCount = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'triumph'", Integer.class);
+        assertThat(triumphCount).isEqualTo(456);
+
+        // The scrape is far sparser than the other brand imports: only 117 of 456 scraped rows carry
+        // anything usable, so only that many Triumphs gain a dimension block from this import. A floor
+        // rather than an equality: the cross-brand gap-fill runs after this seed and reaches the rest.
+        Integer withDimensions = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'triumph' AND dimension_id IS NOT NULL", Integer.class);
+        assertThat(withDimensions).isGreaterThanOrEqualTo(117);
+
+        // Chassis is documented in the seed header as a mislabelled trail figure, never real chassis text. Counting
+        // the rows with one no longer isolates this seed - the gap-fill supplies real chassis prose for this brand -
+        // so the invariant is asserted directly instead: no Triumph frame_type is a bare measurement.
+        Integer measurementAsFrameType = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'triumph' AND frame_type IS NOT NULL "
+                        + "AND frame_type ~ '^[0-9.,\\s-]+\\s*(mm|cm|kg|cc)?\\.?$'", Integer.class);
+        assertThat(measurementAsFrameType).isZero();
+
+        // Bore, stroke, cylinders and displacement have one algebraic relation; this snapshot never publishes a bore,
+        // so nothing this import contributes can fail it. The gap-fill that runs after it does supply the quartet for
+        // this brand, and drops any pair that misses this same 5% - including the sheets that copied bore into stroke.
+        Integer contradictoryGeometry = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM engine_specifications e JOIN motorcycles m ON m.engine_specification_id = e.id "
+                        + "WHERE lower(m.brand) = 'triumph' AND e.bore_mm IS NOT NULL AND e.stroke_mm IS NOT NULL "
+                        + "AND e.cylinders IS NOT NULL AND e.displacement_cc IS NOT NULL "
+                        + "AND abs(pi() / 4 * e.bore_mm * e.bore_mm * e.stroke_mm * e.cylinders / 1000.0 - e.displacement_cc) "
+                        + "     > 0.05 * e.displacement_cc",
+                Integer.class);
+        assertThat(contradictoryGeometry).isZero();
+    }
+
+    @Test
+    @DisplayName("the cross-brand gap-fill fills what the per-brand seeds left NULL and invents no motorcycle")
+    void loadsTheCrossBrandSpecificationGapFill() {
+        // A FIPE-only row from a brand no per-brand seed covers, so every typed column below comes from this import.
+        // The counts are deliberately absent: the consolidated scrape is still growing, and a count pinned here would
+        // go stale on the next regeneration while these per-row values stay put.
+        Motorcycle monster797 = motorcycleRepository.findWithSpecificationsBySlug("ducati-monster-797-2018").orElseThrow();
+        // "V2, four-stroke" is the whole cylinder count: this source writes the layout in English, so the Portuguese
+        // patterns the brand imports use find nothing and the "four" in "four-stroke" must not be read as four cylinders.
+        assertThat(monster797.getEngine().getCylinders()).isEqualTo(2);
+        assertThat(monster797.getEngine().getDisplacementCc()).isEqualTo(803);
+        assertThat(monster797.getEngine().getBoreMm()).isEqualByComparingTo("88.00");
+        assertThat(monster797.getEngine().getStrokeMm()).isEqualByComparingTo("66.00");
+        // "73.0 HP (53.3 kW )) @ 8250 RPM" and "67.0 Nm (6.8 kgf-m or 49.4 ft.lbs) @ 5750 RPM": the printed HP and Nm
+        // figures win over their own parenthesised conversions, and the rpm is read from the tail of the same string.
+        assertThat(monster797.getEngine().getMaxPowerHp()).isEqualByComparingTo("73.0");
+        assertThat(monster797.getEngine().getMaxPowerRpm()).isEqualTo(8250);
+        assertThat(monster797.getEngine().getMaxTorqueNm()).isEqualByComparingTo("67.0");
+        assertThat(monster797.getEngine().getMaxTorqueRpm()).isEqualTo(5750);
+        // "6-speed / Chain (final drive)": the trailing label is the source's name for the field, not part of the value.
+        assertThat(monster797.getEngine().getGears()).isEqualTo(6);
+        assertThat(monster797.getEngine().getFinalDrive()).isEqualTo("Chain");
+        assertThat(monster797.getEngine().getEmissionStandard()).isEqualTo("Euro 4");
+        assertThat(monster797.getDimension().getKerbWeightKg()).isEqualByComparingTo("193.0");
+        assertThat(monster797.getDimension().getFuelCapacityL()).isEqualByComparingTo("16.5");
+        // No ABS field is published: the word appears inside the brake prose, and only the bare word is recorded from it.
+        assertThat(monster797.getAbsType()).isEqualTo("ABS");
+        assertThat(monster797.getDescription()).startsWith("The Monster 797 is the entrance to the Ducati world");
+
+        // Long-tail keys are the normalised kebab-case this import was specified with, which is a different vocabulary
+        // from the Portuguese Title Case every other seed stores ('Rodas' above, 'rodas' here). See the seed header.
+        String rodas = jdbcTemplate.queryForObject(
+                "SELECT s.spec_value FROM motorcycle_additional_specs s JOIN motorcycles m ON m.id = s.motorcycle_id "
+                        + "WHERE m.slug = 'ducati-monster-797-2018' AND s.spec_key = 'rodas'", String.class);
+        assertThat(rodas).startsWith("10-spoke in light alloy");
+
+        // Gap-fill never overwrites: the FIPE price survives, and image_url is untouched because the snapshot records
+        // images as local scraper paths ("./img/...jpg") that ImageController could not serve.
+        assertThat(monster797.getPriceEur()).isNotNull();
+        assertThat(monster797.getImageUrl()).isNull();
+
+        // Bore, stroke, cylinders and displacement have one algebraic relation, and COALESCE merges the four columns one
+        // at a time - so a row can end up holding one seed's bore beside another's displacement. Scoped to brands no
+        // per-brand seed covers, which makes FIPE plus this import the only two sources that can have mixed on a row.
+        // The tolerance matches the one the seed enforces over its own rows before COMMIT. It is not tighter because
+        // R__dev_seed.sql curated benelli-tnt-25-2024 as 249 cc against a 61.2 x 72 mm single, which sweeps 212 cc -
+        // a 15% contradiction predating this import, on a row it does not touch.
+        List<String> contradictoryGeometry = jdbcTemplate.queryForList(
+                "SELECT m.slug || ' cc=' || e.displacement_cc || ' bore=' || e.bore_mm || ' stroke=' || e.stroke_mm "
+                        + "|| ' cyl=' || e.cylinders FROM engine_specifications e JOIN motorcycles m ON m.engine_specification_id = e.id "
+                        + "WHERE lower(m.brand) IN ('ducati', 'bajaj', 'dafra', 'benelli', 'cagiva', 'agrale', 'buell') "
+                        + "AND e.bore_mm IS NOT NULL AND e.stroke_mm IS NOT NULL AND e.cylinders IS NOT NULL "
+                        + "AND e.displacement_cc IS NOT NULL AND e.displacement_cc > 0 "
+                        + "AND abs(pi() / 4 * e.bore_mm * e.bore_mm * e.stroke_mm * e.cylinders / 1000.0 - e.displacement_cc) "
+                        + "     > 0.25 * e.displacement_cc",
+                String.class);
+        assertThat(contradictoryGeometry).isEmpty();
+
+        // Every slug this import stages is a shape the public routing can use; the seed raises before COMMIT otherwise.
+        Integer unroutableSlugs = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE slug !~ '^[a-z0-9]+(-[a-z0-9]+)*$'", Integer.class);
+        assertThat(unroutableSlugs).isZero();
     }
 
     @Test

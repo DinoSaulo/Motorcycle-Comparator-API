@@ -56,4 +56,26 @@ class EngineSpecificationRepositoryTest {
     void returnsZeroOutsideTheRange() {
         assertThat(engineSpecificationRepository.countByDisplacementCcBetween(2000, 3000)).isZero();
     }
+
+    @Test
+    @DisplayName("field gaps: zero for every column MotorcycleFixtures#engine always fills in")
+    void fieldGapsAreZeroForColumnsTheFixtureAlwaysFills() {
+        EngineSpecificationRepository.EngineFieldGaps gaps = engineSpecificationRepository.fieldGaps();
+
+        assertThat(gaps.getEngineType()).isZero();
+        assertThat(gaps.getDisplacementCc()).isZero();
+        assertThat(gaps.getCylinders()).isZero();
+        assertThat(gaps.getMaxPowerHp()).isZero();
+        assertThat(gaps.getTransmissionType()).isZero();
+    }
+
+    @Test
+    @DisplayName("field gaps: every seeded engine, for a column MotorcycleFixtures#engine never sets")
+    void fieldGapsCountColumnsTheFixtureNeverSets() {
+        EngineSpecificationRepository.EngineFieldGaps gaps = engineSpecificationRepository.fieldGaps();
+
+        assertThat(gaps.getCompressionRatio()).isEqualTo(3L);
+        assertThat(gaps.getCoolingSystem()).isEqualTo(3L);
+        assertThat(gaps.getEmissionStandard()).isEqualTo(3L);
+    }
 }

@@ -87,6 +87,7 @@ which would falsely record `V1` as already applied.
 | `DELETE` | `/api/v1/motorcycles/{id}` | `ROLE_ADMIN` | Delete |
 | `POST` | `/api/v1/motorcycles/{id}/image` | `ROLE_ADMIN` | Upload or replace the image (`multipart/form-data`, part `file`) |
 | `DELETE` | `/api/v1/motorcycles/{id}/image` | `ROLE_ADMIN` | Clear the image |
+| `GET` | `/api/v1/admin/stats` | `ROLE_ADMIN` | Catalogue health: totals, breakdowns, missing-field counts |
 | `POST` | `/api/v1/auth/login` | public | Exchange credentials for a JWT |
 
 **The image is owned by the two `/image` endpoints, not by `PUT`.** A full-replacement `PUT`

@@ -138,6 +138,29 @@ class AuthorizationMatrixTest {
     }
 
     @Nested
+    @DisplayName("admin-only reads, by role")
+    class AdminOnlyReads {
+
+        @Test
+        @DisplayName("GET /admin/stats: 401 anonymous, 403 editor, 200 admin")
+        void catalogStats() throws Exception {
+            mockMvc.perform(get("/api/v1/admin/stats"))
+                    .andExpect(status().isUnauthorized())
+                    .andExpect(jsonPath("$.status").value(401));
+
+            mockMvc.perform(get("/api/v1/admin/stats")
+                            .header(HttpHeaders.AUTHORIZATION, "Bearer " + login("editor", "editor123")))
+                    .andExpect(status().isForbidden())
+                    .andExpect(jsonPath("$.status").value(403));
+
+            mockMvc.perform(get("/api/v1/admin/stats")
+                            .header(HttpHeaders.AUTHORIZATION, "Bearer " + login("admin", "admin123")))
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.totalMotorcycles").exists());
+        }
+    }
+
+    @Nested
     @DisplayName("an unmapped verb")
     class UnmappedVerb {
 
