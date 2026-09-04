@@ -239,8 +239,9 @@
                 </configuration>
             </plugin>
         </plugins>
+    </build>
 
-        <profiles>
+    <profiles>
             <!-- Unit tests only: mvn clean test -Punit -->
             <profile>
                 <id>unit</id>
@@ -390,5 +391,4 @@
                 </build>
             </profile>
         </profiles>
-    </build>
 </project>
