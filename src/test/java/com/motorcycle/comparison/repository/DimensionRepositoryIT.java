@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataJpaTest
+@DataJpaTest  // Já inclui @Transactional e rollback automático
 @TestPropertySource(properties = "spring.jpa.hibernate.ddl-auto=create-drop")
 @DisplayName("DimensionRepository Integration Tests")
 class DimensionRepositoryIT {
@@ -39,11 +39,17 @@ class DimensionRepositoryIT {
     @Test
     @DisplayName("should_countFieldGaps_forDimensions")
     void fieldGaps_countsNullFields() {
+        // widthMm/heightMm are left null by MotorcycleFixtures#dimension on purpose (see
+        // DimensionRepositoryTest), so both need an explicit value on the motorcycle that
+        // isn't meant to contribute that particular gap.
         Motorcycle m1 = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 889);
+        m1.getDimension().setHeightMm(1150);
         m1.getDimension().setLengthMm(null);
         m1.getDimension().setWidthMm(null);
 
         Motorcycle m2 = MotorcycleFixtures.motorcycle(2L, "Honda", "CB500", 471);
+        m2.getDimension().setWidthMm(780);
+        m2.getDimension().setHeightMm(1120);
 
         motorcycleRepository.saveAll(List.of(m1, m2));
 
@@ -74,6 +80,7 @@ class DimensionRepositoryIT {
 
         DimensionRepository.DimensionFieldGaps gaps = dimensionRepository.fieldGaps();
 
-        assertThat(gaps.getLengthMm()).isZero();
+        // SUM(CASE ...) over zero rows is NULL, not zero - see CatalogStatsRepository#fieldGaps javadoc.
+        assertThat(gaps.getLengthMm()).isNull();
     }
 }

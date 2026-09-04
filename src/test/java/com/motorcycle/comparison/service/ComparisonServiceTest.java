@@ -38,13 +38,13 @@ class ComparisonServiceTest {
     void setUp() {
         comparisonService = new ComparisonService(motorcycleRepository);
 
-        yamaha = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+        yamaha = MotorcycleFixtures.motorcycleWithId(1L, "Yamaha", "MT-09", 890);
         yamaha.getEngine().setMaxPowerHp(new BigDecimal("117.0"));
         yamaha.getDimension().setKerbWeightKg(new BigDecimal("193.0"));
         yamaha.setPriceEur(new BigDecimal("10499.00"));
         yamaha.getAdditionalSpecs().put("Rider modes", "4");
 
-        honda = MotorcycleFixtures.motorcycle(2L, "Honda", "CB650R", 649);
+        honda = MotorcycleFixtures.motorcycleWithId(2L, "Honda", "CB650R", 649);
         honda.getEngine().setMaxPowerHp(new BigDecimal("94.0"));
         honda.getDimension().setKerbWeightKg(new BigDecimal("202.0"));
         honda.setPriceEur(new BigDecimal("9290.00"));
@@ -57,9 +57,9 @@ class ComparisonServiceTest {
         when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
                 .thenReturn(List.of(honda, yamaha)); // repository answers in its own order
 
-        ComparisonResponse response = comparisonService.compare(List.of(1L, 2L));
+        ComparisonResponse response = comparisonService.compare(List.of(yamaha.getId(), honda.getId()));
 
-        assertThat(response.motorcycles()).extracting("id").containsExactly(1L, 2L);
+        assertThat(response.motorcycles()).extracting("id").containsExactly(yamaha.getId(), honda.getId());
     }
 
     @Test
@@ -68,7 +68,7 @@ class ComparisonServiceTest {
         when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
                 .thenReturn(List.of(yamaha, honda));
 
-        SpecRow power = row(comparisonService.compare(List.of(1L, 2L)), "Performance", "Max power");
+        SpecRow power = row(comparisonService.compare(List.of(yamaha.getId(), honda.getId())), "Performance", "Max power");
 
         assertThat(power.values()).containsExactly("117", "94");
         assertThat(power.winnerIndexes()).containsExactly(0);
@@ -80,7 +80,7 @@ class ComparisonServiceTest {
     void lowerIsBetter() {
         when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
                 .thenReturn(List.of(yamaha, honda));
-        ComparisonResponse response = comparisonService.compare(List.of(1L, 2L));
+        ComparisonResponse response = comparisonService.compare(List.of(yamaha.getId(), honda.getId()));
 
         assertThat(row(response, "Dimensions & weight", "Kerb weight").winnerIndexes())
                 .containsExactly(0); // 193 kg beats 202 kg
@@ -94,7 +94,7 @@ class ComparisonServiceTest {
         when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
                 .thenReturn(List.of(yamaha, honda));
 
-        SpecRow brake = row(comparisonService.compare(List.of(1L, 2L)),
+        SpecRow brake = row(comparisonService.compare(List.of(yamaha.getId(), honda.getId())),
                 "Chassis & brakes", "Front brake");
 
         assertThat(brake.winnerIndexes()).isEmpty();
@@ -107,7 +107,7 @@ class ComparisonServiceTest {
         when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
                 .thenReturn(List.of(yamaha, honda));
 
-        SpecRow power = row(comparisonService.compare(List.of(1L, 2L)), "Performance", "Max power");
+        SpecRow power = row(comparisonService.compare(List.of(yamaha.getId(), honda.getId())), "Performance", "Max power");
 
         assertThat(power.winnerIndexes()).isEmpty();
         assertThat(power.differing()).isFalse();
@@ -123,7 +123,7 @@ class ComparisonServiceTest {
         when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
                 .thenReturn(List.of(yamaha, honda));
 
-        SpecRow power = row(comparisonService.compare(List.of(1L, 2L)), "Performance", "Max power");
+        SpecRow power = row(comparisonService.compare(List.of(yamaha.getId(), honda.getId())), "Performance", "Max power");
 
         assertThat(power.values()).containsExactly("117", "117");
         assertThat(power.winnerIndexes()).isEmpty();
@@ -133,12 +133,12 @@ class ComparisonServiceTest {
     @Test
     @DisplayName("marks every bike tied for best, not just the first")
     void reportsEveryTiedWinner() {
-        Motorcycle suzuki = MotorcycleFixtures.motorcycle(3L, "Suzuki", "GSX-8S", 776);
+        Motorcycle suzuki = MotorcycleFixtures.motorcycleWithId(3L, "Suzuki", "GSX-8S", 776);
         suzuki.getEngine().setMaxPowerHp(new BigDecimal("117.0"));
         when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
                 .thenReturn(List.of(yamaha, honda, suzuki));
 
-        SpecRow power = row(comparisonService.compare(List.of(1L, 2L, 3L)), "Performance", "Max power");
+        SpecRow power = row(comparisonService.compare(List.of(yamaha.getId(), honda.getId(), suzuki.getId())), "Performance", "Max power");
 
         assertThat(power.winnerIndexes()).containsExactly(0, 2); // Honda's 94 hp is the only loser
     }
@@ -150,7 +150,7 @@ class ComparisonServiceTest {
         when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
                 .thenReturn(List.of(yamaha, honda));
 
-        SpecRow power = row(comparisonService.compare(List.of(1L, 2L)), "Performance", "Max power");
+        SpecRow power = row(comparisonService.compare(List.of(yamaha.getId(), honda.getId())), "Performance", "Max power");
 
         assertThat(power.values()).containsExactly("117", null);
         assertThat(power.winnerIndexes()).isEmpty(); // only one comparable figure left
@@ -164,7 +164,7 @@ class ComparisonServiceTest {
         when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
                 .thenReturn(List.of(yamaha, honda));
 
-        SpecRow displacement = row(comparisonService.compare(List.of(1L, 2L)), "Engine", "Displacement");
+        SpecRow displacement = row(comparisonService.compare(List.of(yamaha.getId(), honda.getId())), "Engine", "Displacement");
 
         assertThat(displacement.values()).containsExactly("890", null);
     }
@@ -175,7 +175,7 @@ class ComparisonServiceTest {
         when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
                 .thenReturn(List.of(yamaha, honda));
 
-        ComparisonResponse response = comparisonService.compare(List.of(1L, 2L));
+        ComparisonResponse response = comparisonService.compare(List.of(yamaha.getId(), honda.getId()));
         SpecGroup other = group(response, "Other specifications");
 
         assertThat(other.rows()).extracting(SpecRow::label)
@@ -192,7 +192,7 @@ class ComparisonServiceTest {
         when(motorcycleRepository.findAllWithSpecificationsByIdIn(anyCollection()))
                 .thenReturn(List.of(yamaha, honda));
 
-        assertThat(comparisonService.compare(List.of(1L, 2L)).groups())
+        assertThat(comparisonService.compare(List.of(yamaha.getId(), honda.getId())).groups())
                 .extracting(SpecGroup::name)
                 .doesNotContain("Other specifications");
     }
@@ -208,7 +208,7 @@ class ComparisonServiceTest {
     @Test
     @DisplayName("rejects more columns than a table can usefully show")
     void rejectsTooManyIds() {
-        assertThatThrownBy(() -> comparisonService.compare(List.of(1L, 2L, 3L, 4L, 5L)))
+        assertThatThrownBy(() -> comparisonService.compare(List.of(1000L, 1001L, 1002L, 1003L, 1004L)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("at most 4");
     }

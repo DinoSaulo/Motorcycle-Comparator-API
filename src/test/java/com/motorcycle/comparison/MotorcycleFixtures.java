@@ -9,6 +9,7 @@ import com.motorcycle.comparison.entity.Motorcycle;
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 /** Shared test data builders. Every factory returns a fully valid object; each test then mutates only the one field
  *  it is actually about, keeping the intent of a test visible instead of buried in twenty lines of setup. */
@@ -17,9 +18,36 @@ public final class MotorcycleFixtures {
     private MotorcycleFixtures() {
     }
 
+    // Counter for generating unique fake IDs for unit tests (ComparisonServiceTest needs non-null IDs)
+    private static final AtomicLong NEXT_FAKE_ID = new AtomicLong(1000L);
+
+    /** For UNIT TESTS ONLY - Creates motorcycle with a unique fake ID for object identity.
+     *  Unit tests (ComparisonServiceTest) need non-null IDs as map keys.
+     *  DO NOT use for integration/repository tests! */
+    public static Motorcycle motorcycleWithId(Long id, String brand, String model, int displacementCc) {
+        Motorcycle motorcycle = new Motorcycle();
+        motorcycle.setId(NEXT_FAKE_ID.getAndIncrement());
+        motorcycle.setBrand(brand);
+        motorcycle.setModel(model);
+        motorcycle.setModelYear(2024);
+        motorcycle.setCategory(Category.NAKED);
+        motorcycle.setSlug((brand + "-" + model + "-2024").toLowerCase().replace(' ', '-'));
+        motorcycle.setPriceEur(new BigDecimal("10000.00"));
+        motorcycle.setFrontBrake("Dual 298mm discs");
+        motorcycle.setRearBrake("Single 245mm disc");
+        motorcycle.setAbsType("Dual-channel ABS");
+        motorcycle.setEngine(engine(displacementCc));
+        motorcycle.setDimension(dimension());
+        motorcycle.setAdditionalSpecs(new LinkedHashMap<>());
+        return motorcycle;
+    }
+
+    /** For INTEGRATION/REPOSITORY TESTS - Creates motorcycle WITHOUT ID.
+     *  Database assigns real IDs via auto-increment, avoiding Flyway seed conflicts.
+     *  The id parameter is ignored for compatibility with existing code. */
     public static Motorcycle motorcycle(Long id, String brand, String model, int displacementCc) {
         Motorcycle motorcycle = new Motorcycle();
-        motorcycle.setId(id);
+        // Do NOT set ID - let database auto-generate to avoid conflicts with seeds
         motorcycle.setBrand(brand);
         motorcycle.setModel(model);
         motorcycle.setModelYear(2024);

@@ -260,7 +260,7 @@
                 </build>
             </profile>
 
-            <!-- Repository integration tests: mvn verify -Prepository -->
+            <!-- Repository integration tests: mvn verify -Dgroups=repository -->
             <profile>
                 <id>repository</id>
                 <build>
@@ -268,11 +268,11 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-surefire-plugin</artifactId>
-                            <executions>
-                                <execution>
-                                    <goals/>
-                                </execution>
-                            </executions>
+                            <configuration>
+                                <excludes>
+                                    <exclude>**/*IT.java</exclude>
+                                </excludes>
+                            </configuration>
                         </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
@@ -281,6 +281,7 @@
                                 <includes>
                                     <include>**/*RepositoryIT.java</include>
                                 </includes>
+                                <excludes/>
                             </configuration>
                         </plugin>
                     </plugins>
@@ -295,11 +296,11 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-surefire-plugin</artifactId>
-                            <executions>
-                                <execution>
-                                    <goals/>
-                                </execution>
-                            </executions>
+                            <configuration>
+                                <excludes>
+                                    <exclude>**/*IT.java</exclude>
+                                </excludes>
+                            </configuration>
                         </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
@@ -307,7 +308,6 @@
                             <configuration>
                                 <includes>
                                     <include>**/controller/*IT.java</include>
-                                    <include>**/service/*IT.java</include>
                                 </includes>
                                 <excludes>
                                     <exclude>**/*SecurityIT.java</exclude>
@@ -327,11 +327,11 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-surefire-plugin</artifactId>
-                            <executions>
-                                <execution>
-                                    <goals/>
-                                </execution>
-                            </executions>
+                            <configuration>
+                                <excludes>
+                                    <exclude>**/*IT.java</exclude>
+                                </excludes>
+                            </configuration>
                         </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
@@ -354,11 +354,11 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-surefire-plugin</artifactId>
-                            <executions>
-                                <execution>
-                                    <goals/>
-                                </execution>
-                            </executions>
+                            <configuration>
+                                <excludes>
+                                    <exclude>**/*IT.java</exclude>
+                                </excludes>
+                            </configuration>
                         </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>

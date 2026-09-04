@@ -104,9 +104,14 @@ class AdminStatsControllerIT {
     }
 
     private void insertTestMotorcycles() {
+        // imageUrl is left null by the fixture on purpose, so getStats_countsFieldGaps's "incomplete"
+        // motorcycle stays the only one missing it.
         Motorcycle m1 = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 889);
+        m1.setImageUrl("https://cdn.example.com/mt-09.jpg");
         Motorcycle m2 = MotorcycleFixtures.motorcycle(2L, "Yamaha", "YZF-R1", 998);
+        m2.setImageUrl("https://cdn.example.com/yzf-r1.jpg");
         Motorcycle m3 = MotorcycleFixtures.motorcycle(3L, "Honda", "CB500", 471);
+        m3.setImageUrl("https://cdn.example.com/cb500.jpg");
 
         motorcycleRepository.save(m1);
         motorcycleRepository.save(m2);

@@ -1,7 +1,6 @@
 package com.motorcycle.comparison.repository;
 
 import com.motorcycle.comparison.MotorcycleFixtures;
-import com.motorcycle.comparison.entity.EngineSpecification;
 import com.motorcycle.comparison.entity.Motorcycle;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataJpaTest
+@DataJpaTest  // Já inclui @Transactional e rollback automático
 @TestPropertySource(properties = "spring.jpa.hibernate.ddl-auto=create-drop")
 @DisplayName("EngineSpecificationRepository Integration Tests")
 class EngineSpecificationRepositoryIT {
@@ -75,6 +74,7 @@ class EngineSpecificationRepositoryIT {
 
         EngineSpecificationRepository.EngineFieldGaps gaps = engineSpecificationRepository.fieldGaps();
 
-        assertThat(gaps.getDisplacementCc()).isZero();
+        // SUM(CASE ...) over zero rows is NULL, not zero - see CatalogStatsRepository#fieldGaps javadoc.
+        assertThat(gaps.getDisplacementCc()).isNull();
     }
 }

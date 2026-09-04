@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataJpaTest
+@DataJpaTest  // Já inclui @Transactional e rollback automático
 @TestPropertySource(properties = "spring.jpa.hibernate.ddl-auto=create-drop")
 @DisplayName("CatalogStatsRepository Integration Tests")
 class CatalogStatsRepositoryIT {
@@ -137,11 +137,18 @@ class CatalogStatsRepositoryIT {
     @Test
     @DisplayName("should_countFieldGaps_forNullFields")
     void fieldGaps_countsNullFields() {
+        // frameType/imageUrl/description are left null by MotorcycleFixtures#motorcycle on purpose
+        // (see CatalogStatsRepositoryTest), so each is filled in explicitly here except the one gap
+        // each motorcycle is meant to contribute.
         Motorcycle m1 = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 889);
+        m1.setFrameType("Aluminium Deltabox");
+        m1.setDescription("A punchy naked triple");
         m1.setPriceEur(null);
         m1.setImageUrl(null);
 
         Motorcycle m2 = MotorcycleFixtures.motorcycle(2L, "Honda", "CB500", 471);
+        m2.setFrameType("Steel diamond");
+        m2.setImageUrl("https://cdn.example.com/cb500.jpg");
         m2.setDescription(null);
 
         motorcycleRepository.saveAll(List.of(m1, m2));
@@ -157,7 +164,9 @@ class CatalogStatsRepositoryIT {
     @Test
     @DisplayName("should_returnZeroGaps_whenAllFieldsAreFilled")
     void fieldGaps_zeroWhenCompleted() {
+        // imageUrl is left null by the fixture on purpose, so it needs an explicit value here.
         Motorcycle m1 = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 889);
+        m1.setImageUrl("https://cdn.example.com/mt-09.jpg");
         motorcycleRepository.save(m1);
 
         CatalogStatsRepository.MotorcycleFieldGaps gaps = catalogStatsRepository.fieldGaps();
@@ -173,8 +182,9 @@ class CatalogStatsRepositoryIT {
 
         CatalogStatsRepository.MotorcycleFieldGaps gaps = catalogStatsRepository.fieldGaps();
 
-        assertThat(gaps.getPriceEur()).isZero();
-        assertThat(gaps.getImageUrl()).isZero();
+        // SUM(CASE ...) over zero rows is NULL, not zero - see CatalogStatsRepository#fieldGaps javadoc.
+        assertThat(gaps.getPriceEur()).isNull();
+        assertThat(gaps.getImageUrl()).isNull();
     }
 
     @Test
