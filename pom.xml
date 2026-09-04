@@ -239,5 +239,156 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <profiles>
+            <!-- Unit tests only: mvn clean test -Punit -->
+            <profile>
+                <id>unit</id>
+                <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-failsafe-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <goals/>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </build>
+            </profile>
+
+            <!-- Repository integration tests: mvn verify -Prepository -->
+            <profile>
+                <id>repository</id>
+                <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <goals/>
+                                </execution>
+                            </executions>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-failsafe-plugin</artifactId>
+                            <configuration>
+                                <includes>
+                                    <include>**/*RepositoryIT.java</include>
+                                </includes>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </build>
+            </profile>
+
+            <!-- Integration tests (Controller, etc): mvn verify -Pintegration -->
+            <profile>
+                <id>integration</id>
+                <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <goals/>
+                                </execution>
+                            </executions>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-failsafe-plugin</artifactId>
+                            <configuration>
+                                <includes>
+                                    <include>**/controller/*IT.java</include>
+                                    <include>**/service/*IT.java</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>**/*SecurityIT.java</exclude>
+                                    <exclude>**/*RepositoryIT.java</exclude>
+                                </excludes>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </build>
+            </profile>
+
+            <!-- Security tests: mvn verify -Psecurity -->
+            <profile>
+                <id>security</id>
+                <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <goals/>
+                                </execution>
+                            </executions>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-failsafe-plugin</artifactId>
+                            <configuration>
+                                <includes>
+                                    <include>**/*SecurityIT.java</include>
+                                </includes>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </build>
+            </profile>
+
+            <!-- E2E tests: mvn verify -Pe2e -->
+            <profile>
+                <id>e2e</id>
+                <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <goals/>
+                                </execution>
+                            </executions>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-failsafe-plugin</artifactId>
+                            <configuration>
+                                <includes>
+                                    <include>**/*E2EIT.java</include>
+                                </includes>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </build>
+            </profile>
+
+            <!-- Full integration tests (all *IT.java except E2E): mvn verify -Pall-integration -->
+            <profile>
+                <id>all-integration</id>
+                <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <goals/>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </build>
+            </profile>
+        </profiles>
     </build>
 </project>

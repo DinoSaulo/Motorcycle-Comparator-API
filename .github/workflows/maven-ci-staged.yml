@@ -1,0 +1,277 @@
+name: Maven CI - Staged Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  # A new push to the same branch makes the previous run irrelevant.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Least privilege for the whole workflow; jobs that need more widen it themselves.
+permissions:
+  contents: read
+
+env:
+  MAVEN_ARGS: -B -ntp
+
+jobs:
+  # Stage 1: Compilation check for both JDK versions
+  compile:
+    name: Compile (JDK ${{ matrix.java }})
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [ '21', '23' ]
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+
+      - name: Compile
+        run: mvn $MAVEN_ARGS clean compile -Dmaven.compiler.release=${{ matrix.java }}
+
+  # Stage 2: Unit Tests
+  unit-tests:
+    name: Unit Tests (JDK ${{ matrix.java }})
+    needs: compile
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      checks: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [ '21', '23' ]
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+
+      - name: Run Unit Tests
+        run: mvn $MAVEN_ARGS test -Punit -Dmaven.compiler.release=${{ matrix.java }}
+
+      - name: Publish Unit Test Report
+        uses: mikepenz/action-junit-report@db71d41eb79864e25ab0337e395c352e84523afe # v4.3.1
+        if: always() && matrix.java == '23'
+        with:
+          report_paths: '**/target/surefire-reports/TEST-*.xml'
+          check_name: Unit Tests Report
+          include_passed: false
+
+  # Stage 3: Repository Integration Tests
+  repository-tests:
+    name: Repository Tests (JDK ${{ matrix.java }})
+    needs: unit-tests
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      checks: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [ '21', '23' ]
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+
+      - name: Run Repository Integration Tests
+        run: mvn $MAVEN_ARGS verify -Prepository -Dmaven.compiler.release=${{ matrix.java }}
+
+      - name: Publish Repository Tests Report
+        uses: mikepenz/action-junit-report@db71d41eb79864e25ab0337e395c352e84523afe # v4.3.1
+        if: always() && matrix.java == '23'
+        with:
+          report_paths: '**/target/failsafe-reports/TEST-*.xml'
+          check_name: Repository Tests Report
+          include_passed: false
+
+  # Stage 4: Integration Tests (Controller, Service, etc)
+  integration-tests:
+    name: Integration Tests (JDK ${{ matrix.java }})
+    needs: repository-tests
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      checks: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [ '21', '23' ]
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+
+      - name: Run Integration Tests
+        run: mvn $MAVEN_ARGS verify -Pintegration -Dmaven.compiler.release=${{ matrix.java }}
+
+      - name: Publish Integration Tests Report
+        uses: mikepenz/action-junit-report@db71d41eb79864e25ab0337e395c352e84523afe # v4.3.1
+        if: always() && matrix.java == '23'
+        with:
+          report_paths: '**/target/failsafe-reports/TEST-*.xml'
+          check_name: Integration Tests Report
+          include_passed: false
+
+  # Stage 5: Security Tests
+  security-tests:
+    name: Security Tests (JDK ${{ matrix.java }})
+    needs: integration-tests
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      checks: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [ '21', '23' ]
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+
+      - name: Run Security Tests
+        run: mvn $MAVEN_ARGS verify -Psecurity -Dmaven.compiler.release=${{ matrix.java }}
+
+      - name: Publish Security Tests Report
+        uses: mikepenz/action-junit-report@db71d41eb79864e25ab0337e395c352e84523afe # v4.3.1
+        if: always() && matrix.java == '23'
+        with:
+          report_paths: '**/target/failsafe-reports/TEST-*.xml'
+          check_name: Security Tests Report
+          include_passed: false
+
+  # Stage 6: E2E Tests (when you implement them)
+  e2e-tests:
+    name: E2E Tests (JDK ${{ matrix.java }})
+    needs: security-tests
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      checks: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [ '21', '23' ]
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+
+      - name: Run E2E Tests
+        run: mvn $MAVEN_ARGS verify -Pe2e -Dmaven.compiler.release=${{ matrix.java }}
+        continue-on-error: true  # E2E tests might not exist yet
+
+      - name: Publish E2E Tests Report
+        uses: mikepenz/action-junit-report@db71d41eb79864e25ab0337e395c352e84523afe # v4.3.1
+        if: always() && matrix.java == '23'
+        with:
+          report_paths: '**/target/failsafe-reports/TEST-*.xml'
+          check_name: E2E Tests Report
+          include_passed: false
+
+  # Final stage: Code Coverage and Packaging (only on main branch)
+  coverage-and-package:
+    name: Coverage & Package
+    needs: e2e-tests
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Set up JDK 23
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+        with:
+          distribution: temurin
+          java-version: '23'
+          cache: maven
+
+      - name: Build with Coverage
+        run: mvn $MAVEN_ARGS -Pall-integration verify
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: jacoco-report
+          path: target/site/jacoco
+          retention-days: 7
+          if-no-files-found: warn
+
+      - name: Package Boot JAR
+        run: mvn $MAVEN_ARGS -DskipTests package
+
+      - name: Upload JAR Artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: motorcycle-comparison-api
+          path: target/*.jar
+          retention-days: 14
