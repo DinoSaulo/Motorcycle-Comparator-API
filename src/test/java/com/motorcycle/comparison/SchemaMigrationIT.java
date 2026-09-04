@@ -55,10 +55,12 @@ class SchemaMigrationIT {
 
         // V4 normalises brand casing and was added without this list being updated, so the assertion has been failing
         // since. See the seed header: V4 runs before any repeatable seed, so rows those seeds insert never reach it.
-        assertThat(applied).containsExactly("1", "2", "3", "4");
+        // V5 adds motorcycle_available_countries and, like V4, runs before every repeatable seed below.
+        assertThat(applied).containsExactly("1", "2", "3", "4", "5");
         // R__dev_seed.sql, R__motorcycles_brazil_fipe_2026_08.sql, the harley_davidson, honda, kawasaki (specs and
-        // specs_research), royal_enfield, specs_bmw, triumph and yamaha *_2026_0[89].sql seeds, and zz_*_specs_gapfill.
-        assertThat(repeatables).isEqualTo(11);
+        // specs_research), royal_enfield, specs_bmw, triumph and yamaha *_2026_0[89].sql seeds, zz_*_specs_gapfill,
+        // and zzz_motorcycle_available_countries_brazil.
+        assertThat(repeatables).isEqualTo(12);
     }
 
     @Test
@@ -80,12 +82,16 @@ class SchemaMigrationIT {
                 "motorcycles specs bmw 2026 08",
                 "motorcycles triumph specs 2026 09",
                 "motorcycles yamaha specs 2026 08",
-                "zz motorcycles specs gapfill");
+                "zz motorcycles specs gapfill",
+                "zzz motorcycle available countries brazil");
         assertThat(order.indexOf("motorcycles brazil fipe 2026 08"))
                 .isLessThan(order.indexOf("motorcycles specs bmw 2026 08"));
         // The consolidated gap-fill covers brands that have a dedicated seed too, and COALESCE gives the first writer the
-        // column for good, so a brand's own scrape has to claim it first. Its "zz" prefix is what puts it last of all.
-        assertThat(order.indexOf("zz motorcycles specs gapfill")).isEqualTo(order.size() - 1);
+        // column for good, so a brand's own scrape has to claim it first. Its "zz" prefix puts it last of every spec seed.
+        assertThat(order.indexOf("zz motorcycles specs gapfill")).isEqualTo(order.size() - 2);
+        // The Brazil country backfill needs every motorcycle row that exists, including ones dev seed and the brand
+        // imports insert, so it runs after all of them - its "zzz" prefix is what puts it last of all.
+        assertThat(order.indexOf("zzz motorcycle available countries brazil")).isEqualTo(order.size() - 1);
         // Both Kawasaki files gap-fill with COALESCE, so whichever runs first wins every column they share. The scraped
         // seed cites a page per model year and must precede the research seed, which generalises from the engine family.
         assertThat(order.indexOf("motorcycles kawasaki specs 2026 08"))
@@ -576,6 +582,25 @@ class SchemaMigrationIT {
         Integer impossible = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM dimensions WHERE dry_weight_kg > kerb_weight_kg", Integer.class);
         assertThat(impossible).isZero();
+    }
+
+    @Test
+    @DisplayName("backfills every motorcycle as available in Brazil")
+    void backfillsAvailableCountriesWithBrazil() {
+        // Runs last of all repeatable seeds (see brandImportsRunAfterTheFipeSeed), so it must reach every row
+        // the dev seed and every brand import inserted - not just the FIPE snapshot that most of them start from.
+        Integer withoutBrazil = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles m WHERE NOT EXISTS "
+                        + "(SELECT 1 FROM motorcycle_available_countries c WHERE c.motorcycle_id = m.id AND c.country_code = 'BR')",
+                Integer.class);
+        assertThat(withoutBrazil).isZero();
+
+        // availableCountries is LAZY and open-in-view is false, so it is read back through SQL here rather
+        // than the entity getter, which would throw LazyInitializationException outside a transaction.
+        String country = jdbcTemplate.queryForObject(
+                "SELECT c.country_code FROM motorcycle_available_countries c JOIN motorcycles m ON m.id = c.motorcycle_id "
+                        + "WHERE m.slug = 'yamaha-mt-09-2024'", String.class);
+        assertThat(country).isEqualTo("BR");
     }
 
     @Test

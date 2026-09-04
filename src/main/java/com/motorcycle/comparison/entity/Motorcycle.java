@@ -30,7 +30,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
 
 /** Aggregate root of the catalogue: structured columns ({@link EngineSpecification}, {@link Dimension}, chassis fields)
  *  back the comparison engine, while {@code additionalSpecs} holds the long tail until it earns a real column. */
@@ -133,6 +135,16 @@ public class Motorcycle {
     @Column(name = "spec_value", length = 500)
     @Builder.Default
     private Map<String, String> additionalSpecs = new LinkedHashMap<>();
+
+    /** ISO 3166-1 alpha-2 codes, e.g. "BR", "US", "PT"; a bike can list zero, one or many. */
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(
+            name = "motorcycle_available_countries",
+            joinColumns = @JoinColumn(name = "motorcycle_id"),
+            foreignKey = @ForeignKey(name = "fk_available_countries_motorcycle"))
+    @Column(name = "country_code", length = 2)
+    @Builder.Default
+    private Set<String> availableCountries = new LinkedHashSet<>();
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.util.Map;
+import java.util.Set;
 
 /** Read model for a single motorcycle, including both specification blocks. The mapping lives here as static
  *  factories rather than a separate mapper: a pure, dependency-free projection next to the shape it produces. */
@@ -33,7 +34,8 @@ public record MotorcycleResponse(
         String rearTyre,
         EngineResponse engine,
         DimensionResponse dimension,
-        Map<String, String> additionalSpecs
+        Map<String, String> additionalSpecs,
+        Set<String> availableCountries
 ) {
 
     public static MotorcycleResponse from(Motorcycle m) {
@@ -58,7 +60,8 @@ public record MotorcycleResponse(
                 m.getRearTyre(),
                 EngineResponse.from(m.getEngine()),
                 DimensionResponse.from(m.getDimension()),
-                m.getAdditionalSpecs() == null ? Map.of() : Map.copyOf(m.getAdditionalSpecs())
+                m.getAdditionalSpecs() == null ? Map.of() : Map.copyOf(m.getAdditionalSpecs()),
+                m.getAvailableCountries() == null ? Set.of() : Set.copyOf(m.getAvailableCountries())
         );
     }
 

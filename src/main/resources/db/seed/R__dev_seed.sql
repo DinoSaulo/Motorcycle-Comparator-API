@@ -8,9 +8,11 @@
 -- re-runs the whole script, which is what a seed should do while the model still moves.
 --
 -- TRUNCATE first because Flyway no longer drops the schema on every boot; a plain
--- re-INSERT would collide on the primary keys.
+-- re-INSERT would collide on the primary keys. motorcycle_available_countries has to be named
+-- here too: PostgreSQL refuses to truncate motorcycles while another table still references it,
+-- RESTART IDENTITY or not.
 
-TRUNCATE TABLE motorcycle_additional_specs, motorcycles, engine_specifications, dimensions RESTART IDENTITY;
+TRUNCATE TABLE motorcycle_additional_specs, motorcycle_available_countries, motorcycles, engine_specifications, dimensions RESTART IDENTITY;
 
 INSERT INTO engine_specifications
     (id, engine_type, displacement_cc, cylinders, valves_per_cylinder, max_power_hp, max_power_rpm,

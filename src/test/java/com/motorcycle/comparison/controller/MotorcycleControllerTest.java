@@ -40,6 +40,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -309,7 +310,7 @@ class MotorcycleControllerTest {
         CreateMotorcycleRequest invalid = new CreateMotorcycleRequest(
                 "", "", 1700, null, null, null, null,
                 null, null, null, null, null, null, null, null,
-                null, null, null);
+                null, null, null, null);
 
         mockMvc.perform(post("/api/v1/motorcycles")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -333,7 +334,7 @@ class MotorcycleControllerTest {
                 new BigDecimal("24900.00"), null, "Electric naked",
                 "Steel trellis", null, null, null, null, "Bosch cornering ABS",
                 null, null,
-                MotorcycleFixtures.electricEngineRequest(), null, Map.of());
+                MotorcycleFixtures.electricEngineRequest(), null, Map.of(), Set.of("US"));
         when(motorcycleService.create(any())).thenReturn(response(9L, "Zero", "SR/F"));
 
         mockMvc.perform(post("/api/v1/motorcycles")
@@ -548,7 +549,7 @@ class MotorcycleControllerTest {
                 new MotorcycleResponse.DimensionResponse(
                         2090, 820, 1190, 1430, 825, 140,
                         new BigDecimal("193.0"), null, new BigDecimal("14.0"), null),
-                Map.of());
+                Map.of(), Set.of("BR"));
     }
 
     private static ComparisonResponse comparison() {

@@ -187,6 +187,43 @@ class CreateMotorcycleRequestValidationTest {
     }
 
     @Nested
+    @DisplayName("available countries bounds")
+    class AvailableCountriesBounds {
+
+        @Test
+        @DisplayName("accepts a lower-case code: the service normalises case, the DTO only checks the shape")
+        void acceptsLowerCaseCode() {
+            CreateMotorcycleRequest request = with(baseline(), b -> b.availableCountries(Set.of("br")));
+
+            assertThat(violationsOf(request)).isEmpty();
+        }
+
+        @Test
+        @DisplayName("accepts no countries at all: a bike can be catalogued before it launches anywhere")
+        void acceptsEmptySet() {
+            CreateMotorcycleRequest request = with(baseline(), b -> b.availableCountries(Set.of()));
+
+            assertThat(violationsOf(request)).isEmpty();
+        }
+
+        @Test
+        @DisplayName("rejects a code that is not exactly two letters")
+        void rejectsWrongLength() {
+            CreateMotorcycleRequest request = with(baseline(), b -> b.availableCountries(Set.of("BRA")));
+
+            assertThat(violationsOf(request)).isNotEmpty();
+        }
+
+        @Test
+        @DisplayName("rejects a blank entry")
+        void rejectsBlankEntry() {
+            CreateMotorcycleRequest request = with(baseline(), b -> b.availableCountries(Set.of(" ")));
+
+            assertThat(violationsOf(request)).isNotEmpty();
+        }
+    }
+
+    @Nested
     @DisplayName("engine block")
     class EngineBlock {
 
@@ -237,26 +274,28 @@ class CreateMotorcycleRequestValidationTest {
             String frameType, String frontSuspension, String rearSuspension,
             String frontBrake, String rearBrake, String absType, String frontTyre, String rearTyre,
             CreateMotorcycleRequest.EngineRequest engine, CreateMotorcycleRequest.DimensionRequest dimension,
-            Map<String, String> additionalSpecs) {
+            Map<String, String> additionalSpecs, Set<String> availableCountries) {
 
         Builder(CreateMotorcycleRequest r) {
             this(r.brand(), r.model(), r.modelYear(), r.category(), r.priceEur(), r.imageUrl(), r.description(),
                     r.frameType(), r.frontSuspension(), r.rearSuspension(), r.frontBrake(), r.rearBrake(),
-                    r.absType(), r.frontTyre(), r.rearTyre(), r.engine(), r.dimension(), r.additionalSpecs());
+                    r.absType(), r.frontTyre(), r.rearTyre(), r.engine(), r.dimension(), r.additionalSpecs(),
+                    r.availableCountries());
         }
 
-        Builder brand(String v) { return new Builder(v, model, modelYear, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, dimension, additionalSpecs); }
-        Builder model(String v) { return new Builder(brand, v, modelYear, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, dimension, additionalSpecs); }
-        Builder modelYear(Integer v) { return new Builder(brand, model, v, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, dimension, additionalSpecs); }
-        Builder priceEur(BigDecimal v) { return new Builder(brand, model, modelYear, category, v, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, dimension, additionalSpecs); }
-        Builder engine(CreateMotorcycleRequest.EngineRequest v) { return new Builder(brand, model, modelYear, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, v, dimension, additionalSpecs); }
-        Builder dimension(CreateMotorcycleRequest.DimensionRequest v) { return new Builder(brand, model, modelYear, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, v, additionalSpecs); }
-        Builder additionalSpecs(Map<String, String> v) { return new Builder(brand, model, modelYear, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, dimension, v); }
+        Builder brand(String v) { return new Builder(v, model, modelYear, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, dimension, additionalSpecs, availableCountries); }
+        Builder model(String v) { return new Builder(brand, v, modelYear, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, dimension, additionalSpecs, availableCountries); }
+        Builder modelYear(Integer v) { return new Builder(brand, model, v, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, dimension, additionalSpecs, availableCountries); }
+        Builder priceEur(BigDecimal v) { return new Builder(brand, model, modelYear, category, v, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, dimension, additionalSpecs, availableCountries); }
+        Builder engine(CreateMotorcycleRequest.EngineRequest v) { return new Builder(brand, model, modelYear, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, v, dimension, additionalSpecs, availableCountries); }
+        Builder dimension(CreateMotorcycleRequest.DimensionRequest v) { return new Builder(brand, model, modelYear, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, v, additionalSpecs, availableCountries); }
+        Builder additionalSpecs(Map<String, String> v) { return new Builder(brand, model, modelYear, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, dimension, v, availableCountries); }
+        Builder availableCountries(Set<String> v) { return new Builder(brand, model, modelYear, category, priceEur, imageUrl, description, frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre, engine, dimension, additionalSpecs, v); }
 
         CreateMotorcycleRequest build() {
             return new CreateMotorcycleRequest(brand, model, modelYear, category, priceEur, imageUrl, description,
                     frameType, frontSuspension, rearSuspension, frontBrake, rearBrake, absType, frontTyre, rearTyre,
-                    engine, dimension, additionalSpecs);
+                    engine, dimension, additionalSpecs, availableCountries);
         }
     }
 }

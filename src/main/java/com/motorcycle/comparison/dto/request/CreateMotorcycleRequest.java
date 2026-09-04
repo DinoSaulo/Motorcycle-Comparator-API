@@ -14,6 +14,7 @@ import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 import java.util.Map;
+import java.util.Set;
 
 /** Write model for the catalogue, kept separate from the entity so the persistence model can evolve
  *  (new columns, split tables) without silently changing the public contract. */
@@ -70,7 +71,14 @@ public record CreateMotorcycleRequest(
         @Size(max = 50)
         @Schema(description = "Long-tail specs that have no dedicated column",
                 example = "{\"Rider modes\":\"4\",\"Display\":\"5-inch TFT\"}")
-        Map<@NotBlank @Size(max = 80) String, @Size(max = 500) String> additionalSpecs
+        Map<@NotBlank @Size(max = 80) String, @Size(max = 500) String> additionalSpecs,
+
+        // Bounded by the ISO 3166-1 alpha-2 list itself (~250 codes); case is normalised to upper by the
+        // service before it reaches the ck_available_countries_code_format CHECK, so both are accepted here.
+        @Size(max = 250)
+        @Schema(description = "ISO 3166-1 alpha-2 codes of the countries this motorcycle is officially sold in",
+                example = "[\"BR\", \"US\", \"PT\"]")
+        Set<@NotBlank @Pattern(regexp = "^[A-Za-z]{2}$", message = "must be an ISO 3166-1 alpha-2 code") String> availableCountries
 ) {
 
     @Schema(description = "Powertrain block")

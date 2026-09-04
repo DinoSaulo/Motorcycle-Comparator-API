@@ -30,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -321,6 +322,15 @@ public class MotorcycleService {
         // tracked by Hibernate reacts badly to having its instance replaced.
         target.getAdditionalSpecs().clear();
         target.getAdditionalSpecs().putAll(extras);
+
+        Set<String> countries = new LinkedHashSet<>();
+        if (request.availableCountries() != null) {
+            // Upper-cased here so "br"/"Br"/"BR" all collapse to one row instead of racing
+            // ck_available_countries_code_format, which only accepts the upper-case form.
+            request.availableCountries().forEach(code -> countries.add(code.toUpperCase(Locale.ROOT)));
+        }
+        target.getAvailableCountries().clear();
+        target.getAvailableCountries().addAll(countries);
     }
 
     private EngineSpecification mergeEngine(CreateMotorcycleRequest.EngineRequest src, EngineSpecification existing) {

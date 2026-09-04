@@ -9,6 +9,7 @@ import com.motorcycle.comparison.entity.Motorcycle;
 import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
 /** Shared test data builders. Every factory returns a fully valid object; each test then mutates only the one field
@@ -96,7 +97,8 @@ public final class MotorcycleFixtures {
                 "120/70 ZR17", "180/55 ZR17",
                 engineRequest(890),
                 dimensionRequest(),
-                Map.of("Rider modes", "4"));
+                Map.of("Rider modes", "4"),
+                Set.of("BR"));
     }
 
     public static CreateMotorcycleRequest.EngineRequest engineRequest(int displacementCc) {
@@ -119,7 +121,7 @@ public final class MotorcycleFixtures {
                 full.frameType(), full.frontSuspension(), full.rearSuspension(),
                 full.frontBrake(), full.rearBrake(), full.absType(),
                 full.frontTyre(), full.rearTyre(),
-                full.engine(), full.dimension(), full.additionalSpecs());
+                full.engine(), full.dimension(), full.additionalSpecs(), full.availableCountries());
     }
 
     public static CreateMotorcycleRequest createRequestWithSpecs(Map<String, String> additionalSpecs) {
@@ -130,7 +132,19 @@ public final class MotorcycleFixtures {
                 full.frameType(), full.frontSuspension(), full.rearSuspension(),
                 full.frontBrake(), full.rearBrake(), full.absType(),
                 full.frontTyre(), full.rearTyre(),
-                full.engine(), full.dimension(), additionalSpecs);
+                full.engine(), full.dimension(), additionalSpecs, full.availableCountries());
+    }
+
+    /** Same as {@link #createRequest} but with a caller-chosen set of country codes, for the bounds tests. */
+    public static CreateMotorcycleRequest createRequestWithCountries(Set<String> availableCountries) {
+        CreateMotorcycleRequest full = createRequest("Yamaha", "MT-09", 2024);
+        return new CreateMotorcycleRequest(
+                full.brand(), full.model(), full.modelYear(), full.category(),
+                full.priceEur(), full.imageUrl(), full.description(),
+                full.frameType(), full.frontSuspension(), full.rearSuspension(),
+                full.frontBrake(), full.rearBrake(), full.absType(),
+                full.frontTyre(), full.rearTyre(),
+                full.engine(), full.dimension(), full.additionalSpecs(), availableCountries);
     }
 
     /** Same as {@link #createRequest} but with no engine block. The DTO forbids this through the API (@NotNull),
@@ -143,7 +157,7 @@ public final class MotorcycleFixtures {
                 full.frameType(), full.frontSuspension(), full.rearSuspension(),
                 full.frontBrake(), full.rearBrake(), full.absType(),
                 full.frontTyre(), full.rearTyre(),
-                null, full.dimension(), full.additionalSpecs());
+                null, full.dimension(), full.additionalSpecs(), full.availableCountries());
     }
 
     /** Same as {@link #createRequest} but with no dimension block, for full-replace tests. */
@@ -155,7 +169,7 @@ public final class MotorcycleFixtures {
                 full.frameType(), full.frontSuspension(), full.rearSuspension(),
                 full.frontBrake(), full.rearBrake(), full.absType(),
                 full.frontTyre(), full.rearTyre(),
-                full.engine(), null, full.additionalSpecs());
+                full.engine(), null, full.additionalSpecs(), full.availableCountries());
     }
 
     /** Shaped like the seeded Zero SR/F: no displacement, no cylinders, no gearbox ratios. */

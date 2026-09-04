@@ -29,6 +29,7 @@ import org.springframework.mock.web.MockMultipartFile;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -274,6 +275,18 @@ class MotorcycleServiceTest {
             assertThat(response.engine().finalDrive()).isEqualTo("Chain");
             assertThat(response.dimension().kerbWeightKg()).isEqualByComparingTo("193.0");
             assertThat(response.additionalSpecs()).containsEntry("Rider modes", "4");
+        }
+
+        @Test
+        @DisplayName("upper-cases country codes so they satisfy the CHECK constraint and de-duplicate by case")
+        void normalizesCountryCodeCase() {
+            when(motorcycleRepository.existsBySlug(anyString())).thenReturn(false);
+            writerEchoesBackWhatItIsGiven();
+
+            MotorcycleResponse response = motorcycleService.create(
+                    MotorcycleFixtures.createRequestWithCountries(Set.of("br", "US")));
+
+            assertThat(response.availableCountries()).containsExactlyInAnyOrder("BR", "US");
         }
     }
 
