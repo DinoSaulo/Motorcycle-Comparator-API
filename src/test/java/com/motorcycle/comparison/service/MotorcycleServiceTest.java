@@ -396,6 +396,63 @@ class MotorcycleServiceTest {
 
             assertThat(existing.getEngine()).isSameAs(originalEngine);
         }
+
+        @Test
+        @DisplayName("upper-cases country codes on an edit too, collapsing the case variants to one entry")
+        void normalizesCountryCodeCaseOnUpdate() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setSlug("yamaha-mt-09-2024");
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            motorcycleService.update(1L, MotorcycleFixtures.createRequestWithCountries(Set.of("pt", "PT", "br")));
+
+            // "pt" and "PT" are two distinct elements to the DTO's Set and only collapse here,
+            // which is the whole point of normalising before the CHECK constraint sees them.
+            assertThat(existing.getAvailableCountries()).containsExactlyInAnyOrder("PT", "BR");
+        }
+
+        @Test
+        @DisplayName("clears the previously listed countries when a full-replace request sends none")
+        void clearsCountriesWhenRequestSendsEmptySet() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setSlug("yamaha-mt-09-2024");
+            existing.getAvailableCountries().add("US");
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            motorcycleService.update(1L, MotorcycleFixtures.createRequestWithCountries(Set.of()));
+
+            // A PUT replaces the list outright: withdrawing a bike from every market
+            // has to be expressible, so an empty set cannot mean "keep what you had".
+            assertThat(existing.getAvailableCountries()).isEmpty();
+        }
+
+        @Test
+        @DisplayName("treats an omitted country block the same as an empty one and clears it")
+        void clearsCountriesWhenRequestOmitsThem() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setSlug("yamaha-mt-09-2024");
+            existing.getAvailableCountries().add("US");
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            motorcycleService.update(1L, MotorcycleFixtures.createRequestWithCountries(null));
+
+            assertThat(existing.getAvailableCountries()).isEmpty();
+        }
+
+        @Test
+        @DisplayName("mutates the country collection in place instead of swapping the instance")
+        void reusesCountryCollectionInstance() {
+            Motorcycle existing = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 890);
+            existing.setSlug("yamaha-mt-09-2024");
+            var originalCountries = existing.getAvailableCountries();
+            when(motorcycleRepository.findWithSpecificationsById(1L)).thenReturn(Optional.of(existing));
+
+            motorcycleService.update(1L, MotorcycleFixtures.createRequestWithCountries(Set.of("BR")));
+
+            // Replacing the reference detaches the collection Hibernate is tracking, exactly
+            // as for additionalSpecs; the contents must move, not the instance.
+            assertThat(existing.getAvailableCountries()).isSameAs(originalCountries).containsExactly("BR");
+        }
     }
 
     @Nested

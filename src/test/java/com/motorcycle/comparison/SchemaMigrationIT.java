@@ -661,6 +661,49 @@ class SchemaMigrationIT {
                 .isInstanceOf(DataIntegrityViolationException.class);
     }
 
+    @Test
+    @DisplayName("a CHECK constraint rejects a country code that is not ISO 3166-1 alpha-2")
+    void checkConstraintRejectsBadCountryCode() {
+        Long id = insertProbeMotorcycle("country-code-probe");
+
+        try {
+            // Lower case is the mistake the column width cannot catch, which is the whole point of the CHECK:
+            // "br" fits VARCHAR(2) perfectly and would otherwise sit beside "BR" as a second, invisible row.
+            assertThatThrownBy(() -> jdbcTemplate.update(
+                    "INSERT INTO motorcycle_available_countries (motorcycle_id, country_code) VALUES (?, ?)", id, "br"))
+                    .isInstanceOf(DataIntegrityViolationException.class);
+            assertThatThrownBy(() -> jdbcTemplate.update(
+                    "INSERT INTO motorcycle_available_countries (motorcycle_id, country_code) VALUES (?, ?)", id, "B1"))
+                    .isInstanceOf(DataIntegrityViolationException.class);
+        } finally {
+            jdbcTemplate.update("DELETE FROM motorcycles WHERE id = ?", id);
+        }
+    }
+
+    @Test
+    @DisplayName("the FOREIGN KEY takes the country rows with the motorcycle, without Hibernate in the way")
+    void deletingAMotorcycleCascadesIntoTheCountryTable() {
+        // A throwaway probe rather than a seeded bike: loadsTheDevSeed pins the catalogue count, and the delete
+        // below is raw SQL, so nothing would put a removed row back. Only ON DELETE CASCADE can clear the children.
+        Long id = insertProbeMotorcycle("country-cascade-probe");
+        jdbcTemplate.update("INSERT INTO motorcycle_available_countries (motorcycle_id, country_code) VALUES (?, 'BR'), (?, 'US')", id, id);
+        assertThat(countCountryRows(id)).isEqualTo(2);
+
+        jdbcTemplate.update("DELETE FROM motorcycles WHERE id = ?", id);
+
+        assertThat(countCountryRows(id)).isZero();
+    }
+
+    private Long insertProbeMotorcycle(String slug) {
+        insertMotorcycle(slug, 2024);
+        return jdbcTemplate.queryForObject("SELECT id FROM motorcycles WHERE slug = ?", Long.class, slug);
+    }
+
+    private Integer countCountryRows(Long motorcycleId) {
+        return jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycle_available_countries WHERE motorcycle_id = ?", Integer.class, motorcycleId);
+    }
+
     private void insertMotorcycle(String slug, int modelYear) {
         jdbcTemplate.update(
                 "INSERT INTO motorcycles (slug, brand, model, model_year, category, created_at, updated_at) VALUES (?, 'Probe', 'Probe', ?, 'NAKED', now(), now())",

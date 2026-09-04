@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -128,6 +129,37 @@ class MotorcycleControllerIT {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content.length()").value(0));
+    }
+
+    @Test
+    @DisplayName("should_return_empty_array_when_no_country_is_listed")
+    void getMotorcycleById_returns_empty_available_countries() throws Exception {
+        // Jackson is configured non_null, so an absent field here would mean the entity handed back a null
+        // set; the clients read this as "no country data yet", which only an empty array can say.
+        Motorcycle saved = motorcycleRepository.findAll().get(0);
+
+        mockMvc.perform(get("/api/v1/motorcycles/{id}", saved.getId())
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.availableCountries").isArray())
+                .andExpect(jsonPath("$.availableCountries.length()").value(0));
+    }
+
+    @Test
+    @DisplayName("should_return_available_countries_when_listed")
+    void getMotorcycleById_returns_available_countries() throws Exception {
+        // availableCountries is LAZY and open-in-view is false, so this also proves the service reads the
+        // collection inside its own read-only transaction rather than leaving it to the serializer.
+        Motorcycle stocked = MotorcycleFixtures.motorcycle(4L, "Ducati", "Monster", 937);
+        stocked.getAvailableCountries().addAll(List.of("BR", "US"));
+        Long id = motorcycleRepository.save(stocked).getId();
+
+        mockMvc.perform(get("/api/v1/motorcycles/{id}", id)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.availableCountries").isArray())
+                .andExpect(jsonPath("$.availableCountries.length()").value(2))
+                .andExpect(jsonPath("$.availableCountries", containsInAnyOrder("BR", "US")));
     }
 
     private void insertTestMotorcycles() {

@@ -125,6 +125,53 @@ class MotorcycleRepositoryTest {
     }
 
     @Test
+    @DisplayName("round-trips the country codes through their own side table")
+    void persistsAvailableCountries() {
+        // The fixture hands back the entity's own empty set, so the codes are added to it rather than
+        // replacing the reference: swapping in a fresh Set would detach Hibernate's collection wrapper.
+        Motorcycle stocked = MotorcycleFixtures.motorcycle(null, "Ducati", "Monster", 937);
+        stocked.getAvailableCountries().addAll(List.of("BR", "US", "PT"));
+        Long id = entityManager.persistAndGetId(stocked, Long.class);
+        entityManager.flush();
+        entityManager.clear();
+
+        Motorcycle found = motorcycleRepository.findWithSpecificationsById(id).orElseThrow();
+
+        assertThat(found.getAvailableCountries()).containsExactlyInAnyOrder("BR", "US", "PT");
+    }
+
+    @Test
+    @DisplayName("a bike listed in no country reloads with an empty set, never null")
+    void unlistedCountriesReloadAsAnEmptySet() {
+        // MotorcycleResponse.from and the service's update path both call getAvailableCountries()
+        // unguarded against an empty collection, so a null here would be an NPE on every read.
+        Motorcycle found = motorcycleRepository.findWithSpecificationsById(yamahaId).orElseThrow();
+
+        assertThat(found.getAvailableCountries()).isNotNull().isEmpty();
+    }
+
+    @Test
+    @DisplayName("cascades the delete into the country side table without the database's ON DELETE CASCADE")
+    void cascadeDeleteRemovesAvailableCountryRows() {
+        // H2 builds this schema from the entity, so the migration's ON DELETE CASCADE is absent here: what
+        // clears the rows is Hibernate's own element-collection delete. SchemaMigrationIT proves the other half.
+        EntityManager em = entityManager.getEntityManager();
+        Motorcycle stocked = MotorcycleFixtures.motorcycle(null, "Ducati", "Diavel", 1260);
+        stocked.getAvailableCountries().addAll(List.of("BR", "US"));
+        Long id = entityManager.persistAndGetId(stocked, Long.class);
+        entityManager.flush();
+        entityManager.clear();
+
+        motorcycleRepository.delete(motorcycleRepository.findById(id).orElseThrow());
+        entityManager.flush();
+
+        Number remainingCountries = (Number) em.createNativeQuery("SELECT COUNT(*) FROM motorcycle_available_countries WHERE motorcycle_id = :id")
+                .setParameter("id", id)
+                .getSingleResult();
+        assertThat(remainingCountries.longValue()).isZero();
+    }
+
+    @Test
     @DisplayName("fetches a whole comparison set in one call")
     void fetchesComparisonSet() {
         List<Motorcycle> found = motorcycleRepository.findAllWithSpecificationsByIdIn(List.of(yamahaId, bmwId));

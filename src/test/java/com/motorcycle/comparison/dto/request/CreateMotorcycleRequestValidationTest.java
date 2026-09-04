@@ -221,6 +221,41 @@ class CreateMotorcycleRequestValidationTest {
 
             assertThat(violationsOf(request)).isNotEmpty();
         }
+
+        @Test
+        @DisplayName("accepts a set at the exact size cap: the whole ISO 3166-1 alpha-2 list fits")
+        void acceptsExactCap() {
+            CreateMotorcycleRequest request = with(baseline(), b -> b.availableCountries(codes(250)));
+
+            assertThat(violationsOf(request)).isEmpty();
+        }
+
+        @Test
+        @DisplayName("rejects one country past the cap")
+        void rejectsOneCountryPastCap() {
+            CreateMotorcycleRequest request = with(baseline(), b -> b.availableCountries(codes(251)));
+
+            assertThat(violates(request, "availableCountries")).isTrue();
+        }
+
+        @Test
+        @DisplayName("accepts two case variants of one code: dedup is the service's job, not the DTO's")
+        void acceptsBothCaseVariantsOfTheSameCode() {
+            CreateMotorcycleRequest request = with(baseline(), b -> b.availableCountries(Set.of("br", "BR")));
+
+            // Two distinct elements to a Java Set, each matching the shape on its own; they only
+            // collapse in MotorcycleService, so rejecting them here would be a false 400.
+            assertThat(violationsOf(request)).isEmpty();
+        }
+
+        /** Synthetic two-letter codes, distinct and shaped like the pattern; the DTO validates shape, not membership. */
+        private static Set<String> codes(int count) {
+            Set<String> codes = new java.util.LinkedHashSet<>();
+            for (int i = 0; i < count; i++) {
+                codes.add(String.valueOf((char) ('A' + i / 26)) + (char) ('A' + i % 26));
+            }
+            return codes;
+        }
     }
 
     @Nested
