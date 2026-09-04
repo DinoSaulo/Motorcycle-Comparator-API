@@ -59,8 +59,8 @@ class SchemaMigrationIT {
         assertThat(applied).containsExactly("1", "2", "3", "4", "5");
         // R__dev_seed.sql, R__motorcycles_brazil_fipe_2026_08.sql, the harley_davidson, honda, kawasaki (specs and
         // specs_research), royal_enfield, specs_bmw, triumph and yamaha *_2026_0[89].sql seeds, zz_*_specs_gapfill,
-        // and zzz_motorcycle_available_countries_brazil.
-        assertThat(repeatables).isEqualTo(12);
+        // zzz_motorcycle_available_countries_brazil and zzzz_motorcycles_1000ps_specs_2026_09.
+        assertThat(repeatables).isEqualTo(13);
     }
 
     @Test
@@ -83,15 +83,19 @@ class SchemaMigrationIT {
                 "motorcycles triumph specs 2026 09",
                 "motorcycles yamaha specs 2026 08",
                 "zz motorcycles specs gapfill",
-                "zzz motorcycle available countries brazil");
+                "zzz motorcycle available countries brazil",
+                "zzzz motorcycles 1000ps specs 2026 09");
         assertThat(order.indexOf("motorcycles brazil fipe 2026 08"))
                 .isLessThan(order.indexOf("motorcycles specs bmw 2026 08"));
         // The consolidated gap-fill covers brands that have a dedicated seed too, and COALESCE gives the first writer the
         // column for good, so a brand's own scrape has to claim it first. Its "zz" prefix puts it last of every spec seed.
-        assertThat(order.indexOf("zz motorcycles specs gapfill")).isEqualTo(order.size() - 2);
-        // The Brazil country backfill needs every motorcycle row that exists, including ones dev seed and the brand
-        // imports insert, so it runs after all of them - its "zzz" prefix is what puts it last of all.
-        assertThat(order.indexOf("zzz motorcycle available countries brazil")).isEqualTo(order.size() - 1);
+        assertThat(order.indexOf("zz motorcycles specs gapfill")).isEqualTo(order.size() - 3);
+        // The Brazil country backfill needs every motorcycle row that already existed, including ones dev seed and the
+        // brand imports insert, so it runs after all of them.
+        assertThat(order.indexOf("zzz motorcycle available countries brazil")).isEqualTo(order.size() - 2);
+        // The 1000ps catalogue is not a Brazilian-market snapshot, so the rows it creates must not reach the backfill
+        // above; its "zzzz" prefix runs it after that one, which is the only thing leaving those rows with no country.
+        assertThat(order.indexOf("zzzz motorcycles 1000ps specs 2026 09")).isEqualTo(order.size() - 1);
         // Both Kawasaki files gap-fill with COALESCE, so whichever runs first wins every column they share. The scraped
         // seed cites a page per model year and must precede the research seed, which generalises from the engine family.
         assertThat(order.indexOf("motorcycles kawasaki specs 2026 08"))
@@ -101,9 +105,9 @@ class SchemaMigrationIT {
     @Test
     @DisplayName("loads the dev seed")
     void loadsTheDevSeed() {
-        // 53 curated dev-seed bikes plus the Brazil/FIPE 08/2026 snapshot; see R__motorcycles_brazil_fipe_2026_08.sql.
-        // None of the specification imports adds a row: every model they carry is already one of these.
-        assertThat(motorcycleRepository.count()).isEqualTo(8454);
+        // 53 curated dev-seed bikes plus the Brazil/FIPE 08/2026 snapshot came to 8454, and none of the specification
+        // imports adds a row. The 1000ps catalogue import does: 4575 European models the FIPE table never carried.
+        assertThat(motorcycleRepository.count()).isEqualTo(13029);
         assertThat(motorcycleRepository.findWithSpecificationsBySlug("yamaha-mt-09-2024")).isPresent();
     }
 
@@ -124,7 +128,8 @@ class SchemaMigrationIT {
         // A floor rather than an equality: the cross-brand gap-fill runs after this seed and adds dimension blocks to
         // Honda rows this scrape had nothing for. What this seed claims is that all 898 of its own rows got one.
         Integer hondaWithDimensions = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'honda' AND dimension_id IS NOT NULL", Integer.class);
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'honda' AND m.dimension_id IS NOT NULL"
+                        + seededBefore1000ps("m"), Integer.class);
         assertThat(hondaWithDimensions).isGreaterThanOrEqualTo(898);
     }
 
@@ -141,13 +146,14 @@ class SchemaMigrationIT {
         // A floor rather than an equality: the cross-brand gap-fill runs after this seed and adds dimension blocks to
         // Yamaha rows this scrape had nothing for. What this seed claims is that all 617 of its own rows got one.
         Integer withDimensions = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'yamaha' AND dimension_id IS NOT NULL", Integer.class);
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'yamaha' AND m.dimension_id IS NOT NULL"
+                        + seededBefore1000ps("m"), Integer.class);
         assertThat(withDimensions).isGreaterThanOrEqualTo(617);
 
         // Every image URL stored must be a name ImageController can serve: FileStorageServiceImpl reads a UUID plus
         // jpg/png/webp and nothing else, so anything else is a silent 404. Files are not in the repo; see the seed header.
         Integer servableImages = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'yamaha' AND image_url ~ "
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'yamaha'" + seededBefore1000ps("m") + "AND m.image_url ~ "
                         + "'^/api/v1/images/motorcycles/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|png|webp)$'",
                 Integer.class);
         assertThat(servableImages).isEqualTo(523);
@@ -166,7 +172,8 @@ class SchemaMigrationIT {
         assertThat(interceptor.getDimension().getKerbWeightKg()).isEqualByComparingTo("217.0");
 
         Integer withDimensions = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'royal enfield' AND dimension_id IS NOT NULL", Integer.class);
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'royal enfield' AND m.dimension_id IS NOT NULL"
+                        + seededBefore1000ps("m"), Integer.class);
         assertThat(withDimensions).isEqualTo(152);
 
         // See the seed header: the source prose captions the 648 cc twin a single and the 349 cc single a twin, and the
@@ -182,7 +189,7 @@ class SchemaMigrationIT {
         // Every image URL stored must be a name ImageController can serve (a UUID plus jpg/png/webp), so anything else is a
         // silent 404; the files are not in the repo. The nine short of 152 are the Bullet 500 and the Classic Chrome 500 EFI.
         Integer servableImages = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'royal enfield' AND image_url ~ "
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'royal enfield'" + seededBefore1000ps("m") + "AND m.image_url ~ "
                         + "'^/api/v1/images/motorcycles/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|png|webp)$'",
                 Integer.class);
         assertThat(servableImages).isEqualTo(143);
@@ -225,13 +232,14 @@ class SchemaMigrationIT {
         // 199 of the 200 scraped rows; the Softail Custom 1995 matched no source sheet and is not emitted. The bound is a
         // floor rather than an equality because the cross-brand gap-fill also reaches this brand and adds its own blocks.
         Integer withDimensions = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'harley-davidson' AND dimension_id IS NOT NULL", Integer.class);
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'harley-davidson' AND m.dimension_id IS NOT NULL"
+                        + seededBefore1000ps("m"), Integer.class);
         assertThat(withDimensions).isGreaterThanOrEqualTo(199);
 
         // Every image URL stored must be a name ImageController can serve: FileStorageServiceImpl reads a UUID plus
         // jpg/png/webp and nothing else, so anything else is a silent 404. Files are not in the repo; see the seed header.
         Integer servableImages = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'harley-davidson' AND image_url ~ "
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'harley-davidson'" + seededBefore1000ps("m") + "AND m.image_url ~ "
                         + "'^/api/v1/images/motorcycles/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|png|webp)$'",
                 Integer.class);
         assertThat(servableImages).isEqualTo(199);
@@ -269,27 +277,30 @@ class SchemaMigrationIT {
         Motorcycle r1100gs = motorcycleRepository.findWithSpecificationsBySlug("bmw-r-1100-gs-1995").orElseThrow();
         assertThat(r1100gs.getDimension().getFuelCapacityL()).isEqualByComparingTo("24.0");
 
-        // Trail and Castor are the same measurement under two source names and never share a row, so they
-        // share a long-tail key instead of splitting one fact across two rows of the comparison table.
+        // Trail and Castor are the same measurement under two source names and never share a row, so they share a
+        // long-tail key instead of splitting one fact across two rows. 107 from this import, 9 more from the 1000ps one.
         Integer trailRows = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycle_additional_specs s JOIN motorcycles m ON m.id = s.motorcycle_id "
-                        + "WHERE lower(m.brand) = 'bmw' AND s.spec_key = 'Trail'", Integer.class);
-        assertThat(trailRows).isEqualTo(107);
+                        + "WHERE lower(m.brand) = 'bmw' AND s.spec_key = 'Trail'"
+                        + seededBefore1000ps("m"), Integer.class);
+        assertThat(trailRows).isEqualTo(116);
 
         // All 200 scraped rows carry something dimensional, and the FIPE seed gave none of them a price this
         // import could overwrite - it only ever gap-fills, so every BMW row keeps the price FIPE set. The bound is a
         // floor rather than an equality because the cross-brand gap-fill also reaches this brand and adds its own blocks.
         Integer withDimensions = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'bmw' AND dimension_id IS NOT NULL", Integer.class);
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'bmw' AND m.dimension_id IS NOT NULL"
+                        + seededBefore1000ps("m"), Integer.class);
         assertThat(withDimensions).isGreaterThanOrEqualTo(200);
         Integer withoutPrice = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'bmw' AND price_eur IS NULL", Integer.class);
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'bmw' AND m.price_eur IS NULL"
+                        + seededBefore1000ps("m"), Integer.class);
         assertThat(withoutPrice).isZero();
 
         // Every image URL stored must be a name ImageController can serve: FileStorageServiceImpl reads a UUID plus
         // jpg/png/webp and nothing else, so anything else is a silent 404. Files are not in the repo; see the seed header.
         Integer servableImages = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'bmw' AND image_url ~ "
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'bmw'" + seededBefore1000ps("m") + "AND m.image_url ~ "
                         + "'^/api/v1/images/motorcycles/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|png|webp)$'",
                 Integer.class);
         assertThat(servableImages).isEqualTo(200);
@@ -331,22 +342,23 @@ class SchemaMigrationIT {
         // No new motorcycle row is ever created by this import; see loadsTheDevSeed's fixed catalogue
         // count, which would fail if this seed inserted rather than only gap-filled.
         Integer triumphCount = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'triumph'", Integer.class);
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'triumph'" + seededBefore1000ps("m"), Integer.class);
         assertThat(triumphCount).isEqualTo(456);
 
         // The scrape is far sparser than the other brand imports: only 117 of 456 scraped rows carry
         // anything usable, so only that many Triumphs gain a dimension block from this import. A floor
         // rather than an equality: the cross-brand gap-fill runs after this seed and reaches the rest.
         Integer withDimensions = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'triumph' AND dimension_id IS NOT NULL", Integer.class);
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'triumph' AND m.dimension_id IS NOT NULL"
+                        + seededBefore1000ps("m"), Integer.class);
         assertThat(withDimensions).isGreaterThanOrEqualTo(117);
 
         // Chassis is documented in the seed header as a mislabelled trail figure, never real chassis text. Counting
         // the rows with one no longer isolates this seed - the gap-fill supplies real chassis prose for this brand -
         // so the invariant is asserted directly instead: no Triumph frame_type is a bare measurement.
         Integer measurementAsFrameType = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'triumph' AND frame_type IS NOT NULL "
-                        + "AND frame_type ~ '^[0-9.,\\s-]+\\s*(mm|cm|kg|cc)?\\.?$'", Integer.class);
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'triumph' AND m.frame_type IS NOT NULL " + seededBefore1000ps("m")
+                        + "AND m.frame_type ~ '^[0-9.,\\s-]+\\s*(mm|cm|kg|cc)?\\.?$'", Integer.class);
         assertThat(measurementAsFrameType).isZero();
 
         // Bore, stroke, cylinders and displacement have one algebraic relation; this snapshot never publishes a bore,
@@ -483,17 +495,18 @@ class SchemaMigrationIT {
         assertThat(zx6r.getEngine().getDisplacementCc()).isEqualTo(636);
         assertThat(zx6r.getImageUrl()).matches("/api/v1/images/motorcycles/[0-9a-f-]+\\.jpg");
 
-        // 187 of the 194 emitted rows carry a measurement. The catalogue holds 543 Kawasakis in all, so
-        // the other 349 are FIPE rows this scrape never reached and they keep their empty blocks.
+        // 187 of the 194 emitted rows carry a measurement, and the 1000ps import later gap-fills a dimension block
+        // onto 13 more Kawasakis it shares a slug with. The rest are FIPE rows neither scrape reached.
         Integer withDimensions = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'kawasaki' AND dimension_id IS NOT NULL", Integer.class);
-        assertThat(withDimensions).isEqualTo(187);
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'kawasaki' AND m.dimension_id IS NOT NULL"
+                        + seededBefore1000ps("m"), Integer.class);
+        assertThat(withDimensions).isEqualTo(200);
 
         // No sheet names a Euro or Proconve level and nothing is inferred from the model year, so this import sets no emission
         // standard at all. The research seed sets it on 420 of its 424 slugs: a count of 420 and not 421 shows they are disjoint.
         Integer withEmission = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles m JOIN engine_specifications e ON e.id = m.engine_specification_id "
-                        + "WHERE lower(m.brand) = 'kawasaki' AND e.emission_standard IS NOT NULL "
+                        + "WHERE lower(m.brand) = 'kawasaki' AND e.emission_standard IS NOT NULL " + seededBefore1000ps("m")
                         + "AND m.slug NOT IN ('kawasaki-ninja-zx-6r-2024', 'kawasaki-z900-2024', "
                         + "'kawasaki-versys-1000-se-2024', 'kawasaki-z900-2026')", Integer.class);
         assertThat(withEmission).isEqualTo(420);
@@ -501,7 +514,7 @@ class SchemaMigrationIT {
         // Every image URL stored must be a name ImageController can serve (a UUID plus jpg/png/webp), so anything else is a
         // silent 404; files are not in the repo. The four short of 194 are the KX 250 F and KX 450 F of 2006 and 2007.
         Integer servableImages = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'kawasaki' AND image_url ~ "
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'kawasaki'" + seededBefore1000ps("m") + "AND m.image_url ~ "
                         + "'^/api/v1/images/motorcycles/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|png|webp)$'",
                 Integer.class);
         assertThat(servableImages).isEqualTo(190);
@@ -529,8 +542,8 @@ class SchemaMigrationIT {
 
         // The point of the import: no Kawasaki in the catalogue is left without an engine block.
         Integer withoutEngine = jdbcTemplate.queryForObject(
-                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'kawasaki' "
-                        + "AND engine_specification_id IS NULL", Integer.class);
+                "SELECT count(*) FROM motorcycles m WHERE lower(m.brand) = 'kawasaki' " + seededBefore1000ps("m")
+                        + "AND m.engine_specification_id IS NULL", Integer.class);
         assertThat(withoutEngine).isZero();
 
         // Bore, stroke, cylinders and displacement have one algebraic relation, so the quartet proves itself. This caught the
@@ -543,6 +556,7 @@ class SchemaMigrationIT {
                         + "AND e.cylinders IS NOT NULL AND e.displacement_cc IS NOT NULL "
                         + "AND abs(pi() / 4 * e.bore_mm * e.bore_mm * e.stroke_mm * e.cylinders / 1000.0 "
                         + "        - e.displacement_cc) > 0.02 * e.displacement_cc "
+                        + seededBefore1000ps("m")
                         + "ORDER BY m.slug", String.class);
         // 22 rows fail this catalogue-wide, all from R__motorcycles_kawasaki_specs_2026_08.sql and none among the 348 imported
         // here. Pinned, not tolerated: it fails if the set grows or if any row this import is responsible for appears in it.
@@ -585,15 +599,73 @@ class SchemaMigrationIT {
     }
 
     @Test
-    @DisplayName("backfills every motorcycle as available in Brazil")
+    @DisplayName("the 1000ps import adds the models the FIPE snapshot never carried, with no country attributed to them")
+    void loadsThe1000psCatalogue() {
+        // This source is a European catalogue, not a Brazilian-market one, so its models claim no market at all. That is
+        // what the "zzzz" prefix buys: running after the Brazil backfill is the only thing that leaves these rows alone.
+        Integer withoutCountry = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles m WHERE NOT EXISTS "
+                        + "(SELECT 1 FROM motorcycle_available_countries c WHERE c.motorcycle_id = m.id)", Integer.class);
+        assertThat(withoutCountry).isEqualTo(4575);
+
+        // One model carries the whole import: an inserted row with its engine, dimension and long-tail blocks, none of
+        // which existed in the catalogue before. Its bore, stroke and cylinders sweep 659 cc, which is what it declares.
+        Motorcycle tuareg = motorcycleRepository.findWithSpecificationsBySlug("aprilia-tuareg-660-2026").orElseThrow();
+
+        assertThat(tuareg.getBrand()).isEqualTo("APRILIA");
+        assertThat(tuareg.getCategory()).hasToString("ADVENTURE");
+        assertThat(tuareg.getFrameType()).isEqualTo("Steel, Tubular");
+        assertThat(tuareg.getAbsType()).isEqualTo("ABS");
+        assertThat(tuareg.getPriceEur()).isEqualByComparingTo("10875.00");
+        assertThat(tuareg.getEngine().getDisplacementCc()).isEqualTo(659);
+        assertThat(tuareg.getEngine().getCylinders()).isEqualTo(2);
+        assertThat(tuareg.getEngine().getValvesPerCylinder()).isEqualTo(4);
+        assertThat(tuareg.getEngine().getMaxPowerHp()).isEqualByComparingTo("80.0");
+        assertThat(tuareg.getEngine().getMaxTorqueNm()).isEqualByComparingTo("70.0");
+        // "Chain, 6 marchas, Gearshift" arrives as one field and is split across three columns.
+        assertThat(tuareg.getEngine().getTransmissionType()).isEqualTo("6-speed manual");
+        assertThat(tuareg.getEngine().getGears()).isEqualTo(6);
+        assertThat(tuareg.getEngine().getFinalDrive()).isEqualTo("Chain");
+        // The source prints the ratio as a bare "13.5", so the ":1" the column stores everywhere else is put back.
+        assertThat(tuareg.getEngine().getCompressionRatio()).isEqualTo("13.5:1");
+        assertThat(tuareg.getDimension().getSeatHeightMm()).isEqualTo(860);
+
+        String habilitacao = jdbcTemplate.queryForObject(
+                "SELECT s.spec_value FROM motorcycle_additional_specs s JOIN motorcycles m ON m.id = s.motorcycle_id "
+                        + "WHERE m.slug = 'aprilia-tuareg-660-2026' AND s.spec_key = 'Habilitação'", String.class);
+        assertThat(habilitacao).isEqualTo("A2, A");
+
+        // Quads, UTVs, Aixam microcars, e-bikes, pocketbikes, trikes and sidecar outfits are staged for gap-fill but
+        // never inserted: this is a motorcycle catalogue. Aixam and Arctic Cat build nothing else, so neither appears.
+        assertThat(jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE lower(brand) IN ('aixam', 'arctic cat')", Integer.class)).isZero();
+
+        // Brand spelling is aligned with the catalogue, so this import never opens a second bucket for a manufacturer
+        // the facet already lists. The FIPE snapshot inserted its brands in the source's own upper case and these rows
+        // adopt it, hence "APRILIA" above; a brand new to the catalogue keeps the source's own spelling and is not here.
+        List<String> unalignedBrands = jdbcTemplate.queryForList(
+                "SELECT DISTINCT n.brand FROM motorcycles n WHERE NOT EXISTS "
+                        + "(SELECT 1 FROM motorcycle_available_countries c WHERE c.motorcycle_id = n.id) "
+                        + "AND EXISTS (SELECT 1 FROM motorcycles o WHERE lower(o.brand) = lower(n.brand)" + seededBefore1000ps("o") + ") "
+                        + "AND NOT EXISTS (SELECT 1 FROM motorcycles o WHERE o.brand = n.brand" + seededBefore1000ps("o") + ")", String.class);
+        assertThat(unalignedBrands).isEmpty();
+
+        // The two spellings that differ from the catalogue by more than case are mapped before the slug is derived.
+        assertThat(jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE brand IN ('GASGAS', 'Moto Morini')", Integer.class)).isZero();
+    }
+
+    @Test
+    @DisplayName("backfills every motorcycle seeded from a Brazilian source as available in Brazil")
     void backfillsAvailableCountriesWithBrazil() {
-        // Runs last of all repeatable seeds (see brandImportsRunAfterTheFipeSeed), so it must reach every row
-        // the dev seed and every brand import inserted - not just the FIPE snapshot that most of them start from.
+        // Runs after every seed that sources a Brazilian-market snapshot (see brandImportsRunAfterTheFipeSeed), so it
+        // must reach every row those inserted - not just the FIPE snapshot most of them start from. The only rows left
+        // without a country are the 4575 the 1000ps import creates after it, which loadsThe1000psCatalogue covers.
         Integer withoutBrazil = jdbcTemplate.queryForObject(
                 "SELECT count(*) FROM motorcycles m WHERE NOT EXISTS "
                         + "(SELECT 1 FROM motorcycle_available_countries c WHERE c.motorcycle_id = m.id AND c.country_code = 'BR')",
                 Integer.class);
-        assertThat(withoutBrazil).isZero();
+        assertThat(withoutBrazil).isEqualTo(4575);
 
         // availableCountries is LAZY and open-in-view is false, so it is read back through SQL here rather
         // than the entity getter, which would throw LazyInitializationException outside a transaction.
@@ -692,6 +764,12 @@ class SchemaMigrationIT {
         jdbcTemplate.update("DELETE FROM motorcycles WHERE id = ?", id);
 
         assertThat(countCountryRows(id)).isZero();
+    }
+
+    /** A predicate for the rows the catalogue held before the 1000ps import ran. That import is the only seed that leaves a
+     *  motorcycle with no country, because it deliberately runs after the Brazil backfill, so BR is what separates the two. */
+    private static String seededBefore1000ps(String alias) {
+        return " AND EXISTS (SELECT 1 FROM motorcycle_available_countries bfc WHERE bfc.motorcycle_id = " + alias + ".id AND bfc.country_code = 'BR') ";
     }
 
     private Long insertProbeMotorcycle(String slug) {
