@@ -57,10 +57,12 @@ class SchemaMigrationIT {
         // since. See the seed header: V4 runs before any repeatable seed, so rows those seeds insert never reach it.
         // V5 adds motorcycle_available_countries and, like V4, runs before every repeatable seed below.
         assertThat(applied).containsExactly("1", "2", "3", "4", "5");
-        // R__dev_seed.sql, R__motorcycles_brazil_fipe_2026_08.sql, the harley_davidson, honda, kawasaki (specs and
-        // specs_research), royal_enfield, specs_bmw, triumph and yamaha *_2026_0[89].sql seeds, zz_*_specs_gapfill,
-        // zzz_motorcycle_available_countries_brazil and zzzz_motorcycles_1000ps_specs_2026_09.
-        assertThat(repeatables).isEqualTo(13);
+        // R__dev_seed.sql, R__motorcycles_brazil_fipe_2026_08.sql, displacement_cc_2026_09, the harley_davidson, honda,
+        // kawasaki (specs and specs_research), royal_enfield, specs_bmw, triumph and yamaha *_2026_0[89].sql seeds,
+        // zz_*_specs_gapfill, zzz_motorcycle_available_countries_brazil, zzzz_motorcycles_1000ps_specs_2026_09,
+        // zzzz_motorcycles_engine_specs_2026_09, zzzz_motorcycles_list_price_2026_09 and
+        // zzzz_motorcycles_suspension_2026_09.
+        assertThat(repeatables).isEqualTo(17);
     }
 
     @Test
@@ -74,6 +76,7 @@ class SchemaMigrationIT {
         assertThat(order).containsExactly(
                 "dev seed",
                 "motorcycles brazil fipe 2026 08",
+                "motorcycles displacement cc 2026 09",
                 "motorcycles harley davidson specs 2026 08",
                 "motorcycles honda specs 2026 08",
                 "motorcycles kawasaki specs 2026 08",
@@ -84,18 +87,37 @@ class SchemaMigrationIT {
                 "motorcycles yamaha specs 2026 08",
                 "zz motorcycles specs gapfill",
                 "zzz motorcycle available countries brazil",
-                "zzzz motorcycles 1000ps specs 2026 09");
+                "zzzz motorcycles 1000ps specs 2026 09",
+                // Sorts after 1000ps ('1' < 'e') so it cannot pre-empt any per-brand or 1000ps claim, and before
+                // suspension ('e' < 's') though the two share no column, so their relative order has no correctness weight.
+                "zzzz motorcycles engine specs 2026 09",
+                // Writes a new motorcycle_additional_specs key ('List price (EUR)') no other seed claims, so its
+                // ordering carries no real correctness weight either - kept in this "zzzz, research-derived" family
+                // for consistency, sorting after engine specs ('e' < 'l') and before suspension ('l' < 's').
+                "zzzz motorcycles list price 2026 09",
+                // Last of all by description ('l' < 's'), which is what makes the suspension backfill pure gap-fill:
+                // its input is exactly the rows still NULL once every seed above has had its claim.
+                "zzzz motorcycles suspension 2026 09");
         assertThat(order.indexOf("motorcycles brazil fipe 2026 08"))
                 .isLessThan(order.indexOf("motorcycles specs bmw 2026 08"));
         // The consolidated gap-fill covers brands that have a dedicated seed too, and COALESCE gives the first writer the
         // column for good, so a brand's own scrape has to claim it first. Its "zz" prefix puts it last of every spec seed.
-        assertThat(order.indexOf("zz motorcycles specs gapfill")).isEqualTo(order.size() - 3);
+        assertThat(order.indexOf("zz motorcycles specs gapfill")).isEqualTo(order.size() - 6);
         // The Brazil country backfill needs every motorcycle row that already existed, including ones dev seed and the
         // brand imports insert, so it runs after all of them.
-        assertThat(order.indexOf("zzz motorcycle available countries brazil")).isEqualTo(order.size() - 2);
+        assertThat(order.indexOf("zzz motorcycle available countries brazil")).isEqualTo(order.size() - 5);
         // The 1000ps catalogue is not a Brazilian-market snapshot, so the rows it creates must not reach the backfill
         // above; its "zzzz" prefix runs it after that one, which is the only thing leaving those rows with no country.
-        assertThat(order.indexOf("zzzz motorcycles 1000ps specs 2026 09")).isEqualTo(order.size() - 1);
+        assertThat(order.indexOf("zzzz motorcycles 1000ps specs 2026 09")).isEqualTo(order.size() - 4);
+        // The engine specs backfill stages exactly the core-incomplete rows sql-pro found, so it has to see every
+        // per-brand and 1000ps claim first, same reasoning as the suspension backfill below.
+        assertThat(order.indexOf("zzzz motorcycles engine specs 2026 09")).isEqualTo(order.size() - 3);
+        // The list price backfill writes a key no other seed touches, so unlike its neighbours this ordering is not
+        // load-bearing - it stays in this position purely for consistency with the rest of the "zzzz" family.
+        assertThat(order.indexOf("zzzz motorcycles list price 2026 09")).isEqualTo(order.size() - 2);
+        // The suspension backfill stages exactly the rows still NULL after every seed above, so it has to see all of
+        // their claims first. Sorting it anywhere earlier would let it win columns a per-brand scrape should own.
+        assertThat(order.indexOf("zzzz motorcycles suspension 2026 09")).isEqualTo(order.size() - 1);
         // Both Kawasaki files gap-fill with COALESCE, so whichever runs first wins every column they share. The scraped
         // seed cites a page per model year and must precede the research seed, which generalises from the engine family.
         assertThat(order.indexOf("motorcycles kawasaki specs 2026 08"))
@@ -304,6 +326,97 @@ class SchemaMigrationIT {
                         + "'^/api/v1/images/motorcycles/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|png|webp)$'",
                 Integer.class);
         assertThat(servableImages).isEqualTo(200);
+    }
+
+    @Test
+    @DisplayName("the suspension backfill writes per model year and leaves the unsourced rows NULL")
+    void loadsTheSuspensionBackfill() {
+        // The point of this seed is that research done per nameplate is written per exact year-suffixed slug. A row
+        // count alone cannot tell correct expansion apart from stamping one nameplate value across its whole run, so
+        // these assert the two ends of a real mid-nameplate change: identical slugs but for the year, different value.
+        Motorcycle xre2024 = motorcycleRepository.findWithSpecificationsBySlug("honda-xre-190-flex-2024").orElseThrow();
+        Motorcycle xre2025 = motorcycleRepository.findWithSpecificationsBySlug("honda-xre-190-flex-2025").orElseThrow();
+        assertThat(xre2024.getFrontSuspension()).isEqualTo("Telescopic fork, 31 mm tubes, 180 mm travel");
+        assertThat(xre2025.getFrontSuspension()).isEqualTo("Telescopic fork, 33 mm tubes, 180 mm travel");
+
+        // Kawasaki's 2017 Ninja 650 redesign swapped the offset laydown shock for a horizontal back-link; the fork
+        // did not change, so the front matching across the boundary is as much the point as the rear differing.
+        Motorcycle ninja2016 = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-ninja-650r-649cc-2016").orElseThrow();
+        Motorcycle ninja2017 = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-ninja-650r-649cc-2017").orElseThrow();
+        assertThat(ninja2016.getRearSuspension()).startsWith("Offset laydown single shock");
+        assertThat(ninja2017.getRearSuspension()).startsWith("Horizontal back-link shock");
+        assertThat(ninja2016.getFrontSuspension()).isEqualTo(ninja2017.getFrontSuspension());
+
+        // The 2014 Z1000 moved from a cartridge fork to Showa's SFF-BP.
+        Motorcycle z1000of2013 = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-z-1000-2013").orElseThrow();
+        Motorcycle z1000of2015 = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-z-1000-2015").orElseThrow();
+        assertThat(z1000of2013.getFrontSuspension()).contains("inverted cartridge fork");
+        assertThat(z1000of2015.getFrontSuspension()).contains("inverted SFF-BP fork");
+
+        // No trustworthy published spec was found for this Brazilian-market scooter, so it is absent from the research
+        // file entirely. A dash in the UI is the correct outcome; a plausible invented fork would not be.
+        Motorcycle spacy = motorcycleRepository.findWithSpecificationsBySlug("honda-ch-125-r-spacy-1994").orElseThrow();
+        assertThat(spacy.getFrontSuspension()).isNull();
+        assertThat(spacy.getRearSuspension()).isNull();
+    }
+
+    @Test
+    @DisplayName("the engine specs backfill fills the core fields it researched and leaves the unresearched rows NULL")
+    void loadsTheEngineSpecsBackfill() {
+        // cylinders is the one key field almost every one of this batch's 228 rows was missing pre-seed (226/228) - the
+        // 1000ps catalogue seed (runs earlier, "1" < "e") had already claimed the other five key fields here, which is
+        // exactly why sql-pro flagged this row as core-incomplete rather than core-empty. COALESCE preserves those five
+        // earlier claims untouched while this seed fills the one this row was actually missing, plus fields no earlier
+        // seed ever populated (engine_type, gears): verified against the live dev database before this seed ran.
+        Motorcycle hornetSp = motorcycleRepository.findWithSpecificationsBySlug("honda-cb1000-hornet-sp-2026").orElseThrow();
+        assertThat(hornetSp.getEngine().getMaxPowerHp()).isEqualByComparingTo("157.0");
+        assertThat(hornetSp.getEngine().getMaxTorqueNm()).isEqualByComparingTo("107.0");
+        assertThat(hornetSp.getEngine().getMaxPowerRpm()).isEqualTo(11000);
+        assertThat(hornetSp.getEngine().getMaxTorqueRpm()).isEqualTo(9000);
+        assertThat(hornetSp.getEngine().getCylinders()).isEqualTo(4);
+        assertThat(hornetSp.getEngine().getEngineType()).isEqualTo("Liquid-cooled DOHC inline-four 4-stroke");
+        assertThat(hornetSp.getEngine().getGears()).isEqualTo(6);
+
+        // Same pattern on a bigger engine: max_power_hp (167) and max_torque_nm (221) were already claimed by an
+        // earlier seed and are untouched by COALESCE - engine_specifications has a floor-only CHECK on max_torque_nm
+        // (>= 0), no ceiling, so a value that high was never at risk of being clamped by this generator in the first
+        // place. cylinders, engine_type and final_drive were genuinely NULL and come from this seed.
+        Motorcycle rocket3 = motorcycleRepository.findWithSpecificationsBySlug("triumph-rocket-3-r-2024").orElseThrow();
+        assertThat(rocket3.getEngine().getMaxPowerHp()).isEqualByComparingTo("167.0");
+        assertThat(rocket3.getEngine().getMaxTorqueNm()).isEqualByComparingTo("221.0");
+        assertThat(rocket3.getEngine().getCylinders()).isEqualTo(3);
+        assertThat(rocket3.getEngine().getEngineType()).isEqualTo("Liquid-cooled DOHC inline-triple 4-stroke");
+        assertThat(rocket3.getEngine().getFinalDrive()).isEqualTo("Shaft");
+
+        // Competition motocross models are deliberately absent from the research: manufacturers do not publish power or
+        // torque for them, so this seed's floor of 3 of the 6 key fields is never met. NULL is correct, not a gap to fill.
+        Motorcycle kx250 = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-kx-250-2026").orElseThrow();
+        assertThat(kx250.getEngine().getMaxPowerHp()).isNull();
+        assertThat(kx250.getEngine().getMaxTorqueNm()).isNull();
+    }
+
+    @Test
+    @DisplayName("the list price research writes to motorcycle_additional_specs, never to price_eur")
+    void loadsThePriceResearchBackfill() {
+        // additionalSpecs is FetchType.LAZY and findWithSpecificationsBySlug only eager-fetches engine/dimension, so this
+        // reads the EAV table directly - the same pattern every other additional-specs assertion in this class already
+        // uses (e.g. the BMW 'Trail' and Triumph 'Rodas' checks below).
+        String benelliPrice = jdbcTemplate.queryForObject(
+                "SELECT s.spec_value FROM motorcycle_additional_specs s JOIN motorcycles m ON m.id = s.motorcycle_id "
+                        + "WHERE m.slug = 'benelli-bkx-125-s-2025' AND s.spec_key = 'List price (EUR)'", String.class);
+        assertThat(benelliPrice).isEqualTo("3390.00");
+
+        // price_eur itself must stay untouched: this backfill deliberately never writes it, so a slug that got a list
+        // price here can still have no price_eur - the two are not the same number and must not be conflated.
+        Motorcycle benelli = motorcycleRepository.findWithSpecificationsBySlug("benelli-bkx-125-s-2025").orElseThrow();
+        assertThat(benelli.getPriceEur()).isNull();
+
+        // No trustworthy tariff was found for this 2015 model - it is absent from the research file entirely, same
+        // "NULL over an invented figure" policy as the suspension and engine specs backfills.
+        Integer aeonPriceRows = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycle_additional_specs s JOIN motorcycles m ON m.id = s.motorcycle_id "
+                        + "WHERE m.slug = 'aeon-elite-125-2015' AND s.spec_key = 'List price (EUR)'", Integer.class);
+        assertThat(aeonPriceRows).isZero();
     }
 
     @Test
