@@ -4,6 +4,7 @@ import com.motorcycle.comparison.config.JwtAuthenticationFilter;
 import com.motorcycle.comparison.config.SecurityConfig;
 import com.motorcycle.comparison.dto.response.CatalogStatsResponse;
 import com.motorcycle.comparison.dto.response.CatalogStatsResponse.AdditionalSpecsStats;
+import com.motorcycle.comparison.dto.response.CatalogStatsResponse.ListPriceResearchStats;
 import com.motorcycle.comparison.dto.response.CatalogStatsResponse.RelatedTableStats;
 import com.motorcycle.comparison.entity.Category;
 import com.motorcycle.comparison.service.CatalogStatsService;
@@ -55,7 +56,8 @@ class AdminStatsControllerTest {
                 Map.of("priceEur", 22L),
                 new RelatedTableStats(141L, 1L, Map.of("displacementCc", 0L)),
                 new RelatedTableStats(134L, 8L, Map.of("dryWeightKg", 40L)),
-                new AdditionalSpecsStats(210L, 45L));
+                new AdditionalSpecsStats(210L, 45L),
+                new ListPriceResearchStats(383L, 2444L));
         when(catalogStatsService.getStats()).thenReturn(stats);
 
         mockMvc.perform(get("/api/v1/admin/stats"))
@@ -70,6 +72,8 @@ class AdminStatsControllerTest {
                 .andExpect(jsonPath("$.engineSpecifications.totalRows").value(141))
                 .andExpect(jsonPath("$.engineSpecifications.motorcyclesWithoutRow").value(1))
                 .andExpect(jsonPath("$.dimensions.fieldGaps.dryWeightKg").value(40))
-                .andExpect(jsonPath("$.additionalSpecs.totalEntries").value(210));
+                .andExpect(jsonPath("$.additionalSpecs.totalEntries").value(210))
+                .andExpect(jsonPath("$.listPriceResearch.motorcyclesCovered").value(383))
+                .andExpect(jsonPath("$.listPriceResearch.motorcyclesWithNoPriceInfo").value(2444));
     }
 }

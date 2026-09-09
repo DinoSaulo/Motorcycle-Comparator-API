@@ -59,6 +59,21 @@ public interface CatalogStatsRepository extends org.springframework.data.reposit
     @Query("SELECT COUNT(m) FROM Motorcycle m WHERE m.additionalSpecs IS EMPTY")
     long countMotorcyclesWithoutAdditionalSpecs();
 
+    /** A researched manufacturer/importer list price never reaches {@code price_eur} - see
+     *  {@code R__zzzz_motorcycles_list_price_2026_09.sql} for why the two are kept apart - so
+     *  {@link #fieldGaps()}'s {@code priceEur} count alone cannot see it. This and
+     *  {@link #countWithNoPriceInfoAtAll()} are the pair that answers "how much of the price gap is actually
+     *  covered by *something*", without ever merging the two kinds of number into one column. */
+    @Query("SELECT COUNT(m) FROM Motorcycle m WHERE EXISTS "
+            + "(SELECT 1 FROM m.additionalSpecs spec WHERE KEY(spec) = 'List price (EUR)')")
+    long countWithListPriceEur();
+
+    /** The honest "no price of any kind" count: {@code price_eur} is empty and no researched list price was found
+     *  either. Complements {@link #fieldGaps()}'s {@code priceEur}, which only ever sees {@code price_eur}. */
+    @Query("SELECT COUNT(m) FROM Motorcycle m WHERE m.priceEur IS NULL AND NOT EXISTS "
+            + "(SELECT 1 FROM m.additionalSpecs spec WHERE KEY(spec) = 'List price (EUR)')")
+    long countWithNoPriceInfoAtAll();
+
     interface BrandCount {
         String getBrand();
 

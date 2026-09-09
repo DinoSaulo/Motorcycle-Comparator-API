@@ -219,4 +219,30 @@ class CatalogStatsRepositoryIT {
 
         assertThat(count).isEqualTo(1L);
     }
+
+    @Test
+    @DisplayName("should_countWithListPriceEur_forMotorcyclesCarryingThatKeyOnly")
+    void countWithListPriceEur_countsOnlyTheSpecificKey() {
+        // Has the researched list price key.
+        Motorcycle m1 = MotorcycleFixtures.motorcycle(1L, "Yamaha", "MT-09", 889);
+        m1.setPriceEur(null);
+        m1.getAdditionalSpecs().put("List price (EUR)", "9490.00");
+
+        // Has an additional spec, but not this one - must not be mistaken for coverage.
+        Motorcycle m2 = MotorcycleFixtures.motorcycle(2L, "Honda", "CB500", 471);
+        m2.setPriceEur(null);
+        m2.getAdditionalSpecs().put("Rider modes", "4");
+
+        // Has neither price_eur nor any additional spec at all.
+        Motorcycle m3 = MotorcycleFixtures.motorcycle(3L, "Kawasaki", "Ninja 650", 650);
+        m3.setPriceEur(null);
+        m3.getAdditionalSpecs().clear();
+
+        motorcycleRepository.saveAll(List.of(m1, m2, m3));
+
+        assertThat(catalogStatsRepository.countWithListPriceEur()).isEqualTo(1L);
+        // m2 and m3 both lack price_eur and the list price key; m1 is excluded because it has the list price,
+        // even though it also lacks price_eur - "some price info" is enough to not count as a true gap.
+        assertThat(catalogStatsRepository.countWithNoPriceInfoAtAll()).isEqualTo(2L);
+    }
 }

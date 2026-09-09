@@ -54,4 +54,11 @@ class CatalogStatsRepositoryEmptyTest {
         assertThat(catalogStatsRepository.countAdditionalSpecEntries()).isZero();
         assertThat(catalogStatsRepository.countMotorcyclesWithoutAdditionalSpecs()).isZero();
     }
+
+    @Test
+    @DisplayName("list-price-research counts are zero too, same COUNT-not-SUM reasoning")
+    void listPriceResearchCountsAreZero() {
+        assertThat(catalogStatsRepository.countWithListPriceEur()).isZero();
+        assertThat(catalogStatsRepository.countWithNoPriceInfoAtAll()).isZero();
+    }
 }

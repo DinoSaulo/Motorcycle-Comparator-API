@@ -128,4 +128,13 @@ class CatalogStatsRepositoryTest {
         assertThat(catalogStatsRepository.countAdditionalSpecEntries()).isEqualTo(2L);
         assertThat(catalogStatsRepository.countMotorcyclesWithoutAdditionalSpecs()).isEqualTo(2L);
     }
+
+    @Test
+    @DisplayName("list price research: none of the seeded rows carry the key, so mt09 (no price_eur, no list price) is the only true gap")
+    void listPriceResearchCountsWithNoResearchedPrice() {
+        // gs1300's additionalSpecs ('Heated grips', 'Cruise control') are a different key entirely - having some
+        // additional spec is not the same as having this one, which is exactly the distinction this query makes.
+        assertThat(catalogStatsRepository.countWithListPriceEur()).isZero();
+        assertThat(catalogStatsRepository.countWithNoPriceInfoAtAll()).isEqualTo(1L);
+    }
 }

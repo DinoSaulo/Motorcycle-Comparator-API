@@ -2,6 +2,7 @@ package com.motorcycle.comparison.service;
 
 import com.motorcycle.comparison.dto.response.CatalogStatsResponse;
 import com.motorcycle.comparison.dto.response.CatalogStatsResponse.AdditionalSpecsStats;
+import com.motorcycle.comparison.dto.response.CatalogStatsResponse.ListPriceResearchStats;
 import com.motorcycle.comparison.dto.response.CatalogStatsResponse.PriceStats;
 import com.motorcycle.comparison.dto.response.CatalogStatsResponse.RelatedTableStats;
 import com.motorcycle.comparison.entity.Category;
@@ -56,7 +57,9 @@ public class CatalogStatsService {
                 new RelatedTableStats(dimensionRepository.count(), orZero(motorcycleGaps.getDimension()),
                         toDimensionFieldGapsMap(dimensionRepository.fieldGaps())),
                 new AdditionalSpecsStats(catalogStatsRepository.countAdditionalSpecEntries(),
-                        catalogStatsRepository.countMotorcyclesWithoutAdditionalSpecs()));
+                        catalogStatsRepository.countMotorcyclesWithoutAdditionalSpecs()),
+                new ListPriceResearchStats(catalogStatsRepository.countWithListPriceEur(),
+                        catalogStatsRepository.countWithNoPriceInfoAtAll()));
     }
 
     // --- internals --------------------------------------------------------------

@@ -2,6 +2,7 @@ package com.motorcycle.comparison.service;
 
 import com.motorcycle.comparison.dto.response.CatalogStatsResponse;
 import com.motorcycle.comparison.dto.response.CatalogStatsResponse.AdditionalSpecsStats;
+import com.motorcycle.comparison.dto.response.CatalogStatsResponse.ListPriceResearchStats;
 import com.motorcycle.comparison.dto.response.CatalogStatsResponse.RelatedTableStats;
 import com.motorcycle.comparison.entity.Category;
 import com.motorcycle.comparison.repository.CatalogStatsRepository;
@@ -77,6 +78,8 @@ class CatalogStatsServiceTest {
             when(dimensionRepository.fieldGaps()).thenReturn(mock(DimensionFieldGaps.class));
             when(catalogStatsRepository.countAdditionalSpecEntries()).thenReturn(20L);
             when(catalogStatsRepository.countMotorcyclesWithoutAdditionalSpecs()).thenReturn(3L);
+            when(catalogStatsRepository.countWithListPriceEur()).thenReturn(9L);
+            when(catalogStatsRepository.countWithNoPriceInfoAtAll()).thenReturn(13L);
 
             CatalogStatsResponse result = catalogStatsService.getStats();
 
@@ -86,6 +89,7 @@ class CatalogStatsServiceTest {
             assertThat(result.byModelYear()).containsExactly(Map.entry(2023, 4L), Map.entry(2024, 4L));
             assertThat(result.lastUpdatedAt()).isEqualTo(lastUpdated);
             assertThat(result.additionalSpecs()).isEqualTo(new AdditionalSpecsStats(20L, 3L));
+            assertThat(result.listPriceResearch()).isEqualTo(new ListPriceResearchStats(9L, 13L));
         }
 
         @Test
@@ -141,6 +145,8 @@ class CatalogStatsServiceTest {
             stubEmptyGaps();
             when(catalogStatsRepository.countAdditionalSpecEntries()).thenReturn(0L);
             when(catalogStatsRepository.countMotorcyclesWithoutAdditionalSpecs()).thenReturn(0L);
+            when(catalogStatsRepository.countWithListPriceEur()).thenReturn(0L);
+            when(catalogStatsRepository.countWithNoPriceInfoAtAll()).thenReturn(0L);
 
             CatalogStatsResponse result = catalogStatsService.getStats();
 
@@ -153,6 +159,7 @@ class CatalogStatsServiceTest {
                     "lengthMm", "widthMm", "heightMm", "wheelbaseMm", "seatHeightMm", "groundClearanceMm",
                     "kerbWeightKg", "dryWeightKg", "fuelCapacityL", "payloadKg")));
             assertThat(result.priceEur()).isEqualTo(new CatalogStatsResponse.PriceStats(null, null, null, 0L));
+            assertThat(result.listPriceResearch()).isEqualTo(new ListPriceResearchStats(0L, 0L));
             assertThat(result.lastUpdatedAt()).isNull();
         }
     }

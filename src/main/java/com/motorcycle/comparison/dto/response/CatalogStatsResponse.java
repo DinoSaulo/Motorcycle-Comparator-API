@@ -22,7 +22,8 @@ public record CatalogStatsResponse(
         Map<String, Long> motorcycleFieldGaps,
         RelatedTableStats engineSpecifications,
         RelatedTableStats dimensions,
-        AdditionalSpecsStats additionalSpecs
+        AdditionalSpecsStats additionalSpecs,
+        ListPriceResearchStats listPriceResearch
 ) {
 
     public record PriceStats(BigDecimal min, BigDecimal avg, BigDecimal max, long pricedCount) {
@@ -35,5 +36,14 @@ public record CatalogStatsResponse(
     }
 
     public record AdditionalSpecsStats(long totalEntries, long motorcyclesWithoutAny) {
+    }
+
+    /** Deliberately separate from {@code priceEur}: a researched manufacturer/importer list price lives in
+     *  {@code motorcycle_additional_specs} under the key {@code 'List price (EUR)'} and never reaches
+     *  {@code price_eur} - see {@code R__zzzz_motorcycles_list_price_2026_09.sql} for why merging the two would
+     *  corrupt what {@code price_eur} means for sorting and range filters. {@code motorcyclesWithNoPriceInfo} is
+     *  the number {@code motorcycleFieldGaps.priceEur} alone cannot answer: how many motorcycles have no price
+     *  of any kind, comparable or not. */
+    public record ListPriceResearchStats(long motorcyclesCovered, long motorcyclesWithNoPriceInfo) {
     }
 }

@@ -56,7 +56,11 @@ class AdminStatsControllerIT {
                 .andExpect(jsonPath("$.motorcycleFieldGaps").isMap())
                 .andExpect(jsonPath("$.engineSpecifications").isMap())
                 .andExpect(jsonPath("$.dimensions").isMap())
-                .andExpect(jsonPath("$.additionalSpecs").isMap());
+                .andExpect(jsonPath("$.additionalSpecs").isMap())
+                // None of the seeded fixtures carry a 'List price (EUR)' additional spec, so all 3 still show as
+                // having no price info at all - price_eur is set for every fixture in insertTestMotorcycles().
+                .andExpect(jsonPath("$.listPriceResearch.motorcyclesCovered").value(0))
+                .andExpect(jsonPath("$.listPriceResearch.motorcyclesWithNoPriceInfo").value(0));
     }
 
     @Test
