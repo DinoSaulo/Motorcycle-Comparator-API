@@ -542,6 +542,7 @@ const specRowCount = emitted.reduce((sum, row) => sum + row.specs.size, 0);
 const withDimensions = emitted.filter((r) => DIMENSION_COLUMNS.some((c) => r[c] != null)).length;
 const withEngine = emitted.filter((r) => ENGINE_COLUMNS.some((c) => r[c] != null)).length;
 const withImage = emitted.filter((r) => r.image).length;
+const creatableWithImage = creatable.filter((r) => r.image).length;
 const withPrice = emitted.filter((r) => r.price_eur != null).length;
 const neverPublished = SPEC_COLUMNS.filter((c) => populated[c] === 0);
 const specKeyCount = new Map();
@@ -556,7 +557,9 @@ if (doImages) {
     fs.mkdirSync(IMAGE_DIR, { recursive: true });
     let copied = 0;
     let bytes = 0;
-    for (const row of emitted) {
+    // Only a row this import may create ever gets an image_url written; the merge leaves image_url alone on
+    // an existing row, so a gap-fill row's photo would be a file nothing in the catalogue can reference.
+    for (const row of creatable) {
         if (!row.image) continue;
         const target = path.join(IMAGE_DIR, row.image.fileName);
         if (fs.existsSync(target)) continue;
@@ -564,7 +567,7 @@ if (doImages) {
         fs.copyFileSync(row.image.source, target);
         copied++;
     }
-    console.log(`images: ${withImage} rows carry one, ${copied} written to ${IMAGE_DIR} (${(bytes / 1048576).toFixed(1)} MB)`);
+    console.log(`images: ${withImage} rows carry one, ${creatableWithImage} of them may create a catalogue row, ${copied} written to ${IMAGE_DIR} (${(bytes / 1048576).toFixed(1)} MB)`);
 }
 
 if (!doSql) process.exit(0);
@@ -651,7 +654,9 @@ w('-- a jpg/png/webp becomes this row\'s image, renamed to a UUID v5 over the sl
 w('-- any machine and ImageController can serve it. One stored copy per motorcycle even where several model-years');
 w('-- share a source photo: the app treats the file as owned by the row, so a shared name would blank the others.');
 w(`-- Those files are not in the repository; run "node tools/import-1000ps-specs.mjs --images-only" against a`);
-w('-- zontes-scraper checkout to materialise them, and until then these rows serve a 404 for their image.');
+w('-- zontes-scraper checkout to materialise them, and until then these rows serve a 404 for their image. Only');
+w('-- the rows this import may create are materialised: image_url is never written to an existing row, so a');
+w('-- photo copied for a gap-fill row would be a file no row in the catalogue could ever reference.');
 w('--');
 w('-- Existing rows are only ever gap-filled: every write is COALESCE(existing, imported), so an admin edit or a');
 w('-- richer earlier import always wins. Long-tail specs use ON CONFLICT DO NOTHING and reuse the Portuguese');

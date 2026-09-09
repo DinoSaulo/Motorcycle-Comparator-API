@@ -82,7 +82,9 @@
 -- any machine and ImageController can serve it. One stored copy per motorcycle even where several model-years
 -- share a source photo: the app treats the file as owned by the row, so a shared name would blank the others.
 -- Those files are not in the repository; run "node tools/import-1000ps-specs.mjs --images-only" against a
--- zontes-scraper checkout to materialise them, and until then these rows serve a 404 for their image.
+-- zontes-scraper checkout to materialise them, and until then these rows serve a 404 for their image. Only
+-- the rows this import may create are materialised: image_url is never written to an existing row, so a
+-- photo copied for a gap-fill row would be a file no row in the catalogue could ever reference.
 --
 -- Existing rows are only ever gap-filled: every write is COALESCE(existing, imported), so an admin edit or a
 -- richer earlier import always wins. Long-tail specs use ON CONFLICT DO NOTHING and reuse the Portuguese
