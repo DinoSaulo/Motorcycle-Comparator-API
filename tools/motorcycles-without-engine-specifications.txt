@@ -1,0 +1,16 @@
+# Query executed:
+#   SELECT m.brand, m.slug FROM motorcycles m
+#   LEFT JOIN engine_specifications es ON es.id = m.engine_specification_id
+#   WHERE m.engine_specification_id IS NULL OR es.id IS NULL;
+#
+# Result: 0 rows (2026-09-08).
+#
+# The motorcycles.engine_specification_id column has a UNIQUE constraint
+# (uk_motorcycles_engine) and every one of the 4774 catalogue rows carries a
+# non-null FK to a matching engine_specifications row. There is no motorcycle
+# without an engine_specifications row in this database — the coverage gap is
+# entirely inside the spec rows (NULL columns), not missing rows.
+#
+# See tools/motorcycles-incomplete-core-engine-specs.txt for the actionable
+# list: 4082 slugs missing at least one core field (displacement_cc,
+# cylinders, max_power_hp, max_power_rpm, max_torque_nm, max_torque_rpm).
