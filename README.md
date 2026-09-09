@@ -265,9 +265,18 @@ Migrations live in three locations, on purpose:
 
 | Location | Contents | Applied in |
 |---|---|---|
-| `classpath:db/migration` | `V1` schema, `V3` optimistic-locking column, `V4` brand-casing normalization | every profile |
+| `classpath:db/migration` | `V1` schema, `V3` optimistic-locking column, `V4` brand-casing normalization, `V5` available-countries table | every profile |
 | `classpath:db/search` | `V2` — `CREATE EXTENSION pg_trgm` and the trigram indexes | every profile |
-| `classpath:db/seed` | `R__dev_seed.sql` — 53 demo motorcycles | `dev` only |
+| `classpath:db/seed` | `R__dev_seed.sql` plus the catalogue imports — 13 029 motorcycles | `dev` only |
+
+Flyway orders repeatable migrations by description, so the seed file names alone decide the order they
+run in, and three prefixes are load-bearing rather than decorative. `zz_motorcycles_specs_gapfill` runs
+after every per-brand import so each brand's own scrape claims its columns first under `COALESCE`;
+`zzz_motorcycle_available_countries_brazil` runs after every seed that sources a Brazilian-market
+snapshot and stamps `BR` on all of them; and `zzzz_motorcycles_1000ps_specs_2026_09` runs after *that*,
+which is what leaves the 4 575 European models it adds with no country attributed to them. Renaming any
+of the three changes what the catalogue contains.
+
 
 An environment that cannot install `pg_trgm` can drop the search location with
 `SPRING_FLYWAY_LOCATIONS=classpath:db/migration`. Free-text search still works, it just
