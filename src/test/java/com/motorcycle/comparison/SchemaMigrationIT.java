@@ -60,9 +60,14 @@ class SchemaMigrationIT {
         // R__dev_seed.sql, R__motorcycles_brazil_fipe_2026_08.sql, displacement_cc_2026_09, the harley_davidson, honda,
         // kawasaki (specs and specs_research), royal_enfield, specs_bmw, triumph and yamaha *_2026_0[89].sql seeds,
         // zz_*_specs_gapfill, zzz_motorcycle_available_countries_brazil, zzzz_motorcycles_1000ps_specs_2026_09,
-        // zzzz_motorcycles_engine_specs_2026_09, zzzz_motorcycles_list_price_2026_09 and
-        // zzzz_motorcycles_suspension_2026_09.
-        assertThat(repeatables).isEqualTo(17);
+        // zzzz_motorcycles_engine_specs_2026_09, zzzz_motorcycles_list_price_2026_09,
+        // zzzz_motorcycles_suspension_2026_09, zzzzz_motorcycles_brakes_honda_2026_09,
+        // zzzzz_motorcycles_brakes_honda_residual_2026_09, zzzzz_motorcycles_brakes_kawasaki_2026_09,
+        // zzzzz_motorcycles_brakes_ktm_2026_09, zzzzz_motorcycles_brakes_suzuki_2026_09,
+        // zzzzz_motorcycles_brakes_yamaha_2026_09, zzzzzz_motorcycles_tyres_honda_2026_09,
+        // zzzzzz_motorcycles_tyres_kawasaki_2026_09, zzzzzz_motorcycles_tyres_ktm_2026_09 and
+        // zzzzzz_motorcycles_tyres_suzuki_2026_09.
+        assertThat(repeatables).isEqualTo(27);
     }
 
     @Test
@@ -95,29 +100,74 @@ class SchemaMigrationIT {
                 // ordering carries no real correctness weight either - kept in this "zzzz, research-derived" family
                 // for consistency, sorting after engine specs ('e' < 'l') and before suspension ('l' < 's').
                 "zzzz motorcycles list price 2026 09",
-                // Last of all by description ('l' < 's'), which is what makes the suspension backfill pure gap-fill:
+                // 'l' < 's', which is what made this the last seed to run until the brakes backfills below joined it:
                 // its input is exactly the rows still NULL once every seed above has had its claim.
-                "zzzz motorcycles suspension 2026 09");
+                "zzzz motorcycles suspension 2026 09",
+                // Now the true tail: 'zzzzz' > 'zzzz_' because 'z' > '_', so every brakes seed sorts after suspension.
+                // Same reasoning as suspension: the input list is exactly the rows still missing front_brake or
+                // rear_brake once every seed above (including suspension, which shares no column with either) has run.
+                // One file per brand rather than a shared file: tools/brakes-research.json is replaced wholesale
+                // between research batches, not accumulated, so a fixed filename would silently overwrite an
+                // already-applied batch for a brand no longer present in the current research pass. Honda ran
+                // first, Kawasaki second, KTM third, Yamaha fourth; a second, later pass filled the handful of Honda
+                // rows the first pass could not source and a first pass for Suzuki (which had none before) joined
+                // them - "brakes_honda" < "brakes_honda_residual" < "brakes_kawasaki" < "brakes_ktm" <
+                // "brakes_suzuki" < "brakes_yamaha" alphabetically, though their relative order carries no
+                // correctness weight since each UPDATE is COALESCE-guarded, no file's WHERE clause can match
+                // another brand's rows, and honda_residual's target list excludes every slug the original honda
+                // file already resolved (it was generated from the live worklist after that file had already run).
+                "zzzzz motorcycles brakes honda 2026 09",
+                "zzzzz motorcycles brakes honda residual 2026 09",
+                "zzzzz motorcycles brakes kawasaki 2026 09",
+                "zzzzz motorcycles brakes ktm 2026 09",
+                "zzzzz motorcycles brakes suzuki 2026 09",
+                "zzzzz motorcycles brakes yamaha 2026 09",
+                // 'zzzzzz' > 'zzzzz_' the same way 'zzzzz' > 'zzzz_', so the tyres backfills sort after every brakes
+                // file. front_tyre/rear_tyre share no column with front_brake/rear_brake/abs_type, so - like
+                // suspension versus the brakes tier - this ordering carries no correctness weight of its own; it
+                // is here purely for consistency with "every dedicated backfill runs after every other seed".
+                // One file per brand, same reasoning as the brakes tier: tools/tyres-research.json is replaced
+                // wholesale per batch. Honda, Kawasaki, KTM and Suzuki ran this pass; Yamaha's tyre gap (still
+                // open) is left for a follow-up batch, which is why there is no zzzzzz "tyres yamaha" file yet.
+                "zzzzzz motorcycles tyres honda 2026 09",
+                "zzzzzz motorcycles tyres kawasaki 2026 09",
+                "zzzzzz motorcycles tyres ktm 2026 09",
+                "zzzzzz motorcycles tyres suzuki 2026 09");
         assertThat(order.indexOf("motorcycles brazil fipe 2026 08"))
                 .isLessThan(order.indexOf("motorcycles specs bmw 2026 08"));
         // The consolidated gap-fill covers brands that have a dedicated seed too, and COALESCE gives the first writer the
         // column for good, so a brand's own scrape has to claim it first. Its "zz" prefix puts it last of every spec seed.
-        assertThat(order.indexOf("zz motorcycles specs gapfill")).isEqualTo(order.size() - 6);
+        assertThat(order.indexOf("zz motorcycles specs gapfill")).isEqualTo(order.size() - 16);
         // The Brazil country backfill needs every motorcycle row that already existed, including ones dev seed and the
         // brand imports insert, so it runs after all of them.
-        assertThat(order.indexOf("zzz motorcycle available countries brazil")).isEqualTo(order.size() - 5);
+        assertThat(order.indexOf("zzz motorcycle available countries brazil")).isEqualTo(order.size() - 15);
         // The 1000ps catalogue is not a Brazilian-market snapshot, so the rows it creates must not reach the backfill
         // above; its "zzzz" prefix runs it after that one, which is the only thing leaving those rows with no country.
-        assertThat(order.indexOf("zzzz motorcycles 1000ps specs 2026 09")).isEqualTo(order.size() - 4);
+        assertThat(order.indexOf("zzzz motorcycles 1000ps specs 2026 09")).isEqualTo(order.size() - 14);
         // The engine specs backfill stages exactly the core-incomplete rows sql-pro found, so it has to see every
         // per-brand and 1000ps claim first, same reasoning as the suspension backfill below.
-        assertThat(order.indexOf("zzzz motorcycles engine specs 2026 09")).isEqualTo(order.size() - 3);
+        assertThat(order.indexOf("zzzz motorcycles engine specs 2026 09")).isEqualTo(order.size() - 13);
         // The list price backfill writes a key no other seed touches, so unlike its neighbours this ordering is not
         // load-bearing - it stays in this position purely for consistency with the rest of the "zzzz" family.
-        assertThat(order.indexOf("zzzz motorcycles list price 2026 09")).isEqualTo(order.size() - 2);
+        assertThat(order.indexOf("zzzz motorcycles list price 2026 09")).isEqualTo(order.size() - 12);
         // The suspension backfill stages exactly the rows still NULL after every seed above, so it has to see all of
         // their claims first. Sorting it anywhere earlier would let it win columns a per-brand scrape should own.
-        assertThat(order.indexOf("zzzz motorcycles suspension 2026 09")).isEqualTo(order.size() - 1);
+        assertThat(order.indexOf("zzzz motorcycles suspension 2026 09")).isEqualTo(order.size() - 11);
+        // The brakes backfills: same reasoning as suspension, and each has to see suspension's claim too even though
+        // the two share no column, to stay coherent with "every dedicated backfill runs after every other seed"
+        // rather than carve out a column-scoped exception. Split one file per brand rather than shared, since
+        // tools/brakes-research.json is replaced wholesale per research batch instead of accumulated.
+        assertThat(order.indexOf("zzzzz motorcycles brakes honda 2026 09")).isEqualTo(order.size() - 10);
+        assertThat(order.indexOf("zzzzz motorcycles brakes honda residual 2026 09")).isEqualTo(order.size() - 9);
+        assertThat(order.indexOf("zzzzz motorcycles brakes kawasaki 2026 09")).isEqualTo(order.size() - 8);
+        assertThat(order.indexOf("zzzzz motorcycles brakes ktm 2026 09")).isEqualTo(order.size() - 7);
+        assertThat(order.indexOf("zzzzz motorcycles brakes suzuki 2026 09")).isEqualTo(order.size() - 6);
+        assertThat(order.indexOf("zzzzz motorcycles brakes yamaha 2026 09")).isEqualTo(order.size() - 5);
+        // The tyres backfills are now the true tail: same "sees every prior claim" reasoning, one file per brand.
+        assertThat(order.indexOf("zzzzzz motorcycles tyres honda 2026 09")).isEqualTo(order.size() - 4);
+        assertThat(order.indexOf("zzzzzz motorcycles tyres kawasaki 2026 09")).isEqualTo(order.size() - 3);
+        assertThat(order.indexOf("zzzzzz motorcycles tyres ktm 2026 09")).isEqualTo(order.size() - 2);
+        assertThat(order.indexOf("zzzzzz motorcycles tyres suzuki 2026 09")).isEqualTo(order.size() - 1);
         // Both Kawasaki files gap-fill with COALESCE, so whichever runs first wins every column they share. The scraped
         // seed cites a page per model year and must precede the research seed, which generalises from the engine family.
         assertThat(order.indexOf("motorcycles kawasaki specs 2026 08"))
@@ -358,6 +408,221 @@ class SchemaMigrationIT {
         Motorcycle spacy = motorcycleRepository.findWithSpecificationsBySlug("honda-ch-125-r-spacy-1994").orElseThrow();
         assertThat(spacy.getFrontSuspension()).isNull();
         assertThat(spacy.getRearSuspension()).isNull();
+    }
+
+    @Test
+    @DisplayName("the second-round brakes and tyres backfills fill the columns the first round left NULL")
+    void loadsTheSecondRoundBrakesAndTyresBackfill() {
+        // Suzuki had no brakes seed at all before this round: front_brake/rear_brake/abs_type are a full first population.
+        Motorcycle bking = motorcycleRepository.findWithSpecificationsBySlug("suzuki-b-king-2010").orElseThrow();
+        assertThat(bking.getFrontBrake()).isEqualTo("Dual 310mm floating discs, radial-mount 4-piston calipers");
+        assertThat(bking.getRearBrake()).isEqualTo("Single 260mm disc, 1-piston caliper");
+        Motorcycle bandit = motorcycleRepository.findWithSpecificationsBySlug("suzuki-bandit-1200-2006").orElseThrow();
+        assertThat(bandit.getAbsType()).isEqualTo("ABS standard");
+        assertThat(bandit.getFrontTyre()).isEqualTo("120/70ZR17");
+        assertThat(bandit.getRearTyre()).isEqualTo("180/55ZR17");
+
+        // Honda already had a brakes seed; the "residual" file only reaches slugs that first seed left NULL, so the
+        // two never compete for the same row - a drum-brake Brazilian commuter the first pass never sourced.
+        Motorcycle biz = motorcycleRepository.findWithSpecificationsBySlug("honda-biz-125-es-125-es-flex-2006").orElseThrow();
+        assertThat(biz.getFrontBrake()).isEqualTo("Drum, 130mm");
+        assertThat(biz.getRearBrake()).isEqualTo("Drum, 110mm");
+
+        // Honda's, Kawasaki's and KTM's tyre columns were untouched by any seed before this round.
+        Motorcycle innova = motorcycleRepository.findWithSpecificationsBySlug("honda-anf-125-innova-2011").orElseThrow();
+        assertThat(innova.getFrontTyre()).isEqualTo("70/100-17");
+        assertThat(innova.getRearTyre()).isEqualTo("80/90-17");
+        Motorcycle concours = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-concours14-1352cc-2012").orElseThrow();
+        assertThat(concours.getFrontTyre()).isEqualTo("120/70-ZR17");
+        assertThat(concours.getRearTyre()).isEqualTo("190/50-ZR17");
+        Motorcycle ktmSx = motorcycleRepository.findWithSpecificationsBySlug("ktm-125-sx-2027").orElseThrow();
+        assertThat(ktmSx.getFrontTyre()).isEqualTo("80/100-21");
+        assertThat(ktmSx.getRearTyre()).isEqualTo("100/90-19");
+
+        // Every one of the six new seeds only ever gap-fills COALESCE(existing, staged); none inserts a row, so
+        // loadsTheDevSeed's fixed catalogue count already covers that invariant for this batch too.
+    }
+
+    @Test
+    @DisplayName("the brakes and tyres backfills never overwrite a column an earlier seed already claimed")
+    void gapFillNeverOverwritesAnEarlierClaimOnTheBrakesAndTyresQuintet() {
+        // Reading the COALESCE out of the SQL proves nothing: each row below is one an earlier seed had already filled on
+        // ONE side while leaving the other NULL, so the merge has to split per column rather than per row.
+
+        // The residual file stages "Dual 296mm discs, four-piston calipers" for this front. The earlier, terser "296 mm"
+        // wins anyway - richer text losing to a poorer earlier claim is exactly what gap-fill means.
+        Motorcycle cb1100ex = motorcycleRepository.findWithSpecificationsBySlug("honda-cb1100-ex-2020").orElseThrow();
+        assertThat(cb1100ex.getFrontBrake()).isEqualTo("296 mm");
+        assertThat(cb1100ex.getRearBrake()).isEqualTo("Single 256mm disc, single-piston caliper");
+        assertThat(cb1100ex.getAbsType()).isEqualTo("ABS standard");
+
+        // The Yamaha file stages "245mm disc" over Portuguese prose an earlier seed wrote, and stages no abs_type at all.
+        // Both the prose and the earlier "ABS" survive; only the NULL rear is filled.
+        Motorcycle fz15 = motorcycleRepository.findWithSpecificationsBySlug("yamaha-fz15-150-fazer-connected-flex-2025").orElseThrow();
+        assertThat(fz15.getFrontBrake()).startsWith("Disco hidráulico com sistema anti bloqueio");
+        assertThat(fz15.getRearBrake()).isEqualTo("130mm drum");
+        assertThat(fz15.getAbsType()).isEqualTo("ABS");
+
+        // Two more brakes rows where the staged front/rear differs from what was already there, one per remaining brand
+        // that had a prior claim: "250mm disc, dual-piston caliper" and "Drum brake" are both refused.
+        Motorcycle kx250f = motorcycleRepository.findWithSpecificationsBySlug("kawasaki-kx-250-250-f-2005").orElseThrow();
+        assertThat(kx250f.getFrontBrake()).isEqualTo("Single semi-floating 250mm disc, dual-piston");
+        assertThat(kx250f.getRearBrake()).isEqualTo("240mm disc, single-piston caliper");
+        Motorcycle intruder = motorcycleRepository.findWithSpecificationsBySlug("suzuki-intruder-m800z-2009").orElseThrow();
+        assertThat(intruder.getRearBrake()).isEqualTo("Drum");
+        assertThat(intruder.getFrontBrake()).isEqualTo("Single disc, 2-piston caliper");
+
+        // The same guard on the tyres tier, which runs last of all and so has the most prior claims to trip over. The
+        // notation differs between sources ("120/80 R18" against the staged "120/80-18"), which is what makes it visible.
+        Motorcycle crf250Rally = motorcycleRepository.findWithSpecificationsBySlug("honda-crf250-rally-2020").orElseThrow();
+        assertThat(crf250Rally.getRearTyre()).isEqualTo("120/80 R18");
+        assertThat(crf250Rally.getFrontTyre()).isEqualTo("3.00-21");
+        Motorcycle sxMini = motorcycleRepository.findWithSpecificationsBySlug("ktm-50-sx-mini-2023").orElseThrow();
+        assertThat(sxMini.getFrontTyre()).isEqualTo("60/100 R12");
+        assertThat(sxMini.getRearTyre()).isEqualTo("2.75x10");
+    }
+
+    @Test
+    @DisplayName("the two Honda brakes files split one nameplate between them and never claim the same row")
+    void theTwoHondaBrakesFilesSplitOneNameplateWithoutCompeting() {
+        // brandImportsRunAfterTheFipeSeed asserts the two files' order but not that their target lists are disjoint. The
+        // Biz 125 ES run is the proof: both files reached it, on different years, and each wrote its own vocabulary.
+
+        // The residual pass, generated from the worklist after the original file had already run: no CBS in 2006 because
+        // the model had none, which is the "never back-apply a system to years before it shipped" rule holding.
+        Motorcycle biz2006 = motorcycleRepository.findWithSpecificationsBySlug("honda-biz-125-es-125-es-flex-2006").orElseThrow();
+        assertThat(biz2006.getFrontBrake()).isEqualTo("Drum, 130mm");
+        assertThat(biz2006.getRearBrake()).isEqualTo("Drum, 110mm");
+        assertThat(biz2006.getAbsType()).isNull();
+
+        // The original file's own claim on the same nameplate, nineteen years later: a different rear diameter and the CBS
+        // the 2025 bike really ships. Had either file overwritten the other, these two rows would read alike.
+        Motorcycle biz2025 = motorcycleRepository.findWithSpecificationsBySlug("honda-biz-125-es-125-es-flex-2025").orElseThrow();
+        assertThat(biz2025.getFrontBrake()).isEqualTo("130 mm drum");
+        assertThat(biz2025.getRearBrake()).isEqualTo("130 mm drum");
+        assertThat(biz2025.getAbsType()).isEqualTo("CBS combined braking");
+
+        // The split is per exact slug, not per nameplate: the run divides cleanly at the year the research does.
+        Integer residualStyleRows = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE slug LIKE 'honda-biz-125-es-125-es-flex-%' AND front_brake = 'Drum, 130mm'",
+                Integer.class);
+        Integer originalStyleRows = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE slug LIKE 'honda-biz-125-es-125-es-flex-%' AND front_brake = '130 mm drum'",
+                Integer.class);
+        assertThat(residualStyleRows).isEqualTo(7);
+        assertThat(originalStyleRows).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("ABS is recorded in abs_type, never only inside the brake strings, and never before it shipped")
+    void absLivesInAbsTypeAndIsNeverBackApplied() {
+        // tools/validate-brakes-research.mjs enforces this at research time; nothing proved the applied rows still respect
+        // it once ten COALESCE seeds have merged into the same five columns. These are the post-migration guards.
+
+        // No production motorcycle had ABS before the 1988 K100, so an abs_type on an older row is a back-applied system
+        // rather than a fact - the failure mode the research rule exists to prevent.
+        Integer absBeforeAbsShipped = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE abs_type IS NOT NULL AND model_year < 1988", Integer.class);
+        assertThat(absBeforeAbsShipped).isZero();
+
+        // Real ABS on a front that is drum-only is the same defect wearing a different hat, and it is the shape a
+        // cross-source merge produces: one seed's abs_type landing beside another seed's brake string.
+        Integer absOnADrumOnlyFront = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE front_brake ~* 'drum' AND front_brake !~* 'dis[ck]' "
+                        + "AND abs_type ~* '(^|[^a-z])abs([^a-z]|$)'", Integer.class);
+        assertThat(absOnADrumOnlyFront).isZero();
+
+        // CBS is the opposite case and must NOT be swept up by the rule above: combined braking is genuinely fitted to
+        // drum-braked commuters, and this batch writes it on 26 of them. A guard that zeroed this would be wrong.
+        Integer cbsOnADrumOnlyFront = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE front_brake ~* 'drum' AND front_brake !~* 'dis[ck]' "
+                        + "AND abs_type ~* '(^|[^a-z])cbs([^a-z]|$)'", Integer.class);
+        assertThat(cbsOnADrumOnlyFront).isEqualTo(26);
+
+        // One of those 26, pinned: the braking system is in abs_type and the brake strings stay pure specification, which
+        // is the whole rule stated on a single row this batch is responsible for.
+        Motorcycle biz110 = motorcycleRepository.findWithSpecificationsBySlug("honda-biz-110i-2016").orElseThrow();
+        assertThat(biz110.getAbsType()).isEqualTo("CBS combined braking");
+        assertThat(biz110.getFrontBrake()).isEqualTo("130 mm drum");
+        assertThat(biz110.getRearBrake()).isEqualTo("110 mm drum");
+
+        // Where a brake string names a system, abs_type must carry it too, or the UI loses the fact entirely: abs_type is
+        // the only column it reads. 52 rows still fail this, all from prose imports that predate the brakes tier.
+        List<String> absOnlyInTheBrakeString = jdbcTemplate.queryForList(
+                "SELECT m.slug FROM motorcycles m WHERE m.abs_type IS NULL AND ("
+                        + "m.front_brake ~* '(^|[^a-z])(abs|cbs|ubs|lbs)([^a-z]|$)' "
+                        + "OR m.rear_brake ~* '(^|[^a-z])(abs|cbs|ubs|lbs)([^a-z]|$)') ORDER BY m.slug", String.class);
+        // Pinned, not tolerated, the same way loadsTheResearchedKawasakiEngineSpecifications pins its 22: it fails if the
+        // set grows, so a future backfill that writes a system into a brake string instead of abs_type is caught here.
+        assertThat(absOnlyInTheBrakeString).hasSize(52);
+        assertThat(absOnlyInTheBrakeString).allSatisfy(slug -> assertThat(slug).matches(
+                "(bmw-k-1200-lt|bmw-r-1200-gs|honda-pcx-150-dlx|royal-enfield-(classic|continental-gt-120|interceptor-120)"
+                        + "|triumph-bonneville-(bobber|speedmaster)|yamaha-(mt-09-tracer-900-gt|xt-1200-z|yzf-r-1m))-.*"));
+    }
+
+    @Test
+    @DisplayName("every stored tyre value is a size code rather than prose or an empty string")
+    void tyreValuesAreSizeCodesRatherThanProse() {
+        // A blank or prose tyre value renders as a plausible-looking spec in the comparison table, so it is worse than the
+        // NULL the research policy prefers. Catalogue-wide, not batch-scoped: this is meant to outlive this batch.
+        Integer blankOrProse = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE (front_tyre IS NOT NULL AND (btrim(front_tyre) = '' OR front_tyre !~ '[0-9]')) "
+                        + "OR (rear_tyre IS NOT NULL AND (btrim(rear_tyre) = '' OR rear_tyre !~ '[0-9]'))", Integer.class);
+        assertThat(blankOrProse).isZero();
+
+        // The same for the brake strings, which have no size-code shape to check beyond this.
+        Integer blankBrake = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE btrim(coalesce(front_brake, 'x')) = '' "
+                        + "OR btrim(coalesce(rear_brake, 'x')) = ''", Integer.class);
+        assertThat(blankBrake).isZero();
+
+        // The stricter half of a real size code is the separator between the two figures, in any of the notations the
+        // sources use: "120/70ZR17", "4.60-18", "2.75x10". Legacy rows fail it, so it is scoped to the tyre tier's brands.
+        Integer withoutASizeSeparator = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE lower(brand) IN ('honda', 'kawasaki', 'ktm', 'suzuki') "
+                        + "AND ((front_tyre IS NOT NULL AND front_tyre !~ '[/x×–-]') "
+                        + "OR (rear_tyre IS NOT NULL AND rear_tyre !~ '[/x×–-]'))", Integer.class);
+        assertThat(withoutASizeSeparator).isZero();
+
+        // The 78 that do fail it are all Harley-Davidson, Gas Gas, Triumph or Yamaha - "MT90 B16", a bare "16" - and none
+        // of those four brands has a tyres file in this batch, which is what makes the scoping above honest.
+        List<String> legacyBrandsWithoutASizeSeparator = jdbcTemplate.queryForList(
+                "SELECT DISTINCT lower(brand) FROM motorcycles WHERE (front_tyre IS NOT NULL AND front_tyre !~ '[/x×–-]') "
+                        + "OR (rear_tyre IS NOT NULL AND rear_tyre !~ '[/x×–-]') ORDER BY 1", String.class);
+        assertThat(legacyBrandsWithoutASizeSeparator)
+                .containsExactly("gas gas", "harley-davidson", "triumph", "yamaha");
+    }
+
+    @Test
+    @DisplayName("every brand file in the backfill batch really landed, and Yamaha's missing tyres file shows as a gap")
+    void everyBrandFileInTheBackfillBatchLanded() {
+        // tools/import-brakes.mjs writes one seed file per brand; a regression to a shared output path would silently drop
+        // whichever brand was written first, and nothing downstream would notice. These floors are that alarm.
+
+        // Floors, not equalities, so a later batch can only push them up. Each sits far above the pre-batch coverage
+        // (Kawasaki's front_brake was 303 before this tier ran, Suzuki's front_tyre 533), so a missing file cannot pass.
+        assertThat(countNonNull("front_brake", "honda")).isGreaterThanOrEqualTo(1272);
+        assertThat(countNonNull("front_brake", "kawasaki")).isGreaterThanOrEqualTo(684);
+        assertThat(countNonNull("front_brake", "ktm")).isGreaterThanOrEqualTo(467);
+        assertThat(countNonNull("front_brake", "suzuki")).isGreaterThanOrEqualTo(741);
+        assertThat(countNonNull("front_brake", "yamaha")).isGreaterThanOrEqualTo(1002);
+        assertThat(countNonNull("front_tyre", "honda")).isGreaterThanOrEqualTo(1257);
+        assertThat(countNonNull("front_tyre", "kawasaki")).isGreaterThanOrEqualTo(672);
+        assertThat(countNonNull("front_tyre", "ktm")).isGreaterThanOrEqualTo(460);
+        assertThat(countNonNull("front_tyre", "suzuki")).isGreaterThanOrEqualTo(741);
+
+        // Yamaha is the one brand with a brakes file and no tyres file, which is why brandImportsRunAfterTheFipeSeed lists
+        // six brakes seeds against four tyres seeds. The open gap is the assertion: it closes when that file is added.
+        assertThat(countNonNull("front_tyre", "yamaha")).isLessThan(countNonNull("front_brake", "yamaha"));
+        Integer yamahaMissingATyre = jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE lower(brand) = 'yamaha' AND (front_tyre IS NULL OR rear_tyre IS NULL)",
+                Integer.class);
+        assertThat(yamahaMissingATyre).isGreaterThanOrEqualTo(150);
+    }
+
+    private Integer countNonNull(String column, String brand) {
+        return jdbcTemplate.queryForObject(
+                "SELECT count(*) FROM motorcycles WHERE lower(brand) = ? AND " + column + " IS NOT NULL", Integer.class, brand);
     }
 
     @Test
