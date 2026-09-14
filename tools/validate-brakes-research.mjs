@@ -43,14 +43,16 @@ const TECHNICAL_TOKEN = /(\d+\s*mm|\bdiscs?\b|\bdrum\b|\bnone\b)/i;
 const PROSE_SMELL = /^(excellent|great|advanced|good|powerful|modern|reliable|standard|otimos|ótimos|sistema de freio avan)/i;
 // Anti-lock and combined braking belong in the abs_type column (VARCHAR(80), V1__initial_schema.sql:98),
 // not inside the brake string - the dev seed keeps that separation and duplicating it would drift.
-const BRAKING_TECH = /\b(ABS|CBS)\b/i;
+// Honda's "Linked Braking System" (LBS) on the ST1100/ST1300/VTX1800 and Yamaha's "Unified Brake
+// System" (UBS) are the same category of thing as ABS/CBS under a different trade name.
+const BRAKING_TECH = /\bABS\b|\bCBS\b|\bUBS\b|\bLBS\b|\blinked\s+brak(?:ing|e|es)?\b/i;
 
 // Only these may carry a millimetre figure. Aggregator sites reprint diameters without attribution and
 // the Honda pilot audit could not corroborate several of them, so a number needs a source that owns it.
 const STRONG_SOURCES = [
     /\bhonda\.com(\.[a-z]{2})?\b/i, /\bsaladeimprensa\.honda\.com\.br\b/i, /\bhondanews\.com\b/i, /\bpowersports\.honda\.com\b/i,
     /\bkawasaki\.com(\.[a-z]{2})?\b/i, /\byamaha-motor\.com(\.[a-z]{2})?\b/i, /\bsuzukicycles\.com\b/i, /\bsuzuki\.com(\.[a-z]{2})?\b/i,
-    /\bktm\.com\b/i, /\bducati\.com\b/i, /\btriumphmotorcycles\.[a-z.]+\b/i, /\bpiaggio\.com\b/i, /\baprilia\.com\b/i,
+    /\bglobalsuzuki\.com\b/i, /\bktm\.com\b/i, /\bducati\.com\b/i, /\btriumphmotorcycles\.[a-z.]+\b/i, /\bpiaggio\.com\b/i, /\baprilia\.com\b/i,
     /\bbmw-motorrad\.[a-z.]+\b/i, /\bharley-davidson\.com\b/i, /\bpolaris\.com\b/i, /\bcan-am\.brp\.com\b/i, /\bbrp\.com\b/i,
     /\bautoevolution\.com\b/i, /\bmotorcyclenews\.com\b/i, /\bmotonline\.com\.br\b/i, /\bfichatecnica\.motosblog\.com\.br\b/i,
 ];
