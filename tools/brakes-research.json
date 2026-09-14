@@ -1,2240 +1,604 @@
 [
   {
-    "slug": "honda-adv-160-2025",
-    "front_brake": "Single 240 mm Wave disc, dual-piston caliper",
-    "rear_brake": "Single 220 mm Wave disc, single-piston caliper",
-    "abs_type": "ABS",
-    "source": "saladeimprensa.honda.com.br / motoo.com.br"
-  },
-  {
-    "slug": "honda-adv-160-2026",
-    "front_brake": "Single 240 mm Wave disc, dual-piston caliper",
-    "rear_brake": "Single 220 mm Wave disc, single-piston caliper",
-    "abs_type": "ABS",
-    "source": "saladeimprensa.honda.com.br / motoo.com.br"
-  },
-  {
-    "slug": "honda-adv-160-2027",
-    "front_brake": "Single 240 mm Wave disc, dual-piston caliper",
-    "rear_brake": "Single 220 mm Wave disc, single-piston caliper",
-    "abs_type": "ABS",
-    "source": "saladeimprensa.honda.com.br / motoo.com.br"
-  },
-  {
-    "slug": "honda-biz-110i-2016",
-    "front_brake": "130 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motoo.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-biz-110i-2017",
-    "front_brake": "130 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motoo.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-biz-110i-2018",
-    "front_brake": "130 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motoo.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-biz-110i-2019",
-    "front_brake": "130 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motoo.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-biz-110i-2020",
-    "front_brake": "130 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motoo.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-biz-110i-2021",
-    "front_brake": "130 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motoo.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-biz-110i-2022",
-    "front_brake": "130 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motoo.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-biz-110i-2023",
-    "front_brake": "130 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motoo.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-biz-110i-2024",
-    "front_brake": "130 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motoo.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-biz-125-125i-flex-2016",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-biz-125-125i-flex-2017",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-biz-125-125i-flex-2018",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "abs_type": "CBS combined braking",
-    "source": "magodoscarros.com / autossegredos.com.br"
-  },
-  {
-    "slug": "honda-biz-125-125i-flex-2019",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "abs_type": "CBS combined braking",
-    "source": "magodoscarros.com / autossegredos.com.br"
-  },
-  {
-    "slug": "honda-biz-125-125i-flex-2020",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "abs_type": "CBS combined braking",
-    "source": "magodoscarros.com / autossegredos.com.br"
-  },
-  {
-    "slug": "honda-biz-125-125i-flex-2021",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "abs_type": "CBS combined braking",
-    "source": "magodoscarros.com / autossegredos.com.br"
-  },
-  {
-    "slug": "honda-biz-125-125i-flex-2022",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "abs_type": "CBS combined braking",
-    "source": "magodoscarros.com / autossegredos.com.br"
-  },
-  {
-    "slug": "honda-biz-125-125i-flex-2023",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "abs_type": "CBS combined braking",
-    "source": "magodoscarros.com / autossegredos.com.br"
-  },
-  {
-    "slug": "honda-biz-125-125i-flex-2024",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "abs_type": "CBS combined braking",
-    "source": "magodoscarros.com / autossegredos.com.br"
-  },
-  {
-    "slug": "honda-biz-125-2006",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "source": "honda.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-biz-125-2007",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "source": "honda.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-biz-125-2008",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "source": "honda.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-biz-125-es-125-es-flex-2025",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
+    "slug": "honda-biz-125-es-125-es-flex-2006",
+    "front_brake": "Drum, 130mm",
+    "rear_brake": "Drum, 110mm",
+    "abs_type": null,
     "source": "motonline.com.br"
   },
   {
-    "slug": "honda-biz-125-es-125-es-flex-2026",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
+    "slug": "honda-biz-125-es-125-es-flex-2010",
+    "front_brake": "Drum, 130mm",
+    "rear_brake": "Drum, 110mm",
+    "abs_type": null,
     "source": "motonline.com.br"
   },
   {
-    "slug": "honda-biz-125-es-125-es-flex-2027",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
+    "slug": "honda-biz-125-es-125-es-flex-2011",
+    "front_brake": "Drum, 130mm",
+    "rear_brake": "Drum, 110mm",
+    "abs_type": null,
     "source": "motonline.com.br"
   },
   {
-    "slug": "honda-biz-125-ex-125-ex-flex-2011",
-    "front_brake": "Single 220 mm ventilated disc, sliding 2-piston caliper",
-    "rear_brake": "110 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-biz-125-ex-125-ex-flex-2012",
-    "front_brake": "Single 220 mm ventilated disc, sliding 2-piston caliper",
-    "rear_brake": "110 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-biz-125-ex-125-ex-flex-2013",
-    "front_brake": "Single 220 mm ventilated disc, sliding 2-piston caliper",
-    "rear_brake": "110 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-biz-125-ex-125-ex-flex-2014",
-    "front_brake": "Single 220 mm ventilated disc, sliding 2-piston caliper",
-    "rear_brake": "110 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-biz-125-ex-125-ex-flex-2015",
-    "front_brake": "Single 220 mm ventilated disc, sliding 2-piston caliper",
-    "rear_brake": "110 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-biz-125-ex-125-ex-flex-2025",
-    "front_brake": "Single 220 mm disc",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
+    "slug": "honda-biz-125-es-125-es-flex-2012",
+    "front_brake": "Drum, 130mm",
+    "rear_brake": "Drum, 110mm",
+    "abs_type": null,
     "source": "motonline.com.br"
   },
   {
-    "slug": "honda-biz-125-ex-125-ex-flex-2026",
-    "front_brake": "Single 220 mm disc",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
+    "slug": "honda-biz-125-es-125-es-flex-2013",
+    "front_brake": "Drum, 130mm",
+    "rear_brake": "Drum, 110mm",
+    "abs_type": null,
     "source": "motonline.com.br"
   },
   {
-    "slug": "honda-biz-125-ex-125-ex-flex-2027",
-    "front_brake": "Single 220 mm disc",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
+    "slug": "honda-biz-125-es-125-es-flex-2014",
+    "front_brake": "Drum, 130mm",
+    "rear_brake": "Drum, 110mm",
+    "abs_type": null,
     "source": "motonline.com.br"
   },
   {
-    "slug": "honda-biz-125-ks-125-ks-flex-2006",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com / motosaqui.com.br"
-  },
-  {
-    "slug": "honda-biz-125-ks-125-ks-flex-2007",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com / motosaqui.com.br"
-  },
-  {
-    "slug": "honda-biz-125-ks-125-ks-flex-2008",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com / motosaqui.com.br"
-  },
-  {
-    "slug": "honda-biz-125-ks-125-ks-flex-2009",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com / motosaqui.com.br"
-  },
-  {
-    "slug": "honda-biz-125-ks-125-ks-flex-2010",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com / motosaqui.com.br"
-  },
-  {
-    "slug": "honda-biz-125-ks-125-ks-flex-2011",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com / motosaqui.com.br"
-  },
-  {
-    "slug": "honda-biz-125-ks-125-ks-flex-2012",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com / motosaqui.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-100-biz-ks-1998",
-    "front_brake": "130 mm drum",
-    "rear_brake": "Drum",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-100-biz-ks-1999",
-    "front_brake": "130 mm drum",
-    "rear_brake": "Drum",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-100-biz-ks-2000",
-    "front_brake": "130 mm drum",
-    "rear_brake": "Drum",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-100-biz-ks-2001",
-    "front_brake": "130 mm drum",
-    "rear_brake": "Drum",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-100-biz-ks-2002",
-    "front_brake": "130 mm drum",
-    "rear_brake": "Drum",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-100-biz-ks-2003",
-    "front_brake": "130 mm drum",
-    "rear_brake": "Drum",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-100-biz-ks-2004",
-    "front_brake": "130 mm drum",
-    "rear_brake": "Drum",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-100-biz-ks-2005",
-    "front_brake": "130 mm drum",
-    "rear_brake": "Drum",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-100-biz-ks-2013",
-    "front_brake": "130 mm drum",
-    "rear_brake": "Drum",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-100-biz-ks-2014",
-    "front_brake": "130 mm drum",
-    "rear_brake": "Drum",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-100-biz-ks-2015",
-    "front_brake": "130 mm drum",
-    "rear_brake": "Drum",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-2004",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com / blog.checkcarro.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-2005",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com / blog.checkcarro.com.br"
-  },
-  {
-    "slug": "honda-c-100-biz-es-2004",
-    "front_brake": "110 mm drum",
-    "rear_brake": "130 mm drum",
+    "slug": "honda-biz-125-es-125-es-flex-2015",
+    "front_brake": "Drum, 130mm",
+    "rear_brake": "Drum, 110mm",
+    "abs_type": null,
     "source": "motonline.com.br"
   },
   {
-    "slug": "honda-c-100-biz-es-2005",
-    "front_brake": "110 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br"
+    "slug": "honda-cb-1100-2017",
+    "front_brake": "Dual 296mm discs, four-piston calipers",
+    "rear_brake": "Single 256mm disc, single-piston caliper",
+    "abs_type": "ABS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-c-100-biz-es-2006",
-    "front_brake": "110 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br"
+    "slug": "honda-cb1100-ex-2020",
+    "front_brake": "Dual 296mm discs, four-piston calipers",
+    "rear_brake": "Single 256mm disc, single-piston caliper",
+    "abs_type": "ABS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-c-100-biz-es-2012",
-    "front_brake": "110 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br"
+    "slug": "honda-cb1100-rs-2020",
+    "front_brake": "Dual 296mm discs, radial four-piston calipers",
+    "rear_brake": "Single 256mm disc, single-piston caliper",
+    "abs_type": "ABS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-c-100-biz-es-2013",
-    "front_brake": "110 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br"
+    "slug": "honda-cb-1300-2009",
+    "front_brake": "Dual 310mm discs, four-piston calipers",
+    "rear_brake": "Single 256mm disc, single-piston caliper",
+    "abs_type": "ABS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-c-100-biz-es-2014",
-    "front_brake": "110 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br"
+    "slug": "honda-cb-900-f-hornet-2007",
+    "front_brake": "Dual 296mm discs, four-piston calipers",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-c-100-biz-es-2015",
-    "front_brake": "110 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br"
+    "slug": "honda-cbf-1000-2013",
+    "front_brake": "Dual 296mm floating discs, two-piston calipers",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cbx-150-aero-1990",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "source": "moto.com.br / motonline.com.br guia de motos"
+    "slug": "honda-cbf-1000-f-2017",
+    "front_brake": "Dual 296mm discs, three-piston calipers",
+    "rear_brake": "Single 240mm disc",
+    "abs_type": "Combined ABS available",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cbx-150-aero-1991",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "source": "moto.com.br / motonline.com.br guia de motos"
+    "slug": "honda-cbf-250-2007",
+    "front_brake": "Single 276mm disc, two-piston caliper",
+    "rear_brake": "Drum, 130mm",
+    "abs_type": null,
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cbx-150-aero-1992",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "source": "moto.com.br / motonline.com.br guia de motos"
+    "slug": "honda-cbf-500-2008",
+    "front_brake": "Single 296mm disc, two-piston caliper",
+    "rear_brake": "Single 240mm disc, two-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cbx-150-aero-1993",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "source": "moto.com.br / motonline.com.br guia de motos"
+    "slug": "honda-cbf-600-2011",
+    "front_brake": "Dual 296mm discs, two-piston calipers",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-125-fan-fan-ks-125-i-fan-2005",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
+    "slug": "honda-cbf-600-s-2013",
+    "front_brake": "Dual 296mm discs, two-piston calipers",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-125-fan-fan-ks-125-i-fan-2006",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
+    "slug": "honda-cbr1000rr-fireblade-sp-2-2019",
+    "front_brake": "Dual discs, Brembo four-piston radial calipers",
+    "rear_brake": null,
+    "abs_type": null,
+    "source": "motorcyclenews.com"
   },
   {
-    "slug": "honda-cg-125-fan-fan-ks-125-i-fan-2007",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
+    "slug": "honda-cbr-1100-xx-super-blackbird-2007",
+    "front_brake": "Dual 310mm discs, three-piston calipers",
+    "rear_brake": "Single 256mm disc, three-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-125-fan-fan-ks-125-i-fan-2008",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
+    "slug": "honda-cbr-250-r-2017",
+    "front_brake": "Single 296mm disc",
+    "rear_brake": "Single 226mm disc",
+    "abs_type": "ABS available",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-125-fan-fan-ks-125-i-fan-2014",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
+    "slug": "honda-cbr-300-r-2020",
+    "front_brake": "Single 296mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "ABS available",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-125-fan-fan-ks-125-i-fan-2015",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
+    "slug": "honda-ch-125-r-spacy-1995",
+    "front_brake": "Drum, internal expanding shoe",
+    "rear_brake": "Drum, internal expanding shoe",
+    "abs_type": null,
+    "source": "museuhondafanclub.com.br"
   },
   {
-    "slug": "honda-cg-125-fan-fan-ks-125-i-fan-2016",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
+    "slug": "honda-ch-125-r-spacy-1996",
+    "front_brake": "Drum, internal expanding shoe",
+    "rear_brake": "Drum, internal expanding shoe",
+    "abs_type": null,
+    "source": "museuhondafanclub.com.br"
   },
   {
-    "slug": "honda-cg-125-fan-fan-ks-125-i-fan-2017",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-125-fan-fan-ks-125-i-fan-2018",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-cargo-esd-flex-2013",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-cargo-esd-flex-2014",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-cargo-esd-flex-2015",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-fan-esdi-150-fan-esdi-flex-2011",
-    "front_brake": "Single 240 mm disc, two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-fan-esdi-150-fan-esdi-flex-2012",
-    "front_brake": "Single 240 mm disc, two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-fan-esdi-150-fan-esdi-flex-2013",
-    "front_brake": "Single 240 mm disc, two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-fan-esdi-150-fan-esdi-flex-2014",
-    "front_brake": "Single 240 mm disc, two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-fan-esdi-150-fan-esdi-flex-2015",
-    "front_brake": "Single 240 mm disc, two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-fan-esi-150-fan-esi-flex-2010",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "nucleomotor.com / magodoscarros.com"
-  },
-  {
-    "slug": "honda-cg-150-fan-esi-150-fan-esi-flex-2011",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "nucleomotor.com / magodoscarros.com"
-  },
-  {
-    "slug": "honda-cg-150-fan-esi-150-fan-esi-flex-2012",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "nucleomotor.com / magodoscarros.com"
-  },
-  {
-    "slug": "honda-cg-150-fan-esi-150-fan-esi-flex-2013",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "nucleomotor.com / magodoscarros.com"
-  },
-  {
-    "slug": "honda-cg-150-sport-2005",
-    "front_brake": "Single 240 mm ventilated disc, single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-sport-2006",
-    "front_brake": "Single 240 mm ventilated disc, single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-sport-2007",
-    "front_brake": "Single 240 mm ventilated disc, single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-sport-2008",
-    "front_brake": "Single 240 mm ventilated disc, single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-start-flexone-2015",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-start-flexone-2016",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-es-2004",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-es-2005",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-es-2006",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-es-2007",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-es-2008",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-es-2009",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-es-mix-2009",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-es-mix-2010",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-mix-flex-2009",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-mix-flex-2010",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-mix-flex-2011",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-mix-flex-2012",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-mix-flex-2013",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-mix-flex-2014",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-mix-flex-2015",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-titan-special-edition-2004",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-titan-special-edition-2005",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-titan-special-edition-2006",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-titan-special-edition-2007",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-titan-special-edition-2008",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-esd-titan-special-edition-2009",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-ex-mix-flex-2010",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-ex-mix-flex-2011",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-ex-mix-flex-2012",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-ex-mix-flex-2013",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-ex-mix-flex-2014",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-ex-mix-flex-2015",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-ks-mix-2009",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-ks-mix-2010",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-ks-mix-2011",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-150-titan-ks-titan-job-2004",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-ks-titan-job-2005",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-ks-titan-job-2006",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-ks-titan-job-2007",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-ks-titan-job-2008",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-150-titan-ks-titan-job-2009",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-cg-160-cargo-flex-2016",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "car.blog.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-cargo-flex-2017",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "car.blog.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-cargo-flex-2018",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motociclismoonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-cargo-flex-2019",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motociclismoonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-cargo-flex-2020",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motociclismoonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-cargo-flex-2021",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motociclismoonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-cargo-flex-2022",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motociclismoonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-cargo-flex-2023",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motociclismoonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-cargo-flex-2024",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motociclismoonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-cargo-flex-2025",
-    "front_brake": "Single 240 mm disc, hydraulic single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "saladeimprensa.honda.com.br"
-  },
-  {
-    "slug": "honda-cg-160-cargo-flex-2026",
-    "front_brake": "Single 240 mm disc, hydraulic single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "saladeimprensa.honda.com.br"
-  },
-  {
-    "slug": "honda-cg-160-fan-esdi-flexone-2016",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "car.blog.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-fan-esdi-flexone-2017",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "car.blog.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-fan-flex-2018",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "honda.com.br / fichatecnica.motosblog.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-cg-160-fan-flex-2019",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "honda.com.br / fichatecnica.motosblog.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-cg-160-fan-flex-2020",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "honda.com.br / fichatecnica.motosblog.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-cg-160-fan-flex-2021",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "honda.com.br / fichatecnica.motosblog.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-cg-160-fan-flex-2022",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "honda.com.br / fichatecnica.motosblog.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-cg-160-fan-flex-2023",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "honda.com.br / fichatecnica.motosblog.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-cg-160-fan-flex-2024",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "honda.com.br / fichatecnica.motosblog.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-cg-160-fan-flex-2025",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "honda.com.br / fichatecnica.motosblog.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-cg-160-fan-flex-2026",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "honda.com.br / fichatecnica.motosblog.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-cg-160-start-2016",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-cg-160-start-2017",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-cg-160-start-2018",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-start-2019",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-start-2020",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-start-2021",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-start-2022",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-start-2023",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-start-2024",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br / fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-cg-160-start-2025",
-    "front_brake": "Single 240 mm disc, single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "saladeimprensa.honda.com.br"
-  },
-  {
-    "slug": "honda-cg-160-start-2026",
-    "front_brake": "Single 240 mm disc, single-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "honda.com.br / motonline.com.br"
-  },
-  {
-    "slug": "honda-cg-160-titan-2026",
-    "front_brake": "Single 240 mm disc, dual-piston caliper",
-    "rear_brake": "220 mm disc, single-piston caliper",
-    "abs_type": "Single-channel ABS, front wheel",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-cg-160-titan-25th-anniversary-2019",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / honda.com.br"
-  },
-  {
-    "slug": "honda-cg-160-titan-50-anos-2026",
-    "front_brake": "Single disc, dual-piston caliper",
+    "slug": "honda-cr-250-1991",
+    "front_brake": "Single disc, twin-piston caliper",
     "rear_brake": "Single disc, single-piston caliper",
-    "abs_type": "ABS",
-    "source": "motociclismoonline.com.br"
+    "abs_type": null,
+    "source": "pulpmx.com"
   },
   {
-    "slug": "honda-cg-160-titan-flexone-ed-especial-40-anos-2016",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "fichatecnica.motosblog.com.br / car.blog.br"
+    "slug": "honda-crf-150-f-2010",
+    "front_brake": "Single 240mm disc",
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-160-titan-flexone-ed-especial-40-anos-2017",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "fichatecnica.motosblog.com.br / car.blog.br"
+    "slug": "honda-crf-70-f-2014",
+    "front_brake": "Drum",
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "source": "denniskirk.com"
   },
   {
-    "slug": "honda-cg-160-titan-flexone-ed-especial-40-anos-2018",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "fichatecnica.motosblog.com.br / car.blog.br"
+    "slug": "honda-ctx-700-n-2017",
+    "front_brake": "Single 320mm disc, three-piston caliper",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": "ABS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-160-titan-flexone-ed-especial-40-anos-2019",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "fichatecnica.motosblog.com.br / car.blog.br"
+    "slug": "honda-dn-01-2011",
+    "front_brake": "Dual 296mm full-floating discs, three-piston calipers",
+    "rear_brake": "Single 276mm disc, three-piston caliper",
+    "abs_type": "Combined ABS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-160-titan-flexone-ed-especial-40-anos-2020",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "fichatecnica.motosblog.com.br / car.blog.br"
+    "slug": "honda-fes-125-pantheon-2007",
+    "front_brake": "Disc",
+    "rear_brake": null,
+    "abs_type": null,
+    "source": "ultimatespecs.com"
   },
   {
-    "slug": "honda-cg-160-titan-flexone-ed-especial-40-anos-2021",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "fichatecnica.motosblog.com.br / car.blog.br"
+    "slug": "honda-fes-125-s-wing-2013",
+    "front_brake": "Disc",
+    "rear_brake": "Disc",
+    "abs_type": "ABS standard",
+    "source": "1000ps.com"
   },
   {
-    "slug": "honda-cg-160-titan-flexone-ed-especial-40-anos-2022",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "fichatecnica.motosblog.com.br / car.blog.br"
+    "slug": "honda-fmx650-2007",
+    "front_brake": "Single 296mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-160-titan-flexone-ed-especial-40-anos-2023",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "fichatecnica.motosblog.com.br / car.blog.br"
+    "slug": "honda-fss-400-silver-wing-2008",
+    "front_brake": "Single 276mm disc, three-piston caliper",
+    "rear_brake": "Single 240mm disc, twin-piston caliper",
+    "abs_type": "CBS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-160-titan-flexone-ed-especial-40-anos-2024",
-    "front_brake": "Single 240 mm ventilated disc, hydraulic two-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "fichatecnica.motosblog.com.br / car.blog.br"
+    "slug": "honda-goldwing-f6b-2017",
+    "front_brake": "Dual full-floating 296mm discs, three-piston calipers",
+    "rear_brake": "Single 316mm disc, three-piston caliper",
+    "abs_type": "CBS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-160-titan-flexone-ed-especial-40-anos-2025",
-    "front_brake": "Single 240 mm disc, hydraulic two-piston caliper",
-    "rear_brake": "Single 220 mm disc, hydraulic single-piston caliper",
-    "abs_type": "Single-channel ABS",
-    "source": "saladeimprensa.honda.com.br"
+    "slug": "honda-gold-wing-f6c-2017",
+    "front_brake": "Dual 310mm floating discs, four-piston calipers",
+    "rear_brake": "Single 316mm ventilated disc, three-piston caliper",
+    "abs_type": "ABS standard, 2-channel",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-160-titan-s-flex-2020",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br / motonline.com.br"
+    "slug": "honda-integra-2020",
+    "front_brake": "Single 320mm wavy disc, three-piston caliper",
+    "rear_brake": "Single 240mm wavy disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-cg-160-titan-s-flex-2021",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br / motonline.com.br"
+    "slug": "honda-montesa-cota-4rt-2015",
+    "front_brake": "Single disc, four-piston caliper",
+    "rear_brake": "Single disc, two-piston caliper",
+    "abs_type": null,
+    "source": "motorcycle.com"
   },
   {
-    "slug": "honda-ch-125-r-spacy-1994",
+    "slug": "honda-msx-125-2020",
+    "front_brake": "Single 220mm disc, hydraulic dual-piston caliper",
+    "rear_brake": "Single 190mm disc, hydraulic dual-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-nc700s-2013",
+    "front_brake": "Single 320mm wavy disc, three-piston caliper",
+    "rear_brake": "Single 240mm wavy disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-nc700x-2013",
+    "front_brake": "Single 320mm wavy disc, three-piston caliper",
+    "rear_brake": "Single 240mm wavy disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-nm4-vultus-2017",
+    "front_brake": "Dual 320mm wavy discs, two-piston calipers",
+    "rear_brake": "Single 240mm wavy disc, two-piston caliper",
+    "abs_type": "ABS standard",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-nps-50-zoomer-2011",
+    "front_brake": "Drum",
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-nrx-1800-rune-2006",
+    "front_brake": "Dual 330mm discs",
+    "rear_brake": "Single 336mm disc",
+    "abs_type": "CBS standard",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-nsc50r-2020",
+    "front_brake": "Single disc, hydraulic caliper",
+    "rear_brake": "Drum",
+    "abs_type": "CBS standard",
+    "source": "1000ps.com"
+  },
+  {
+    "slug": "honda-nss-250-jazz-2005",
+    "front_brake": "Disc",
+    "rear_brake": "Disc",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-nss-300-forza-2017",
+    "front_brake": "Single 256mm disc, twin-piston caliper",
+    "rear_brake": "Single 256mm disc, twin-piston caliper",
+    "abs_type": "CBS standard",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-nt-650v-deauville-2011",
+    "front_brake": "Dual 296mm discs, three-piston calipers",
+    "rear_brake": "Single 276mm disc, two-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-nt700v-deauville-2016",
+    "front_brake": "Dual 296mm discs, three-piston calipers",
+    "rear_brake": "Single 276mm disc, two-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-nx-150-1990",
     "front_brake": "Single disc",
     "rear_brake": "Drum",
-    "source": "olhonocarro.com.br"
+    "abs_type": null,
+    "source": "moto.com.br"
   },
   {
-    "slug": "honda-cr-250-1992",
+    "slug": "honda-nx-150-1991",
     "front_brake": "Single disc",
-    "rear_brake": "Single disc",
-    "source": "s3performance.com.au parts specifications"
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "source": "moto.com.br"
   },
   {
-    "slug": "honda-cr-250-1993",
+    "slug": "honda-nx-150-1992",
     "front_brake": "Single disc",
-    "rear_brake": "Single disc",
-    "source": "s3performance.com.au parts specifications"
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "source": "moto.com.br"
   },
   {
-    "slug": "honda-cr-250-1994",
+    "slug": "honda-nx-150-1993",
     "front_brake": "Single disc",
-    "rear_brake": "Single disc",
-    "source": "s3performance.com.au parts specifications"
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "source": "moto.com.br"
   },
   {
-    "slug": "honda-cr-80-1992",
-    "front_brake": "Single disc",
-    "rear_brake": "Single disc",
-    "source": "webbikeworld.com"
+    "slug": "honda-nxr-150-bros-ks-mix-flex-2010",
+    "front_brake": "Drum, 130mm",
+    "rear_brake": "Drum, 110mm",
+    "abs_type": null,
+    "source": "motonline.com.br"
   },
   {
-    "slug": "honda-cr-80-1993",
-    "front_brake": "Single disc",
-    "rear_brake": "Single disc",
-    "source": "webbikeworld.com"
+    "slug": "honda-nxr-150-bros-ks-mix-flex-2011",
+    "front_brake": "Drum, 130mm",
+    "rear_brake": "Drum, 110mm",
+    "abs_type": null,
+    "source": "motonline.com.br"
   },
   {
-    "slug": "honda-cr-80-1994",
-    "front_brake": "Single disc",
-    "rear_brake": "Single disc",
-    "source": "webbikeworld.com"
+    "slug": "honda-nxr-150-bros-ks-mix-flex-2012",
+    "front_brake": "Drum, 130mm",
+    "rear_brake": "Drum, 110mm",
+    "abs_type": null,
+    "source": "motonline.com.br"
   },
   {
-    "slug": "honda-cr-80-1995",
-    "front_brake": "Single disc",
-    "rear_brake": "Single disc",
-    "source": "webbikeworld.com"
+    "slug": "honda-ses-125-dylan-2006",
+    "front_brake": "Disc",
+    "rear_brake": "Drum",
+    "abs_type": "CBS standard",
+    "source": "ultimatespecs.com"
   },
   {
-    "slug": "honda-cr-80-1996",
-    "front_brake": "Single disc",
-    "rear_brake": "Single disc",
-    "source": "webbikeworld.com"
+    "slug": "honda-sh-150i-dlx-2021",
+    "front_brake": "Single disc, two-piston caliper",
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "source": "1000ps.com"
   },
   {
-    "slug": "honda-crf-230-f-2007",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
+    "slug": "honda-silver-wing-600-2011",
+    "front_brake": "Single 276mm disc, three-piston caliper",
+    "rear_brake": "Single 240mm disc, twin-piston caliper",
+    "abs_type": "CBS standard, ABS optional",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-crf-230-f-2008",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
+    "slug": "honda-st-1100-pan-european-2010",
+    "front_brake": "Dual 296mm discs, three-piston calipers",
+    "rear_brake": "Single 296mm disc, three-piston caliper",
+    "abs_type": "Linked Braking System",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-crf-230-f-2009",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
+    "slug": "honda-st-1300-pan-european-2017",
+    "front_brake": "Dual 310mm discs, three-piston calipers",
+    "rear_brake": "Single disc, three-piston caliper",
+    "abs_type": "Linked Braking System",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-crf-230-f-2010",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
+    "slug": "honda-sw-t-400-2014",
+    "front_brake": "Single 276mm disc, three-piston caliper",
+    "rear_brake": "Single 240mm disc, twin-piston caliper",
+    "abs_type": "CBS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-crf-230-f-2011",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
+    "slug": "honda-sw-t600-2014",
+    "front_brake": "Single 276mm disc, three-piston caliper",
+    "rear_brake": "Single 240mm disc, twin-piston caliper",
+    "abs_type": "CBS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-crf-230-f-2012",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
+    "slug": "honda-trx-350-fourtrax-fm-quadriciclo-2004",
+    "front_brake": "Drum",
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "source": "checkcarro.com.br"
   },
   {
-    "slug": "honda-crf-230-f-2013",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
+    "slug": "honda-trx-350-fourtrax-fm-quadriciclo-2005",
+    "front_brake": "Drum",
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "source": "checkcarro.com.br"
   },
   {
-    "slug": "honda-crf-230-f-2014",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
+    "slug": "honda-trx-350-fourtrax-fm-quadriciclo-2006",
+    "front_brake": "Drum",
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "source": "checkcarro.com.br"
   },
   {
-    "slug": "honda-crf-230-f-2015",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
+    "slug": "honda-trx-350-fourtrax-fm-quadriciclo-2007",
+    "front_brake": "Drum",
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "source": "checkcarro.com.br"
   },
   {
-    "slug": "honda-crf-230-f-2016",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
-  },
-  {
-    "slug": "honda-crf-230-f-2017",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
-  },
-  {
-    "slug": "honda-crf-230-f-2018",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
-  },
-  {
-    "slug": "honda-crf-230-f-2019",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
-  },
-  {
-    "slug": "honda-crf-230-f-2020",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "110 mm drum",
-    "source": "autoevolution.com / motos.inf.br"
-  },
-  {
-    "slug": "honda-crf-250-f-2019",
-    "front_brake": "Single 240 mm floating disc, hydraulic caliper",
-    "rear_brake": "Single 220 mm floating disc, hydraulic caliper",
-    "source": "mxparts.com.br / autoevolution.com"
-  },
-  {
-    "slug": "honda-crf-250-f-2020",
-    "front_brake": "Single 240 mm floating disc, hydraulic caliper",
-    "rear_brake": "Single 220 mm floating disc, hydraulic caliper",
-    "source": "mxparts.com.br / autoevolution.com"
-  },
-  {
-    "slug": "honda-crf-250-f-2021",
-    "front_brake": "Single 240 mm floating disc, hydraulic caliper",
-    "rear_brake": "Single 220 mm floating disc, hydraulic caliper",
-    "source": "mxparts.com.br / autoevolution.com"
-  },
-  {
-    "slug": "honda-crf-250-f-2022",
-    "front_brake": "Single 240 mm floating disc, hydraulic caliper",
-    "rear_brake": "Single 220 mm floating disc, hydraulic caliper",
-    "source": "mxparts.com.br / autoevolution.com"
-  },
-  {
-    "slug": "honda-crf-250-f-2023",
-    "front_brake": "Single 240 mm floating disc, hydraulic caliper",
-    "rear_brake": "Single 220 mm floating disc, hydraulic caliper",
-    "source": "mxparts.com.br / autoevolution.com"
-  },
-  {
-    "slug": "honda-crf-250-f-2024",
-    "front_brake": "Single 240 mm floating disc, hydraulic caliper",
-    "rear_brake": "Single 220 mm floating disc, hydraulic caliper",
-    "source": "mxparts.com.br / autoevolution.com"
-  },
-  {
-    "slug": "honda-crf-250-f-2025",
-    "front_brake": "Single 240 mm floating disc, hydraulic caliper",
-    "rear_brake": "Single 220 mm floating disc, hydraulic caliper",
-    "source": "mxparts.com.br / autoevolution.com"
-  },
-  {
-    "slug": "honda-crf-250-r-2023",
-    "front_brake": "Single 260 mm disc",
-    "rear_brake": "Single 240 mm disc",
+    "slug": "honda-trx-420-fourtrax-fm-4x4-quadriciclo-2008",
+    "front_brake": "Disc",
+    "rear_brake": "Drum, sealed",
+    "abs_type": null,
     "source": "honda.com.br"
   },
   {
-    "slug": "honda-crf-250-r-2024",
-    "front_brake": "Single 260 mm disc",
-    "rear_brake": "Single 240 mm disc",
+    "slug": "honda-trx-420-fourtrax-fm-4x4-quadriciclo-2025",
+    "front_brake": "Disc",
+    "rear_brake": "Drum, sealed",
+    "abs_type": null,
     "source": "honda.com.br"
   },
   {
-    "slug": "honda-crf-250-r-2025",
-    "front_brake": "Single 260 mm disc",
-    "rear_brake": "Single 240 mm disc",
-    "source": "honda.com.br"
+    "slug": "honda-vfr1200x-crosstourer-2020",
+    "front_brake": "Dual 310mm discs, three-piston calipers",
+    "rear_brake": "Single 276mm disc, twin-piston caliper",
+    "abs_type": "Combined ABS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-crf-250-rx-2023",
-    "front_brake": "Single 260 mm wave disc, two-piston caliper",
-    "rear_brake": "Single 240 mm wave disc, single-piston caliper",
-    "source": "arautomotos.com.br / formularhonda.com.br / saladeimprensa.honda.com.br"
+    "slug": "honda-vfr1200x-crosstourer-dct-2021",
+    "front_brake": "Dual 310mm discs, three-piston calipers",
+    "rear_brake": "Single 276mm disc, twin-piston caliper",
+    "abs_type": "Combined ABS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-crf-250-rx-2024",
-    "front_brake": "Single 260 mm wave disc, two-piston caliper",
-    "rear_brake": "Single 240 mm wave disc, single-piston caliper",
-    "source": "arautomotos.com.br / formularhonda.com.br / saladeimprensa.honda.com.br"
+    "slug": "honda-vfr-800-f-2020",
+    "front_brake": "Dual 310mm discs, four-piston calipers",
+    "rear_brake": "Single 256mm disc, two-piston caliper",
+    "abs_type": "ABS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-crf-250-rx-2025",
-    "front_brake": "Single 260 mm wave disc, two-piston caliper",
-    "rear_brake": "Single 240 mm wave disc, single-piston caliper",
-    "source": "arautomotos.com.br / formularhonda.com.br / saladeimprensa.honda.com.br"
+    "slug": "honda-vfr800x-crossrunner-2020",
+    "front_brake": "Dual 310mm discs, four-piston radial calipers",
+    "rear_brake": "Single 256mm disc, two-piston caliper",
+    "abs_type": "ABS standard",
+    "source": "autoevolution.com"
   },
   {
-    "slug": "honda-crf-450-r-2020",
-    "front_brake": "Single 260 mm Wave disc, dual-piston caliper",
-    "rear_brake": "240 mm Wave disc, single-piston caliper",
-    "source": "honda.com.br"
+    "slug": "honda-vision-50-2020",
+    "front_brake": "Single disc, hydraulic caliper",
+    "rear_brake": "Drum",
+    "abs_type": "CBS standard",
+    "source": "50factory.com"
   },
   {
-    "slug": "honda-crf-450-r-2021",
-    "front_brake": "Single 260 mm Wave disc, dual-piston caliper",
-    "rear_brake": "240 mm Wave disc, single-piston caliper",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-crf-450-r-2023",
-    "front_brake": "Single 260 mm Wave disc, dual-piston caliper",
-    "rear_brake": "240 mm Wave disc, single-piston caliper",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-crf-450-r-2024",
-    "front_brake": "Single 260 mm Wave disc, dual-piston caliper",
-    "rear_brake": "240 mm Wave disc, single-piston caliper",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-crf-450-r-2025",
-    "front_brake": "Single 260 mm Wave disc, dual-piston caliper",
-    "rear_brake": "240 mm Wave disc, single-piston caliper",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-crf-450-rx-2021",
-    "front_brake": "Single 260 mm Wave disc, dual-piston caliper",
-    "rear_brake": "Single 240 mm Wave disc, single-piston caliper",
-    "source": "saladeimprensa.honda.com.br / motofichas.com"
-  },
-  {
-    "slug": "honda-crf-450-rx-2023",
-    "front_brake": "Single 260 mm Wave disc, dual-piston caliper",
-    "rear_brake": "Single 240 mm Wave disc, single-piston caliper",
-    "source": "saladeimprensa.honda.com.br / motofichas.com"
-  },
-  {
-    "slug": "honda-crf-450-rx-2024",
-    "front_brake": "Single 260 mm Wave disc, dual-piston caliper",
-    "rear_brake": "Single 240 mm Wave disc, single-piston caliper",
-    "source": "saladeimprensa.honda.com.br / motofichas.com"
-  },
-  {
-    "slug": "honda-crf-450-rx-2025",
-    "front_brake": "Single 260 mm Wave disc, dual-piston caliper",
-    "rear_brake": "Single 240 mm Wave disc, single-piston caliper",
-    "source": "saladeimprensa.honda.com.br / motofichas.com"
-  },
-  {
-    "slug": "honda-elite-125-2019",
-    "front_brake": "Single 190 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / portalfichatecnica.com"
-  },
-  {
-    "slug": "honda-elite-125-2020",
-    "front_brake": "Single 190 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / portalfichatecnica.com"
-  },
-  {
-    "slug": "honda-elite-125-2021",
-    "front_brake": "Single 190 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / portalfichatecnica.com"
-  },
-  {
-    "slug": "honda-elite-125-2022",
-    "front_brake": "Single 190 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / portalfichatecnica.com"
-  },
-  {
-    "slug": "honda-elite-125-2023",
-    "front_brake": "Single 190 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / portalfichatecnica.com"
-  },
-  {
-    "slug": "honda-elite-125-2024",
-    "front_brake": "Single 190 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / portalfichatecnica.com"
-  },
-  {
-    "slug": "honda-elite-125-2025",
-    "front_brake": "Single 190 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / portalfichatecnica.com"
-  },
-  {
-    "slug": "honda-elite-125-2026",
-    "front_brake": "Single 190 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / portalfichatecnica.com"
-  },
-  {
-    "slug": "honda-elite-125-2027",
-    "front_brake": "Single 190 mm disc, hydraulic caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / portalfichatecnica.com"
-  },
-  {
-    "slug": "honda-lead-110-2010",
-    "front_brake": "Single 190 mm ventilated disc, sliding 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-lead-110-2011",
-    "front_brake": "Single 190 mm ventilated disc, sliding 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-lead-110-2012",
-    "front_brake": "Single 190 mm ventilated disc, sliding 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-lead-110-2013",
-    "front_brake": "Single 190 mm ventilated disc, sliding 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-lead-110-2014",
-    "front_brake": "Single 190 mm ventilated disc, sliding 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-lead-110-2015",
-    "front_brake": "Single 190 mm ventilated disc, sliding 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-lead-110-2016",
-    "front_brake": "Single 190 mm ventilated disc, sliding 2-piston caliper",
-    "rear_brake": "130 mm drum",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-nx-200-1993",
+    "slug": "honda-vt-125-shadow-2008",
     "front_brake": "Single disc",
     "rear_brake": "Drum",
-    "source": "motonline.com.br"
+    "abs_type": null,
+    "source": "motorcyclespecs.co.za"
   },
   {
-    "slug": "honda-nx-200-1994",
-    "front_brake": "Single disc",
+    "slug": "honda-vt-1300-cx-2013",
+    "front_brake": "Single 336mm disc, twin-piston caliper",
+    "rear_brake": "Single 296mm disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-vt-750-c2-shadow-spirit-2017",
+    "front_brake": "Single 296mm disc, dual-piston caliper",
+    "rear_brake": "Drum, 180mm",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-vt-750-s-2014",
+    "front_brake": "Single 296mm disc, dual-piston caliper",
+    "rear_brake": "Drum, 180mm",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-vt-750-shadow-2017",
+    "front_brake": "Single 296mm disc, dual-piston caliper",
+    "rear_brake": "Drum, 180mm",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-vtr-1000-f-fire-storm-2006",
+    "front_brake": "Dual 296mm discs, four-piston calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-vtr-1000-sp-2-2005",
+    "front_brake": "Dual discs, four-piston calipers",
+    "rear_brake": "Single disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-vtx-1300-2007",
+    "front_brake": "Single 336mm disc, twin-piston caliper",
+    "rear_brake": "Single 296mm disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-vtx-1800-2005",
+    "front_brake": "Dual 296mm discs, three-piston calipers",
+    "rear_brake": "Single 316mm disc, twin-piston caliper",
+    "abs_type": "Linked Braking System",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-wave-110-2020",
+    "front_brake": "Disc",
     "rear_brake": "Drum",
-    "source": "motonline.com.br"
+    "abs_type": null,
+    "source": "tecnimotos.com"
   },
   {
-    "slug": "honda-nx-200-1995",
-    "front_brake": "Single disc",
+    "slug": "honda-xl-125-v-varadero-2014",
+    "front_brake": "Single 276mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "honda-xl-650v-transalp-2007",
+    "front_brake": "Dual discs, two-piston calipers",
+    "rear_brake": "Single disc, single-piston caliper",
+    "abs_type": null,
+    "source": "motorcyclespecifications.com"
+  },
+  {
+    "slug": "honda-xr-125-l-2005",
+    "front_brake": "Single disc, dual-piston caliper",
     "rear_brake": "Drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nx-200-1996",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nx-200-1997",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nx-200-1998",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nx-200-1999",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nx-200-2000",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nx-200-2001",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-es-2006",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "source": "blog.checkcarro.com.br / magodoscarros.com"
-  },
-  {
-    "slug": "honda-nxr-150-bros-es-2007",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "source": "blog.checkcarro.com.br / magodoscarros.com"
-  },
-  {
-    "slug": "honda-nxr-150-bros-es-2008",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "source": "blog.checkcarro.com.br / magodoscarros.com"
-  },
-  {
-    "slug": "honda-nxr-150-bros-es-2009",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "source": "blog.checkcarro.com.br / magodoscarros.com"
-  },
-  {
-    "slug": "honda-nxr-150-bros-es-mix-flex-2010",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos / checkcarro.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-es-mix-flex-2011",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos / checkcarro.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-es-mix-flex-2012",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos / checkcarro.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-es-mix-flex-2013",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos / checkcarro.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-es-mix-flex-2014",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "130 mm drum",
-    "source": "motonline.com.br guia de motos / checkcarro.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-2003",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-2004",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-2005",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-2006",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-2007",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-2008",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-2009",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-mix-flex-2010",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-mix-flex-2011",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-mix-flex-2012",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-mix-flex-2013",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-mix-flex-2014",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-esd-mix-flex-2015",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "110 mm drum",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-ks-2006",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-nxr-150-bros-ks-2007",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-nxr-150-bros-ks-2008",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-nxr-150-bros-ks-2009",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-nxr-150-bros-ks-2010",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "source": "magodoscarros.com / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-nxr-160-bros-2016",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "noticiasautomotivas.com.br / motoo.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-2017",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "noticiasautomotivas.com.br / motoo.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-2018",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "noticiasautomotivas.com.br / motoo.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-esd-flexone-2015",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "220 mm disc",
-    "source": "checkcarro.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-nxr-160-bros-esd-flexone-2016",
-    "front_brake": "Single 240 mm disc",
-    "rear_brake": "220 mm disc",
-    "source": "checkcarro.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-nxr-160-bros-esdd-flexone-2015",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "220 mm ventilated disc, single-piston caliper",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-esdd-flexone-2016",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "220 mm ventilated disc, single-piston caliper",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-esdd-flexone-2017",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "220 mm ventilated disc, single-piston caliper",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-esdd-flexone-2018",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "220 mm ventilated disc, single-piston caliper",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-esdd-flexone-2019",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "220 mm ventilated disc, single-piston caliper",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-esdd-flexone-2020",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "220 mm ventilated disc, single-piston caliper",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-esdd-flexone-2021",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "220 mm ventilated disc, single-piston caliper",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-esdd-flexone-2022",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "220 mm ventilated disc, single-piston caliper",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-esdd-flexone-2023",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "220 mm ventilated disc, single-piston caliper",
-    "source": "fichatecnica.motosblog.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-esdd-flexone-2024",
-    "front_brake": "Single 240 mm ventilated disc, 2-piston caliper",
-    "rear_brake": "220 mm ventilated disc, single-piston caliper",
-    "source": "fichatecnica.motosblog.com.br / honda.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-flex-2025",
-    "front_brake": "Single 240 mm disc, dual-piston caliper",
-    "rear_brake": "Single 220 mm disc, single-piston caliper",
-    "source": "saladeimprensa.honda.com.br / alvoradamotos.com.br"
-  },
-  {
-    "slug": "honda-nxr-160-bros-flex-2026",
-    "front_brake": "Single 240 mm disc, dual-piston caliper",
-    "rear_brake": "Single 220 mm disc, single-piston caliper",
-    "source": "saladeimprensa.honda.com.br / alvoradamotos.com.br"
-  },
-  {
-    "slug": "honda-pcx-150-sport-2018",
-    "front_brake": "Single 220 mm disc, hydraulic 3-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-pcx-150-sport-2019",
-    "front_brake": "Single 220 mm disc, hydraulic caliper",
-    "rear_brake": "Single 220 mm disc, hydraulic caliper",
-    "abs_type": "ABS, front wheel only",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-pcx-150-sport-2020",
-    "front_brake": "Single 220 mm disc, hydraulic caliper",
-    "rear_brake": "Single 220 mm disc, hydraulic caliper",
-    "abs_type": "ABS, front wheel only",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-pcx-150-sport-2021",
-    "front_brake": "Single 220 mm disc, hydraulic caliper",
-    "rear_brake": "Single 220 mm disc, hydraulic caliper",
-    "abs_type": "ABS, front wheel only",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-pcx-150-sport-2022",
-    "front_brake": "Single 220 mm disc, hydraulic caliper",
-    "rear_brake": "Single 220 mm disc, hydraulic caliper",
-    "abs_type": "ABS, front wheel only",
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-pcx-160-2023",
-    "front_brake": "Single 220 mm disc, hydraulic 3-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / motonewsbrasil.com"
-  },
-  {
-    "slug": "honda-pcx-160-2024",
-    "front_brake": "Single 220 mm disc, hydraulic 3-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / motonewsbrasil.com"
-  },
-  {
-    "slug": "honda-pcx-160-2025",
-    "front_brake": "Single 220 mm disc, hydraulic 3-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / motonewsbrasil.com"
-  },
-  {
-    "slug": "honda-pcx-160-2026",
-    "front_brake": "Single 220 mm disc, hydraulic 3-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / motonewsbrasil.com"
-  },
-  {
-    "slug": "honda-pcx-160-2027",
-    "front_brake": "Single 220 mm disc, hydraulic 3-piston caliper",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motonline.com.br guia de motos / motonewsbrasil.com"
-  },
-  {
-    "slug": "honda-pcx-160-dlx-2023",
-    "front_brake": "Single 220 mm disc, dual-piston caliper",
-    "rear_brake": "220 mm disc, single-piston caliper",
-    "abs_type": "Single-channel ABS, front wheel",
-    "source": "saladeimprensa.honda.com.br"
-  },
-  {
-    "slug": "honda-pcx-160-dlx-2024",
-    "front_brake": "Single 220 mm disc, dual-piston caliper",
-    "rear_brake": "220 mm disc, single-piston caliper",
-    "abs_type": "Single-channel ABS, front wheel",
-    "source": "saladeimprensa.honda.com.br"
-  },
-  {
-    "slug": "honda-pcx-160-dlx-2025",
-    "front_brake": "Single 220 mm disc, dual-piston caliper",
-    "rear_brake": "220 mm disc, single-piston caliper",
-    "abs_type": "Single-channel ABS, front wheel",
-    "source": "saladeimprensa.honda.com.br / honda.com.br"
-  },
-  {
-    "slug": "honda-pcx-160-dlx-2026",
-    "front_brake": "Single 220 mm disc, dual-piston caliper",
-    "rear_brake": "220 mm disc, single-piston caliper",
-    "abs_type": "Single-channel ABS, front wheel",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-pcx-160-dlx-2027",
-    "front_brake": "Single 220 mm disc, dual-piston caliper",
-    "rear_brake": "220 mm disc, single-piston caliper",
-    "abs_type": "Single-channel ABS, front wheel",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-pop-100-97cc-2007",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-pop-100-97cc-2008",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-pop-100-97cc-2009",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-pop-100-97cc-2010",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-pop-100-97cc-2011",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-pop-100-97cc-2012",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-pop-100-97cc-2013",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-pop-100-97cc-2014",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-pop-100-97cc-2015",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "magodoscarros.com"
-  },
-  {
-    "slug": "honda-pop-110i-2016",
-    "front_brake": "110 mm drum",
-    "rear_brake": "110 mm drum",
-    "source": "saladeimprensa.honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-pop-110i-2017",
-    "front_brake": "110 mm drum",
-    "rear_brake": "110 mm drum",
-    "source": "saladeimprensa.honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-pop-110i-2018",
-    "front_brake": "110 mm drum",
-    "rear_brake": "110 mm drum",
-    "source": "saladeimprensa.honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-pop-110i-2019",
-    "front_brake": "110 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "saladeimprensa.honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-pop-110i-2020",
-    "front_brake": "110 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "saladeimprensa.honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-pop-110i-2021",
-    "front_brake": "110 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "saladeimprensa.honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-pop-110i-2022",
-    "front_brake": "110 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "saladeimprensa.honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-pop-110i-2023",
-    "front_brake": "110 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "saladeimprensa.honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-pop-110i-2024",
-    "front_brake": "110 mm drum",
-    "rear_brake": "110 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "saladeimprensa.honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-pop-110i-es-2025",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "motoo.com.br"
-  },
-  {
-    "slug": "honda-pop-110i-es-2026",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "source": "motoo.com.br"
-  },
-  {
-    "slug": "honda-pop-110i-es-2027",
-    "front_brake": "130 mm drum",
-    "rear_brake": "130 mm drum",
-    "abs_type": "CBS combined braking",
-    "source": "motoo.com.br / saladeimprensa.honda.com.br"
-  },
-  {
-    "slug": "honda-trx-350-fourtrax-tm-quadriciclo-2004",
-    "front_brake": "160 mm drum, triple-sealed hydraulic",
-    "rear_brake": "Sealed mechanical drum",
-    "source": "hondanews.com / manualslib.com"
-  },
-  {
-    "slug": "honda-trx-350-fourtrax-tm-quadriciclo-2005",
-    "front_brake": "160 mm drum, triple-sealed hydraulic",
-    "rear_brake": "Sealed mechanical drum",
-    "source": "hondanews.com / manualslib.com"
-  },
-  {
-    "slug": "honda-trx-350-fourtrax-tm-quadriciclo-2006",
-    "front_brake": "160 mm drum, triple-sealed hydraulic",
-    "rear_brake": "Sealed mechanical drum",
-    "source": "hondanews.com / manualslib.com"
-  },
-  {
-    "slug": "honda-trx-350-fourtrax-tm-quadriciclo-2007",
-    "front_brake": "160 mm drum, triple-sealed hydraulic",
-    "rear_brake": "Sealed mechanical drum",
-    "source": "hondanews.com / manualslib.com"
-  },
-  {
-    "slug": "honda-trx-420-fourtrax-fm-4x4-quadriciclo-2026",
-    "front_brake": "Dual 190 mm hydraulic discs",
-    "rear_brake": "160 mm sealed mechanical drum",
-    "source": "powersports.honda.com"
-  },
-  {
-    "slug": "honda-trx-420-fourtrax-tm-4x2-quadriciclo-2008",
-    "front_brake": "Hydraulic disc, front axle",
-    "rear_brake": "Mechanical drum, rear axle",
-    "source": "hondanews.com / autoevolution.com"
-  },
-  {
-    "slug": "honda-xr-300l-tornado-flex-2025",
-    "front_brake": "Single 256 mm disc",
-    "rear_brake": "Single 220 mm disc",
-    "abs_type": "Two-channel ABS, rear switchable",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-xr-300l-tornado-flex-2026",
-    "front_brake": "Single 256 mm disc",
-    "rear_brake": "Single 220 mm disc",
-    "abs_type": "Two-channel ABS, rear switchable",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-xr-300l-tornado-special-edition-2026",
-    "front_brake": "Single 256 mm disc",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Two-channel ABS",
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-xre-190-adventure-flex-2020",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-adventure-flex-2021",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-adventure-flex-2022",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-adventure-flex-2023",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-adventure-flex-2024",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-adventure-flex-2025",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-adventure-flex-2026",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-flex-2016",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-flex-2017",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-flex-2018",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-flex-2019",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-flex-2020",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-flex-2021",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-flex-2022",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-flex-2023",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-flex-2024",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-flex-2025",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
-  },
-  {
-    "slug": "honda-xre-190-flex-2026",
-    "front_brake": "Single 240 mm disc, hydraulic caliper",
-    "rear_brake": "220 mm disc",
-    "abs_type": "Front-only single-channel ABS, no ABS on rear wheel",
-    "source": "honda.com.br / motonline.com.br guia de motos"
+    "abs_type": null,
+    "source": "motorcyclenews.com"
   }
 ]
