@@ -1,0 +1,206 @@
+Brake / tyre gap summary
+=========================
+Generated: 2026-09-10 from the live motorcycle_comparison DB (read-only SELECTs).
+
+NOTE: the raw brand column has heavy casing duplication (e.g. 'KAWASAKI' vs 'Kawasaki'
+are the same real brand). This report normalizes brand via upper(brand) for reporting purposes
+only. Any actual UPDATE against motorcycles must still join on motorcycles.slug alone - never
+filter or join by brand casing, since upper(brand) collapses distinct rows that a slug-based
+UPDATE must still address individually.
+
+Overall totals
+--------------
+total motorcycles:        13029
+missing front_brake:      4877
+missing rear_brake:       4818
+missing front_tyre:       4790
+missing rear_tyre:        4808
+missing any of the four:  6112
+
+Per-brand breakdown (upper(brand)-normalized, 184 brands with missing_any > 0, sorted by missing_any desc)
+----------------------------------------------------------------------------------------------------
+BRAND                  TOTAL  MISSING_BRAKES   MISSING_TYRES   MISSING_ANY
+KAWASAKI                 688               4             365           365
+SUZUKI                   791             217             262           305
+KTM                      472               6             278           279
+SHINERAY                 232             222             222           222
+PEUGEOT                  286             207              72           209
+TRIUMPH                  601             159             101           201
+DUCATI                   485             196             173           200
+HONDA                   1278              92             117           166
+PIAGGIO                  225             154             116           154
+YAMAHA                  1031              37             150           152
+HARLEY-DAVIDSON          682             133              63           135
+KASINSKI                 164             129             129           129
+BRP                      200             123             123           123
+TRAXX                    114             114             114           114
+RIGUETE                   94              94              94            94
+BETA                     174              59              56            91
+SUNDOWN                   90              90              90            90
+GAS GAS                  202              53              80            89
+SHERCO                    91              56              87            87
+DAFRA                    170              79              84            84
+POLARIS                  116              83              83            83
+HUSQVARNA                200              55              49            78
+KYMCO                    166              78              28            78
+AGRALE                    77              77              77            77
+APRILIA                  177              72              68            75
+MOTORINO                  75              75              75            75
+MVK                       67              67              67            67
+RIEJU                    108              60              19            62
+DERBI                     59              58              20            58
+KEEWAY                    68              57              14            57
+MOTO GUZZI               108              55              23            55
+HAOJUE                    71              54              54            54
+JONNY                     54              54              54            54
+BMW                      622              40              53            53
+ROYAL ENFIELD            204              20              45            51
+FUSCO MOTOSEGURA          50              50              50            50
+IROS                      48              48              48            48
+BYCRISTO                  47              47              47            47
+KREIDLER                  45              43              11            44
+DAYANG                    43              29              43            43
+HYOSUNG                   52              41              16            41
+BULL                      36              36              36            36
+ZONTES                    59              36              28            36
+DAELIM                    41              35              18            35
+SYM                      101              35               5            35
+WUYANG                    35              35              35            35
+NIU                       65              34              28            34
+TAURIS                    34              33               7            34
+GARINNI                   31              31              31            31
+MOTOWELL                  31              31               7            31
+MV AGUSTA                133              30              19            31
+BIMOTA                    38              30              21            30
+TM                        32              30               3            30
+HUSABERG                  31              28              19            28
+GILERA                    33              27               8            27
+HANWAY                    27              27               5            27
+MAGRÃO TRICICLOS          27              27              27            27
+SACHS                     26              26              13            26
+MALAGUTI                  39              19              24            25
+TGB                       26              25              14            25
+VICTORY                   34              25               1            25
+FYM                       24              24              24            24
+PGO                       24              24               6            24
+SUPER SOCO                36              24              23            24
+CAGIVA                    34              17              20            23
+MIZA                      22              22              22            22
+TIGER                     22              22              22            22
+DAYUN                     21              21              21            21
+HAOBAO                    21              21              21            21
+HISUN                     20              20              20            20
+MZ                        20              20              20            20
+MOTORHISPANIA             19              19               3            19
+LON-V                     18              18              18            18
+BENELLI                   67              17               8            17
+FEVER                     17              17              17            17
+HERO                      18              17              17            17
+SCORPA                    17              17              17            17
+ADLY                      17              16              16            16
+AMAZONAS                  16              16              16            16
+CALOI                     15              15              15            15
+MOTOCAR                   15              15              15            15
+UNITED MOTORS UM          19              15               1            15
+CFMOTO                    41              14               7            14
+KAHENA                    14              14              14            14
+SBM                       14              14              14            14
+BAJAJ                     24              13              13            13
+MOTOMORINI                27              13               7            13
+ATALA                     12              12              12            12
+BUELL                     36              12               3            12
+FB MONDIAL                26              12               2            12
+L'AQUILA                  12              12              12            12
+BEE                       11              11              11            11
+AVELLOZ                   10              10              10            10
+BRIXTON                   23               7              10            10
+LML                       10              10              10            10
+MASH                      40               9               5            10
+REGAL RAPTOR              10              10              10            10
+VOR                       10              10              10            10
+WMI                       12              10               1            10
+BEELINE                   15               9               0             9
+BRANDY                     9               9               9             9
+ELECTRACK                  9               9               9             9
+GOVECS                     9               9               0             9
+HERKULES                   9               9               0             9
+SANYANG                    9               9               9             9
+TORROT                    12               6               6             9
+WATTS                      9               9               9             9
+KUMPAN                     8               7               8             8
+LEM-MOTOR                  8               8               8             8
+LERIVO                     8               8               8             8
+QJ MOTOR                  41               7               3             8
+VENT                       8               8               8             8
+VOLTZ                      8               8               8             8
+BUENO                      7               7               7             7
+CPI                        7               7               7             7
+YIBEN                      7               7               7             7
+BORILE                     6               6               3             6
+E-MAX                      6               6               3             6
+FOX                        6               6               6             6
+INDIAN                    93               6               0             6
+JOHNNYPAG                  6               6               6             6
+ORCA                       6               6               6             6
+SKYTEAM                    6               4               5             6
+TINBOT                     6               6               5             6
+TRINITY                    7               6               1             6
+BIGDOG                     7               4               3             5
+EMME                       5               5               5             5
+GREEN                      5               5               5             5
+IO SCOOTER                 5               5               5             5
+LUXXON                     5               5               3             5
+OSET                       5               5               5             5
+SCARABEO                   8               5               0             5
+VENTANE MOTORS             5               5               5             5
+VESPA                     23               5               5             5
+ZERO                      17               2               4             5
+ZÜNDAPP                   21               3               2             5
+BRAMMO                     4               4               2             4
+DOOHAN                     4               4               4             4
+HARTFORD                   4               4               4             4
+HOREX                      4               2               3             4
+JIAPENG VOLCANO            4               4               4             4
+LAVRALE                    4               4               4             4
+LEVA                       4               4               4             4
+LIFAN                      4               4               4             4
+MOBÍLLI                    4               4               4             4
+SUR-RON                    4               4               3             4
+TARGOS                     4               4               4             4
+A-TO                       3               3               3             3
+EBR                        3               3               0             3
+JOTAGAS                    3               3               3             3
+MOTOBI                     3               3               0             3
+MRX                        3               3               3             3
+OSSA                       3               3               2             3
+POLINI                     3               3               3             3
+URAL                       3               3               2             3
+VENTO                      5               3               3             3
+XISPA                      3               3               3             3
+BENDA                     14               1               1             2
+BLATA                      2               2               2             2
+BRAVA                      2               2               2             2
+CCM                        2               2               2             2
+CLEVELAND                  2               2               0             2
+EH LINE                    2               2               2             2
+GRACE                      2               2               2             2
+KRÄMER                     2               0               2             2
+MOTOWORX                   2               2               2             2
+PUCH                       2               0               2             2
+SWM                       29               2               1             2
+VECTRIX                    2               2               2             2
+VERTIGO                    2               2               2             2
+VOGE                      31               2               0             2
+AEON                       5               1               0             1
+DAMON MOTORCYCLES          1               1               1             1
+LAMBRETTA                 23               1               0             1
+LANDUM                     1               1               1             1
+LIVEWIRE                   6               1               0             1
+MAG                        1               1               0             1
+MOTO MARTIN                1               1               1             1
+MOTRON                    12               1               1             1
+ORION                      1               1               0             1
+PEGASSI                    1               1               1             1
+QUADRO VEHICLES            5               1               0             1
+SCOMADI                    3               1               0             1
+SIAMOTO                    1               1               1             1

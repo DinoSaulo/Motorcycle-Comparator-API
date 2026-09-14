@@ -1,0 +1,2423 @@
+[
+  {
+    "slug": "ktm-1390-super-duke-rr-track-2026",
+    "front_brake": "Twin 320mm floating discs, Brembo HyPure Sport radial calipers",
+    "rear_brake": "Single 240mm disc, twin-piston floating caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "200/55ZR17",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-890-smt-2024",
+    "front_brake": "Twin 320mm discs, J.JUAN 4-piston radial calipers",
+    "rear_brake": "Single 260mm disc, J.JUAN 2-piston floating caliper",
+    "abs_type": "ABS standard, off-road mode selectable",
+    "front_tyre": "120/70-17",
+    "rear_tyre": "180/55-17",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-990-duke-2024",
+    "front_brake": "Dual 300mm discs, four-piston radial calipers",
+    "rear_brake": "Single 240mm disc, twin-piston caliper",
+    "abs_type": "Cornering ABS standard, Supermoto mode",
+    "front_tyre": "120/70R17",
+    "rear_tyre": "180/55R17",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-790-duke-l-2020",
+    "front_brake": "Dual 300mm discs, radially mounted four-piston fixed calipers",
+    "rear_brake": "Single 240mm disc, single-piston floating caliper",
+    "abs_type": "ABS standard, switchable",
+    "front_tyre": "120/70R17",
+    "rear_tyre": "180/55R17",
+    "source": "ktmindia.com"
+  },
+  {
+    "slug": "ktm-duke-390-2015",
+    "front_brake": "Single 300mm disc, four-piston radial caliper",
+    "rear_brake": "Single 230mm disc, floating caliper",
+    "abs_type": "ABS standard",
+    "front_tyre": "110/70R17",
+    "rear_tyre": "150/60R17",
+    "source": "ktmindia.com"
+  },
+  {
+    "slug": "ktm-duke-390-2016",
+    "front_brake": "Single 300mm disc, four-piston radial caliper",
+    "rear_brake": "Single 230mm disc, floating caliper",
+    "abs_type": "ABS standard",
+    "front_tyre": "110/70R17",
+    "rear_tyre": "150/60R17",
+    "source": "ktmindia.com"
+  },
+  {
+    "slug": "ktm-duke-390-2017",
+    "front_brake": "Single 320mm disc, four-piston radial caliper",
+    "rear_brake": "Single 230mm disc, floating caliper",
+    "abs_type": "ABS standard, switchable",
+    "front_tyre": "110/70R17",
+    "rear_tyre": "150/60R17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-duke-200-abs-2018",
+    "front_brake": "Single 300mm disc, four-piston radially mounted caliper",
+    "rear_brake": "Single 230mm disc, floating caliper",
+    "abs_type": "ABS standard, single channel",
+    "front_tyre": "110/70R17",
+    "rear_tyre": "150/60R17",
+    "source": "ktmindia.com"
+  },
+  {
+    "slug": "ktm-duke-200-abs-2019",
+    "front_brake": "Single 300mm disc, four-piston radially mounted caliper",
+    "rear_brake": "Single 230mm disc, floating caliper",
+    "abs_type": "ABS standard, single channel",
+    "front_tyre": "110/70R17",
+    "rear_tyre": "150/60R17",
+    "source": "ktmindia.com"
+  },
+  {
+    "slug": "ktm-duke-200-abs-2020",
+    "front_brake": "Single 300mm disc, four-piston radially mounted caliper",
+    "rear_brake": "Single 230mm disc, floating caliper",
+    "abs_type": "ABS standard, single channel",
+    "front_tyre": "110/70R17",
+    "rear_tyre": "150/60R17",
+    "source": "ktmindia.com"
+  },
+  {
+    "slug": "ktm-duke-200-abs-2021",
+    "front_brake": "Single 300mm disc, four-piston radially mounted caliper",
+    "rear_brake": "Single 230mm disc, floating caliper",
+    "abs_type": "ABS standard, single channel",
+    "front_tyre": "110/70R17",
+    "rear_tyre": "150/60R17",
+    "source": "ktmindia.com"
+  },
+  {
+    "slug": "ktm-super-adventure-1290-2016",
+    "front_brake": "Dual 320mm discs, Brembo four-piston radial calipers",
+    "rear_brake": "Single 267mm disc, two-piston caliper",
+    "abs_type": "ABS standard, off-road mode, semi-linked",
+    "front_tyre": "120/70R19",
+    "rear_tyre": "170/60R17",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-super-adventure-1290-2017",
+    "front_brake": "Dual 320mm discs, Brembo four-piston radial calipers",
+    "rear_brake": "Single 267mm disc, two-piston caliper",
+    "abs_type": "ABS standard, off-road mode, semi-linked",
+    "front_tyre": "120/70R19",
+    "rear_tyre": "170/60R17",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-super-adventure-1290-s-2017",
+    "front_brake": "Dual 320mm discs, Brembo four-piston radial calipers",
+    "rear_brake": "Single 267mm disc, two-piston caliper",
+    "abs_type": "ABS standard, off-road mode, semi-linked",
+    "front_tyre": "120/70R19",
+    "rear_tyre": "170/60R17",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-super-adventure-1290-r-2017",
+    "front_brake": "Dual 320mm discs, Brembo four-piston radial calipers",
+    "rear_brake": "Single 267mm disc, two-piston caliper",
+    "abs_type": "ABS standard, off-road mode, switchable",
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-superduke-1290-gt-2017",
+    "front_brake": "Dual 320mm discs, Brembo M50 four-piston radial calipers",
+    "rear_brake": "Single 267mm disc, two-piston caliper",
+    "abs_type": "ABS standard, cornering",
+    "front_tyre": "120/70-17",
+    "rear_tyre": "190/55-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-superduke-1290-r-2014",
+    "front_brake": "Dual 320mm discs, Brembo M50 four-piston radial calipers",
+    "rear_brake": "Single 267mm disc, two-piston caliper",
+    "abs_type": "ABS standard, switchable",
+    "front_tyre": "120/70-17",
+    "rear_tyre": "190/55-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-superduke-1290-r-2015",
+    "front_brake": "Dual 320mm discs, Brembo M50 four-piston radial calipers",
+    "rear_brake": "Single 267mm disc, two-piston caliper",
+    "abs_type": "ABS standard, switchable",
+    "front_tyre": "120/70-17",
+    "rear_tyre": "190/55-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-superduke-1290-r-2017",
+    "front_brake": "Dual 320mm discs, Brembo M50 four-piston radial calipers",
+    "rear_brake": "Single 267mm disc, two-piston caliper",
+    "abs_type": "ABS standard, switchable",
+    "front_tyre": "120/70-17",
+    "rear_tyre": "190/55-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-adventure-1190cc-2014",
+    "front_brake": "Dual 320mm discs, Brembo radially bolted four-piston calipers",
+    "rear_brake": "Single 267mm disc, Brembo two-piston fixed caliper",
+    "abs_type": "Combined ABS standard",
+    "front_tyre": "120/70R19",
+    "rear_tyre": "170/60R17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-adventure-1190cc-2015",
+    "front_brake": "Dual 320mm discs, Brembo radially bolted four-piston calipers",
+    "rear_brake": "Single 267mm disc, Brembo two-piston fixed caliper",
+    "abs_type": "Combined ABS standard",
+    "front_tyre": "120/70R19",
+    "rear_tyre": "170/60R17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-adventure-1190-r-2016",
+    "front_brake": "Dual 320mm discs, four-piston calipers",
+    "rear_brake": "Single 267mm disc, dual-piston caliper",
+    "abs_type": "ABS standard, off-road switchable",
+    "front_tyre": "90/90ZR21",
+    "rear_tyre": "150/70ZR18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2006",
+    "front_brake": "Dual 300mm floating discs, Brembo two-piston floating calipers",
+    "rear_brake": "Single 240mm floating disc, Brembo two-piston floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2007",
+    "front_brake": "Dual 300mm floating discs, Brembo two-piston floating calipers",
+    "rear_brake": "Single 240mm floating disc, Brembo two-piston floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2008",
+    "front_brake": "Dual 300mm floating discs, Brembo two-piston floating calipers",
+    "rear_brake": "Single 240mm floating disc, Brembo two-piston floating caliper",
+    "abs_type": "ABS optional, two-channel",
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2009",
+    "front_brake": "Dual 300mm floating discs, Brembo two-piston floating calipers",
+    "rear_brake": "Single 240mm floating disc, Brembo two-piston floating caliper",
+    "abs_type": "ABS optional, two-channel",
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2010",
+    "front_brake": "Dual 300mm floating discs, Brembo two-piston floating calipers",
+    "rear_brake": "Single 240mm floating disc, Brembo two-piston floating caliper",
+    "abs_type": "ABS optional, two-channel",
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2011",
+    "front_brake": "Dual 300mm floating discs, Brembo two-piston floating calipers",
+    "rear_brake": "Single 240mm floating disc, Brembo two-piston floating caliper",
+    "abs_type": "ABS optional, two-channel",
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2012",
+    "front_brake": "Dual 300mm floating discs, Brembo two-piston floating calipers",
+    "rear_brake": "Single 240mm floating disc, Brembo two-piston floating caliper",
+    "abs_type": "ABS optional, two-channel",
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-r-dakar-990cc-2010",
+    "front_brake": "Dual 300mm floating discs, Brembo two-piston floating calipers",
+    "rear_brake": "Single 240mm floating disc, Brembo two-piston floating caliper",
+    "abs_type": "ABS optional, two-channel",
+    "front_tyre": "90/90-21",
+    "rear_tyre": "150/70-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-r-dakar-990cc-2011",
+    "front_brake": "Dual 300mm floating discs, Brembo two-piston floating calipers",
+    "rear_brake": "Single 240mm floating disc, Brembo two-piston floating caliper",
+    "abs_type": "ABS optional, two-channel",
+    "front_tyre": "90/90-21",
+    "rear_tyre": "150/70-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-990-adventure-s-2009",
+    "front_brake": "Dual 300mm floating discs, Brembo two-piston floating calipers",
+    "rear_brake": "Single 240mm floating disc, Brembo two-piston floating caliper",
+    "abs_type": "ABS optional, two-channel",
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-950cc-2004",
+    "front_brake": "Dual 300mm perforated discs, Brembo floating calipers",
+    "rear_brake": "Single 240mm disc, Brembo floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-adventure-950cc-2005",
+    "front_brake": "Dual 300mm perforated discs, Brembo floating calipers",
+    "rear_brake": "Single 240mm disc, Brembo floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-adventure-950cc-2006",
+    "front_brake": "Dual 300mm perforated discs, Brembo floating calipers",
+    "rear_brake": "Single 240mm disc, Brembo floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-adventure-950cc-2007",
+    "front_brake": "Dual 300mm perforated discs, Brembo floating calipers",
+    "rear_brake": "Single 240mm disc, Brembo floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-adventure-950cc-2008",
+    "front_brake": "Dual 300mm perforated discs, Brembo floating calipers",
+    "rear_brake": "Single 240mm disc, Brembo floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-950-adventure-s-2005",
+    "front_brake": "Dual 300mm perforated discs, Brembo floating calipers",
+    "rear_brake": "Single 240mm disc, Brembo floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90R21",
+    "rear_tyre": "150/70R18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-690-enduro-enduro-r-2017",
+    "front_brake": "Single 300mm disc, Brembo two-piston floating caliper",
+    "rear_brake": "Single 240mm disc, Brembo single-piston floating caliper",
+    "abs_type": "ABS standard, switchable off-road mode",
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-690-supermoto-2009",
+    "front_brake": "Single 320mm disc, Brembo four-piston radially bolted caliper",
+    "rear_brake": "Single 240mm disc, Brembo single-piston floating caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-690-supermoto-r-2009",
+    "front_brake": "Single 320mm disc, Brembo four-piston radially bolted caliper",
+    "rear_brake": "Single 240mm disc, Brembo single-piston floating caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-990-supermoto-t-2013",
+    "front_brake": "Dual 320mm discs, Brembo radially mounted four-piston calipers",
+    "rear_brake": "Single 240mm disc",
+    "abs_type": "ABS standard, disconnectable",
+    "front_tyre": "120/70-17",
+    "rear_tyre": "180/55-17",
+    "source": "1000ps.com"
+  },
+  {
+    "slug": "ktm-950-supermoto-2007",
+    "front_brake": "Dual disc, radial Brembo calipers",
+    "rear_brake": "Single disc",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "180/55-17",
+    "source": "motorcycle.com"
+  },
+  {
+    "slug": "ktm-950-superenduro-r-2008",
+    "front_brake": "Single 300mm floating disc, Brembo two-piston floating caliper",
+    "rear_brake": "Single 240mm floating disc, Brembo two-piston floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-640-duke-2-2007",
+    "front_brake": "Single 320mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": null,
+    "rear_tyre": null,
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-640-lc4-adventure-2006",
+    "front_brake": "Twin 300mm discs",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-640-lc4-enduro-2006",
+    "front_brake": "Single 300mm disc, four-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-640-lc4-supermoto-2006",
+    "front_brake": "Single 320mm disc, four-piston Brembo caliper",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "110/90-17",
+    "rear_tyre": "160/60-17",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-640-st-1998",
+    "front_brake": "Twin 300mm discs",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-640-st-1999",
+    "front_brake": "Twin 300mm discs",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-640-st-2000",
+    "front_brake": "Twin 300mm discs",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-640-st-2003",
+    "front_brake": "Twin 300mm discs",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-640-st-2004",
+    "front_brake": "Twin 300mm discs",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-640-st-2005",
+    "front_brake": "Twin 300mm discs",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-640-st-2006",
+    "front_brake": "Twin 300mm discs",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-adventure-640-st-2007",
+    "front_brake": "Twin 300mm discs",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-625-smc-2006",
+    "front_brake": "Single 320mm disc, four-piston caliper",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-625-sxc-2007",
+    "front_brake": "Single 260mm disc, dual-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-660-smc-2006",
+    "front_brake": "Single 320mm disc, four-piston Brembo caliper",
+    "rear_brake": "Single 220mm disc, single-piston Brembo caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "120/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-505-xc-f-2009",
+    "front_brake": "Single 260mm disc, Brembo double-piston caliper",
+    "rear_brake": "Single 220mm disc, Brembo single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/100-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-525-exc-2005",
+    "front_brake": "Single 260mm disc, floating dual-piston Brembo caliper",
+    "rear_brake": "Single 220mm disc, floating dual-piston Brembo caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-525-mxc-desert-racing-2007",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-125-sx-2027",
+    "front_brake": "Single 260mm disc, Brembo hydraulic caliper",
+    "rear_brake": "Single 220mm disc, Brembo hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-125-xc-w-2027",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-150-exc-tbi-2024",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-150-exc-tpi-2023",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-250-sx-2027",
+    "front_brake": "Single 260mm disc, Brembo hydraulic caliper",
+    "rear_brake": "Single 220mm disc, Brembo hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-250-sx-f-2027",
+    "front_brake": "Single 260mm disc, Brembo hydraulic caliper",
+    "rear_brake": "Single 220mm disc, Brembo hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-250-xc-w-2027",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-250-exc-f-2027",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-250-exc-f-six-days-2027",
+    "front_brake": "Single 260mm semi-floating disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-300-exc-2027",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-300-exc-six-days-2027",
+    "front_brake": "Single 260mm semi-floating disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-300-sx-2027",
+    "front_brake": "Single 260mm disc, Brembo hydraulic caliper",
+    "rear_brake": "Single 220mm disc, Brembo hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-350-exc-f-2027",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-350-exc-f-six-days-2027",
+    "front_brake": "Single 260mm semi-floating disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-350-sx-f-2027",
+    "front_brake": "Single 260mm disc, Brembo hydraulic caliper",
+    "rear_brake": "Single 220mm disc, Brembo hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-450-exc-f-2027",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-450-exc-f-six-days-2027",
+    "front_brake": "Single 260mm semi-floating disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-450-rally-replica-2027",
+    "front_brake": "Single 300mm disc, Brembo caliper",
+    "rear_brake": "Single 240mm disc, Brembo caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-450-smr-2027",
+    "front_brake": "Single 310mm disc, Brembo four-piston radial caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "125/75-16.5",
+    "rear_tyre": "165/55-17",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-450-sx-f-2027",
+    "front_brake": "Single 260mm disc, Brembo hydraulic caliper",
+    "rear_brake": "Single 220mm disc, Brembo hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "dirtrider.com"
+  },
+  {
+    "slug": "ktm-sx-f-450-factory-edition-2026",
+    "front_brake": "Single 260mm disc, Brembo hydraulic caliper",
+    "rear_brake": "Single 220mm disc, Brembo hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "dirtrider.com"
+  },
+  {
+    "slug": "ktm-500-exc-f-2027",
+    "front_brake": "Single 260mm disc, Brembo caliper",
+    "rear_brake": "Single 220mm disc, Brembo caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-500-exc-f-2026-2025",
+    "front_brake": "Single 260mm disc, Brembo caliper",
+    "rear_brake": "Single 220mm disc, Brembo caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-500-exc-f-six-days-2027",
+    "front_brake": "Single 260mm semi-floating disc, Brembo caliper",
+    "rear_brake": "Single 220mm disc, Brembo caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-50-sx-2027",
+    "front_brake": "Single 160mm wave disc, Formula hydraulic caliper",
+    "rear_brake": "Single 160mm wave disc, Formula hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "2.50-12",
+    "rear_tyre": "2.75-10",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-50-sx-factory-edition-2026",
+    "front_brake": "Single 160mm wave disc, Formula hydraulic caliper",
+    "rear_brake": "Single 160mm wave disc, Formula hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "2.50-12",
+    "rear_tyre": "2.75-10",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-50-sx-mini-2023",
+    "front_brake": "Single 160mm disc, Formula hydraulic caliper",
+    "rear_brake": "Single 160mm disc, Formula hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "2.6x10",
+    "rear_tyre": "2.75x10",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-65-sx-2027",
+    "front_brake": "Single 198mm wave disc, Formula floating caliper",
+    "rear_brake": "Single 180mm wave disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-85-sx-17-14-2027",
+    "front_brake": "Single 240mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-85-sx-19-16-2027",
+    "front_brake": "Single 240mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100x19",
+    "rear_tyre": "90/100x16",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-sx-e-2-2025",
+    "front_brake": "Single 140mm disc",
+    "rear_brake": "Single 140mm disc",
+    "abs_type": null,
+    "front_tyre": "2.50-10",
+    "rear_tyre": "2.50-10",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-sx-e-3-2025",
+    "front_brake": "Single 160mm disc",
+    "rear_brake": "Single 160mm disc",
+    "abs_type": null,
+    "front_tyre": "60/100-10",
+    "rear_tyre": "2.75-10",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-sx-e-5-2026",
+    "front_brake": "Single 160mm disc",
+    "rear_brake": "Single 160mm disc",
+    "abs_type": null,
+    "front_tyre": "60/100-12",
+    "rear_tyre": "2.75-10",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-350-egs-2007",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": null,
+    "rear_tyre": null,
+    "source": "1000ps.com"
+  },
+  {
+    "slug": "ktm-sxc-520-540-1998",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sxc-520-540-1999",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sxc-520-540-2000",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sxc-625-2004",
+    "front_brake": "Single 260mm disc, dual-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sxc-625-2005",
+    "front_brake": "Single 260mm disc, dual-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sxc-625-2006",
+    "front_brake": "Single 260mm disc, dual-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sxc-625-2007",
+    "front_brake": "Single 260mm disc, dual-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sxc-625-2008",
+    "front_brake": "Single 260mm disc, dual-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-85-motocross-2007",
+    "front_brake": "Single disc, hydraulic caliper",
+    "rear_brake": "Single disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-125-1999",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-125-2000",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-125-2001",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-125-2002",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-125-2003",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-125-2004",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-125-2005",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-125-2006",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-125-2007",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-125-2008",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-125-2010",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-150-2025",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-200-2007",
+    "front_brake": "Single 260mm disc, Brembo double-piston caliper",
+    "rear_brake": "Single 220mm disc, Brembo single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-200-2008",
+    "front_brake": "Single 260mm disc, Brembo double-piston caliper",
+    "rear_brake": "Single 220mm disc, Brembo single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-200-2010",
+    "front_brake": "Single 260mm disc, Brembo double-piston caliper",
+    "rear_brake": "Single 220mm disc, Brembo single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-1994",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-1995",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-1998",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-1999",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-2000",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-2001",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-2002",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-2004",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-2005",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-2006",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-2007",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-2008",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-2009",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-2010",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-2011",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-250-2012",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-250-exc-racing-2006",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "120/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-250-exc-tbi-2024",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-250-exc-tbi-sixdays-2024",
+    "front_brake": "Single 260mm semi-floating disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-300-2001",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-300-2002",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-300-2009",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-300-2010",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-300-2015",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-300-2016",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-300-2017",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-300-2018",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-300-2019",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-300-2020",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-300-2021",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-300-2022",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-300-2023",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-300-2024",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-300-2025",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-300-2026",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-300-exc-tbi-sixdays-2024",
+    "front_brake": "Single 260mm semi-floating disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-380-1999",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-380-2000",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-380-2001",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-450-2003",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-450-2004",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-450-2005",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-450-2006",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-450-2007",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-450-2008",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-450-2009",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-450-2010",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-450-2011",
+    "front_brake": "Single 260mm disc, floating caliper",
+    "rear_brake": "Single 220mm disc, floating caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-520-2000",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-520-2001",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-520-2002",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-525-2005",
+    "front_brake": "Single 260mm disc, floating dual-piston Brembo caliper",
+    "rear_brake": "Single 220mm disc, floating dual-piston Brembo caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-525-2006",
+    "front_brake": "Single 260mm disc, floating dual-piston Brembo caliper",
+    "rear_brake": "Single 220mm disc, floating dual-piston Brembo caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-525-2007",
+    "front_brake": "Single 260mm disc, floating dual-piston Brembo caliper",
+    "rear_brake": "Single 220mm disc, floating dual-piston Brembo caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-525-2008",
+    "front_brake": "Single 260mm disc, floating dual-piston Brembo caliper",
+    "rear_brake": "Single 220mm disc, floating dual-piston Brembo caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-exc-f-250-2015",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-250-2016",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-250-2017",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-250-2018",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-250-2019",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-250-2020",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-250-2021",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-250-2022",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-250-2026",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-250-six-days-2015",
+    "front_brake": "Single 260mm semi-floating disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-300-six-days-2015",
+    "front_brake": "Single 260mm semi-floating disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-2015",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-2016",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-2017",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-2018",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-2019",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-2020",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-2021",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-2022",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-2023",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-2024",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-2025",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-six-days-2018",
+    "front_brake": "Single 260mm semi-floating disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-six-days-2020",
+    "front_brake": "Single 260mm semi-floating disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-350-six-days-2021",
+    "front_brake": "Single 260mm semi-floating disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-450-2026",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-exc-f-500-2026",
+    "front_brake": "Single 260mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "140/80-18",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-sx-125-1996",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-125-1999",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-125-2000",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-125-2001",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-125-2002",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-125-2003",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-125-2004",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-125-2005",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-125-2006",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-125-2007",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-125-2008",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-125-2009",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-125-2010",
+    "front_brake": "Single 260mm disc, two-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-250-sx-250-f-1999",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-250-sx-250-f-2000",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-250-sx-250-f-2001",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-250-sx-250-f-2002",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-250-sx-250-f-2020",
+    "front_brake": "Single 260mm disc, Brembo hydraulic caliper",
+    "rear_brake": "Single 220mm disc, Brembo hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-sx-250-sx-250-f-2026",
+    "front_brake": "Single 260mm disc, Brembo hydraulic caliper",
+    "rear_brake": "Single 220mm disc, Brembo hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-sx-300-2025",
+    "front_brake": "Single 260mm disc, Brembo hydraulic caliper",
+    "rear_brake": "Single 220mm disc, Brembo hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-sx-300-2026",
+    "front_brake": "Single 260mm disc, Brembo hydraulic caliper",
+    "rear_brake": "Single 220mm disc, Brembo hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-sx-350-350-f-2011",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-350-350-f-2026",
+    "front_brake": "Single 260mm disc, Brembo hydraulic caliper",
+    "rear_brake": "Single 220mm disc, Brembo hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2004",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2005",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2006",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2007",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2008",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2009",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2010",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2011",
+    "front_brake": "Single 260mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2024",
+    "front_brake": "Single 260mm disc, Brembo dual-piston caliper",
+    "rear_brake": "Single 220mm disc, Brembo single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "dirtrider.com"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2025",
+    "front_brake": "Single 260mm disc, Brembo dual-piston caliper",
+    "rear_brake": "Single 220mm disc, Brembo single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "dirtrider.com"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2026",
+    "front_brake": "Single 260mm disc, Brembo dual-piston caliper",
+    "rear_brake": "Single 220mm disc, Brembo single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "dirtrider.com"
+  },
+  {
+    "slug": "ktm-sx-50-2006",
+    "front_brake": "Single 160mm disc, hydraulic caliper",
+    "rear_brake": "Single 140mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-12",
+    "rear_tyre": "2.75-10",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-50-2007",
+    "front_brake": "Single 160mm disc, hydraulic caliper",
+    "rear_brake": "Single 140mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-12",
+    "rear_tyre": "2.75-10",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-50-2008",
+    "front_brake": "Single 160mm disc, hydraulic caliper",
+    "rear_brake": "Single 140mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-12",
+    "rear_tyre": "2.75-10",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-50-2009",
+    "front_brake": "Single 160mm disc, hydraulic caliper",
+    "rear_brake": "Single 140mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-12",
+    "rear_tyre": "2.75-10",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-50-2010",
+    "front_brake": "Single 160mm disc, hydraulic caliper",
+    "rear_brake": "Single 140mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-12",
+    "rear_tyre": "2.75-10",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-50-2011",
+    "front_brake": "Single 160mm disc, hydraulic caliper",
+    "rear_brake": "Single 140mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-12",
+    "rear_tyre": "2.75-10",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-50-2012",
+    "front_brake": "Single 160mm disc, hydraulic caliper",
+    "rear_brake": "Single 140mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-12",
+    "rear_tyre": "2.75-10",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-1999",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2000",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2001",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2002",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2003",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2004",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2005",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2006",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2007",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2008",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2009",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2010",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2011",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 160mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-65-2025",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 180mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-sx-65-2026",
+    "front_brake": "Single 198mm disc, Formula floating caliper",
+    "rear_brake": "Single 180mm disc, Formula floating caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-sx-85-2004",
+    "front_brake": "Single 220mm disc, hydraulic caliper",
+    "rear_brake": "Single 200mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-85-2005",
+    "front_brake": "Single 220mm disc, hydraulic caliper",
+    "rear_brake": "Single 200mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-85-2006",
+    "front_brake": "Single 220mm disc, hydraulic caliper",
+    "rear_brake": "Single 200mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-85-2007",
+    "front_brake": "Single 220mm disc, hydraulic caliper",
+    "rear_brake": "Single 200mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-85-2008",
+    "front_brake": "Single 220mm disc, hydraulic caliper",
+    "rear_brake": "Single 200mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-85-2009",
+    "front_brake": "Single 220mm disc, hydraulic caliper",
+    "rear_brake": "Single 200mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-85-2010",
+    "front_brake": "Single 220mm disc, hydraulic caliper",
+    "rear_brake": "Single 200mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-85-2011",
+    "front_brake": "Single 240mm disc, hydraulic caliper",
+    "rear_brake": "Single 210mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-85-2012",
+    "front_brake": "Single 240mm disc, hydraulic caliper",
+    "rear_brake": "Single 210mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "ktm-sx-85-2025",
+    "front_brake": "Single 240mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "ktm.com"
+  },
+  {
+    "slug": "ktm-sx-85-2026",
+    "front_brake": "Single 240mm disc, hydraulic caliper",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "70/100-17",
+    "rear_tyre": "90/100-14",
+    "source": "ktm.com"
+  }
+]

@@ -1,0 +1,3143 @@
+[
+  {
+    "slug": "kawasaki-concours14-1352cc-2012",
+    "front_brake": "Dual semi-floating 310mm petal discs",
+    "rear_brake": "Single 270mm petal disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70-ZR17",
+    "rear_tyre": "190/50-ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-concours14-1352cc-2013",
+    "front_brake": "Dual semi-floating 310mm petal discs",
+    "rear_brake": "Single 270mm petal disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70-ZR17",
+    "rear_tyre": "190/50-ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-eliminator-125-2007",
+    "front_brake": "Single disc",
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "front_tyre": "90/90-17",
+    "rear_tyre": "130/90-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-eliminator-500-2025",
+    "front_brake": "Single 310mm disc, twin-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "130/70-18",
+    "rear_tyre": "150/80-16",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-eliminator-500-se-2025",
+    "front_brake": "Single 310mm disc, twin-piston caliper",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "130/70-18",
+    "rear_tyre": "150/80-16",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-er-5-2006",
+    "front_brake": "280mm disc, twin-piston caliper",
+    "rear_brake": "Drum, 160mm",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "130/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-er-6n-650cc-2012",
+    "front_brake": "Dual semi-floating 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-er-6n-650cc-2013",
+    "front_brake": "Dual semi-floating 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-er-6n-650cc-2014",
+    "front_brake": "Dual semi-floating 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-er-6n-650cc-2015",
+    "front_brake": "Dual semi-floating 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-er-6n-650cc-2017",
+    "front_brake": "Dual semi-floating 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kle-500-2007",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 230mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "90/90-21",
+    "rear_tyre": "130/80-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-klv-1000-2006",
+    "front_brake": "Twin 310mm discs",
+    "rear_brake": "Single 260mm disc",
+    "abs_type": null,
+    "front_tyre": "110/80-19",
+    "rear_tyre": "150/70-17",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "kawasaki-klx-110-2020",
+    "front_brake": "90mm mechanical drum, cable actuated",
+    "rear_brake": "110mm mechanical drum, rod actuated",
+    "abs_type": null,
+    "front_tyre": "2.50x14",
+    "rear_tyre": "3.00x12",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-klx-110-2021",
+    "front_brake": "90mm mechanical drum, cable actuated",
+    "rear_brake": "110mm mechanical drum, rod actuated",
+    "abs_type": null,
+    "front_tyre": "2.50x14",
+    "rear_tyre": "3.00x12",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-klx-110-2022",
+    "front_brake": "90mm mechanical drum, cable actuated",
+    "rear_brake": "110mm mechanical drum, rod actuated",
+    "abs_type": null,
+    "front_tyre": "2.50x14",
+    "rear_tyre": "3.00x12",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-klx-110-2023",
+    "front_brake": "90mm mechanical drum, cable actuated",
+    "rear_brake": "110mm mechanical drum, rod actuated",
+    "abs_type": null,
+    "front_tyre": "2.50x14",
+    "rear_tyre": "3.00x12",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-klx-110-2024",
+    "front_brake": "90mm mechanical drum, cable actuated",
+    "rear_brake": "110mm mechanical drum, rod actuated",
+    "abs_type": null,
+    "front_tyre": "2.50x14",
+    "rear_tyre": "3.00x12",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-klx-110-2025",
+    "front_brake": "90mm mechanical drum, cable actuated",
+    "rear_brake": "110mm mechanical drum, rod actuated",
+    "abs_type": null,
+    "front_tyre": "2.50x14",
+    "rear_tyre": "3.00x12",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-klx-110r-2026",
+    "front_brake": "90mm mechanical drum, cable actuated",
+    "rear_brake": "110mm mechanical drum, rod actuated",
+    "abs_type": null,
+    "front_tyre": "2.50x14",
+    "rear_tyre": "3.00x12",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-klx-110r-2027",
+    "front_brake": "90mm mechanical drum, cable actuated",
+    "rear_brake": "110mm mechanical drum, rod actuated",
+    "abs_type": null,
+    "front_tyre": "2.50x14",
+    "rear_tyre": "3.00x12",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-klx140r-f-2027",
+    "front_brake": "Single 220mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 186mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "2.75x21",
+    "rear_tyre": "4.10x18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-klx-230-2021",
+    "front_brake": "Single 240mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "2.75x21",
+    "rear_tyre": "4.10x18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-klx-300r-2025",
+    "front_brake": "Single 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "3.0x21",
+    "rear_tyre": "4.6x18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-klx-300r-2026",
+    "front_brake": "Single 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "3.0x21",
+    "rear_tyre": "4.6x18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-klx-450r-2015",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-klx-450r-2017",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-klx-450r-2018",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-klx-450r-2019",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-klx-450r-2020",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-klx-450r-2021",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-klx-450r-2022",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-klx-450r-2023",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-klx-450r-2024",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/90-18",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-125-2001",
+    "front_brake": "Single semi-floating 250mm disc, dual-piston caliper",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-125-2002",
+    "front_brake": "Single semi-floating 250mm disc, dual-piston caliper",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-125-2003",
+    "front_brake": "Single semi-floating 250mm disc, dual-piston caliper",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-250-f-2011",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-250-f-2012",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-250-f-2013",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-250-f-2014",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-250-f-2015",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-250-f-2016",
+    "front_brake": "Single semi-floating 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-250-f-2021",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-250-f-2022",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-250-f-2023",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-250-f-2024",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-250-f-2025",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-250-f-2026",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "100/90-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-x-2021",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/100-18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-x-2022",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/100-18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-x-2023",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/100-18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-x-2024",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/100-18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-x-2025",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/100-18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-250-x-2026",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "110/100-18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2010",
+    "front_brake": "Single rigid-mounted 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2011",
+    "front_brake": "Single rigid-mounted 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2012",
+    "front_brake": "Single rigid-mounted 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2013",
+    "front_brake": "Single rigid-mounted 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2014",
+    "front_brake": "Single rigid-mounted 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2015",
+    "front_brake": "Single rigid-mounted 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2016",
+    "front_brake": "Single rigid-mounted 250mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2019",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2020",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2021",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2022",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2023",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2024",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2025",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-f-2026",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-19",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-x-2021",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-x-2022",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-x-2023",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-x-2025",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-450-x-2026",
+    "front_brake": "Single semi-floating 270mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 240mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "80/100-21",
+    "rear_tyre": "120/80-18",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-kx-65-2010",
+    "front_brake": "Single 180mm disc, single-piston caliper",
+    "rear_brake": "Single 180mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "60/100-14",
+    "rear_tyre": "80/100-12",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-1000-2011",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-1000-2012",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-1000-2013",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-1000-2014",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-1000-2017",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-1000-2018",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-1000-2020",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-1000-tourer-2015",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-1000-tourer-2018",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-1000-tourer-2020",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-250r-2011",
+    "front_brake": "Single 290mm hydraulic disc",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "130/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-250r-2012",
+    "front_brake": "Single 290mm hydraulic disc",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "130/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-300-2013",
+    "front_brake": "Single 290mm petal disc",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "140/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-300-2014",
+    "front_brake": "Single 290mm petal disc",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "140/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-300-2015",
+    "front_brake": "Single 290mm petal disc",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "140/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-300-2016",
+    "front_brake": "Single 290mm petal disc",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "140/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-300-2018",
+    "front_brake": "Single 290mm petal disc",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "140/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-300-2023",
+    "front_brake": "Single 290mm petal disc",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "140/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-300-2024",
+    "front_brake": "Single 290mm petal disc",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "140/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-300-2025",
+    "front_brake": "Single 290mm petal disc",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "140/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-300-2026",
+    "front_brake": "Single 290mm petal disc",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "140/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-400-2019",
+    "front_brake": "310mm semi-floating single disc",
+    "rear_brake": "220mm single disc",
+    "abs_type": null,
+    "front_tyre": "110/70x17",
+    "rear_tyre": "150/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-400-2020",
+    "front_brake": "310mm semi-floating single disc",
+    "rear_brake": "220mm single disc",
+    "abs_type": null,
+    "front_tyre": "110/70x17",
+    "rear_tyre": "150/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-400-2021",
+    "front_brake": "310mm semi-floating single disc",
+    "rear_brake": "220mm single disc",
+    "abs_type": null,
+    "front_tyre": "110/70x17",
+    "rear_tyre": "150/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-400-2022",
+    "front_brake": "310mm semi-floating single disc",
+    "rear_brake": "220mm single disc",
+    "abs_type": null,
+    "front_tyre": "110/70x17",
+    "rear_tyre": "150/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-400-2023",
+    "front_brake": "310mm semi-floating single disc",
+    "rear_brake": "220mm single disc",
+    "abs_type": null,
+    "front_tyre": "110/70x17",
+    "rear_tyre": "150/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-500-2026",
+    "front_brake": "Single 310mm semi-floating disc, 2-piston calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "ABS standard",
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-500-se-2025",
+    "front_brake": "Single 310mm semi-floating disc, 2-piston calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "ABS standard",
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-500-se-2026",
+    "front_brake": "Single 310mm semi-floating disc, 2-piston calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "ABS standard",
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2011",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2012",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2013",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2014",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2016",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2017",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2018",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2020",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2021",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2022",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2024",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2025",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-650r-649cc-2026",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-h2-998cc-2016",
+    "front_brake": "Dual 330mm discs",
+    "rear_brake": "Single 250mm disc",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "200/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-h2-sx-se-998cc-2019",
+    "front_brake": "Dual 320mm semi-floating discs, 4-piston monobloc calipers, KIBS",
+    "rear_brake": "Single 250mm disc, opposed 2-piston caliper, KIBS",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-h2-sx-se-998cc-2020",
+    "front_brake": "Dual 320mm semi-floating discs, 4-piston monobloc calipers, KIBS",
+    "rear_brake": "Single 250mm disc, opposed 2-piston caliper, KIBS",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10rr-998cc-2018",
+    "front_brake": "Dual semi-floating 330mm discs, Brembo 4-piston monobloc calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10r-se-1000cc-2019",
+    "front_brake": "Dual semi-floating 330mm discs, Brembo 4-piston monobloc calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10r-se-1000cc-2020",
+    "front_brake": "Dual semi-floating 330mm discs, Brembo 4-piston monobloc calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2011",
+    "front_brake": "Dual 310mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "190/55-17",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2012",
+    "front_brake": "Dual 310mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "190/55-17",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2013",
+    "front_brake": "Dual 310mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "190/55-17",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2014",
+    "front_brake": "Dual 310mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "190/55-17",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2015",
+    "front_brake": "Dual 310mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 240mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "190/55-17",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2017",
+    "front_brake": "Dual semi-floating 330mm discs, Brembo 4-piston monobloc calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2018",
+    "front_brake": "Dual semi-floating 330mm discs, Brembo 4-piston monobloc calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2019",
+    "front_brake": "Dual semi-floating 330mm discs, Brembo 4-piston monobloc calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2020",
+    "front_brake": "Dual semi-floating 330mm discs, Brembo 4-piston monobloc calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2021",
+    "front_brake": "Dual semi-floating 330mm discs, Brembo 4-piston monobloc calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2022",
+    "front_brake": "Dual semi-floating 330mm discs, Brembo 4-piston monobloc calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2023",
+    "front_brake": "Dual semi-floating 330mm discs, Brembo 4-piston monobloc calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2024",
+    "front_brake": "Dual semi-floating 330mm discs, Brembo 4-piston monobloc calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-10-zx-10r-1000cc-30th-aniv-2025",
+    "front_brake": "Dual semi-floating 330mm discs, Brembo 4-piston monobloc calipers",
+    "rear_brake": "Single 220mm disc, single-piston caliper",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-4r-2024",
+    "front_brake": "Dual 290mm semi-floating discs, radial-mount 4-piston monobloc calipers, ABS",
+    "rear_brake": "Single 220mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-4rr-2026",
+    "front_brake": "Dual 290mm semi-floating discs, radial-mount 4-piston monobloc calipers, ABS",
+    "rear_brake": "Single 220mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-600cc-2011",
+    "front_brake": "Dual 300mm petal discs, radial-mounted 4-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-ZR17",
+    "rear_tyre": "180/55-ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-600cc-2012",
+    "front_brake": "Dual 300mm petal discs, radial-mounted 4-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-ZR17",
+    "rear_tyre": "180/55-ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-600cc-2013",
+    "front_brake": "Dual 300mm petal discs, radial-mounted 4-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-ZR17",
+    "rear_tyre": "180/55-ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-636cc-2013",
+    "front_brake": "Dual semi-floating 310mm petal discs",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "120/70-ZR17",
+    "rear_tyre": "180/55-ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-636cc-2014",
+    "front_brake": "Dual semi-floating 310mm petal discs",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "120/70-ZR17",
+    "rear_tyre": "180/55-ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-636cc-2015",
+    "front_brake": "Dual semi-floating 310mm petal discs",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "120/70-ZR17",
+    "rear_tyre": "180/55-ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-636cc-2016",
+    "front_brake": "Dual semi-floating 310mm petal discs",
+    "rear_brake": "Single 220mm petal disc",
+    "abs_type": null,
+    "front_tyre": "120/70-ZR17",
+    "rear_tyre": "180/55-ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-636cc-2020",
+    "front_brake": "Dual 310mm petal discs, Nissin 4-piston monobloc calipers, KIBS",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper, KIBS",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70 ZR17",
+    "rear_tyre": "180/55 ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-636cc-2021",
+    "front_brake": "Dual 310mm petal discs, Nissin 4-piston monobloc calipers, KIBS",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper, KIBS",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70 ZR17",
+    "rear_tyre": "180/55 ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-636cc-2022",
+    "front_brake": "Dual 310mm petal discs, Nissin 4-piston monobloc calipers, KIBS",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper, KIBS",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70 ZR17",
+    "rear_tyre": "180/55 ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-636cc-2023",
+    "front_brake": "Dual 310mm petal discs, Nissin 4-piston monobloc calipers, KIBS",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper, KIBS",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70 ZR17",
+    "rear_tyre": "180/55 ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-636cc-2024",
+    "front_brake": "Dual 310mm petal discs, Nissin 4-piston monobloc calipers, KIBS",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper, KIBS",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70 ZR17",
+    "rear_tyre": "180/55 ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-636cc-2025",
+    "front_brake": "Dual 310mm petal discs, Nissin 4-piston monobloc calipers, KIBS",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper, KIBS",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70 ZR17",
+    "rear_tyre": "180/55 ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-ninja-zx-6r-636cc-2026",
+    "front_brake": "Dual 310mm petal discs, Nissin 4-piston monobloc calipers, KIBS",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper, KIBS",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70 ZR17",
+    "rear_tyre": "180/55 ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-2012",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-2013",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-2015",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-2016",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-2017",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-2018",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-2019",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-2020",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-2021",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-2022",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-2023",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-grand-tourer-2013",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-grand-tourer-2015",
+    "front_brake": "Dual semi-floating 300mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-grand-tourer-2016",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-grand-tourer-2017",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-grand-tourer-2018",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-grand-tourer-2019",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-grand-tourer-2020",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-grand-tourer-2021",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-grand-tourer-2022",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-grand-tourer-2023",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1000-grand-tourer-2024",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-1100-grand-tourer-2026",
+    "front_brake": "Dual 310mm petal discs, radial-mount 4-piston monobloc calipers, KIBS",
+    "rear_brake": "Single 260mm petal disc, single-piston caliper, KIBS",
+    "abs_type": "KIBS (Kawasaki Intelligent ABS), standard",
+    "front_tyre": "120/70-17",
+    "rear_tyre": "180/55-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2011",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2012",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2013",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2015",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2016",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2017",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2018",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2019",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2020",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2021",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2022",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2023",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2024",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2025",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-650cc-2026",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-city-650-2012",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2011",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2012",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2013",
+    "front_brake": "Dual 300mm petal discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2016",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2017",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2018",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2019",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2020",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2021",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2022",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2023",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2024",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2025",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-tourer-650-2026",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-2018",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-2020",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-2022",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-2023",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-2024",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-2025",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-2026",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-tourer-2017",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-tourer-2018",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-tourer-2020",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-tourer-2021",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-tourer-2022",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-tourer-2023",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-tourer-2024",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-tourer-2025",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-versys-x-300-tourer-2026",
+    "front_brake": "Single 290mm disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vn-1500-mean-streak-2007",
+    "front_brake": "Dual 300mm discs, 2-piston calipers",
+    "rear_brake": "Single 300mm disc, 2-piston caliper",
+    "abs_type": null,
+    "front_tyre": "130/90R17",
+    "rear_tyre": "170/60R17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vn-1600-classic-2007",
+    "front_brake": "Dual 300mm discs, 2-piston calipers",
+    "rear_brake": "Single 300mm disc, 2-piston caliper",
+    "abs_type": null,
+    "front_tyre": "130/90-16",
+    "rear_tyre": "170/70-16",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vn-1600-classic-tourer-2007",
+    "front_brake": "Dual 300mm discs, 2-piston calipers",
+    "rear_brake": "Single 300mm disc, 2-piston caliper",
+    "abs_type": null,
+    "front_tyre": "150/80-16",
+    "rear_tyre": "200/60-16",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vn-2000-2008",
+    "front_brake": "Dual 300mm discs, 4-piston calipers",
+    "rear_brake": "Single 320mm disc, 2-piston caliper",
+    "abs_type": null,
+    "front_tyre": "150/80-16",
+    "rear_tyre": "200/60-16",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vn-2000-classic-2010",
+    "front_brake": "Dual 300mm discs, 4-piston calipers",
+    "rear_brake": "Single 320mm disc, 2-piston caliper",
+    "abs_type": null,
+    "front_tyre": "150/80-16",
+    "rear_tyre": "200/60-16",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-900-classic-lt-2011",
+    "front_brake": "Single 300mm disc, hydraulic caliper",
+    "rear_brake": "Single 270mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "130/90-16",
+    "rear_tyre": "180/70-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-900-classic-lt-2012",
+    "front_brake": "Single 300mm disc, hydraulic caliper",
+    "rear_brake": "Single 270mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "130/90-16",
+    "rear_tyre": "180/70-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-900-classic-lt-2013",
+    "front_brake": "Single 300mm disc, hydraulic caliper",
+    "rear_brake": "Single 270mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "130/90-16",
+    "rear_tyre": "180/70-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-900-classic-lt-2015",
+    "front_brake": "Single 300mm disc, hydraulic caliper",
+    "rear_brake": "Single 270mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "130/90-16",
+    "rear_tyre": "180/70-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-900-custom-2011",
+    "front_brake": "Single 300mm disc",
+    "rear_brake": "Single 270mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/90-21",
+    "rear_tyre": "180/70-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-900-custom-2012",
+    "front_brake": "Single 300mm disc",
+    "rear_brake": "Single 270mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/90-21",
+    "rear_tyre": "180/70-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-900-custom-2013",
+    "front_brake": "Single 300mm disc",
+    "rear_brake": "Single 270mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/90-21",
+    "rear_tyre": "180/70-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-900-custom-2015",
+    "front_brake": "Single 300mm disc",
+    "rear_brake": "Single 270mm disc, hydraulic caliper",
+    "abs_type": null,
+    "front_tyre": "80/90-21",
+    "rear_tyre": "180/70-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-2015",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-2016",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-2017",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-2018",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-2019",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-2020",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-2021",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-2022",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-2023",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-2024",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-2025",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-2026",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-cafe-2018",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-cafe-2019",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-cafe-2020",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-cafe-2021",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-cafe-2022",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-cafe-2023",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-cafe-2025",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-cafe-2026",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-special-edition-2017",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-special-edition-2018",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-special-edition-2023",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-s-650-special-edition-2025",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 250mm disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70x18",
+    "rear_tyre": "160/60x17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-vn-900-classic-2011",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 270mm disc, twin-piston caliper",
+    "abs_type": null,
+    "front_tyre": "130/90-16",
+    "rear_tyre": "180/70-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-vn-900-classic-2012",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 270mm disc, twin-piston caliper",
+    "abs_type": null,
+    "front_tyre": "130/90-16",
+    "rear_tyre": "180/70-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-vn-900-classic-2013",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 270mm disc, twin-piston caliper",
+    "abs_type": null,
+    "front_tyre": "130/90-16",
+    "rear_tyre": "180/70-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-vulcan-vn-900-classic-2015",
+    "front_brake": "Single 300mm disc, twin-piston caliper",
+    "rear_brake": "Single 270mm disc, twin-piston caliper",
+    "abs_type": null,
+    "front_tyre": "130/90-16",
+    "rear_tyre": "180/70-15",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-w-650-2006",
+    "front_brake": "Single 300mm disc",
+    "rear_brake": "Drum",
+    "abs_type": null,
+    "front_tyre": "100/90-19",
+    "rear_tyre": "130/80-18",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2011",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2012",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2013",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2015",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2016",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2017",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2018",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2020",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2021",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2022",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2023",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2024",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-2025",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-r-edition-2018",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-r-edition-2020",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-r-edition-2021",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-r-edition-2022",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-r-edition-2023",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-r-edition-2024",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-1000-r-edition-2025",
+    "front_brake": "Dual 300mm petal discs, 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-300-2015",
+    "front_brake": "Single 290mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 220mm petal disc, dual-piston caliper",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "140/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-300-2016",
+    "front_brake": "Single 290mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 220mm petal disc, dual-piston caliper",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "140/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-300-2018",
+    "front_brake": "Single 290mm petal disc, dual-piston caliper",
+    "rear_brake": "Single 220mm petal disc, dual-piston caliper",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "140/70-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-400-2019",
+    "front_brake": "Single 310mm semi-floating disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-400-2020",
+    "front_brake": "Single 310mm semi-floating disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-400-2021",
+    "front_brake": "Single 310mm semi-floating disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-400-2022",
+    "front_brake": "Single 310mm semi-floating disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-400-2023",
+    "front_brake": "Single 310mm semi-floating disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-400-se-2023",
+    "front_brake": "Single 310mm semi-floating disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-400-se-2024",
+    "front_brake": "Single 310mm semi-floating disc",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-500-2026",
+    "front_brake": "Single semi-floating 310mm disc, balanced dual-piston caliper",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-500-se-2025",
+    "front_brake": "Single semi-floating 310mm disc, balanced dual-piston caliper",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-500-se-2026",
+    "front_brake": "Single semi-floating 310mm disc, balanced dual-piston caliper",
+    "rear_brake": "Single 220mm disc",
+    "abs_type": null,
+    "front_tyre": "110/70-17",
+    "rear_tyre": "150/60-17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-650-2018",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal-style disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-650-2020",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal-style disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-650-2021",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal-style disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-650-2024",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal-style disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-650-2025",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal-style disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-650-2026",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal-style disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-650-rs-2023",
+    "front_brake": "Dual 300mm petal discs, 2-piston hydraulic calipers",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-650-rs-2025",
+    "front_brake": "Dual 300mm petal discs, 2-piston hydraulic calipers",
+    "rear_brake": "Single 220mm disc, hydraulic caliper",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70-17",
+    "rear_tyre": "160/60-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-650-se-abs-2021",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal-style disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-650-se-abs-2022",
+    "front_brake": "Dual 300mm petal-style discs, 2-piston calipers",
+    "rear_brake": "Single 220mm petal-style disc",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "160/60ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-750-2011",
+    "front_brake": "Dual 300mm petal discs, twin-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-750-2012",
+    "front_brake": "Dual 300mm petal discs, twin-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-750s-2006",
+    "front_brake": "Dual 300mm discs, 2-piston calipers",
+    "rear_brake": "Floating 220mm disc, 1-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "180/55-17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-800-2013",
+    "front_brake": "Dual semi-floating 310mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-800-2014",
+    "front_brake": "Dual semi-floating 310mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-800-2016",
+    "front_brake": "Dual semi-floating 310mm petal discs, opposed 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, single-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-2018",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-2019",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-2020",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-2021",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-2022",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-2023",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-2025",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-2026",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-50th-anniversary-2022",
+    "front_brake": "Dual 300mm petal-style discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm petal-style disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-r-edition-2022",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-r-edition-2023",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-r-edition-2025",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-r-edition-2026",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-2019",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-2020",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-2022",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-2023",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-2024",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-cafe-2019",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-cafe-2020",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-cafe-2023",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-cafe-2024",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-cafe-2025",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-r-edition-2022",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-r-edition-2023",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-r-edition-2024",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-rs-r-edition-2025",
+    "front_brake": "Dual 300mm discs, 4-piston calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-z-900-se-2021",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston Brembo calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-z-900-se-2026",
+    "front_brake": "Dual 300mm semi-floating discs, 4-piston Brembo calipers, ABS",
+    "rear_brake": "Single 250mm disc, single-piston caliper, ABS",
+    "abs_type": "ABS standard",
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "180/55ZR17",
+    "source": "kawasaki.com"
+  },
+  {
+    "slug": "kawasaki-zrx-1200-r-2006",
+    "front_brake": "Dual 310mm discs, 6-piston calipers",
+    "rear_brake": "Single 250mm disc",
+    "abs_type": null,
+    "front_tyre": "120/70-17",
+    "rear_tyre": "180/55-17",
+    "source": "motorcyclenews.com"
+  },
+  {
+    "slug": "kawasaki-zx-14-zx-14r-1352cc-2011",
+    "front_brake": "Dual semi-floating 310mm petal discs, radial-mount 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, twin-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-zx-14-zx-14r-1352cc-2013",
+    "front_brake": "Dual semi-floating 310mm petal discs, radial-mount 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, twin-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-zx-14-zx-14r-1352cc-2014",
+    "front_brake": "Dual semi-floating 310mm petal discs, radial-mount 4-piston calipers",
+    "rear_brake": "Single 250mm petal disc, twin-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70ZR17",
+    "rear_tyre": "190/50ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-zzr-1200-2007",
+    "front_brake": "Dual 320mm discs, 4-piston calipers",
+    "rear_brake": "Single 250mm disc, 1-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/70-ZR17",
+    "rear_tyre": "180/55-ZR17",
+    "source": "autoevolution.com"
+  },
+  {
+    "slug": "kawasaki-zzr-600-2005",
+    "front_brake": "Dual 310mm discs, 4-piston calipers",
+    "rear_brake": "Floating 250mm disc, 2-piston caliper",
+    "abs_type": null,
+    "front_tyre": "120/65-17",
+    "rear_tyre": "180/55-17",
+    "source": "autoevolution.com"
+  }
+]
