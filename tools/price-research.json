@@ -570,6 +570,16 @@
     "source": "insella.it/listino_moto/fantic_motor-enduro_xe/xef_racing (listino 2026)"
   },
   {
+    "slug": "fb-mondial-mud-452-2026",
+    "price_eur": 6390,
+    "source": "dueruote.it/news F.B. Mondial: ecco i prezzi delle moto per il 2026 (Mud 452, listino 2026, franco concessionario)"
+  },
+  {
+    "slug": "fb-mondial-piega-452-2026",
+    "price_eur": 5990,
+    "source": "dueruote.it/news F.B. Mondial: ecco i prezzi delle moto per il 2026 (Piega 452, listino 2026, franco concessionario)"
+  },
+  {
     "slug": "fb-mondial-smx-enduro-125-2026",
     "price_eur": 3490,
     "source": "moto.it/listino FB Mondial SMX 125 Enduro (listino 2025-26)"
@@ -1235,9 +1245,44 @@
     "source": "moto.it/listino LiveWire S2 Mulholland (listino 2025-26)"
   },
   {
+    "slug": "macbor-eight-mile-2022",
+    "price_eur": 2599,
+    "source": "motofichas.com/marcas/macbor/eight-mile — Macbor Eight Mile 2022-2023, ultima tarifa ano 2022"
+  },
+  {
+    "slug": "macbor-eight-mile-500-scrambler-2022",
+    "price_eur": 6199,
+    "source": "motofichas.com/marcas/macbor/eight-mile-500 — Macbor Eight Mile 500 Street/Scrambler 2022-2024, Scrambler trim, ultima tarifa ano 2022"
+  },
+  {
+    "slug": "macbor-eight-mile-500-street-2022",
+    "price_eur": 4999,
+    "source": "motofichas.com/marcas/macbor/eight-mile-500 — Macbor Eight Mile 500 Street/Scrambler 2022-2024, Street trim, ultima tarifa ano 2022"
+  },
+  {
+    "slug": "macbor-johnny-be-good-2022",
+    "price_eur": 2599,
+    "source": "motofichas.com/marcas/macbor/johnny-be-good — Macbor Johnny Be Good 125 2022-2024, ultima tarifa ano 2022"
+  },
+  {
+    "slug": "macbor-lord-martin-2022",
+    "price_eur": 2499,
+    "source": "motofichas.com/marcas/macbor/lord-martin — Macbor Lord Martin 125 2022-2024, ultima tarifa ano 2022"
+  },
+  {
     "slug": "macbor-montana-xr5-500-2022",
     "price_eur": 6199,
     "source": "motoplanete.com/macbor/XR5-500-Montana-2022 (tarif Espagne 2022)"
+  },
+  {
+    "slug": "macbor-rockster-2022",
+    "price_eur": 2699,
+    "source": "motofichas.com/marcas/macbor/rockster-2021 — Macbor Rockster/Flat 2021-2022, ultima tarifa ano 2021, shared price with Rockster Flat trim, verified 2021-2022 page"
+  },
+  {
+    "slug": "macbor-rockster-flat-2022",
+    "price_eur": 2699,
+    "source": "motofichas.com/marcas/macbor/rockster-2021 — Macbor Rockster/Flat 2021-2022, ultima tarifa ano 2021, shared price with Rockster trim, verified 2021-2022 page"
   },
   {
     "slug": "malaguti-madison-125-2026",
@@ -1980,6 +2025,16 @@
     "source": "moto.it/listino QJ Motor COV 125 X (listino 2026)"
   },
   {
+    "slug": "qj-motor-fort-4-0-2026",
+    "price_eur": 5390,
+    "source": "qjmotoritaly.com product page (FORT 4.0, prezzo al pubblico listino, IVA inclusa, franco concessionario)"
+  },
+  {
+    "slug": "qj-motor-srk-800-2026",
+    "price_eur": 8790,
+    "source": "qjmotoritaly.com product page (SRK 800, prezzo al pubblico listino, IVA inclusa, franco concessionario)"
+  },
+  {
     "slug": "qj-motor-srt-450-rx-2026",
     "price_eur": 5790,
     "source": "dueruote.it/listino QJ Motor SRT 450 RX (listino 01/03/2026, MY2026, franco concessionario)"
@@ -1993,6 +2048,16 @@
     "slug": "qj-motor-srv-550-2024",
     "price_eur": 5990,
     "source": "moto.it/listino QJ Motor SRV 550 (listino 2024, discontinued 2024)"
+  },
+  {
+    "slug": "qj-motor-srv-600v-2026",
+    "price_eur": 7190,
+    "source": "qjmotoritaly.com product page (SRV 600 V, prezzo al pubblico listino, IVA inclusa, franco concessionario)"
+  },
+  {
+    "slug": "qj-motor-svt-650-x-2026",
+    "price_eur": 6990,
+    "source": "qjmotoritaly.com product page (SVT 650 X, prezzo al pubblico listino, IVA inclusa, franco concessionario)"
   },
   {
     "slug": "rieju-aventura-500-2026",
@@ -2078,6 +2143,16 @@
     "slug": "rieju-tango-125i-2026",
     "price_eur": 3840,
     "source": "moto.it/listino Rieju Tango 125I (listino 2020-26)"
+  },
+  {
+    "slug": "rieju-tango-50-2018",
+    "price_eur": 2599,
+    "source": "motofichas.com/marcas/rieju/tango-50-2018 — Rieju Tango 50 2018, ultima tarifa ano 2018"
+  },
+  {
+    "slug": "rieju-urban-blast-50-2018",
+    "price_eur": 2152,
+    "source": "motofichas.com/marcas/rieju/blast-urban-50-2018 — Rieju Blast Urban 50 2018, ultima tarifa ano 2018"
   },
   {
     "slug": "rieju-xplora-557-2025",
@@ -2310,6 +2385,11 @@
     "source": "insella.it/listino_moto/swm-c-fly 125 (listino 2026)"
   },
   {
+    "slug": "swm-gran-turismo-650-2026",
+    "price_eur": 4490,
+    "source": "swm-motorcycles.it product page (Gran Turismo 650 Blu, Prezzo in Italia, IVA inclusa)"
+  },
+  {
     "slug": "swm-hoku-125-2026",
     "price_eur": 2790,
     "source": "moto.it/listino Swm Hoku 125 (listino 2026)"
@@ -2358,6 +2438,16 @@
     "slug": "swm-stormbreaker-v-1200-2026",
     "price_eur": 9990,
     "source": "dueruote.it/listino SWM Stormbreaker V1200 (listino 04/03/2026, MY2026, franco fabbrica)"
+  },
+  {
+    "slug": "swm-superdual-t-2026",
+    "price_eur": 5990,
+    "source": "swm-motorcycles.it product page (Superdual T, Prezzo in Italia, IVA inclusa)"
+  },
+  {
+    "slug": "swm-superdual-x-2026",
+    "price_eur": 5990,
+    "source": "swm-motorcycles.it product page (Superdual X, Prezzo in Italia, IVA inclusa)"
   },
   {
     "slug": "swm-venturo-125-2026",
@@ -2690,9 +2780,34 @@
     "source": "insella.it/fuori-listino-moto/voge-valico-650 (listino 2024, discontinued 2024)"
   },
   {
+    "slug": "voge-ds625x-2026",
+    "price_eur": 5990,
+    "source": "vogeitaly.it/wp-content/uploads/VOGE-Listino-Pubblico.pdf (Valico 625DSX, listino pubblico Italia valido dal 01/09/2026, IVA inclusa, franco concessionario)"
+  },
+  {
     "slug": "voge-r625-2026",
     "price_eur": 4869,
     "source": "motorradonline.de/marken-modelle/voge/625/technische-daten Voge R625 (Modelljahr 2026, Preis 4.869 EUR)"
+  },
+  {
+    "slug": "voge-sr1-125-abs-tcs-2026",
+    "price_eur": 2690,
+    "source": "vogeitaly.it/wp-content/uploads/VOGE-Listino-Pubblico.pdf (Sfida SR1 125, listino pubblico Italia valido dal 01/09/2026, IVA inclusa, franco concessionario)"
+  },
+  {
+    "slug": "voge-sr16-125-abs-tcs-2026",
+    "price_eur": 2790,
+    "source": "vogeitaly.it/wp-content/uploads/VOGE-Listino-Pubblico.pdf (Sfida SR16 125, listino pubblico Italia valido dal 01/09/2026, IVA inclusa, franco concessionario)"
+  },
+  {
+    "slug": "voge-sr3-2026",
+    "price_eur": 3990,
+    "source": "vogeitaly.it/wp-content/uploads/VOGE-Listino-Pubblico.pdf (Sfida SR3 300, listino pubblico Italia valido dal 01/09/2026, IVA inclusa, franco concessionario)"
+  },
+  {
+    "slug": "voge-sr450x-2026",
+    "price_eur": 6490,
+    "source": "vogeitaly.it/wp-content/uploads/VOGE-Listino-Pubblico.pdf (Sfida SR450X, listino pubblico Italia valido dal 01/09/2026, IVA inclusa, franco concessionario)"
   },
   {
     "slug": "yamaha-dt-125-re-2005",

@@ -68,6 +68,7 @@ const STRONG_SOURCES = [
 const AGGREGATOR_SOURCES = [
     /\binsella\.it\b/i, /\bmotorbox\.com\b/i, /\bdueruote\.it\b/i, /\binmoto\.it\b/i, /\bmoto\.it\b/i,
     /\bomnimoto\.it\b/i, /\bmotoplanete\.com\b/i, /\bmoto-station\.com\b/i, /\bmotoblouz\.com\b/i,
+    /\bmotofichas\.com\b/i, /\bmotorbikemag\.es\b/i,
 ];
 
 // A tariff that says "from" prices a trim this row is not. The spec rejects the figure outright, so
