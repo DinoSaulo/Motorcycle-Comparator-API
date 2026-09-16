@@ -111,6 +111,20 @@ for (const entry of research) {
     if (isClassifieds(source)) fail(`slug "${slug}" cites a second-hand listing site: ${JSON.stringify(source)}`);
     if (AMBIGUOUS.test(source)) fail(`slug "${slug}" source records an open-ended or approximate figure: ${JSON.stringify(source)}`);
 
+    // largus.fr carries forward the last recorded tariff under later millesimes. The 'relevé' (tariff date)
+    // must be within the model year or the year before, otherwise the price is stale. Extract both and check the gap.
+    if (/largus\.fr/i.test(source)) {
+        const millesime = yearOf(slug);
+        const releveMatch = source.match(/millesime\s+(\d{4}).*relevé\s+\d{2}\/\d{2}\/(\d{4})/i);
+        if (releveMatch) {
+            const releveYear = Number(releveMatch[2]);
+            const gap = Number(releveMatch[1]) - releveYear;
+            if (gap > 1) {
+                fail(`slug "${slug}" cites largus.fr with a tariff dated ${releveYear} (${gap} years before millesime ${releveMatch[1]}), which likely carries a stale price`);
+            }
+        }
+    }
+
     if (isStrong(source)) tiers.manufacturer++;
     else if (isAggregator(source)) tiers.aggregator++;
     else {

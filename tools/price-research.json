@@ -10,6 +10,11 @@
     "source": "moto.it/listino Aprilia RS4 125 (listino 2017-18, discontinued 2018)"
   },
   {
+    "slug": "aprilia-rsv4-x-ex3ma-2025",
+    "price_eur": 80000,
+    "source": "motoplanete.com/aprilia/1100-RSV4-X-ex3ma-2025 (tarif France 2025)"
+  },
+  {
     "slug": "aprilia-sportcity-50-one-4t-2011",
     "price_eur": 2130,
     "source": "insella.it/fuori-listino-moto/aprilia-sportcity (listino 2011, discontinued 2011)"
@@ -48,6 +53,16 @@
     "slug": "benelli-leoncino-800-2026",
     "price_eur": 7490,
     "source": "moto.it/listino Benelli Leoncino 800 (listino 2022-26)"
+  },
+  {
+    "slug": "benelli-leoncino-bobber-400-2026",
+    "price_eur": 5999,
+    "source": "motoplanete.com/benelli/Leoncino-Bobber-400-2026 (tarif France 2026)"
+  },
+  {
+    "slug": "benelli-tornado-550-2026",
+    "price_eur": 6490,
+    "source": "moto.it/listino Benelli Tornado 550 (listino 2025-26)"
   },
   {
     "slug": "benelli-tornado-900-tre-2005",
@@ -100,9 +115,49 @@
     "source": "insella.it/fuori-listino-moto/betamotor-enduro (listino 2024, discontinued 2024)"
   },
   {
+    "slug": "beta-rr-400-4t-2014",
+    "price_eur": 8790,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 400 RR (listino 2014, discontinued 2014)"
+  },
+  {
     "slug": "beta-rr-430-2024",
     "price_eur": 10090,
     "source": "insella.it/fuori-listino-moto/betamotor-enduro (listino 2024, discontinued 2024)"
+  },
+  {
+    "slug": "beta-rr-450-4t-2014",
+    "price_eur": 8790,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 450 RR (listino 2014, discontinued 2014)"
+  },
+  {
+    "slug": "beta-rr-480-4t-racing-2024",
+    "price_eur": 10750,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 480 RR Racing (listino 2024)"
+  },
+  {
+    "slug": "beta-rr-498-4t-2014",
+    "price_eur": 8840,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 498 RR (listino 2014, discontinued 2014)"
+  },
+  {
+    "slug": "beta-rr-4t-350-2024",
+    "price_eur": 10090,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 350 RR (listino 2024)"
+  },
+  {
+    "slug": "beta-rr-4t-390-2024",
+    "price_eur": 10090,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 390 RR (listino 2024)"
+  },
+  {
+    "slug": "beta-rr-4t-430-2024",
+    "price_eur": 10090,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 430 RR (listino 2024)"
+  },
+  {
+    "slug": "beta-rr-4t-480-2024",
+    "price_eur": 10090,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 480 RR (listino 2024)"
   },
   {
     "slug": "beta-rr-50-sport-2020",
@@ -110,14 +165,69 @@
     "source": "insella.it/fuori-listino-moto/betamotor-enduro (listino 2020, discontinued 2020)"
   },
   {
+    "slug": "beta-rr-enduro-4t-125-ac-2018",
+    "price_eur": 2970,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 125 RR AC (listino 2018)"
+  },
+  {
+    "slug": "beta-rr-enduro-50-standard-2017",
+    "price_eur": 2690,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 50 (listino 2017)"
+  },
+  {
+    "slug": "beta-rr-motard-2t-50-sport-2025",
+    "price_eur": 3640,
+    "source": "insella.it/listino_moto/betamotor-motard RR Motard 50 Sport (listino 2025)"
+  },
+  {
+    "slug": "beta-rr-motard-2t-50-x-special-edition-2025",
+    "price_eur": 3240,
+    "source": "insella.it/listino_moto/betamotor-motard RR Motard 50 X Special Edition (listino 2025)"
+  },
+  {
     "slug": "beta-rr-motard-400-4t-2011",
     "price_eur": 8550,
     "source": "moto.it/listino Betamotor RR 400 4T Motard (listino 2009-12, discontinued 2012)"
   },
   {
+    "slug": "beta-rr-race-2t-200-2026",
+    "price_eur": 9690,
+    "source": "dueruote.it/listino Beta RR Enduro 200 2T Race (listino 06/03/2026, MY2026, franco fabbrica; RR Race = RR Enduro Race)"
+  },
+  {
+    "slug": "beta-rr-race-2t-250-2026",
+    "price_eur": 10190,
+    "source": "dueruote.it/listino Beta RR Enduro 250 2T Race (listino 06/03/2026, MY2026, franco fabbrica; RR Race = RR Enduro Race)"
+  },
+  {
+    "slug": "beta-rr-race-4t-390-2026",
+    "price_eur": 10850,
+    "source": "dueruote.it/listino Beta RR Enduro 390 4T Race (listino 06/03/2026, MY2026, franco fabbrica; RR Race = RR Enduro Race)"
+  },
+  {
     "slug": "beta-rr-racing-2t-250-2024",
     "price_eur": 10090,
     "source": "insella.it/fuori-listino-moto/betamotor-enduro (listino 2024, discontinued 2024)"
+  },
+  {
+    "slug": "beta-rr-racing-4t-350-2024",
+    "price_eur": 10750,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 350 RR Racing (listino 2024)"
+  },
+  {
+    "slug": "beta-rr-racing-4t-390-2024",
+    "price_eur": 10750,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 390 RR Racing (listino 2024)"
+  },
+  {
+    "slug": "beta-rr-racing-4t-430-2024",
+    "price_eur": 10750,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 430 RR Racing (listino 2024)"
+  },
+  {
+    "slug": "beta-rr-racing-4t-480-2024",
+    "price_eur": 10750,
+    "source": "insella.it/fuori-listino-moto/betamotor-enduro 480 RR Racing (listino 2024)"
   },
   {
     "slug": "beta-rx-250-2t-2026",
@@ -165,6 +275,11 @@
     "source": "moto.it/listino Bimota Tesi 3D (listino 2014-17, discontinued 2017)"
   },
   {
+    "slug": "bimota-tesi-h2-tera-2026",
+    "price_eur": 39995,
+    "source": "motorradonline.de/marken-modelle/bimota/tesi-h2/technische-daten Bimota Tesi H2 Tera (Modelljahr 2026, Preis 39.995 EUR)"
+  },
+  {
     "slug": "bmw-g-450-x-2011",
     "price_eur": 8890,
     "source": "moto.it/listino Bmw G 450 X (listino 2010-12, discontinued 2012)"
@@ -180,9 +295,29 @@
     "source": "moto.it/listino Bmw R 12 S (listino 2025-26)"
   },
   {
+    "slug": "bmw-r-ninet-5-2020",
+    "price_eur": 15050,
+    "source": "motoplanete.com/bmw/1200-R-NineT-5-2020 (tarif France 2020)"
+  },
+  {
     "slug": "brixton-bx-125-haycroft-2019",
     "price_eur": 2999,
     "source": "moto.it/listino Brixton Motorcycles BX 125 Haycroft (listino 2019-20, discontinued 2020)"
+  },
+  {
+    "slug": "brixton-cromwell-1200-x-2026",
+    "price_eur": 10899,
+    "source": "motoplanete.com/brixton/Cromwell-1200-X-2026 (tarif France 2026)"
+  },
+  {
+    "slug": "bsa-bantam-350-2026",
+    "price_eur": 3999,
+    "source": "motoplanete.com/bsa/350-Bantam-2026 (tarif France 2026)"
+  },
+  {
+    "slug": "bsa-scrambler-650-2026",
+    "price_eur": 6799,
+    "source": "motoplanete.com/bsa/650-Scrambler-2026 (tarif France 2026)"
   },
   {
     "slug": "can-am-origin-2025",
@@ -233,6 +368,11 @@
     "slug": "ducati-1299-panigale-r-final-edition-2020",
     "price_eur": 39900,
     "source": "moto.it/listino Ducati 1299 Panigale R Final Edition (listino 2017-20, discontinued 2020)"
+  },
+  {
+    "slug": "ducati-1299-superleggera-2017",
+    "price_eur": 80250,
+    "source": "moto.it/listino Ducati Superleggera 1299 (listino 2017)"
   },
   {
     "slug": "ducati-749-2005",
@@ -290,9 +430,24 @@
     "source": "insella.it/fuori-listino-moto/ducati-diavel (listino 2015, discontinued 2015)"
   },
   {
+    "slug": "ducati-formula-73-2026",
+    "price_eur": 16000,
+    "source": "dueruote.it/listino Ducati Formula '73 (listino 01/10/2025, MY2026, franco concessionario)"
+  },
+  {
     "slug": "ducati-hypermotard-698-mono-nera-2026",
     "price_eur": 13990,
     "source": "moto.it/listino Ducati Hypermotard 698 Mono Nera (listino 2026)"
+  },
+  {
+    "slug": "ducati-monster-30-anniversario-2025",
+    "price_eur": 18990,
+    "source": "largus.fr/fiche-technique Ducati Monster 937 30° Anniversario (millesime 2025, tarif France releve 01/01/2024)"
+  },
+  {
+    "slug": "ducati-monster-senna-2025",
+    "price_eur": 25000,
+    "source": "largus.fr/fiche-technique Ducati Monster 937 Senna (millesime 2025, tarif France releve 01/01/2024)"
   },
   {
     "slug": "ducati-multistrada-1100-2009",
@@ -305,9 +460,24 @@
     "source": "moto.it/listino Ducati Multistrada 1100 S (listino 2006-09, discontinued 2009)"
   },
   {
+    "slug": "ducati-multistrada-1260-enduro-2021",
+    "price_eur": 21990,
+    "source": "motoplanete.com/ducati/1260-Multistrada-Enduro-2021 (tarif France 2021)"
+  },
+  {
     "slug": "ducati-multistrada-620-2006",
     "price_eur": 8800,
     "source": "moto.it/listino Ducati Multistrada 620 (listino 2005-07, discontinued 2007)"
+  },
+  {
+    "slug": "ducati-panigale-r-2017",
+    "price_eur": 33255,
+    "source": "motoplanete.com/ducati/Panigale-R-2017 (tarif France 2017)"
+  },
+  {
+    "slug": "ducati-panigale-v2-superquadro-final-edition-2025",
+    "price_eur": 28000,
+    "source": "motoplanete.com/ducati/Panigale-V2-Superquadro-Final-Edition-2025 (tarif France 2025)"
   },
   {
     "slug": "ducati-panigale-v4-lamborghini-2026",
@@ -318,6 +488,11 @@
     "slug": "ducati-panigale-v4-sp2-30-anniversario-916-2024",
     "price_eur": 44000,
     "source": "insella.it/fuori-listino-moto/ducati-panigale-v4 (listino 2024, discontinued 2024)"
+  },
+  {
+    "slug": "ducati-scrambler-10-anniversario-rizoma-edition-2025",
+    "price_eur": 15000,
+    "source": "moto.it/listino Ducati Scrambler 800 10° Anniversario Rizoma Edition (listino 2025-26)"
   },
   {
     "slug": "ducati-scrambler-flat-track-pro-2016",
@@ -353,6 +528,11 @@
     "slug": "fantic-caballero-travel-700-2026",
     "price_eur": 9490,
     "source": "moto.it/listino Fantic Motor Caballero 700 Travel (listino 2025-26)"
+  },
+  {
+    "slug": "fantic-issimo-city-2026",
+    "price_eur": 2690,
+    "source": "insella.it/listino_moto/fantic_motor-issimo_city (listino 2026)"
   },
   {
     "slug": "fantic-scrambler-700-2025",
@@ -405,6 +585,11 @@
     "source": "moto.it/listino FB Mondial SMX 125 Motard (listino 2025-26)"
   },
   {
+    "slug": "fb-mondial-spartan-600-2026",
+    "price_eur": 6190,
+    "source": "dueruote.it/listino F.B. Mondial Spartan 600 (listino 01/11/2025, MY2026, franco concessionario)"
+  },
+  {
     "slug": "gas-gas-ec-200-2020",
     "price_eur": 8790,
     "source": "moto.it/listino GASGAS EC 200 (listino 2020, discontinued 2020)"
@@ -423,6 +608,11 @@
     "slug": "gas-gas-txt-125-pro-racing-2017",
     "price_eur": 6800,
     "source": "moto.it/listino GASGAS TXT 125 PRO Racing (listino 2017, discontinued 2017)"
+  },
+  {
+    "slug": "gas-gas-txt-250-contact-2017",
+    "price_eur": 5690,
+    "source": "largus.fr/fiche-technique GAS GAS TXT 250 Contact 2017 (millesime 2017, tarif France releve 08/12/2016)"
   },
   {
     "slug": "gas-gas-txt-250-pro-racing-2017",
@@ -450,6 +640,26 @@
     "source": "moto.it/listino GASGAS XC 300 (listino 2019-20, discontinued 2020)"
   },
   {
+    "slug": "harley-davidson-cvo-pan-america-2025",
+    "price_eur": 28550,
+    "source": "largus.fr/fiche-technique Harley-Davidson CVO Pan America 1250 (millesime 2025, tarif France releve 24/01/2024)"
+  },
+  {
+    "slug": "harley-davidson-cvo-street-glide-st-flhxse-2026",
+    "price_eur": 50000,
+    "source": "dueruote.it/listino Harley-Davidson Street Glide C.V.O. ST (listino 15/01/2026, MY2026, franco concessionario; C.V.O. = CVO)"
+  },
+  {
+    "slug": "harley-davidson-hydra-glide-revival-2024",
+    "price_eur": 34950,
+    "source": "largus.fr/fiche-technique Harley-Davidson Hydra-Glide Revival 1868 (millesime 2024, tarif France releve 24/01/2024)"
+  },
+  {
+    "slug": "harley-davidson-pan-america-1250-limited-2026",
+    "price_eur": 27500,
+    "source": "dueruote.it/listino Harley-Davidson Pan America 1250 Limited (listino 15/01/2026, MY2026, franco concessionario)"
+  },
+  {
     "slug": "harley-davidson-sportster-s-2026",
     "price_eur": 16600,
     "source": "moto.it/listino Harley-Davidson Sportster S (listino 2025-26)"
@@ -458,6 +668,16 @@
     "slug": "harley-davidson-street-glide-limited-2026",
     "price_eur": 35900,
     "source": "moto.it/listino Harley-Davidson Street Glide Limited (listino 2026)"
+  },
+  {
+    "slug": "honda-crf-450-l-2019",
+    "price_eur": 10699,
+    "source": "motoplanete.com/honda/CRF-450-L-2019 (tarif France 2019)"
+  },
+  {
+    "slug": "horex-regina-evo-2023",
+    "price_eur": 33000,
+    "source": "motoplanete.com/horex/Regina-Evo-2023 (tarif France 2023)"
   },
   {
     "slug": "husqvarna-cr-125-2013",
@@ -515,6 +735,16 @@
     "source": "moto.it/listino Husqvarna TC 510 (listino 2009, discontinued 2009)"
   },
   {
+    "slug": "husqvarna-te-250-2026-2026",
+    "price_eur": 10990,
+    "source": "dueruote.it/listino Husqvarna TE 250 (listino 07/05/2026, MY2026, franco concessionario)"
+  },
+  {
+    "slug": "husqvarna-te-300-2026-2026",
+    "price_eur": 11869,
+    "source": "largus.fr/fiche-technique Husqvarna TE 300 2026 (millesime 2026, tarif France releve 01/09/2025)"
+  },
+  {
     "slug": "husqvarna-te-310-2013",
     "price_eur": 8780,
     "source": "moto.it/listino Husqvarna TE 310 (listino 2013, discontinued 2013)"
@@ -533,6 +763,11 @@
     "slug": "husqvarna-te-610-2009",
     "price_eur": 7482,
     "source": "moto.it/listino Husqvarna TE 610 (listino 2009, discontinued 2009)"
+  },
+  {
+    "slug": "husqvarna-tr-650-strada-2013",
+    "price_eur": 6690,
+    "source": "insella.it/fuori-listino-moto/husqvarna-tr 650 Strada ABS (listino 2013, discontinued 2013)"
   },
   {
     "slug": "husqvarna-tr-650-terra-2013",
@@ -560,6 +795,31 @@
     "source": "moto.it/listino Husqvarna WRE 125 (listino 2010-13, discontinued 2013)"
   },
   {
+    "slug": "indian-101-scout-2026",
+    "price_eur": 19490,
+    "source": "motorbox.com/moto/listino-nuovo Indian Scout - Scout 101 (listino nuovo MY2026, consultato 09/2026)"
+  },
+  {
+    "slug": "indian-challenger-dark-horse-2025",
+    "price_eur": 34390,
+    "source": "largus.fr/fiche-technique Indian Challenger 1768 Dark Horse 2025 (millesime 2025, tarif France releve 01/01/2025)"
+  },
+  {
+    "slug": "indian-challenger-dark-horse-with-112-package-2026",
+    "price_eur": 33990,
+    "source": "dueruote.it/listino Indian Challenger PowerPlus 112 Dark Horse (listino 15/01/2026, MY2026, franco concessionario; 112 Package = PowerPlus 112)"
+  },
+  {
+    "slug": "indian-challenger-limited-with-112-package-2026",
+    "price_eur": 32990,
+    "source": "dueruote.it/listino Indian Challenger PowerPlus 112 Limited (listino 15/01/2026, MY2026, franco concessionario; 112 Package = PowerPlus 112)"
+  },
+  {
+    "slug": "indian-chief-classic-2019",
+    "price_eur": 23100,
+    "source": "largus.fr/fiche-technique Indian Chief Classic 1811 2019 (millesime 2019, tarif France releve 01/01/2019)"
+  },
+  {
     "slug": "indian-chief-vintage-125th-anniversary-edition-2026",
     "price_eur": 24990,
     "source": "moto.it/listino Indian Chief Vintage 125th Anniversary Edition (listino 2026)"
@@ -570,9 +830,34 @@
     "source": "moto.it/listino Indian Chieftain Classic (listino 2017-20, discontinued 2020)"
   },
   {
+    "slug": "indian-chieftain-dark-horse-2024",
+    "price_eur": 32490,
+    "source": "motoplanete.com/indian/1890-Chieftain-Dark-Horse-2024 (tarif France 2024)"
+  },
+  {
     "slug": "indian-chieftain-elite-2021",
     "price_eur": 37990,
     "source": "insella.it/fuori-listino-moto/indian-motorcycle-chiefchieftain (listino 2021, discontinued 2021)"
+  },
+  {
+    "slug": "indian-chieftain-powerplus-dark-horse-with-112-package-2026",
+    "price_eur": 33990,
+    "source": "dueruote.it/listino Indian Chieftain PowerPlus 112 Dark Horse (listino 15/01/2026, MY2026, franco concessionario; 112 Package = PowerPlus 112)"
+  },
+  {
+    "slug": "indian-chieftain-powerplus-limited-with-112-package-2026",
+    "price_eur": 32990,
+    "source": "dueruote.it/listino Indian Chieftain PowerPlus 112 Limited (listino 15/01/2026, MY2026, franco concessionario; 112 Package = PowerPlus 112)"
+  },
+  {
+    "slug": "indian-ftr-carbon-2020",
+    "price_eur": 17990,
+    "source": "motoplanete.com/indian/FTR-1200-Carbon-2020 (tarif France 2020)"
+  },
+  {
+    "slug": "indian-ftr-rally-2024",
+    "price_eur": 17790,
+    "source": "insella.it/listino_moto/indian_motorcycle-ftr Rally (listino 2024)"
   },
   {
     "slug": "indian-ftr-s-2021",
@@ -580,14 +865,94 @@
     "source": "insella.it/fuori-listino-moto/indian-motorcycle-ftr (listino 2021, discontinued 2021)"
   },
   {
+    "slug": "indian-ftr-x-100-r-carbon-2024",
+    "price_eur": 21790,
+    "source": "insella.it/listino_moto/indian_motorcycle-ftr X 100% R Carbon (listino 2024)"
+  },
+  {
+    "slug": "indian-ftr-x-rsd-super-hooligan-2024",
+    "price_eur": 21490,
+    "source": "insella.it/listino_moto/indian_motorcycle-ftr X RSD Super Hooligan (listino 2024)"
+  },
+  {
+    "slug": "indian-pursuit-dark-horse-with-112-package-2026",
+    "price_eur": 37990,
+    "source": "dueruote.it/listino Indian Pursuit PowerPlus 112 Dark Horse (listino 15/01/2026, MY2026, franco concessionario; 112 Package = PowerPlus 112)"
+  },
+  {
+    "slug": "indian-pursuit-limited-with-112-package-2026",
+    "price_eur": 38490,
+    "source": "dueruote.it/listino Indian Pursuit PowerPlus 112 Limited (listino 15/01/2026, MY2026, franco concessionario; 112 Package = PowerPlus 112)"
+  },
+  {
     "slug": "indian-roadmaster-classic-2019",
     "price_eur": 30990,
     "source": "moto.it/listino Indian Roadmaster Classic (listino 2017-19, discontinued 2019)"
   },
   {
+    "slug": "indian-roadmaster-limited-2024",
+    "price_eur": 35290,
+    "source": "insella.it/listino_moto/indian_motorcycle-roadmaster Limited (listino 2024)"
+  },
+  {
+    "slug": "indian-roadmaster-powerplus-dark-horse-with-112-package-2026",
+    "price_eur": 36490,
+    "source": "dueruote.it/listino Indian Roadmaster PowerPlus 112 Dark Horse (listino 15/01/2026, MY2026, franco concessionario; 112 Package = PowerPlus 112)"
+  },
+  {
+    "slug": "indian-roadmaster-powerplus-limited-with-112-package-2026",
+    "price_eur": 36990,
+    "source": "dueruote.it/listino Indian Roadmaster PowerPlus 112 Limited (listino 15/01/2026, MY2026, franco concessionario; 112 Package = PowerPlus 112)"
+  },
+  {
     "slug": "indian-scout-sixty-2021",
     "price_eur": 12790,
     "source": "insella.it/fuori-listino-moto/indian-motorcycle-scout (listino 2021, discontinued 2021)"
+  },
+  {
+    "slug": "indian-scout-sixty-bobber-2026",
+    "price_eur": 12890,
+    "source": "motoplanete.com/indian/999-Scout-Sixty-Bobber-2026 (tarif France 2026)"
+  },
+  {
+    "slug": "indian-scout-sixty-classic-2026",
+    "price_eur": 13690,
+    "source": "motoplanete.com/indian/999-Scout-Sixty-Classic-2026 (tarif France 2026)"
+  },
+  {
+    "slug": "indian-sport-scout-rt-2026",
+    "price_eur": 18690,
+    "source": "motoplanete.com/indian/1250-Sport-Scout-RT-2026 (tarif France 2026)"
+  },
+  {
+    "slug": "indian-sport-scout-sixty-2026",
+    "price_eur": 14690,
+    "source": "motoplanete.com/indian/999-Sport-Scout-Sixty-2026 (tarif France 2026)"
+  },
+  {
+    "slug": "indian-springfield-dark-horse-2024",
+    "price_eur": 32790,
+    "source": "insella.it/listino_moto/indian_motorcycle-springfield Dark Horse (listino 2024)"
+  },
+  {
+    "slug": "indian-super-chief-dark-horse-2026",
+    "price_eur": 24990,
+    "source": "dueruote.it/listino Indian Super Chief Dark Horse (listino 15/01/2026, MY2026, franco concessionario)"
+  },
+  {
+    "slug": "indian-super-chief-limited-2026",
+    "price_eur": 24990,
+    "source": "dueruote.it/listino Indian Super Chief Limited (listino 15/01/2026, MY2026, franco concessionario)"
+  },
+  {
+    "slug": "indian-vintage-2021",
+    "price_eur": 28490,
+    "source": "insella.it/fuori-listino-moto/indian-motorcycle-chiefchieftain Chief Vintage (listino 2021)"
+  },
+  {
+    "slug": "indian-vintage-dark-horse-2021",
+    "price_eur": 27990,
+    "source": "insella.it/fuori-listino-moto/indian-motorcycle-chiefchieftain Chief Vintage Dark Horse (listino 2021)"
   },
   {
     "slug": "kawasaki-j125-2020",
@@ -603,6 +968,11 @@
     "slug": "kawasaki-kx250x-2026",
     "price_eur": 10140,
     "source": "moto.it/listino Kawasaki KX250X (listino 2026)"
+  },
+  {
+    "slug": "kawasaki-kx327-2027",
+    "price_eur": 9500,
+    "source": "motoplanete.com/kawasaki/KX-327-2027 (tarif France 2027)"
   },
   {
     "slug": "kawasaki-kx450x-2026",
@@ -623,6 +993,11 @@
     "slug": "kawasaki-ninja-h2-carbon-2020",
     "price_eur": 32700,
     "source": "insella.it/fuori-listino-moto/kawasaki-ninja-h2 (listino 2020, discontinued 2020)"
+  },
+  {
+    "slug": "kawasaki-ninja-h2-sx-se-2021",
+    "price_eur": 25195,
+    "source": "motorradonline.de/marken-modelle/kawasaki/ninja-h2/technische-daten Kawasaki Ninja H2 SX SE + (Modelljahr 2021, Preis 25.195 EUR)"
   },
   {
     "slug": "kawasaki-ninja-h2r-2026",
@@ -655,9 +1030,19 @@
     "source": "insella.it/fuori-listino-moto/kawasaki-vn (listino 2014, discontinued 2014)"
   },
   {
+    "slug": "kawasaki-vulcan-s-cafe-2019",
+    "price_eur": 8049,
+    "source": "motoplanete.com/kawasaki/650-VULCAN-S-Cafe-2019 (tarif France 2019)"
+  },
+  {
     "slug": "kawasaki-w800-cafe-2021",
     "price_eur": 10640,
     "source": "moto.it/listino Kawasaki W 800 Cafè (listino 2019-21, discontinued 2021)"
+  },
+  {
+    "slug": "kawasaki-w800-street-2021",
+    "price_eur": 9349,
+    "source": "motoplanete.com/kawasaki/W-800-Street-2021 (tarif France 2021)"
   },
   {
     "slug": "kawasaki-z1000-r-2020",
@@ -670,9 +1055,19 @@
     "source": "moto.it/listino Kawasaki Z 250 SL (listino 2015-16, discontinued 2016)"
   },
   {
+    "slug": "kawasaki-zzr-1400-performance-2017",
+    "price_eur": 18449,
+    "source": "motoplanete.com/kawasaki/1400-ZZR-Performance-2017 (tarif France 2017)"
+  },
+  {
     "slug": "kawasaki-zzr-1400-performance-sport-2017",
     "price_eur": 19790,
     "source": "insella.it/fuori-listino-moto/kawasaki-zzr (listino 2017, discontinued 2017)"
+  },
+  {
+    "slug": "keeway-f-act-50-evo-2018",
+    "price_eur": 1390,
+    "source": "insella.it/fuori-listino-moto/keeway-f-act 50 2T Evo (listino 2018)"
   },
   {
     "slug": "keeway-k-light-125-2024",
@@ -685,6 +1080,11 @@
     "source": "insella.it/fuori-listino-moto/keeway-logik (listino 2018, discontinued 2018)"
   },
   {
+    "slug": "keeway-outlook-125-2012",
+    "price_eur": 1897,
+    "source": "insella.it/fuori-listino-moto/keeway-outlook 125 4T (listino 2012, discontinued 2012)"
+  },
+  {
     "slug": "keeway-rkf-125-2025",
     "price_eur": 2990,
     "source": "moto.it/listino Keeway Motor RKF 125 (listino 2025-26)"
@@ -695,9 +1095,19 @@
     "source": "moto.it/listino KTM 1190 RC8 R Track (listino 2011-13, discontinued 2013)"
   },
   {
+    "slug": "ktm-1390-super-duke-rr-track-2026",
+    "price_eur": 39990,
+    "source": "dueruote.it/listino KTM 1390 Super Duke RR Track (listino 21/04/2026, MY2026, franco concessionario)"
+  },
+  {
     "slug": "ktm-150-exc-2025",
     "price_eur": 10750,
     "source": "moto.it/listino KTM 150 EXC (listino 2025, discontinued 2025)"
+  },
+  {
+    "slug": "ktm-150-xc-w-2019",
+    "price_eur": 7900,
+    "source": "motoplanete.com/ktm/150-XC-W-2019 (tarif France 2019)"
   },
   {
     "slug": "ktm-200-exc-2016",
@@ -760,6 +1170,21 @@
     "source": "insella.it/fuori-listino-moto/kymco-agility (listino 2021, discontinued 2021)"
   },
   {
+    "slug": "kymco-ak-575i-abs-premium-2026",
+    "price_eur": 11990,
+    "source": "dueruote.it/listino Kymco AK 575 Premium (listino 01/06/2026, MY2026, franco concessionario; ABS standard on AK 575)"
+  },
+  {
+    "slug": "kymco-ck1-125-2016",
+    "price_eur": 2199,
+    "source": "largus.fr/fiche-technique Kymco CK1 125 (millesime 2016, tarif France releve 01/02/2015)"
+  },
+  {
+    "slug": "kymco-like-50-4t-2016",
+    "price_eur": 1499,
+    "source": "largus.fr/fiche-technique Kymco Like 50 4T (millesime 2016, tarif France releve 01/02/2015)"
+  },
+  {
     "slug": "kymco-movie-125-2007",
     "price_eur": 2045,
     "source": "moto.it/listino Kymco Movie 125 (listino 2007-08, discontinued 2008)"
@@ -770,9 +1195,19 @@
     "source": "insella.it/fuori-listino-moto/kymco-visar (listino 2020, discontinued 2020)"
   },
   {
+    "slug": "kymco-x-town-st-250i-2026",
+    "price_eur": 4890,
+    "source": "insella.it/listino_moto/kymco-x-town_st 250 (listino 2026)"
+  },
+  {
     "slug": "kymco-xciting-500i-2011",
     "price_eur": 5399,
     "source": "moto.it/listino Kymco Xciting 500 i (listino 2007-11, discontinued 2011)"
+  },
+  {
+    "slug": "lambretta-g-special-350-series-ii-2026",
+    "price_eur": 7299,
+    "source": "motorradonline.de/marken-modelle/lambretta/g-special/technische-daten Lambretta G-Special 350 Series II (Modelljahr 2026, Preis 7.299 EUR)"
   },
   {
     "slug": "lambretta-v125-special-pirelli-edition-2020",
@@ -800,6 +1235,11 @@
     "source": "moto.it/listino LiveWire S2 Mulholland (listino 2025-26)"
   },
   {
+    "slug": "macbor-montana-xr5-500-2022",
+    "price_eur": 6199,
+    "source": "motoplanete.com/macbor/XR5-500-Montana-2022 (tarif Espagne 2022)"
+  },
+  {
     "slug": "malaguti-madison-125-2026",
     "price_eur": 3499,
     "source": "moto.it/listino Malaguti Madison 125 (listino 2023-26)"
@@ -813,6 +1253,86 @@
     "slug": "malaguti-xsm-50-2026",
     "price_eur": 3999,
     "source": "moto.it/listino Malaguti XSM 50 (listino 2024-26)"
+  },
+  {
+    "slug": "mash-50cc-scrambler-2026",
+    "price_eur": 2149,
+    "source": "mash-motors.fr Scrambler 50 cm3 (tarif importateur France en vigueur 09/2026, 2 coloris au meme prix)"
+  },
+  {
+    "slug": "mash-belena-300-2026",
+    "price_eur": 3999,
+    "source": "mash-motors.fr Belena 300 (tarif importateur France en vigueur 09/2026, 1 coloris au meme prix)"
+  },
+  {
+    "slug": "mash-black-seven-250-2020",
+    "price_eur": 3595,
+    "source": "motoplanete.com/mash/250-Black-Seven-2020 (tarif France 2020)"
+  },
+  {
+    "slug": "mash-british-seven-2023",
+    "price_eur": 2999,
+    "source": "largus.fr/fiche-technique Mash British Seven 125 (millesime 2023, tarif France releve 15/05/2023)"
+  },
+  {
+    "slug": "mash-falcone-125-2020",
+    "price_eur": 2990,
+    "source": "motoplanete.com/mash/125-Falcone-2020 (tarif France 2020)"
+  },
+  {
+    "slug": "mash-fifty-2026",
+    "price_eur": 2099,
+    "source": "mash-motors.fr Fifty 50 (tarif importateur France en vigueur 09/2026, 3 coloris au meme prix)"
+  },
+  {
+    "slug": "mash-five-hundred-chromium-2020",
+    "price_eur": 3895,
+    "source": "motoplanete.com/mash/400-Five-Hundred-Chromium-2020 (tarif France 2020)"
+  },
+  {
+    "slug": "mash-legend-r-2026",
+    "price_eur": 1799,
+    "source": "mash-motors.fr Legend'R 50 (tarif importateur France en vigueur 09/2026, 2 coloris au meme prix)"
+  },
+  {
+    "slug": "mash-legend-r-naked-2026",
+    "price_eur": 1899,
+    "source": "mash-motors.fr Legend'R Naked 50 cm3 (tarif importateur France en vigueur 09/2026, coloris standard, hors edition limitee)"
+  },
+  {
+    "slug": "mash-new-seventy-2020",
+    "price_eur": 1999,
+    "source": "motoplanete.com/mash/125-New-Seventy-2020 (tarif France 2020)"
+  },
+  {
+    "slug": "mash-radar-2026",
+    "price_eur": 1149,
+    "source": "mash-motors.fr Radar 50 (tarif importateur France en vigueur 09/2026, 2 coloris au meme prix)"
+  },
+  {
+    "slug": "mash-seventy-2026",
+    "price_eur": 2299,
+    "source": "mash-motors.fr SEVENTY 125 (tarif importateur France en vigueur 09/2026, 4 coloris au meme prix)"
+  },
+  {
+    "slug": "mash-shift-r-2026",
+    "price_eur": 1999,
+    "source": "mash-motors.fr SHIFTR 50 cm3 = Shift'R (tarif importateur France en vigueur 09/2026, 2 coloris au meme prix)"
+  },
+  {
+    "slug": "mash-x-ride-125-2026",
+    "price_eur": 2999,
+    "source": "mash-motors.fr X-Ride 125 (tarif importateur France en vigueur 09/2026, 2 coloris au meme prix)"
+  },
+  {
+    "slug": "mash-x-ride-50-2026",
+    "price_eur": 2299,
+    "source": "mash-motors.fr X-Ride 50 (tarif importateur France en vigueur 09/2026, 2 coloris au meme prix)"
+  },
+  {
+    "slug": "mash-x-ride-650-2024",
+    "price_eur": 4999,
+    "source": "motoplanete.com/mash/X-Ride-650-2024 (tarif France 2024)"
   },
   {
     "slug": "moto-guzzi-california-ev-touring-2005",
@@ -835,9 +1355,24 @@
     "source": "moto.it/listino Moto Guzzi Norge 1200 (listino 2006-10, discontinued 2010)"
   },
   {
+    "slug": "moto-guzzi-stelvio-1200-ntx-2011",
+    "price_eur": 15370,
+    "source": "insella.it/fuori-listino-moto/moto-guzzi-stelvio 1200 8V NTX ABS (listino 2011, discontinued 2011)"
+  },
+  {
     "slug": "moto-guzzi-v11-le-mans-rosso-corsa-2005",
     "price_eur": 12390,
     "source": "moto.it/listino Moto Guzzi V11 Le Mans Rosso Corsa (listino 2003-06, discontinued 2006)"
+  },
+  {
+    "slug": "moto-guzzi-v7-750-special-2014",
+    "price_eur": 8870,
+    "source": "insella.it/fuori-listino-moto/moto-guzzi-v7 Special (listino 2014)"
+  },
+  {
+    "slug": "moto-guzzi-v7-iii-racer-10th-anniversary-2020",
+    "price_eur": 10500,
+    "source": "motoplanete.com/moto-guzzi/750-V7-III-Racer-10th-Anniversary-2020 (tarif France 2020)"
   },
   {
     "slug": "moto-guzzi-v7-iii-racer-2020",
@@ -875,9 +1410,24 @@
     "source": "moto.it/listino MV Agusta Brutale 1000 ABT (listino 2026)"
   },
   {
+    "slug": "mv-agusta-brutale-1000-ottantesimo-2025",
+    "price_eur": 30000,
+    "source": "motoplanete.com/mv-agusta/1000-Brutale-Ottantesimo-2025 (tarif France 2025)"
+  },
+  {
     "slug": "mv-agusta-brutale-1000-rr-assen-2025",
     "price_eur": 46399,
     "source": "moto.it/listino MV Agusta Brutale 1000 RR Assen (listino 2023-26)"
+  },
+  {
+    "slug": "mv-agusta-brutale-1000-rr-ottantesimo-2025",
+    "price_eur": 36500,
+    "source": "motoplanete.com/mv-agusta/1000-Brutale-RR-Ottantesimo-2025 (tarif France 2025)"
+  },
+  {
+    "slug": "mv-agusta-brutale-1090-2018",
+    "price_eur": 15390,
+    "source": "motoplanete.com/mv-agusta/Brutale-1090-2018 (tarif France 2018)"
   },
   {
     "slug": "mv-agusta-brutale-1090-r-2015",
@@ -900,6 +1450,21 @@
     "source": "moto.it/listino MV Agusta Brutale 800 RR America (listino 2018-19, discontinued 2019)"
   },
   {
+    "slug": "mv-agusta-brutale-920-2012",
+    "price_eur": 11990,
+    "source": "insella.it/fuori-listino-moto/mv-agusta-brutale 920 (listino 2012, discontinued 2012)"
+  },
+  {
+    "slug": "mv-agusta-brutale-rr-ottantesimo-2025",
+    "price_eur": 15000,
+    "source": "insella.it/listino_moto/mv_agusta-brutale_800 RR Ottantesimo (listino 2025)"
+  },
+  {
+    "slug": "mv-agusta-brutale-serie-oro-2026",
+    "price_eur": 27000,
+    "source": "dueruote.it/listino MV Agusta Brutale 931 Serie Oro (listino 09/02/2026, MY2026, franco concessionario)"
+  },
+  {
     "slug": "mv-agusta-dragster-800-rosso-2023",
     "price_eur": 17950,
     "source": "moto.it/listino MV Agusta Dragster 800 Rosso (listino 2021-23, discontinued 2023)"
@@ -920,6 +1485,11 @@
     "source": "moto.it/listino MV Agusta Dragster 800 RR SCS (listino 2021-25, discontinued 2025)"
   },
   {
+    "slug": "mv-agusta-dragster-rr-ottantesimo-2025",
+    "price_eur": 19700,
+    "source": "motoplanete.com/mv-agusta/800-Dragster-RR-Ottantesimo-2025 (tarif France 2025)"
+  },
+  {
     "slug": "mv-agusta-f3-675-rc-2019",
     "price_eur": 18990,
     "source": "moto.it/listino MV Agusta F3 675 RC (listino 2019, discontinued 2019)"
@@ -938,6 +1508,21 @@
     "slug": "mv-agusta-f3-800-rosso-2023",
     "price_eur": 19500,
     "source": "moto.it/listino MV Agusta F3 800 Rosso (listino 2021-23, discontinued 2023)"
+  },
+  {
+    "slug": "mv-agusta-f3-r-2026",
+    "price_eur": 16000,
+    "source": "insella.it/listino_moto/mv_agusta-f3 R (listino 2026)"
+  },
+  {
+    "slug": "mv-agusta-f3-rc-2024",
+    "price_eur": 27500,
+    "source": "motoplanete.com/mv-agusta/F3-800-RC-2024 (tarif France 2024)"
+  },
+  {
+    "slug": "mv-agusta-f3-rr-2026",
+    "price_eur": 22000,
+    "source": "insella.it/listino_moto/mv_agusta-f3 RR (listino 2026)"
   },
   {
     "slug": "mv-agusta-f4-1000-ago-2005",
@@ -970,9 +1555,29 @@
     "source": "moto.it/listino MV Agusta F4 1078 312 RR (listino 2008-11, discontinued 2011)"
   },
   {
+    "slug": "mv-agusta-f4-2019",
+    "price_eur": 20990,
+    "source": "motoplanete.com/mv-agusta/F4-1000-2019 (tarif France 2019)"
+  },
+  {
     "slug": "mv-agusta-f4-750-s-1-1-2005",
     "price_eur": 16836,
     "source": "moto.it/listino MV Agusta F4 750 S 1+1 (listino 2003-06, discontinued 2006)"
+  },
+  {
+    "slug": "mv-agusta-f4-claudio-2019",
+    "price_eur": 75012,
+    "source": "insella.it/fuori-listino-moto/mv-agusta-f4 Claudio (listino 2019)"
+  },
+  {
+    "slug": "mv-agusta-f4-lh44-2018",
+    "price_eur": 64444,
+    "source": "insella.it/fuori-listino-moto/mv-agusta-f4 LH44 (listino 2018)"
+  },
+  {
+    "slug": "mv-agusta-f4-rr-2019",
+    "price_eur": 27900,
+    "source": "motoplanete.com/mv-agusta/F4-1000-RR-2019 (tarif France 2019)"
   },
   {
     "slug": "mv-agusta-lxp-orioli-2026",
@@ -985,9 +1590,24 @@
     "source": "moto.it/listino MV Agusta Rush 1000 (listino 2023-26)"
   },
   {
+    "slug": "mv-agusta-rush-titanio-2026",
+    "price_eur": 46000,
+    "source": "motoplanete.com/mv-agusta/1000-Rush-Titanio-2026 (tarif France 2026)"
+  },
+  {
+    "slug": "mv-agusta-rvs-1-2018",
+    "price_eur": 36000,
+    "source": "insella.it/fuori-listino-moto/mv-agusta-rvs RVS #1 (listino 2018)"
+  },
+  {
     "slug": "mv-agusta-superveloce-1000-serie-oro-2026",
     "price_eur": 70700,
     "source": "moto.it/listino MV Agusta Superveloce 1000 Serie Oro (listino 2024-26)"
+  },
+  {
+    "slug": "mv-agusta-superveloce-s-ottantesimo-2025",
+    "price_eur": 25000,
+    "source": "insella.it/fuori-listino-moto/mv-agusta-superveloce S Ottantesimo (listino 2025)"
   },
   {
     "slug": "mv-agusta-turismo-veloce-800-rc-2019",
@@ -1035,6 +1655,11 @@
     "source": "insella.it/fuori-listino-moto/niu-n-series (listino 2019, discontinued 2019)"
   },
   {
+    "slug": "niu-ncargo-2019",
+    "price_eur": 3199,
+    "source": "largus.fr/fiche-technique NIU NCargo (millesime 2019, tarif France releve 01/08/2019)"
+  },
+  {
     "slug": "niu-nqi-gt-cargo-er-2024",
     "price_eur": 5149,
     "source": "moto.it/listino Niu NQi GT Cargo ER (listino 2022-24, discontinued 2024)"
@@ -1043,6 +1668,11 @@
     "slug": "niu-nqi-gt-cargo-sr-2024",
     "price_eur": 4249,
     "source": "moto.it/listino Niu NQi GT Cargo SR (listino 2022-24, discontinued 2024)"
+  },
+  {
+    "slug": "niu-nqi-gts-standard-range-2026",
+    "price_eur": 2499,
+    "source": "dueruote.it/listino NIU NQi GTS (standard range) (listino 03/04/2026, MY2026, franco concessionario)"
   },
   {
     "slug": "niu-nqix-150-2026",
@@ -1065,6 +1695,11 @@
     "source": "moto.it/listino Niu RQi Sport (listino 2024-26)"
   },
   {
+    "slug": "niu-u-2019",
+    "price_eur": 1899,
+    "source": "largus.fr/fiche-technique NIU U (millesime 2019, tarif France releve 01/08/2019)"
+  },
+  {
     "slug": "niu-u-pro-2019",
     "price_eur": 1899,
     "source": "insella.it/fuori-listino-moto/niu-u-series (listino 2019, discontinued 2019)"
@@ -1085,6 +1720,21 @@
     "source": "moto.it/listino Peugeot Belville 125 Allure (listino 2017-20, discontinued 2020)"
   },
   {
+    "slug": "peugeot-citystar-125-active-smartmotion-2020",
+    "price_eur": 2999,
+    "source": "largus.fr/fiche-technique PEUGEOT Citystar 125 SmartMotion Active (millesime 2020, tarif France releve 01/02/2020)"
+  },
+  {
+    "slug": "peugeot-django-125-abs-blue-2020",
+    "price_eur": 3349,
+    "source": "largus.fr/fiche-technique PEUGEOT Django 125 Blue ABS (millesime 2020, tarif France releve 01/02/2020)"
+  },
+  {
+    "slug": "peugeot-django-125-abs-red-2020",
+    "price_eur": 3349,
+    "source": "largus.fr/fiche-technique PEUGEOT Django 125 Red ABS (millesime 2020, tarif France releve 01/02/2020)"
+  },
+  {
     "slug": "peugeot-django-125-classic-dark-2025",
     "price_eur": 3599,
     "source": "moto.it/listino Peugeot Django 125 Classic Dark (listino 2021-25, discontinued 2025)"
@@ -1100,9 +1750,54 @@
     "source": "moto.it/listino Peugeot Django 125 Classic Shadow (listino 2021-25, discontinued 2025)"
   },
   {
+    "slug": "peugeot-django-50-2t-blue-2020",
+    "price_eur": 2399,
+    "source": "largus.fr/fiche-technique PEUGEOT Django 50 2T Blue Euro 4 (millesime 2020, tarif France releve 01/02/2020)"
+  },
+  {
+    "slug": "peugeot-django-50-2t-red-2020",
+    "price_eur": 2399,
+    "source": "largus.fr/fiche-technique PEUGEOT Django 50 2T Red Euro 4 (millesime 2020, tarif France releve 01/02/2020)"
+  },
+  {
     "slug": "peugeot-django-50-4t-allure-2018",
     "price_eur": 3090,
     "source": "moto.it/listino Peugeot Django 50 Allure 4T (listino 2017-18, discontinued 2018)"
+  },
+  {
+    "slug": "peugeot-django-50-4t-blue-2020",
+    "price_eur": 2099,
+    "source": "largus.fr/fiche-technique PEUGEOT Django 50 4T Blue Euro 4 (millesime 2020, tarif France releve 01/02/2020)"
+  },
+  {
+    "slug": "peugeot-django-50-4t-red-2020",
+    "price_eur": 2099,
+    "source": "largus.fr/fiche-technique PEUGEOT Django 50 4T Red Euro 4 (millesime 2020, tarif France releve 01/02/2020)"
+  },
+  {
+    "slug": "peugeot-django-50-4t-summer-2019",
+    "price_eur": 2099,
+    "source": "largus.fr/fiche-technique PEUGEOT Django 50 4T Summer Euro 4 (millesime 2019, tarif France releve 01/07/2018)"
+  },
+  {
+    "slug": "peugeot-django-cafe-racer-2026",
+    "price_eur": 3999,
+    "source": "largus.fr/fiche-technique PEUGEOT Django 125 Cafe Racer (millesime 2026, tarif France releve 01/01/2026)"
+  },
+  {
+    "slug": "peugeot-django-riviera-2026",
+    "price_eur": 3999,
+    "source": "largus.fr/fiche-technique PEUGEOT Django 125 Riviera (millesime 2026, tarif France releve 01/01/2026)"
+  },
+  {
+    "slug": "peugeot-django-tt-2026",
+    "price_eur": 3999,
+    "source": "largus.fr/fiche-technique PEUGEOT Django 125 TT (millesime 2026, tarif France releve 01/01/2026)"
+  },
+  {
+    "slug": "peugeot-kisbee-50-4t-r-2021",
+    "price_eur": 1599,
+    "source": "largus.fr/fiche-technique PEUGEOT Kisbee 50 4T R Euro 4 (millesime 2021, tarif France releve 01/02/2020)"
   },
   {
     "slug": "peugeot-kisbee-50-black-edition-2025",
@@ -1130,6 +1825,11 @@
     "source": "moto.it/listino Peugeot Kisbee 50 Streetline (listino 2021-24, discontinued 2024)"
   },
   {
+    "slug": "peugeot-kisbee-m-2026",
+    "price_eur": 2599,
+    "source": "largus.fr/fiche-technique PEUGEOT Kisbee M 125 (millesime 2026, tarif France releve 01/05/2025)"
+  },
+  {
     "slug": "peugeot-kisbee-m-top-case-2026",
     "price_eur": 2149,
     "source": "insella.it/listino_moto/peugeot-kisbee_125 (listino 2026)"
@@ -1143,6 +1843,11 @@
     "slug": "peugeot-kisbee-se-2026",
     "price_eur": 3299,
     "source": "insella.it/listino_moto/peugeot-kisbee (listino 2026)"
+  },
+  {
+    "slug": "peugeot-metropolis-black-edition-2025",
+    "price_eur": 10599,
+    "source": "largus.fr/fiche-technique PEUGEOT Metropolis 400 Black Edition (millesime 2025, tarif France releve 01/01/2024)"
   },
   {
     "slug": "peugeot-pulsion-125-active-2025",
@@ -1163,6 +1868,16 @@
     "slug": "peugeot-pulsion-evo-125-urban-2026",
     "price_eur": 4099,
     "source": "insella.it/listino_moto/peugeot-pulsion (listino 2026)"
+  },
+  {
+    "slug": "peugeot-speedfight-4-50-sportline-2026",
+    "price_eur": 3099,
+    "source": "dueruote.it/listino Peugeot Speedfight4 50 4T Sportline (listino 01/06/2026, MY2026, franco concessionario; 50cc sold as 4T only)"
+  },
+  {
+    "slug": "peugeot-speedfight-4-50ccm-2026",
+    "price_eur": 2999,
+    "source": "dueruote.it/listino Peugeot Speedfight4 50 4T (listino 01/06/2026, MY2026, franco concessionario; 50cc sold as 4T only)"
   },
   {
     "slug": "peugeot-tweet-125-rs-2022",
@@ -1265,6 +1980,16 @@
     "source": "moto.it/listino QJ Motor COV 125 X (listino 2026)"
   },
   {
+    "slug": "qj-motor-srt-450-rx-2026",
+    "price_eur": 5790,
+    "source": "dueruote.it/listino QJ Motor SRT 450 RX (listino 01/03/2026, MY2026, franco concessionario)"
+  },
+  {
+    "slug": "qj-motor-srt-800-rx-2026",
+    "price_eur": 8690,
+    "source": "dueruote.it/listino QJ Motor SRT 800 RX (listino 10/02/2026, MY2026, franco concessionario)"
+  },
+  {
     "slug": "qj-motor-srv-550-2024",
     "price_eur": 5990,
     "source": "moto.it/listino QJ Motor SRV 550 (listino 2024, discontinued 2024)"
@@ -1285,9 +2010,29 @@
     "source": "moto.it/listino Rieju Marathon 125 Pro (listino 2026)"
   },
   {
+    "slug": "rieju-marathon-125-sm-europa-2026",
+    "price_eur": 4499,
+    "source": "dueruote.it/listino Rieju Marathon 125 Motard Europa (listino 01/02/2026, MY2026, franco importatore; SM = Motard)"
+  },
+  {
     "slug": "rieju-mrt-50-pro-2026",
     "price_eur": 4280,
     "source": "moto.it/listino Rieju MRT 50 Pro (listino 2026)"
+  },
+  {
+    "slug": "rieju-mrt-50-sm-trophy-mirage-2026",
+    "price_eur": 4700,
+    "source": "dueruote.it/listino Rieju MRT 50 SM Trophy Mirage (listino 01/02/2026, MY2026, franco importatore)"
+  },
+  {
+    "slug": "rieju-mrt-sm-pro-50-2018",
+    "price_eur": 3499,
+    "source": "largus.fr/fiche-technique Rieju MRT 50 SM Pro Euro 4 (millesime 2018, tarif France releve 15/04/2018)"
+  },
+  {
+    "slug": "rieju-ray-7-7-2026",
+    "price_eur": 11330,
+    "source": "dueruote.it/listino Rieju RAY 7.7 (listino 01/02/2026, MY2026, franco importatore)"
   },
   {
     "slug": "rieju-rs-sport-50-2018",
@@ -1373,6 +2118,41 @@
     "slug": "royal-enfield-guerrilla-450-apex-2026",
     "price_eur": 5490,
     "source": "moto.it/listino Royal Enfield Guerrilla 450 Apex (listino 2026)"
+  },
+  {
+    "slug": "royal-enfield-himalayan-scram-efi-411-2022",
+    "price_eur": 5200,
+    "source": "insella.it/fuori-listino-moto/royal-enfield-scram-411 (listino 2022)"
+  },
+  {
+    "slug": "royal-enfield-shotgun-650-icon-edition-2025",
+    "price_eur": 8100,
+    "source": "motorbox.com Royal Enfield Shotgun 650 Icon Motosports (2025)"
+  },
+  {
+    "slug": "scorpa-sr-twenty-125-2t-2015",
+    "price_eur": 6710,
+    "source": "insella.it/fuori-listino-moto/scorpa-twenty 125 (listino 2015)"
+  },
+  {
+    "slug": "scorpa-sr-twenty-250-2t-2015",
+    "price_eur": 6954,
+    "source": "insella.it/fuori-listino-moto/scorpa-twenty 250 (listino 2015)"
+  },
+  {
+    "slug": "scorpa-sr-twenty-300-2t-2015",
+    "price_eur": 7195,
+    "source": "insella.it/fuori-listino-moto/scorpa-twenty 300 (listino 2015)"
+  },
+  {
+    "slug": "scorpa-t-ride-290-2015",
+    "price_eur": 6246,
+    "source": "insella.it/fuori-listino-moto/scorpa-t-ride 290 (listino 2015, discontinued 2015)"
+  },
+  {
+    "slug": "scorpa-ty-s-125-2015",
+    "price_eur": 4185,
+    "source": "insella.it/fuori-listino-moto/scorpa-ty 125 (listino 2015)"
   },
   {
     "slug": "sherco-125-se-factory-2026",
@@ -1505,6 +2285,16 @@
     "source": "moto.it/listino Suzuki GSX-R1000R (listino 2026)"
   },
   {
+    "slug": "suzuki-hayabusa-special-edition-2026",
+    "price_eur": 20490,
+    "source": "dueruote.it/listino Suzuki GSX Hayabusa 1300 R ABS Special Edition (listino 11/02/2026, MY2026, franco concessionario; single Special Edition row)"
+  },
+  {
+    "slug": "suzuki-intruder-c1500t-2017",
+    "price_eur": 12999,
+    "source": "motoplanete.com/suzuki/C-1500-T-INTRUDER-2017 (tarif France 2017)"
+  },
+  {
     "slug": "suzuki-rm-125-2011",
     "price_eur": 5940,
     "source": "moto.it/listino Suzuki RM 125 (listino 2008-12, discontinued 2012)"
@@ -1513,6 +2303,11 @@
     "slug": "suzuki-rm-85-2013",
     "price_eur": 4501,
     "source": "moto.it/listino Suzuki RM 85 (listino 2009-13, discontinued 2013)"
+  },
+  {
+    "slug": "swm-c-fly-125-2026",
+    "price_eur": 2490,
+    "source": "insella.it/listino_moto/swm-c-fly 125 (listino 2026)"
   },
   {
     "slug": "swm-hoku-125-2026",
@@ -1560,9 +2355,24 @@
     "source": "moto.it/listino Swm Silver Vase 650 T (listino 2025-26)"
   },
   {
+    "slug": "swm-stormbreaker-v-1200-2026",
+    "price_eur": 9990,
+    "source": "dueruote.it/listino SWM Stormbreaker V1200 (listino 04/03/2026, MY2026, franco fabbrica)"
+  },
+  {
     "slug": "swm-venturo-125-2026",
     "price_eur": 3190,
     "source": "moto.it/listino Swm Venturo 125 (listino 2026)"
+  },
+  {
+    "slug": "swm-versante-550-2026",
+    "price_eur": 5590,
+    "source": "insella.it/listino_moto/swm-versante 550 (listino 2026)"
+  },
+  {
+    "slug": "sym-adx-300-2026",
+    "price_eur": 4999,
+    "source": "insella.it/listino_moto/sym-adx_300 (listino 2026)"
   },
   {
     "slug": "sym-clbcu-50-2026",
@@ -1583,6 +2393,11 @@
     "slug": "sym-joyride-125-2021",
     "price_eur": 3999,
     "source": "insella.it/fuori-listino-moto/sym-joyride (listino 2021, discontinued 2021)"
+  },
+  {
+    "slug": "sym-joyride-16-300-2026",
+    "price_eur": 4599,
+    "source": "motorbox.com/moto/listino-nuovo Sym Joyride 300 16 - Joyride 300 16 (listino nuovo MY2026, consultato 09/2026)"
   },
   {
     "slug": "sym-nh-r-125-2026",
@@ -1660,6 +2475,11 @@
     "source": "moto.it/listino Tm Moto SMR 125 (listino 2013, discontinued 2013)"
   },
   {
+    "slug": "triumph-bonneville-bobber-icon-edition-2025",
+    "price_eur": 16795,
+    "source": "motorbox.com Triumph Bonneville Bobber Icon Edition (2025)"
+  },
+  {
     "slug": "triumph-bonneville-newchurch-2016",
     "price_eur": 8890,
     "source": "insella.it/fuori-listino-moto/triumph-bonneville (listino 2016, discontinued 2016)"
@@ -1700,6 +2520,11 @@
     "source": "moto.it/listino Triumph Scrambler 1200 X Icon Edition (listino 2025-26)"
   },
   {
+    "slug": "triumph-scrambler-1200-xc-gold-line-2022",
+    "price_eur": 16000,
+    "source": "motoplanete.com/triumph/1200-Scrambler-XC-Gold-Line-2022 (tarif France 2022)"
+  },
+  {
     "slug": "triumph-scrambler-1200-xe-icon-edition-2025",
     "price_eur": 17595,
     "source": "moto.it/listino Triumph Scrambler 1200 XE Icon Edition (listino 2025-26)"
@@ -1708,6 +2533,21 @@
     "slug": "triumph-scrambler-900-icon-edition-2025",
     "price_eur": 11995,
     "source": "moto.it/listino Triumph Scrambler 900 Icon Edition (listino 2025-26)"
+  },
+  {
+    "slug": "triumph-speed-triple-1200-rr-breitling-limited-edition-2024",
+    "price_eur": 25995,
+    "source": "moto.it/listino Triumph Speed Triple 1200 RR Breitling Edition (listino 2024-25)"
+  },
+  {
+    "slug": "triumph-speed-triple-1200-rr-james-bond-edition-2023",
+    "price_eur": 24995,
+    "source": "moto.it/listino Triumph Speed Triple 1200 RR Bond Edition (listino 2023)"
+  },
+  {
+    "slug": "triumph-speed-twin-1200-tfc-2027",
+    "price_eur": 21895,
+    "source": "motoplanete.com/triumph/1200-Speed-Twin-TFC-2027 (tarif France 2027)"
   },
   {
     "slug": "triumph-speed-twin-900-chrome-edition-2023",
@@ -1720,9 +2560,29 @@
     "source": "insella.it/fuori-listino-moto/triumph-speed-twin (listino 2023, discontinued 2023)"
   },
   {
+    "slug": "triumph-street-scrambler-gold-line-2022",
+    "price_eur": 11800,
+    "source": "motoplanete.com/triumph/900-Street-Scrambler-Gold-Line-2022 (tarif France 2022)"
+  },
+  {
     "slug": "triumph-street-scrambler-sandstorm-edition-2021",
     "price_eur": 11500,
     "source": "insella.it/fuori-listino-moto/triumph-street-scrambler (listino 2021, discontinued 2021)"
+  },
+  {
+    "slug": "triumph-tf-250-e-2026",
+    "price_eur": 10995,
+    "source": "motoplanete.com/triumph/TF-250-E-2026 (tarif France 2026)"
+  },
+  {
+    "slug": "triumph-tf-450-e-2026",
+    "price_eur": 11595,
+    "source": "motoplanete.com/triumph/TF-450-E-2026 (tarif France 2026)"
+  },
+  {
+    "slug": "triumph-tf-450-x-2026",
+    "price_eur": 10995,
+    "source": "motoplanete.com/triumph/TF-450-X-2026 (tarif France 2026)"
   },
   {
     "slug": "triumph-thruxton-tfc-2020",
@@ -1745,9 +2605,19 @@
     "source": "insella.it/fuori-listino-moto/triumph-tiger (listino 2020, discontinued 2020)"
   },
   {
+    "slug": "triumph-tiger-1200-xrx-low-2020",
+    "price_eur": 18175,
+    "source": "motoplanete.com/triumph/Tiger-1200-XRx-Low-2020 (tarif France 2020)"
+  },
+  {
     "slug": "triumph-tiger-800-xr-2019",
     "price_eur": 11400,
     "source": "moto.it/listino Triumph Tiger 800 XR (listino 2018-20, discontinued 2020)"
+  },
+  {
+    "slug": "triumph-tiger-850-sport-2023",
+    "price_eur": 12295,
+    "source": "motoplanete.com/triumph/Tiger-850-Sport-2023 (tarif France 2023)"
   },
   {
     "slug": "triumph-tiger-900-bond-edition-2023",
@@ -1795,9 +2665,19 @@
     "source": "insella.it/fuori-listino-moto/victory-kingpin (listino 2011, discontinued 2011)"
   },
   {
+    "slug": "victory-vegas-2016",
+    "price_eur": 13990,
+    "source": "largus.fr/fiche-technique Victory Vegas 1731 2016 (millesime 2016, tarif France releve 01/11/2015)"
+  },
+  {
     "slug": "victory-vegas-8-ball-2016",
     "price_eur": 13790,
     "source": "insella.it/fuori-listino-moto/victory-vegas (listino 2016, discontinued 2016)"
+  },
+  {
+    "slug": "victory-vision-tour-2016",
+    "price_eur": 24900,
+    "source": "largus.fr/fiche-technique Victory Vision Tour 1731 1731 2016 (millesime 2016, tarif France releve 01/11/2015)"
   },
   {
     "slug": "voge-500r-2024",
@@ -1808,6 +2688,11 @@
     "slug": "voge-650dsx-2024",
     "price_eur": 6390,
     "source": "insella.it/fuori-listino-moto/voge-valico-650 (listino 2024, discontinued 2024)"
+  },
+  {
+    "slug": "voge-r625-2026",
+    "price_eur": 4869,
+    "source": "motorradonline.de/marken-modelle/voge/625/technische-daten Voge R625 (Modelljahr 2026, Preis 4.869 EUR)"
   },
   {
     "slug": "yamaha-dt-125-re-2005",
@@ -1830,6 +2715,11 @@
     "source": "moto.it/listino Yamaha Majesty 400 ABS (listino 2011-14, discontinued 2014)"
   },
   {
+    "slug": "yamaha-r1-race-2026",
+    "price_eur": 20799,
+    "source": "motoplanete.com/yamaha/1000-R1-Race-2026 (tarif France 2026)"
+  },
+  {
     "slug": "yamaha-sr-400-2016",
     "price_eur": 5990,
     "source": "insella.it/fuori-listino-moto/yamaha-sr (listino 2016, discontinued 2016)"
@@ -1840,6 +2730,11 @@
     "source": "moto.it/listino Yamaha Ténéré 700 World Rally (listino 2023-25, discontinued 2025)"
   },
   {
+    "slug": "yamaha-tmax-2026",
+    "price_eur": 13499,
+    "source": "insella.it/listino_moto/yamaha-tmax (listino 2026)"
+  },
+  {
     "slug": "yamaha-tmax-sx-2019",
     "price_eur": 12090,
     "source": "insella.it/fuori-listino-moto/yamaha-tmax (listino 2019, discontinued 2019)"
@@ -1848,6 +2743,26 @@
     "slug": "yamaha-tmax-sx-sport-edition-2019",
     "price_eur": 12990,
     "source": "insella.it/fuori-listino-moto/yamaha-tmax (listino 2019, discontinued 2019)"
+  },
+  {
+    "slug": "yamaha-tracer-7-35-kw-2026",
+    "price_eur": 9999,
+    "source": "largus.fr/fiche-technique Yamaha Tracer 7 700 35KW (millesime 2026, tarif France releve 15/05/2025)"
+  },
+  {
+    "slug": "yamaha-tracer-7-35kw-y-amt-2026",
+    "price_eur": 10499,
+    "source": "largus.fr/fiche-technique Yamaha Tracer 7 700 35KW Y-AMT (millesime 2026, tarif France releve 01/01/2026)"
+  },
+  {
+    "slug": "yamaha-tracer-7-gt-35kw-2026",
+    "price_eur": 11499,
+    "source": "largus.fr/fiche-technique Yamaha Tracer 7 700 GT 35KW (millesime 2026, tarif France releve 15/05/2025)"
+  },
+  {
+    "slug": "yamaha-tracer-7-gt-35kw-y-amt-2026",
+    "price_eur": 11999,
+    "source": "largus.fr/fiche-technique Yamaha Tracer 7 700 GT 35KW Y-AMT (millesime 2026, tarif France releve 01/01/2026)"
   },
   {
     "slug": "yamaha-tricity-155-2024",
@@ -1890,6 +2805,11 @@
     "source": "insella.it/fuori-listino-moto/yamaha-xjr (listino 2017, discontinued 2017)"
   },
   {
+    "slug": "yamaha-xsr900-abarth-2018",
+    "price_eur": 12599,
+    "source": "motoplanete.com/yamaha/XSR-900-Abarth-2018 (tarif France 2018)"
+  },
+  {
     "slug": "yamaha-yz125-2027",
     "price_eur": 8499,
     "source": "moto.it/listino Yamaha YZ 125 (listino 2027)"
@@ -1900,6 +2820,11 @@
     "source": "moto.it/listino Yamaha YZ 250 F 70th Anniversary Edition (listino 2026)"
   },
   {
+    "slug": "yamaha-yz250lc-2026",
+    "price_eur": 9199,
+    "source": "dueruote.it/listino Yamaha YZ 250 LC (listino 11/06/2026, MY2026, franco concessionario)"
+  },
+  {
     "slug": "yamaha-yz450f-70th-anniversary-edition-2026",
     "price_eur": 11299,
     "source": "moto.it/listino Yamaha YZ 450 F 70th Anniversary Edition (listino 2026)"
@@ -1908,6 +2833,31 @@
     "slug": "zero-dsr-2025",
     "price_eur": 19890,
     "source": "moto.it/listino Zero DSR (listino 2024-25, discontinued 2025)"
+  },
+  {
+    "slug": "zero-ls1-2026",
+    "price_eur": 5230,
+    "source": "largus.fr/fiche-technique Zero LS1 (millesime 2026, tarif France releve 01/01/2026)"
+  },
+  {
+    "slug": "zontes-125c2-2026",
+    "price_eur": 3499,
+    "source": "motoplanete.com/zontes/125-C2-2026 (tarif France 2026)"
+  },
+  {
+    "slug": "zontes-310-r-2020",
+    "price_eur": 4590,
+    "source": "largus.fr/fiche-technique ZONTES 310 R (millesime 2020, tarif France releve 01/07/2019)"
+  },
+  {
+    "slug": "zontes-310-t-2020",
+    "price_eur": 4890,
+    "source": "largus.fr/fiche-technique ZONTES T 310 (millesime 2020, tarif France releve 01/07/2019)"
+  },
+  {
+    "slug": "zontes-368-d-2026",
+    "price_eur": 5090,
+    "source": "dueruote.it/listino Zontes ZT 368 D (listino 10/04/2026, MY2026, franco concessionario; ZT is the Zontes model prefix)"
   },
   {
     "slug": "zontes-zt368-d-etc-2026",
