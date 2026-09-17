@@ -61,6 +61,9 @@ const STRONG_SOURCES = [
     /\bmotoguzzi\.com\b/i, /\bmotomorini\.[a-z.]+/i, /\bniu\.com\b/i, /\bmash-motors\.[a-z.]+/i,
     /\bmotorcyclenews\.com\b/i, /\blerepairedesmotards\.com\b/i, /\bscooter-system\.fr\b/i, /\bmotorradonline\.de\b/i,
     /\bmotociclismo\.[a-z.]+/i, /\bmotos\.pt\b/i, /\blargus\.fr\b/i, /\b1000ps\.[a-z.]+/i, /\bautoevolution\.com\b/i,
+    // National importers that publish their own tariff, found in round 5. Same standing as a
+    // manufacturer site: the importer sets the price it prints.
+    /\bqjmotoritaly\.com\b/i, /\bswm-motorcycles\.[a-z.]+/i, /\bvogeitaly\.it\b/i,
 ];
 
 // Specialist press and listino aggregators reprint a published tariff without owning it. They are
