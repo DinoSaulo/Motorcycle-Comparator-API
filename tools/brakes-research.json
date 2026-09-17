@@ -1,604 +1,439 @@
 [
-  {
-    "slug": "honda-biz-125-es-125-es-flex-2006",
-    "front_brake": "Drum, 130mm",
-    "rear_brake": "Drum, 110mm",
-    "abs_type": null,
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-biz-125-es-125-es-flex-2010",
-    "front_brake": "Drum, 130mm",
-    "rear_brake": "Drum, 110mm",
-    "abs_type": null,
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-biz-125-es-125-es-flex-2011",
-    "front_brake": "Drum, 130mm",
-    "rear_brake": "Drum, 110mm",
-    "abs_type": null,
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-biz-125-es-125-es-flex-2012",
-    "front_brake": "Drum, 130mm",
-    "rear_brake": "Drum, 110mm",
-    "abs_type": null,
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-biz-125-es-125-es-flex-2013",
-    "front_brake": "Drum, 130mm",
-    "rear_brake": "Drum, 110mm",
-    "abs_type": null,
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-biz-125-es-125-es-flex-2014",
-    "front_brake": "Drum, 130mm",
-    "rear_brake": "Drum, 110mm",
-    "abs_type": null,
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-biz-125-es-125-es-flex-2015",
-    "front_brake": "Drum, 130mm",
-    "rear_brake": "Drum, 110mm",
-    "abs_type": null,
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-cb-1100-2017",
-    "front_brake": "Dual 296mm discs, four-piston calipers",
-    "rear_brake": "Single 256mm disc, single-piston caliper",
-    "abs_type": "ABS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cb1100-ex-2020",
-    "front_brake": "Dual 296mm discs, four-piston calipers",
-    "rear_brake": "Single 256mm disc, single-piston caliper",
-    "abs_type": "ABS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cb1100-rs-2020",
-    "front_brake": "Dual 296mm discs, radial four-piston calipers",
-    "rear_brake": "Single 256mm disc, single-piston caliper",
-    "abs_type": "ABS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cb-1300-2009",
-    "front_brake": "Dual 310mm discs, four-piston calipers",
-    "rear_brake": "Single 256mm disc, single-piston caliper",
-    "abs_type": "ABS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cb-900-f-hornet-2007",
-    "front_brake": "Dual 296mm discs, four-piston calipers",
-    "rear_brake": "Single 240mm disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cbf-1000-2013",
-    "front_brake": "Dual 296mm floating discs, two-piston calipers",
-    "rear_brake": "Single 240mm disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cbf-1000-f-2017",
-    "front_brake": "Dual 296mm discs, three-piston calipers",
-    "rear_brake": "Single 240mm disc",
-    "abs_type": "Combined ABS available",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cbf-250-2007",
-    "front_brake": "Single 276mm disc, two-piston caliper",
-    "rear_brake": "Drum, 130mm",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cbf-500-2008",
-    "front_brake": "Single 296mm disc, two-piston caliper",
-    "rear_brake": "Single 240mm disc, two-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cbf-600-2011",
-    "front_brake": "Dual 296mm discs, two-piston calipers",
-    "rear_brake": "Single 240mm disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cbf-600-s-2013",
-    "front_brake": "Dual 296mm discs, two-piston calipers",
-    "rear_brake": "Single 240mm disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cbr1000rr-fireblade-sp-2-2019",
-    "front_brake": "Dual discs, Brembo four-piston radial calipers",
-    "rear_brake": null,
-    "abs_type": null,
-    "source": "motorcyclenews.com"
-  },
-  {
-    "slug": "honda-cbr-1100-xx-super-blackbird-2007",
-    "front_brake": "Dual 310mm discs, three-piston calipers",
-    "rear_brake": "Single 256mm disc, three-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cbr-250-r-2017",
-    "front_brake": "Single 296mm disc",
-    "rear_brake": "Single 226mm disc",
-    "abs_type": "ABS available",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-cbr-300-r-2020",
-    "front_brake": "Single 296mm disc, two-piston caliper",
-    "rear_brake": "Single 220mm disc, single-piston caliper",
-    "abs_type": "ABS available",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-ch-125-r-spacy-1995",
-    "front_brake": "Drum, internal expanding shoe",
-    "rear_brake": "Drum, internal expanding shoe",
-    "abs_type": null,
-    "source": "museuhondafanclub.com.br"
-  },
-  {
-    "slug": "honda-ch-125-r-spacy-1996",
-    "front_brake": "Drum, internal expanding shoe",
-    "rear_brake": "Drum, internal expanding shoe",
-    "abs_type": null,
-    "source": "museuhondafanclub.com.br"
-  },
-  {
-    "slug": "honda-cr-250-1991",
-    "front_brake": "Single disc, twin-piston caliper",
-    "rear_brake": "Single disc, single-piston caliper",
-    "abs_type": null,
-    "source": "pulpmx.com"
-  },
-  {
-    "slug": "honda-crf-150-f-2010",
-    "front_brake": "Single 240mm disc",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-crf-70-f-2014",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "denniskirk.com"
-  },
-  {
-    "slug": "honda-ctx-700-n-2017",
-    "front_brake": "Single 320mm disc, three-piston caliper",
-    "rear_brake": "Single 240mm disc, single-piston caliper",
-    "abs_type": "ABS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-dn-01-2011",
-    "front_brake": "Dual 296mm full-floating discs, three-piston calipers",
-    "rear_brake": "Single 276mm disc, three-piston caliper",
-    "abs_type": "Combined ABS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-fes-125-pantheon-2007",
-    "front_brake": "Disc",
-    "rear_brake": null,
-    "abs_type": null,
-    "source": "ultimatespecs.com"
-  },
-  {
-    "slug": "honda-fes-125-s-wing-2013",
-    "front_brake": "Disc",
-    "rear_brake": "Disc",
-    "abs_type": "ABS standard",
-    "source": "1000ps.com"
-  },
-  {
-    "slug": "honda-fmx650-2007",
-    "front_brake": "Single 296mm disc, two-piston caliper",
-    "rear_brake": "Single 220mm disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-fss-400-silver-wing-2008",
-    "front_brake": "Single 276mm disc, three-piston caliper",
-    "rear_brake": "Single 240mm disc, twin-piston caliper",
-    "abs_type": "CBS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-goldwing-f6b-2017",
-    "front_brake": "Dual full-floating 296mm discs, three-piston calipers",
-    "rear_brake": "Single 316mm disc, three-piston caliper",
-    "abs_type": "CBS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-gold-wing-f6c-2017",
-    "front_brake": "Dual 310mm floating discs, four-piston calipers",
-    "rear_brake": "Single 316mm ventilated disc, three-piston caliper",
-    "abs_type": "ABS standard, 2-channel",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-integra-2020",
-    "front_brake": "Single 320mm wavy disc, three-piston caliper",
-    "rear_brake": "Single 240mm wavy disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-montesa-cota-4rt-2015",
-    "front_brake": "Single disc, four-piston caliper",
-    "rear_brake": "Single disc, two-piston caliper",
-    "abs_type": null,
-    "source": "motorcycle.com"
-  },
-  {
-    "slug": "honda-msx-125-2020",
-    "front_brake": "Single 220mm disc, hydraulic dual-piston caliper",
-    "rear_brake": "Single 190mm disc, hydraulic dual-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-nc700s-2013",
-    "front_brake": "Single 320mm wavy disc, three-piston caliper",
-    "rear_brake": "Single 240mm wavy disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-nc700x-2013",
-    "front_brake": "Single 320mm wavy disc, three-piston caliper",
-    "rear_brake": "Single 240mm wavy disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-nm4-vultus-2017",
-    "front_brake": "Dual 320mm wavy discs, two-piston calipers",
-    "rear_brake": "Single 240mm wavy disc, two-piston caliper",
-    "abs_type": "ABS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-nps-50-zoomer-2011",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-nrx-1800-rune-2006",
-    "front_brake": "Dual 330mm discs",
-    "rear_brake": "Single 336mm disc",
-    "abs_type": "CBS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-nsc50r-2020",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "abs_type": "CBS standard",
-    "source": "1000ps.com"
-  },
-  {
-    "slug": "honda-nss-250-jazz-2005",
-    "front_brake": "Disc",
-    "rear_brake": "Disc",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-nss-300-forza-2017",
-    "front_brake": "Single 256mm disc, twin-piston caliper",
-    "rear_brake": "Single 256mm disc, twin-piston caliper",
-    "abs_type": "CBS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-nt-650v-deauville-2011",
-    "front_brake": "Dual 296mm discs, three-piston calipers",
-    "rear_brake": "Single 276mm disc, two-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-nt700v-deauville-2016",
-    "front_brake": "Dual 296mm discs, three-piston calipers",
-    "rear_brake": "Single 276mm disc, two-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-nx-150-1990",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "moto.com.br"
-  },
-  {
-    "slug": "honda-nx-150-1991",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "moto.com.br"
-  },
-  {
-    "slug": "honda-nx-150-1992",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "moto.com.br"
-  },
-  {
-    "slug": "honda-nx-150-1993",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "moto.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-ks-mix-flex-2010",
-    "front_brake": "Drum, 130mm",
-    "rear_brake": "Drum, 110mm",
-    "abs_type": null,
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-ks-mix-flex-2011",
-    "front_brake": "Drum, 130mm",
-    "rear_brake": "Drum, 110mm",
-    "abs_type": null,
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-nxr-150-bros-ks-mix-flex-2012",
-    "front_brake": "Drum, 130mm",
-    "rear_brake": "Drum, 110mm",
-    "abs_type": null,
-    "source": "motonline.com.br"
-  },
-  {
-    "slug": "honda-ses-125-dylan-2006",
-    "front_brake": "Disc",
-    "rear_brake": "Drum",
-    "abs_type": "CBS standard",
-    "source": "ultimatespecs.com"
-  },
-  {
-    "slug": "honda-sh-150i-dlx-2021",
-    "front_brake": "Single disc, two-piston caliper",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "1000ps.com"
-  },
-  {
-    "slug": "honda-silver-wing-600-2011",
-    "front_brake": "Single 276mm disc, three-piston caliper",
-    "rear_brake": "Single 240mm disc, twin-piston caliper",
-    "abs_type": "CBS standard, ABS optional",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-st-1100-pan-european-2010",
-    "front_brake": "Dual 296mm discs, three-piston calipers",
-    "rear_brake": "Single 296mm disc, three-piston caliper",
-    "abs_type": "Linked Braking System",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-st-1300-pan-european-2017",
-    "front_brake": "Dual 310mm discs, three-piston calipers",
-    "rear_brake": "Single disc, three-piston caliper",
-    "abs_type": "Linked Braking System",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-sw-t-400-2014",
-    "front_brake": "Single 276mm disc, three-piston caliper",
-    "rear_brake": "Single 240mm disc, twin-piston caliper",
-    "abs_type": "CBS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-sw-t600-2014",
-    "front_brake": "Single 276mm disc, three-piston caliper",
-    "rear_brake": "Single 240mm disc, twin-piston caliper",
-    "abs_type": "CBS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-trx-350-fourtrax-fm-quadriciclo-2004",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "checkcarro.com.br"
-  },
-  {
-    "slug": "honda-trx-350-fourtrax-fm-quadriciclo-2005",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "checkcarro.com.br"
-  },
-  {
-    "slug": "honda-trx-350-fourtrax-fm-quadriciclo-2006",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "checkcarro.com.br"
-  },
-  {
-    "slug": "honda-trx-350-fourtrax-fm-quadriciclo-2007",
-    "front_brake": "Drum",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "checkcarro.com.br"
-  },
-  {
-    "slug": "honda-trx-420-fourtrax-fm-4x4-quadriciclo-2008",
-    "front_brake": "Disc",
-    "rear_brake": "Drum, sealed",
-    "abs_type": null,
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-trx-420-fourtrax-fm-4x4-quadriciclo-2025",
-    "front_brake": "Disc",
-    "rear_brake": "Drum, sealed",
-    "abs_type": null,
-    "source": "honda.com.br"
-  },
-  {
-    "slug": "honda-vfr1200x-crosstourer-2020",
-    "front_brake": "Dual 310mm discs, three-piston calipers",
-    "rear_brake": "Single 276mm disc, twin-piston caliper",
-    "abs_type": "Combined ABS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-vfr1200x-crosstourer-dct-2021",
-    "front_brake": "Dual 310mm discs, three-piston calipers",
-    "rear_brake": "Single 276mm disc, twin-piston caliper",
-    "abs_type": "Combined ABS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-vfr-800-f-2020",
-    "front_brake": "Dual 310mm discs, four-piston calipers",
-    "rear_brake": "Single 256mm disc, two-piston caliper",
-    "abs_type": "ABS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-vfr800x-crossrunner-2020",
-    "front_brake": "Dual 310mm discs, four-piston radial calipers",
-    "rear_brake": "Single 256mm disc, two-piston caliper",
-    "abs_type": "ABS standard",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-vision-50-2020",
-    "front_brake": "Single disc, hydraulic caliper",
-    "rear_brake": "Drum",
-    "abs_type": "CBS standard",
-    "source": "50factory.com"
-  },
-  {
-    "slug": "honda-vt-125-shadow-2008",
-    "front_brake": "Single disc",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "motorcyclespecs.co.za"
-  },
-  {
-    "slug": "honda-vt-1300-cx-2013",
-    "front_brake": "Single 336mm disc, twin-piston caliper",
-    "rear_brake": "Single 296mm disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-vt-750-c2-shadow-spirit-2017",
-    "front_brake": "Single 296mm disc, dual-piston caliper",
-    "rear_brake": "Drum, 180mm",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-vt-750-s-2014",
-    "front_brake": "Single 296mm disc, dual-piston caliper",
-    "rear_brake": "Drum, 180mm",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-vt-750-shadow-2017",
-    "front_brake": "Single 296mm disc, dual-piston caliper",
-    "rear_brake": "Drum, 180mm",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-vtr-1000-f-fire-storm-2006",
-    "front_brake": "Dual 296mm discs, four-piston calipers",
-    "rear_brake": "Single 220mm disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-vtr-1000-sp-2-2005",
-    "front_brake": "Dual discs, four-piston calipers",
-    "rear_brake": "Single disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-vtx-1300-2007",
-    "front_brake": "Single 336mm disc, twin-piston caliper",
-    "rear_brake": "Single 296mm disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-vtx-1800-2005",
-    "front_brake": "Dual 296mm discs, three-piston calipers",
-    "rear_brake": "Single 316mm disc, twin-piston caliper",
-    "abs_type": "Linked Braking System",
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-wave-110-2020",
-    "front_brake": "Disc",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "tecnimotos.com"
-  },
-  {
-    "slug": "honda-xl-125-v-varadero-2014",
-    "front_brake": "Single 276mm disc, two-piston caliper",
-    "rear_brake": "Single 220mm disc, single-piston caliper",
-    "abs_type": null,
-    "source": "autoevolution.com"
-  },
-  {
-    "slug": "honda-xl-650v-transalp-2007",
-    "front_brake": "Dual discs, two-piston calipers",
-    "rear_brake": "Single disc, single-piston caliper",
-    "abs_type": null,
-    "source": "motorcyclespecifications.com"
-  },
-  {
-    "slug": "honda-xr-125-l-2005",
-    "front_brake": "Single disc, dual-piston caliper",
-    "rear_brake": "Drum",
-    "abs_type": null,
-    "source": "motorcyclenews.com"
-  }
+ { "slug": "triumph-bonneville-750cc-790cc-865cc-2001", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Bonneville specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-bonneville-750cc-790cc-865cc-2002", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Bonneville specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-bonneville-750cc-790cc-865cc-2004", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Bonneville specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-bonneville-750cc-790cc-865cc-2005", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Bonneville specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-bonneville-750cc-790cc-865cc-2006", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Bonneville specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-bonneville-750cc-790cc-865cc-2007", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Bonneville specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-bonneville-750cc-790cc-865cc-2009", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Bonneville specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-bonneville-750cc-790cc-865cc-2010", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Bonneville specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-bonneville-se-2014", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Bonneville SE specification (web.archive.org, 2013 model year)" },
+ { "slug": "triumph-bonneville-spirit-2015", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Bonneville specification (web.archive.org, 2013 model year, 865cc air-cooled platform)" },
+ { "slug": "triumph-bonneville-t214-2015", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Bonneville specification (web.archive.org, 2013 model year, 865cc air-cooled platform)" },
+ { "slug": "triumph-bonneville-newchurch-2016", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Bonneville specification (web.archive.org, 2013 model year, 865cc air-cooled platform)" },
+
+ { "slug": "triumph-scrambler-900cc-2006", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Scrambler specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-scrambler-900cc-2007", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Scrambler specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-scrambler-900cc-2010", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Scrambler specification (web.archive.org, 2010 model year)" },
+
+ { "slug": "triumph-thruxton-900cc-2006", "front_brake": "Single 320mm floating disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Thruxton specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-thruxton-900cc-2007", "front_brake": "Single 320mm floating disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Thruxton specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-thruxton-900cc-2014", "front_brake": "Single 320mm floating disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Thruxton specification (web.archive.org, 2014 model year)" },
+ { "slug": "triumph-thruxton-900cc-2015", "front_brake": "Single 320mm floating disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Thruxton specification (web.archive.org, 2014 model year)" },
+ { "slug": "triumph-thruxton-2015", "front_brake": "Single 320mm floating disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Thruxton specification (web.archive.org, 2014 model year)" },
+ { "slug": "triumph-thruxton-ace-2015", "front_brake": "Single 320mm floating disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Thruxton Special Edition specification (web.archive.org)" },
+ { "slug": "triumph-thruxton-r-1200cc-2016", "front_brake": "Twin 310mm Brembo floating discs, Brembo 4-piston radial monobloc calipers", "rear_brake": "Single 220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Thruxton R specification (web.archive.org)" },
+ { "slug": "triumph-thruxton-r-1200cc-2017", "front_brake": "Twin 310mm Brembo floating discs, Brembo 4-piston radial monobloc calipers", "rear_brake": "Single 220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Thruxton R specification (web.archive.org)" },
+ { "slug": "triumph-thruxton-r-1200cc-2018", "front_brake": "Twin 310mm Brembo floating discs, Brembo 4-piston radial monobloc calipers", "rear_brake": "Single 220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Thruxton R specification (web.archive.org)" },
+ { "slug": "triumph-thruxton-r-1200cc-2020", "front_brake": "Twin 310mm Brembo floating discs, Brembo 4-piston radial monobloc calipers", "rear_brake": "Single 220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Thruxton R specification (web.archive.org)" },
+
+ { "slug": "triumph-america-2017", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 285mm disc, Nissin 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived America specification (web.archive.org, 2010 model year)" },
+
+ { "slug": "triumph-bonneville-bobber-1200cc-2017", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin single-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Bonneville Bobber specification (web.archive.org)" },
+ { "slug": "triumph-bonneville-bobber-1200cc-2018", "front_brake": "Single 310mm disc, Nissin 2-piston floating caliper", "rear_brake": "Single 255mm disc, Nissin single-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Bonneville Bobber specification (web.archive.org)" },
+ { "slug": "triumph-bonneville-bobber-black-1200cc-2019", "front_brake": "Twin 310mm discs, Brembo 2-piston floating calipers", "rear_brake": "Single 255mm disc, Nissin single-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Bonneville Bobber Black specification (web.archive.org)" },
+ { "slug": "triumph-bonneville-bobber-black-1200cc-2020", "front_brake": "Twin 310mm discs, Brembo 2-piston floating calipers", "rear_brake": "Single 255mm disc, Nissin single-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Bonneville Bobber Black specification (web.archive.org)" },
+ { "slug": "triumph-bonneville-bobber-black-1200cc-2021", "front_brake": "Twin 310mm discs, Brembo 2-piston floating calipers", "rear_brake": "Single 255mm disc, Nissin single-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Bonneville Bobber Black specification (web.archive.org)" },
+ { "slug": "triumph-bonneville-bobber-1200cc-2022", "front_brake": "Twin Ø310mm discs, Brembo 2-piston sliding axial calipers", "rear_brake": "Single Ø255mm disc, Nissin single-piston sliding axial caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Bobber specification" },
+ { "slug": "triumph-bonneville-bobber-1200cc-2023", "front_brake": "Twin Ø310mm discs, Brembo 2-piston sliding axial calipers", "rear_brake": "Single Ø255mm disc, Nissin single-piston sliding axial caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Bobber specification" },
+ { "slug": "triumph-bonneville-bobber-1200cc-2024", "front_brake": "Twin Ø310mm discs, Brembo 2-piston sliding axial calipers", "rear_brake": "Single Ø255mm disc, Nissin single-piston sliding axial caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Bobber specification" },
+ { "slug": "triumph-bonneville-bobber-chrome-edition-1200cc-2023", "front_brake": "Twin Ø310mm discs, Brembo 2-piston sliding axial calipers", "rear_brake": "Single Ø255mm disc, Nissin single-piston sliding axial caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Bobber specification" },
+ { "slug": "triumph-bonneville-bobber-icon-edition-1200cc-2025", "front_brake": "Twin Ø310mm discs, Brembo 2-piston sliding axial calipers", "rear_brake": "Single Ø255mm disc, Nissin single-piston sliding axial caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Bobber specification" },
+
+ { "slug": "triumph-speedmaster-2018", "front_brake": "Twin Ø310mm discs, Brembo 2-piston sliding axial calipers", "rear_brake": "Single Ø255mm disc, Nissin single-piston sliding axial caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Speedmaster specification" },
+ { "slug": "triumph-bonneville-speedmaster-1200cc-2022", "front_brake": "Twin Ø310mm discs, Brembo 2-piston sliding axial calipers", "rear_brake": "Single Ø255mm disc, Nissin single-piston sliding axial caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Speedmaster specification" },
+ { "slug": "triumph-bonneville-speedmaster-1200cc-2023", "front_brake": "Twin Ø310mm discs, Brembo 2-piston sliding axial calipers", "rear_brake": "Single Ø255mm disc, Nissin single-piston sliding axial caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Speedmaster specification" },
+ { "slug": "triumph-bonneville-speedmaster-1200cc-2024", "front_brake": "Twin Ø310mm discs, Brembo 2-piston sliding axial calipers", "rear_brake": "Single Ø255mm disc, Nissin single-piston sliding axial caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Speedmaster specification" },
+
+ { "slug": "triumph-bonneville-t120-black-stealth-edition-2024", "front_brake": "Twin 310mm discs, Brembo 2-piston floating calipers", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville T120 specification" },
+ { "slug": "triumph-bonneville-t100-stealth-edition-2024", "front_brake": "Single Ø310mm floating disc, Brembo 2-piston axial caliper", "rear_brake": "Single Ø255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville T100 specification" },
+
+ { "slug": "triumph-scrambler-900cc-2023", "front_brake": "Single Ø310mm floating disc, Brembo 4-piston fixed axial caliper", "rear_brake": "Single Ø255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Scrambler 900 specification" },
+ { "slug": "triumph-scrambler-900cc-2024", "front_brake": "Single Ø310mm floating disc, Brembo 4-piston fixed axial caliper", "rear_brake": "Single Ø255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Scrambler 900 specification" },
+ { "slug": "triumph-scrambler-900cc-2025", "front_brake": "Single Ø310mm floating disc, Brembo 4-piston fixed axial caliper", "rear_brake": "Single Ø255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Scrambler 900 specification" },
+ { "slug": "triumph-scrambler-900cc-2026", "front_brake": "Single Ø310mm floating disc, Brembo 4-piston fixed axial caliper", "rear_brake": "Single Ø255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Scrambler 900 specification" },
+ { "slug": "triumph-scrambler-900cc-stealth-edition-2024", "front_brake": "Single Ø310mm floating disc, Brembo 4-piston fixed axial caliper", "rear_brake": "Single Ø255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Scrambler 900 specification" },
+
+ { "slug": "triumph-street-scrambler-900cc-2017", "front_brake": "Single 310mm floating disc", "rear_brake": "Single 255mm disc", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Scrambler specification (web.archive.org) - disc sizes only, caliper changed mid-run" },
+ { "slug": "triumph-street-scrambler-900cc-2018", "front_brake": "Single 310mm floating disc", "rear_brake": "Single 255mm disc", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Scrambler specification (web.archive.org) - disc sizes only, caliper changed mid-run" },
+ { "slug": "triumph-street-scrambler-900cc-2019", "front_brake": "Single 310mm floating disc, Brembo 4-piston fixed caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Scrambler specification (web.archive.org)" },
+ { "slug": "triumph-street-scrambler-900cc-2020", "front_brake": "Single 310mm floating disc, Brembo 4-piston fixed caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Scrambler specification (web.archive.org)" },
+ { "slug": "triumph-street-scrambler-900cc-2021", "front_brake": "Single 310mm floating disc, Brembo 4-piston fixed caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Scrambler specification (web.archive.org)" },
+ { "slug": "triumph-street-scrambler-900cc-2022", "front_brake": "Single 310mm floating disc, Brembo 4-piston fixed caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Scrambler specification (web.archive.org)" },
+
+ { "slug": "triumph-street-twin-900cc-2016", "front_brake": "Single 310mm floating disc", "rear_brake": "Single 220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Twin specification (web.archive.org)" },
+ { "slug": "triumph-street-twin-900cc-2017", "front_brake": "Single 310mm floating disc", "rear_brake": "Single 220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Twin specification (web.archive.org)" },
+ { "slug": "triumph-street-twin-900cc-2018", "front_brake": "Single 310mm floating disc", "rear_brake": "Single 220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Twin specification (web.archive.org)" },
+ { "slug": "triumph-street-twin-900cc-2019", "front_brake": "Single 310mm floating disc, Brembo 4-piston fixed caliper", "rear_brake": "Single 220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Twin specification (web.archive.org, 2019 capture)" },
+ { "slug": "triumph-street-twin-900cc-2020", "front_brake": "Single 310mm floating disc, Brembo 4-piston fixed caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Twin specification (web.archive.org, 2020 capture)" },
+ { "slug": "triumph-street-twin-900cc-2021", "front_brake": "Single 310mm floating disc, Brembo 4-piston fixed caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Twin specification (web.archive.org, 2021 capture)" },
+ { "slug": "triumph-street-twin-900cc-2022", "front_brake": "Single 310mm floating disc, Brembo 4-piston fixed caliper", "rear_brake": "Single 255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Twin specification (web.archive.org, 2021 capture)" },
+ { "slug": "triumph-street-cup-900cc-2017", "front_brake": "Single 310mm floating disc", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Twin specification (web.archive.org) - shared Bonneville 900 front end" },
+ { "slug": "triumph-street-cup-900cc-2018", "front_brake": "Single 310mm floating disc", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Twin specification (web.archive.org) - shared Bonneville 900 front end" },
+
+ { "slug": "triumph-speed-twin-900cc-2023", "front_brake": "Single Ø310mm floating disc, Brembo 4-piston fixed axial caliper", "rear_brake": "Single Ø255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Scrambler 900 specification (same 900 platform, pre-2025 brake package)" },
+ { "slug": "triumph-speed-twin-900cc-2024", "front_brake": "Single Ø310mm floating disc, Brembo 4-piston fixed axial caliper", "rear_brake": "Single Ø255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Scrambler 900 specification (same 900 platform, pre-2025 brake package)" },
+ { "slug": "triumph-speed-twin-900cc-stealth-edition-2024", "front_brake": "Single Ø310mm floating disc, Brembo 4-piston fixed axial caliper", "rear_brake": "Single Ø255mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Scrambler 900 specification (same 900 platform, pre-2025 brake package)" },
+ { "slug": "triumph-speed-twin-900cc-2025", "front_brake": "Single Ø320mm floating disc, Triumph four-piston radial caliper", "rear_brake": "Single Ø255mm fixed disc, Nissin 2-piston floating caliper", "abs_type": "Optimised Cornering ABS (OCABS)", "source": "triumphmotorcycles.co.uk - Bonneville Speed Twin 900 specification" },
+ { "slug": "triumph-speed-twin-900cc-2026", "front_brake": "Single Ø320mm floating disc, Triumph four-piston radial caliper", "rear_brake": "Single Ø255mm fixed disc, Nissin 2-piston floating caliper", "abs_type": "Optimised Cornering ABS (OCABS)", "source": "triumphmotorcycles.co.uk - Bonneville Speed Twin 900 specification" },
+
+ { "slug": "triumph-speed-twin-1200cc-2019", "front_brake": "Twin 305mm discs, Brembo 4-piston fixed calipers", "rear_brake": "Single 220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Speed Twin specification (web.archive.org, 2019 capture)" },
+ { "slug": "triumph-speed-twin-1200cc-2020", "front_brake": "Twin 305mm discs, Brembo 4-piston fixed calipers", "rear_brake": "Single 220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Speed Twin specification (web.archive.org, 2019 capture)" },
+ { "slug": "triumph-speed-twin-1200cc-2021", "front_brake": "Twin Ø320mm discs, Brembo M50 4-piston radial monobloc calipers", "rear_brake": "Single Ø220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Speed Twin 2021 specification (web.archive.org)" },
+ { "slug": "triumph-speed-twin-1200cc-2022", "front_brake": "Twin Ø320mm discs, Brembo M50 4-piston radial monobloc calipers", "rear_brake": "Single Ø220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Speed Twin 2021 specification (web.archive.org)" },
+ { "slug": "triumph-speed-twin-1200cc-2023", "front_brake": "Twin Ø320mm discs, Brembo M50 4-piston radial monobloc calipers", "rear_brake": "Single Ø220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Speed Twin 2021 specification (web.archive.org)" },
+ { "slug": "triumph-speed-twin-1200cc-2024", "front_brake": "Twin Ø320mm discs, Brembo M50 4-piston radial monobloc calipers", "rear_brake": "Single Ø220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Speed Twin 2021 specification (web.archive.org)" },
+ { "slug": "triumph-speed-twin-1200cc-stealth-edition-2024", "front_brake": "Twin Ø320mm discs, Brembo M50 4-piston radial monobloc calipers", "rear_brake": "Single Ø220mm disc, Nissin 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Speed Twin 2021 specification (web.archive.org)" },
+ { "slug": "triumph-speed-twin-1200cc-2025", "front_brake": "Twin Ø320mm floating discs, Triumph four-piston radial calipers", "rear_brake": "Single Ø220mm fixed disc, Nissin 2-piston floating caliper", "abs_type": "Optimised Cornering ABS (OCABS)", "source": "triumphmotorcycles.co.uk - Bonneville Speed Twin 1200 specification" },
+ { "slug": "triumph-speed-twin-1200cc-2026", "front_brake": "Twin Ø320mm floating discs, Triumph four-piston radial calipers", "rear_brake": "Single Ø220mm fixed disc, Nissin 2-piston floating caliper", "abs_type": "Optimised Cornering ABS (OCABS)", "source": "triumphmotorcycles.co.uk - Bonneville Speed Twin 1200 specification" },
+ { "slug": "triumph-speed-twin-1200cc-rs-2025", "front_brake": "Twin Ø320mm floating discs, Brembo Stylema M4.30 radial calipers", "rear_brake": "Single Ø220mm fixed disc, Nissin 2-piston floating caliper", "abs_type": "Optimised Cornering ABS (OCABS)", "source": "triumphmotorcycles.co.uk - Bonneville Speed Twin 1200 RS specification" },
+
+ { "slug": "triumph-scrambler-1200-x-2024", "front_brake": "Twin 310mm discs, Nissin 2-piston axial calipers", "rear_brake": "Single 255mm disc, Nissin single-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Scrambler 1200 X specification" },
+ { "slug": "triumph-scrambler-1200-x-2025", "front_brake": "Twin 310mm discs, Nissin 2-piston axial calipers", "rear_brake": "Single 255mm disc, Nissin single-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Scrambler 1200 X specification" },
+ { "slug": "triumph-scrambler-1200-x-icon-edition-2026", "front_brake": "Twin 310mm discs, Nissin 2-piston axial calipers", "rear_brake": "Single 255mm disc, Nissin single-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Bonneville Scrambler 1200 X specification" },
+ { "slug": "triumph-scrambler-400-x-2024", "front_brake": "320mm fixed disc, four-piston radial caliper", "rear_brake": "230mm fixed disc, ByBre single-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Scrambler 400 X specification" },
+ { "slug": "triumph-speed-400-2024", "front_brake": "300mm fixed disc, four-piston radial caliper", "rear_brake": "230mm fixed disc, single-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk - Speed 400 specification" },
+
+ { "slug": "triumph-daytona-660-2024", "front_brake": "Twin 310mm floating discs, four-piston radial calipers", "rear_brake": "Single 220mm fixed disc, single-piston sliding caliper", "abs_type": "ABS", "source": "triumphmotorcycles.com - Daytona 660 specification" },
+ { "slug": "triumph-daytona-660-2025", "front_brake": "Twin 310mm floating discs, four-piston radial calipers", "rear_brake": "Single 220mm fixed disc, single-piston sliding caliper", "abs_type": "ABS", "source": "triumphmotorcycles.com - Daytona 660 specification" },
+ { "slug": "triumph-daytona-675-r-2017", "front_brake": "Twin 308mm floating discs, Brembo 4-piston radial monobloc calipers", "rear_brake": "Single 220mm disc, Nissin single-piston caliper", "abs_type": "Switchable ABS", "source": "triumphmotorcycles.co.uk archived Daytona 675R specification (web.archive.org, 2013 model year)" },
+
+ { "slug": "triumph-street-triple-765-rs-2019", "front_brake": "Twin 310mm floating discs, Brembo M50 4-piston radial monobloc calipers", "rear_brake": "Single 220mm fixed disc, Brembo single-piston sliding caliper", "abs_type": "Switchable ABS", "source": "triumphmotorcycles.co.uk archived Street Triple RS specification (web.archive.org, 2018 capture)" },
+ { "slug": "triumph-street-triple-765-rs-2020", "front_brake": "Twin 310mm floating discs, Brembo M50 4-piston radial monobloc calipers", "rear_brake": "Single 220mm fixed disc, Brembo single-piston sliding caliper", "abs_type": "Switchable ABS", "source": "triumphmotorcycles.co.uk archived Street Triple RS specification (web.archive.org, 2018 capture)" },
+ { "slug": "triumph-street-triple-765-rs-2021", "front_brake": "Twin 310mm floating discs, Brembo M50 4-piston radial monobloc calipers", "rear_brake": "Single 220mm fixed disc, Brembo single-piston sliding caliper", "abs_type": "Switchable ABS", "source": "triumphmotorcycles.co.uk archived Street Triple RS specification (web.archive.org, 2018 capture)" },
+ { "slug": "triumph-street-triple-765-rs-2022", "front_brake": "Twin 310mm floating discs, Brembo M50 4-piston radial monobloc calipers", "rear_brake": "Single 220mm fixed disc, Brembo single-piston sliding caliper", "abs_type": "Switchable ABS", "source": "triumphmotorcycles.co.uk archived Street Triple RS specification (web.archive.org, 2018 capture)" },
+ { "slug": "triumph-street-triple-765-rs-2023", "front_brake": "Twin 310mm floating discs, Brembo Stylema 4-piston radial monobloc calipers", "rear_brake": "Single 220mm disc, Brembo single-piston caliper", "abs_type": "Optimised Cornering ABS (OC-ABS)", "source": "triumphmotorcycles.co.uk - Street Triple 765 RS specification" },
+ { "slug": "triumph-street-triple-765-rs-2025", "front_brake": "Twin 310mm floating discs, Brembo Stylema 4-piston radial monobloc calipers", "rear_brake": "Single 220mm disc, Brembo single-piston caliper", "abs_type": "Optimised Cornering ABS (OC-ABS)", "source": "triumphmotorcycles.co.uk - Street Triple 765 RS specification" },
+ { "slug": "triumph-street-triple-765-r-2024", "front_brake": "Twin 310mm floating discs, Brembo M4.32 4-piston radial monobloc calipers", "rear_brake": "Single 220mm disc, Brembo single-piston caliper", "abs_type": "Optimised Cornering ABS (OC-ABS)", "source": "triumphmotorcycles.com - Street Triple 765 R specification" },
+ { "slug": "triumph-street-triple-2017", "front_brake": "Twin 310mm floating discs, Nissin 2-piston sliding calipers", "rear_brake": "Single 220mm fixed disc, Brembo single-piston caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Triple S specification (web.archive.org, 2018 capture)" },
+ { "slug": "triumph-street-triple-675-r-2017", "front_brake": "Twin 310mm floating discs", "rear_brake": "Single 220mm disc", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Triple specification (web.archive.org) - disc sizes only" },
+ { "slug": "triumph-street-triple-rx-2017", "front_brake": "Twin 310mm floating discs", "rear_brake": "Single 220mm disc", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Street Triple specification (web.archive.org) - disc sizes only" },
+
+ { "slug": "triumph-speed-triple-1050-2015", "front_brake": "Twin 320mm floating discs, Brembo 4-piston monobloc radial calipers", "rear_brake": "Single 255mm disc, 2-piston sliding caliper", "abs_type": "Switchable ABS", "source": "triumphmotorcycles.co.uk archived Speed Triple specification (web.archive.org)" },
+ { "slug": "triumph-speed-triple-94-2015", "front_brake": "Twin 320mm floating discs, Brembo 4-piston monobloc radial calipers", "rear_brake": "Single 255mm disc, 2-piston sliding caliper", "abs_type": "Switchable ABS", "source": "triumphmotorcycles.co.uk archived Speed Triple specification (web.archive.org)" },
+ { "slug": "triumph-speed-triple-r-94-2015", "front_brake": "Twin 320mm floating discs, Brembo 4-piston monobloc radial calipers", "rear_brake": "Single 255mm disc, 2-piston sliding caliper", "abs_type": "Switchable ABS", "source": "triumphmotorcycles.co.uk archived Speed Triple specification (web.archive.org)" },
+ { "slug": "triumph-speed-triple-r-2017", "front_brake": "Twin 320mm floating discs, Brembo 4-piston monobloc radial calipers", "rear_brake": "Single 255mm disc, 2-piston sliding caliper", "abs_type": "Switchable ABS", "source": "triumphmotorcycles.co.uk archived Speed Triple specification (web.archive.org)" },
+
+ { "slug": "triumph-rocket-iii-2300cc-2005", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Rocket III specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-rocket-iii-2300cc-2006", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Rocket III specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-rocket-iii-2300cc-2007", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Rocket III specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-rocket-iii-2300cc-2008", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Rocket III specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-rocket-iii-2300cc-2009", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Rocket III specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-rocket-iii-2009", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Rocket III specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-rocket-iii-classic-2300cc-2006", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Rocket III specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-rocket-iii-classic-2300cc-2007", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Rocket III specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-rocket-iii-classic-2300cc-2008", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Rocket III specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-rocket-iii-classic-2300cc-2009", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Rocket III specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-rocket-iii-classic-2009", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "source": "triumphmotorcycles.co.uk archived Rocket III specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-rocket-iii-roadster-2300cc-2011", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Rocket III Roadster specification (web.archive.org)" },
+ { "slug": "triumph-rocket-iii-roadster-2300cc-2012", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Rocket III Roadster specification (web.archive.org)" },
+ { "slug": "triumph-rocket-iii-roadster-2300cc-2013", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Rocket III Roadster specification (web.archive.org)" },
+ { "slug": "triumph-rocket-iii-roadster-2300cc-2014", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Rocket III Roadster specification (web.archive.org)" },
+ { "slug": "triumph-rocket-iii-roadster-2300cc-2015", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Rocket III Roadster specification (web.archive.org)" },
+ { "slug": "triumph-rocket-iii-roadster-2300cc-2016", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Rocket III Roadster specification (web.archive.org)" },
+ { "slug": "triumph-rocket-iii-roadster-2300cc-2017", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Rocket III Roadster specification (web.archive.org)" },
+ { "slug": "triumph-rocket-iii-roadster-2017", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Rocket III Roadster specification (web.archive.org)" },
+ { "slug": "triumph-rocket-iii-touring-2015", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Rocket III Touring specification (web.archive.org, 2013 model year)" },
+ { "slug": "triumph-rocket-x-2015", "front_brake": "Twin 320mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 316mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Rocket III Roadster specification (web.archive.org)" },
+
+ { "slug": "triumph-rocket-iii-r-2500cc-2020", "front_brake": "Dual 320mm discs, Brembo M4.30 Stylema 4-piston radial monobloc calipers", "rear_brake": "Single 300mm disc, Brembo M4.32 4-piston monobloc caliper", "abs_type": "Cornering ABS", "source": "triumphmotorcycles.co.uk archived Rocket 3 R specification (web.archive.org, 2020 capture)" },
+ { "slug": "triumph-rocket-iii-r-2500cc-2021", "front_brake": "Dual 320mm discs, Brembo M4.30 Stylema 4-piston radial monobloc calipers", "rear_brake": "Single 300mm disc, Brembo M4.32 4-piston monobloc caliper", "abs_type": "Cornering ABS", "source": "triumphmotorcycles.co.uk archived Rocket 3 R specification (web.archive.org, 2020 capture)" },
+ { "slug": "triumph-rocket-iii-r-2500cc-2022", "front_brake": "Dual 320mm discs, Brembo M4.30 Stylema 4-piston radial monobloc calipers", "rear_brake": "Single 300mm disc, Brembo M4.32 4-piston monobloc caliper", "abs_type": "Cornering ABS", "source": "triumphmotorcycles.co.uk archived Rocket 3 R specification (web.archive.org, 2020 capture)" },
+ { "slug": "triumph-rocket-iii-r-2500cc-2023", "front_brake": "Dual 320mm discs, Brembo M4.30 Stylema 4-piston radial monobloc calipers", "rear_brake": "Single 300mm disc, Brembo M4.32 4-piston monobloc caliper", "abs_type": "Cornering ABS", "source": "triumphmotorcycles.co.uk archived Rocket 3 R specification (web.archive.org, 2020 capture)" },
+ { "slug": "triumph-rocket-iii-r-2500cc-2024", "front_brake": "Dual 320mm discs, Brembo M4.30 Stylema 4-piston radial monobloc calipers", "rear_brake": "Single 300mm disc, Brembo M4.32 4-piston monobloc caliper", "abs_type": "Cornering ABS", "source": "triumphmotorcycles.co.uk archived Rocket 3 R specification (web.archive.org, 2020 capture)" },
+ { "slug": "triumph-rocket-iii-r-black-edition-2500cc-2022", "front_brake": "Dual 320mm discs, Brembo M4.30 Stylema 4-piston radial monobloc calipers", "rear_brake": "Single 300mm disc, Brembo M4.32 4-piston monobloc caliper", "abs_type": "Cornering ABS", "source": "triumphmotorcycles.co.uk archived Rocket 3 R specification (web.archive.org, 2020 capture)" },
+ { "slug": "triumph-rocket-iii-gt-2500cc-2023", "front_brake": "Dual 320mm discs, Brembo M4.30 Stylema 4-piston radial monobloc calipers", "rear_brake": "Single 300mm disc, Brembo M4.32 4-piston monobloc caliper", "abs_type": "Cornering ABS", "source": "triumphmotorcycles.co.uk archived Rocket 3 GT specification (web.archive.org, 2020 capture)" },
+ { "slug": "triumph-rocket-iii-gt-2500cc-2024", "front_brake": "Dual 320mm discs, Brembo M4.30 Stylema 4-piston radial monobloc calipers", "rear_brake": "Single 300mm disc, Brembo M4.32 4-piston monobloc caliper", "abs_type": "Cornering ABS", "source": "triumphmotorcycles.co.uk archived Rocket 3 GT specification (web.archive.org, 2020 capture)" },
+ { "slug": "triumph-rocket-iii-storm-edition-r-2500cc-2025", "front_brake": "Twin 320mm discs, Brembo Stylema M4.32 4-piston monobloc calipers", "rear_brake": "Single 300mm disc, Brembo M4.32 4-piston monobloc caliper", "abs_type": "Optimised Cornering ABS (OC-ABS)", "source": "triumphmotorcycles.co.uk - Rocket 3 Storm specification" },
+ { "slug": "triumph-rocket-iii-storm-edition-gt-2500cc-2025", "front_brake": "Twin 320mm discs, Brembo Stylema M4.32 4-piston monobloc calipers", "rear_brake": "Single 300mm disc, Brembo M4.32 4-piston monobloc caliper", "abs_type": "Optimised Cornering ABS (OC-ABS)", "source": "triumphmotorcycles.co.uk - Rocket 3 Storm specification" },
+
+ { "slug": "triumph-thunderbird-2015", "front_brake": "Twin 310mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 310mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Thunderbird specification (web.archive.org)" },
+ { "slug": "triumph-thunderbird-nightstorm-2015", "front_brake": "Twin 310mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 310mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Thunderbird Special Edition specification (web.archive.org)" },
+ { "slug": "triumph-thunderbird-storm-2018", "front_brake": "Twin 310mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 310mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Thunderbird Special Edition specification (web.archive.org)" },
+ { "slug": "triumph-thunderbird-commander-2018", "front_brake": "Twin 310mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 310mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Thunderbird specification (web.archive.org)" },
+ { "slug": "triumph-thunderbird-lt-2018", "front_brake": "Twin 310mm floating discs, Nissin 4-piston fixed calipers", "rear_brake": "Single 310mm fixed disc, Brembo 2-piston floating caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Thunderbird specification (web.archive.org)" },
+
+ { "slug": "triumph-trophy-2013", "front_brake": "Twin 320mm floating discs, Nissin 4-piston calipers", "rear_brake": "Single 282mm disc, Nissin 2-piston sliding caliper", "abs_type": "Linked braking with non-switchable ABS", "source": "triumphmotorcycles.co.uk archived Trophy specification (web.archive.org, 2013 model year)" },
+ { "slug": "triumph-trophy-se-1200-2013", "front_brake": "Twin 320mm floating discs, Nissin 4-piston calipers", "rear_brake": "Single 282mm disc, Nissin 2-piston sliding caliper", "abs_type": "Linked braking with non-switchable ABS", "source": "triumphmotorcycles.co.uk archived Trophy specification (web.archive.org, 2013 model year)" },
+ { "slug": "triumph-trophy-se-1200-2014", "front_brake": "Twin 320mm floating discs, Nissin 4-piston calipers", "rear_brake": "Single 282mm disc, Nissin 2-piston sliding caliper", "abs_type": "Linked braking with non-switchable ABS", "source": "triumphmotorcycles.co.uk archived Trophy specification (web.archive.org, 2013 model year)" },
+ { "slug": "triumph-trophy-se-2018", "front_brake": "Twin 320mm floating discs, Nissin 4-piston calipers", "rear_brake": "Single 282mm disc, Nissin 2-piston sliding caliper", "abs_type": "Linked braking with non-switchable ABS", "source": "triumphmotorcycles.co.uk archived Trophy specification (web.archive.org, 2013 model year)" },
+
+ { "slug": "triumph-sprint-st-2010", "front_brake": "Twin 320mm floating discs, Nissin 4-piston calipers", "rear_brake": "Single 255mm disc, Nissin 2-piston sliding caliper", "abs_type": "ABS optional", "source": "triumphmotorcycles.co.uk archived Sprint ST specification (web.archive.org, 2010 model year)" },
+ { "slug": "triumph-sprint-gt-2013", "front_brake": "Twin 320mm floating discs, Nissin 4-piston calipers", "rear_brake": "Single 255mm disc, Nissin 2-piston sliding caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Sprint GT specification (web.archive.org, 2013 model year)" },
+ { "slug": "triumph-sprint-gt-se-2015", "front_brake": "Twin 320mm floating discs, Nissin 4-piston calipers", "rear_brake": "Single 255mm disc, Nissin 2-piston sliding caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Sprint GT specification (web.archive.org, 2013 model year)" },
+
+ { "slug": "triumph-tiger-1050-2012", "front_brake": "Twin 320mm floating discs, Nissin four-piston radial calipers", "rear_brake": "Single 255mm disc, Nissin 2-piston caliper", "abs_type": "ABS optional", "source": "triumphmotorcycles.co.uk archived Tiger 1050 specification (web.archive.org, 2012 model year)" },
+ { "slug": "triumph-tiger-1050-se-2013", "front_brake": "Twin 320mm floating discs, Nissin four-piston radial calipers", "rear_brake": "Single 255mm disc, Nissin 2-piston caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Tiger 1050 Special Edition specification (web.archive.org)" },
+ { "slug": "triumph-tiger-sport-1050-2021", "front_brake": "Twin 320mm floating discs, Nissin 4-piston radial calipers", "rear_brake": "Single 255mm disc, Nissin 2-piston caliper", "abs_type": "ABS", "source": "triumphmotorcycles.co.uk archived Tiger Sport specification (web.archive.org, 2021 capture)" },
+ { "slug": "triumph-tiger-800-xc-2017", "front_brake": "Twin 308mm floating discs, Nissin 2-piston floating calipers", "rear_brake": "Single 255mm disc, Nissin single-piston floating caliper", "abs_type": "Switchable ABS", "source": "triumphmotorcycles.co.uk archived Tiger 800 XC specification (web.archive.org, 2013 model year)" },
+ { "slug": "triumph-tiger-800-xc-special-2014", "front_brake": "Twin 308mm floating discs, Nissin 2-piston floating calipers", "rear_brake": "Single 255mm disc, Nissin single-piston floating caliper", "abs_type": "Switchable ABS", "source": "triumphmotorcycles.co.uk archived Tiger 800 XC specification (web.archive.org, 2013 model year)" },
+ { "slug": "triumph-tiger-850-sport-2023", "front_brake": "Twin 320mm floating discs, Brembo Stylema 4-piston monobloc calipers", "rear_brake": "Single 255mm disc, Brembo single-piston sliding caliper", "abs_type": "ABS", "source": "triumphmotorcycles.com - Tiger 850 Sport specification" },
+ { "slug": "triumph-trident-660-triple-tribute-2024", "front_brake": "Twin 310mm discs, Nissin two-piston sliding calipers", "rear_brake": "Single 255mm fixed disc, Nissin single-piston sliding caliper", "abs_type": "ABS", "source": "triumphmotorcycles.com - Trident 660 specification" },
+
+ { "slug": "ducati-1098-1099cc-2007", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1098 tech spec (web.archive.org)" },
+ { "slug": "ducati-1098-1099cc-2008", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1098 tech spec (web.archive.org)" },
+ { "slug": "ducati-1098-2008", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1098 tech spec (web.archive.org)" },
+ { "slug": "ducati-1098-r-2009", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1098 R tech spec (web.archive.org)" },
+ { "slug": "ducati-1098-s-1099cc-2007", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1098 S tech spec (web.archive.org)" },
+ { "slug": "ducati-1098-s-1099cc-2008", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1098 S tech spec (web.archive.org)" },
+ { "slug": "ducati-1098-s-2011", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1098 S tech spec (web.archive.org)" },
+ { "slug": "ducati-1098-s-tricolore-2007", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1098 S Tricolore tech spec (web.archive.org)" },
+ { "slug": "ducati-1198-1198cc-2009", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1198 tech spec (web.archive.org)" },
+ { "slug": "ducati-1198-1198cc-2010", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1198 tech spec (web.archive.org)" },
+ { "slug": "ducati-1198-1198cc-2011", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1198 tech spec (web.archive.org)" },
+ { "slug": "ducati-1198-2011", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1198 tech spec (web.archive.org)" },
+ { "slug": "ducati-1198-r-corse-2011", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1198 R Corse tech spec (web.archive.org)" },
+ { "slug": "ducati-1198-s-1198cc-2009", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1198 S tech spec (web.archive.org)" },
+ { "slug": "ducati-1198-s-1198cc-2010", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1198 S tech spec (web.archive.org)" },
+ { "slug": "ducati-1198-s-1198cc-2011", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1198 S tech spec (web.archive.org)" },
+ { "slug": "ducati-1198-s-2010", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1198 S tech spec (web.archive.org)" },
+ { "slug": "ducati-1198-sp-1198cc-2011", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived 1198 SP tech spec (web.archive.org)" },
+ { "slug": "ducati-1199-panigale-tricolor-2014", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc M50 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS optional", "source": "ducati.com archived 1199 Panigale S Tricolore tech spec (web.archive.org)" },
+ { "slug": "ducati-1199-panigale-superleggera-2014", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc M50 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived 1199 Panigale R tech spec (web.archive.org, shared Superleggera brake package)" },
+ { "slug": "ducati-899-panigale-2015", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo Monobloc M4.32 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived 899 Panigale tech spec (web.archive.org)" },
+ { "slug": "ducati-panigale-r-2017", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc M50 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "Cornering ABS", "source": "ducati.com archived 1299 Panigale tech spec (web.archive.org)" },
+ { "slug": "ducati-desmosedici-rr-2008", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston calipers", "rear_brake": "240mm fixed disc, caliper with two 34mm pistons", "source": "ducati.com archived Desmosedici RR tech spec (web.archive.org)" },
+
+ { "slug": "ducati-998-997cc-2002", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad calipers", "rear_brake": "220mm disc, 2-piston caliper", "source": "ducati.com archived 998 tech spec (web.archive.org)" },
+ { "slug": "ducati-998-997cc-2003", "front_brake": "2 x 320mm semi-floating discs, 4-piston 2-pad calipers", "rear_brake": "220mm disc, 2-piston caliper", "source": "ducati.com archived 998 tech spec (web.archive.org)" },
+ { "slug": "ducati-999-998cc-2002", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad calipers", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 999 tech spec (web.archive.org, first 999 model year)" },
+ { "slug": "ducati-999-998cc-2003", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad calipers", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 999 tech spec (web.archive.org)" },
+ { "slug": "ducati-999-998cc-2004", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad calipers", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 999 tech spec (web.archive.org)" },
+ { "slug": "ducati-999-998cc-2005", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad caliper", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 999 tech spec (web.archive.org)" },
+ { "slug": "ducati-999-998cc-2006", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad caliper", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 999 tech spec (web.archive.org)" },
+ { "slug": "ducati-999-2006", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad caliper", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 999 tech spec (web.archive.org)" },
+ { "slug": "ducati-999s-2006", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad radial caliper", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 999S tech spec (web.archive.org)" },
+ { "slug": "ducati-999r-2006", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad radial caliper", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 999R tech spec (web.archive.org)" },
+ { "slug": "ducati-999r-xerox-999cc-2005", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad radial caliper", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 999R tech spec (web.archive.org)" },
+ { "slug": "ducati-999r-xerox-999cc-2006", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad radial caliper", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 999R tech spec (web.archive.org)" },
+ { "slug": "ducati-749-dark-2006", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad caliper", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 749 Dark tech spec (web.archive.org)" },
+ { "slug": "ducati-749-dark-748cc-2006", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad caliper", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 749 Dark tech spec (web.archive.org)" },
+ { "slug": "ducati-749-s-2006", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad caliper", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 749S tech spec (web.archive.org)" },
+ { "slug": "ducati-749-r-2006", "front_brake": "2 x 320mm semi-floating discs, 4-piston 4-pad radial caliper", "rear_brake": "240mm disc, 2-piston caliper", "source": "ducati.com archived 749R tech spec (web.archive.org); rear from the 749 range spec" },
+
+ { "slug": "ducati-monster-600cc-1999", "front_brake": "320mm disc, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 600 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-600cc-2000", "front_brake": "320mm disc, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 600 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-600cc-2001", "front_brake": "320mm disc, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 600 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-620cc-2002", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 620 tech spec (web.archive.org, 2004 twin-disc spec)" },
+ { "slug": "ducati-monster-620cc-2003", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 620 tech spec (web.archive.org, 2004 twin-disc spec)" },
+ { "slug": "ducati-monster-620cc-2004", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 620 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-620cc-2005", "front_brake": "2 x 300mm discs, 2-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 620 twin-disc tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-620-s-2005", "front_brake": "2 x 300mm discs, 2-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 620 twin-disc tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-620-2006", "front_brake": "2 x 300mm discs, 2-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 620 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-620-dark-2006", "front_brake": "2 x 300mm discs, 2-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 620 Dark tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-695cc-2006", "front_brake": "2 x 300mm discs, 2-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 695 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-695cc-2007", "front_brake": "2 x 300mm discs, 2-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 695 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-695-2008", "front_brake": "2 x 300mm discs, 2-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 695 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-696-2008", "front_brake": "2 x 320mm discs, 4-piston radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 696 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-696cc-2009", "front_brake": "2 x 320mm discs, 4-piston radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 696 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-696cc-2010", "front_brake": "2 x 320mm discs, 4-piston radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 696 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-696cc-2012", "front_brake": "2 x 320mm discs, 4-piston radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 696 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-696-2014", "front_brake": "2 x 320mm discs, 4-piston radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 696 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-900cc-1995", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 900 i.e. tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-900cc-1996", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 900 i.e. tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-900cc-1997", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 900 i.e. tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-900cc-1998", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 900 i.e. tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-900cc-1999", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 900 i.e. tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-900cc-2000", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 900 i.e. tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-900cc-2001", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 900 i.e. tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-s4-916-1995", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster S4 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-400s-2005", "front_brake": "Single 320mm disc, 4-piston caliper (Japan market: 2 x 320mm discs)", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 400 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-1000-2005", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 1000 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-s2r-800-dark-2006", "front_brake": "2 x 300mm discs, 2-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster S2R Dark tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-s2r-800-2007", "front_brake": "2 x 300mm discs, 2-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster S2R 800 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-s2-r-1000-992cc-2006", "front_brake": "2 x 300mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster S2R 1000 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-s2-r-1000-992cc-2007", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster S2R 1000 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-s2-r-1000-992cc-2008", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster S2R 1000 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-s2r-1000-2008", "front_brake": "2 x 320mm discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster S2R 1000 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-s4r-2008", "front_brake": "2 x 320mm discs, 4-piston 4-pad radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster S4R Testastretta tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-s4-rs-testastretta-998cc-2006", "front_brake": "2 x 320mm discs, 4-piston 4-pad radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster S4RS Testastretta tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-s4-rs-testastretta-998cc-2007", "front_brake": "2 x 320mm discs, 4-piston 4-pad radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster S4RS Testastretta tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-1100cc-2009", "front_brake": "2 x 320mm discs, 4-piston radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 1100 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-1100cc-2010", "front_brake": "2 x 320mm discs, 4-piston radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 1100 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-1100cc-2012", "front_brake": "2 x 320mm discs, 4-piston radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Monster 1100 EVO tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-1100-2011", "front_brake": "2 x 320mm discs, 4-piston radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 1100 tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-1100-s-1078cc-2010", "front_brake": "2 x 320mm discs, 4-piston radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 1100 S tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-1100-s-2011", "front_brake": "2 x 320mm discs, 4-piston radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Monster 1100 S tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-1100-evo-2013", "front_brake": "2 x 320mm discs, 4-piston radial caliper", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Monster 1100 EVO tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-821-stripe-2016", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo M4-32 monobloc 4-piston calipers", "rear_brake": "245mm disc, 2-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Monster 821 Stripe tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-1200-s-stripe-2015", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo evo M50 4-piston monobloc calipers", "rear_brake": "245mm disc, 2-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Monster 1200 S Stripe tech spec (web.archive.org)" },
+ { "slug": "ducati-monster-937cc-2022", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo M4.32 monobloc 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "Cornering ABS", "source": "ducati.com - Monster tech specs" },
+ { "slug": "ducati-monster-937cc-2023", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo M4.32 monobloc 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "Cornering ABS", "source": "ducati.com - Monster tech specs" },
+
+ { "slug": "ducati-multistrada-620-618cc-2005", "front_brake": "2 x 300mm discs, 2-piston 2-pad floating caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Multistrada 620 tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-620-618cc-2006", "front_brake": "2 x 300mm discs, 2-piston 2-pad floating caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Multistrada 620 tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-620-2006", "front_brake": "2 x 300mm discs, 2-piston 2-pad floating caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Multistrada 620 tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-620-dark-2006", "front_brake": "Single 320mm semi-floating disc, 4-piston 2-pad caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Multistrada 620 Dark tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1000-992cc-2003", "front_brake": "2 x 320mm semi-floating discs, 4-piston 2-pad caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Multistrada 1000 DS tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1000-992cc-2004", "front_brake": "2 x 320mm semi-floating discs, 4-piston 2-pad caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Multistrada 1000 DS tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1000-992cc-2005", "front_brake": "2 x 320mm semi-floating discs, 4-piston 2-pad caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Multistrada 1000 DS tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1000-2008", "front_brake": "2 x 320mm semi-floating discs, 4-piston 2-pad caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Multistrada 1000 DS tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1000-s-2008", "front_brake": "2 x 320mm semi-floating discs, 4-piston 2-pad caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Multistrada 1000S DS tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1100-1078cc-2007", "front_brake": "2 x 320mm semi-floating discs, 4-piston 2-pad caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Multistrada 1100 tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1100-1078cc-2008", "front_brake": "2 x 320mm semi-floating discs, 4-piston 2-pad caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Multistrada 1100 tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1100-2009", "front_brake": "2 x 320mm semi-floating discs, 4-piston 2-pad caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Multistrada 1100 tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-1198cc-2010", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS optional", "source": "ducati.com archived Multistrada 1200 tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-1198cc-2011", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS optional", "source": "ducati.com archived Multistrada 1200 tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-1198cc-2012", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-1198cc-2013", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-1198cc-2014", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-1198cc-2015", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo monobloc 4-piston 2-pad calipers", "rear_brake": "265mm disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com archived Multistrada 1200 tech spec (web.archive.org, 2016 capture)" },
+ { "slug": "ducati-multistrada-1200-1198cc-2016", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo monobloc 4-piston 2-pad calipers", "rear_brake": "265mm disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com archived Multistrada 1200 tech spec (web.archive.org, 2016 capture)" },
+ { "slug": "ducati-multistrada-1200-1198cc-2017", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo monobloc 4-piston 2-pad calipers", "rear_brake": "265mm disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com archived Multistrada 1200 tech spec (web.archive.org, 2016 capture)" },
+ { "slug": "ducati-multistrada-1200-1198cc-2018", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo monobloc 4-piston 2-pad calipers", "rear_brake": "265mm disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com archived Multistrada 1200 tech spec (web.archive.org, 2016 capture)" },
+ { "slug": "ducati-multistrada-1200-2017", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo monobloc 4-piston 2-pad calipers", "rear_brake": "265mm disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com archived Multistrada 1200 tech spec (web.archive.org, 2016 capture)" },
+ { "slug": "ducati-multistrada-1200-s-1198cc-2010", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 S tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-s-1198cc-2011", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 S tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-s-1198cc-2012", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 S tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-s-gt-2014", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 S Granturismo tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-s-dair-2016", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo monobloc Evo M50 4-piston calipers", "rear_brake": "265mm disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com archived Multistrada 1200 S tech spec (web.archive.org, 2015 capture)" },
+ { "slug": "ducati-multistrada-1200-s-touring-1198cc-2010", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 S Touring tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-s-touring-1198cc-2011", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 S Touring tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-s-touring-1198cc-2012", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 S Touring tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-s-touring-1198cc-2013", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 S Touring tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-s-touring-1198cc-2014", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 S Touring tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-s-touring-2014", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS", "source": "ducati.com archived Multistrada 1200 S Touring tech spec (web.archive.org)" },
+ { "slug": "ducati-multistrada-1200-s-touring-1198cc-2015", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo monobloc Evo M50 4-piston calipers", "rear_brake": "265mm disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com archived Multistrada 1200 S tech spec (web.archive.org, 2015 capture)" },
+ { "slug": "ducati-multistrada-1200-s-touring-1198cc-2016", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo monobloc Evo M50 4-piston calipers", "rear_brake": "265mm disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com archived Multistrada 1200 S tech spec (web.archive.org, 2015 capture)" },
+ { "slug": "ducati-multistrada-1200-s-touring-1198cc-2017", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo monobloc Evo M50 4-piston calipers", "rear_brake": "265mm disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com archived Multistrada 1200 S tech spec (web.archive.org, 2015 capture)" },
+ { "slug": "ducati-multistrada-1200-s-touring-1198cc-2018", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo monobloc Evo M50 4-piston calipers", "rear_brake": "265mm disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com archived Multistrada 1200 S tech spec (web.archive.org, 2015 capture)" },
+ { "slug": "ducati-multistrada-1160-v4-rally-2025", "front_brake": "2 x Ø330mm semi-floating discs, radially mounted Brembo M50 Stylema monobloc 4-piston calipers", "rear_brake": "Ø280mm disc, Brembo 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com - Multistrada V4 Rally tech specs" },
+
+ { "slug": "ducati-hypermotard-1100-evo-1078cc-2008", "front_brake": "2 x 305mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Hypermotard 1100 tech spec (web.archive.org)" },
+ { "slug": "ducati-hypermotard-1100-evo-1078cc-2009", "front_brake": "2 x 305mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Hypermotard 1100 tech spec (web.archive.org)" },
+ { "slug": "ducati-hypermotard-1100-evo-1078cc-2010", "front_brake": "2 x 305mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Hypermotard 1100 EVO tech spec (web.archive.org)" },
+ { "slug": "ducati-hypermotard-1100-evo-1078cc-2011", "front_brake": "2 x 305mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Hypermotard 1100 EVO tech spec (web.archive.org)" },
+ { "slug": "ducati-hypermotard-1100-evo-1078cc-2012", "front_brake": "2 x 305mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Hypermotard 1100 EVO tech spec (web.archive.org)" },
+ { "slug": "ducati-hypermotard-1100-2012", "front_brake": "2 x 305mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Hypermotard 1100 EVO tech spec (web.archive.org)" },
+ { "slug": "ducati-hypermotard-1100-s-2009", "front_brake": "2 x 305mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Hypermotard 1100 S tech spec (web.archive.org)" },
+ { "slug": "ducati-hypermotard-1100-evo-sp-1078cc-2011", "front_brake": "2 x 305mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Hypermotard 1100 EVO SP tech spec (web.archive.org)" },
+ { "slug": "ducati-hypermotard-1100-evo-sp-1078cc-2012", "front_brake": "2 x 305mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Hypermotard 1100 EVO SP tech spec (web.archive.org)" },
+ { "slug": "ducati-hypermotard-1100-evo-sp-2012", "front_brake": "2 x 305mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Hypermotard 1100 EVO SP tech spec (web.archive.org)" },
+ { "slug": "ducati-hyperstrada-2015", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "ABS 9MP", "source": "ducati.com archived Hyperstrada tech spec (web.archive.org)" },
+ { "slug": "ducati-hypermotard-698-rev-2025", "front_brake": "Ø330mm aluminium flange disc, Brembo M4.32 caliper, radial pump with adjustable lever", "rear_brake": "Ø245mm disc, single-piston floating caliper", "abs_type": "Bosch Cornering ABS", "source": "ducati.com - Hypermotard 698 Mono tech specs" },
+ { "slug": "ducati-hypermotard-698-rev-2026", "front_brake": "Ø330mm aluminium flange disc, Brembo M4.32 caliper, radial pump with adjustable lever", "rear_brake": "Ø245mm disc, single-piston floating caliper", "abs_type": "Bosch Cornering ABS", "source": "ducati.com - Hypermotard 698 Mono tech specs" },
+
+ { "slug": "ducati-streetfighter-1098cc-2009", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Streetfighter tech spec (web.archive.org)" },
+ { "slug": "ducati-streetfighter-1098cc-2010", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Streetfighter tech spec (web.archive.org)" },
+ { "slug": "ducati-streetfighter-1098cc-2011", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Streetfighter tech spec (web.archive.org)" },
+ { "slug": "ducati-streetfighter-1098cc-2012", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Streetfighter tech spec (web.archive.org)" },
+ { "slug": "ducati-streetfighter-s-2013", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo Monobloc 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Streetfighter S tech spec (web.archive.org)" },
+ { "slug": "ducati-streetfighter-848-2015", "front_brake": "2 x 320mm semi-floating discs, radially mounted Brembo 4-piston 2-pad calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived Streetfighter 848 tech spec (web.archive.org)" },
+ { "slug": "ducati-streetfighter-v4-s-1103cc-2021", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo monobloc 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "Cornering ABS", "source": "ducati.com - Streetfighter V4 tech specs" },
+ { "slug": "ducati-streetfighter-v4-s-1103cc-2022", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo monobloc 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "Cornering ABS", "source": "ducati.com - Streetfighter V4 tech specs" },
+ { "slug": "ducati-streetfighter-v4-s-1103cc-2023", "front_brake": "2 x 330mm semi-floating discs, radially mounted Brembo monobloc 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "abs_type": "Cornering ABS", "source": "ducati.com - Streetfighter V4 tech specs" },
+
+ { "slug": "ducati-paul-smart-1000-2006", "front_brake": "2 x 320mm semi-floating discs, 2-piston 2-pad floating caliper", "rear_brake": "245mm disc, 1-piston floating caliper", "source": "ducati.com archived PaulSmart 1000 LE tech spec (web.archive.org)" },
+ { "slug": "ducati-sportclassic-paulsmart-1000le-992cc-2006", "front_brake": "2 x 320mm semi-floating discs, 2-piston 2-pad floating caliper", "rear_brake": "245mm disc, 1-piston floating caliper", "source": "ducati.com archived PaulSmart 1000 LE tech spec (web.archive.org)" },
+ { "slug": "ducati-sportclassic-sport-1000-992cc-2006", "front_brake": "2 x 320mm semi-floating discs, 2-piston 2-pad floating caliper", "rear_brake": "245mm disc, 1-piston floating caliper", "source": "ducati.com archived Sport 1000 tech spec (web.archive.org)" },
+ { "slug": "ducati-sport-1000-s-2009", "front_brake": "2 x 320mm semi-floating discs, 2-piston floating caliper with 2 sintered pads", "rear_brake": "245mm disc, 1-piston floating caliper", "source": "ducati.com archived Sport 1000 S tech spec (web.archive.org)" },
+ { "slug": "ducati-gt-1000-2011", "front_brake": "2 x 320mm semi-floating discs, 2-piston 2-pad floating caliper", "rear_brake": "245mm disc, 1-piston floating caliper", "source": "ducati.com archived GT 1000 tech spec (web.archive.org)" },
+
+ { "slug": "ducati-ss-900cc-1999", "front_brake": "2 x 320mm semi-floating discs, fixed 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived SuperSport tech spec (web.archive.org, shared SS chassis brake package)" },
+ { "slug": "ducati-ss-900cc-2000", "front_brake": "2 x 320mm semi-floating discs, fixed 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived SuperSport tech spec (web.archive.org, shared SS chassis brake package)" },
+ { "slug": "ducati-ss-900cc-2001", "front_brake": "2 x 320mm semi-floating discs, fixed 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived SuperSport tech spec (web.archive.org, shared SS chassis brake package)" },
+ { "slug": "ducati-750-ss-carenata-2005", "front_brake": "2 x 320mm semi-floating discs, fixed 4-piston calipers", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived SuperSport 800 tech spec (web.archive.org)" },
+ { "slug": "ducati-900-carenata-2005", "front_brake": "2 x 320mm semi-floating discs, fixed 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived SuperSport 1000 DS tech spec (web.archive.org)" },
+
+ { "slug": "ducati-st-2-900-944cc-1997", "front_brake": "2 x 320mm semi-floating discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived ST2 tech spec (web.archive.org)" },
+ { "slug": "ducati-st-2-900-944cc-1998", "front_brake": "2 x 320mm semi-floating discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived ST2 tech spec (web.archive.org)" },
+ { "slug": "ducati-st-2-900-944cc-2002", "front_brake": "2 x 320mm semi-floating discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived ST2 tech spec (web.archive.org)" },
+ { "slug": "ducati-st-2-900-944cc-2003", "front_brake": "2 x 320mm semi-floating discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived ST2 tech spec (web.archive.org)" },
+ { "slug": "ducati-st-3-2007", "front_brake": "2 x 320mm semi-floating discs, 2-piston floating caliper with 2 sintered pads", "rear_brake": "245mm disc, 1-piston floating caliper with 2 sintered pads", "source": "ducati.com archived ST3 tech spec (web.archive.org)" },
+ { "slug": "ducati-st-4-900-996cc-1997", "front_brake": "2 x 320mm semi-floating discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived ST4 tech spec (web.archive.org)" },
+ { "slug": "ducati-st-4-900-996cc-1998", "front_brake": "2 x 320mm semi-floating discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived ST4 tech spec (web.archive.org)" },
+ { "slug": "ducati-st-4-900-996cc-1999", "front_brake": "2 x 320mm semi-floating discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived ST4 tech spec (web.archive.org)" },
+ { "slug": "ducati-st-4-900-996cc-2000", "front_brake": "2 x 320mm semi-floating discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived ST4 tech spec (web.archive.org)" },
+ { "slug": "ducati-st-4-900-996cc-2002", "front_brake": "2 x 320mm semi-floating discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived ST4 tech spec (web.archive.org)" },
+ { "slug": "ducati-st-4-900-996cc-2003", "front_brake": "2 x 320mm semi-floating discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived ST4 tech spec (web.archive.org)" },
+ { "slug": "ducati-st-4-900-996cc-2005", "front_brake": "2 x 320mm semi-floating discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived ST4 tech spec (web.archive.org)" },
+ { "slug": "ducati-st-4-s-2005", "front_brake": "2 x 320mm semi-floating discs, 4-piston caliper", "rear_brake": "245mm disc, 2-piston caliper", "source": "ducati.com archived ST4s tech spec (web.archive.org)" },
+
+ { "slug": "ducati-diavel-1200-dark-2016", "front_brake": "2 x 320mm semi-floating discs, radially attached Brembo Monobloc 4-piston calipers", "rear_brake": "265mm disc, 2-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Diavel tech spec (web.archive.org, 2016 capture)" },
+ { "slug": "ducati-diavel-titanium-2015", "front_brake": "2 x 320mm semi-floating discs, radially attached Brembo Monobloc 4-piston calipers", "rear_brake": "265mm disc, 2-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Diavel Titanium tech spec (web.archive.org)" },
+
+ { "slug": "ducati-scrambler-icon-800cc-2016", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org)" },
+ { "slug": "ducati-scrambler-icon-800cc-2017", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org)" },
+ { "slug": "ducati-scrambler-icon-800cc-2018", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org)" },
+ { "slug": "ducati-scrambler-icon-800cc-2019", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org)" },
+ { "slug": "ducati-scrambler-icon-800cc-2020", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org)" },
+ { "slug": "ducati-scrambler-icon-800cc-2021", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org)" },
+ { "slug": "ducati-scrambler-icon-800cc-2022", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org)" },
+ { "slug": "ducati-scrambler-icon-800cc-2023", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com - Scrambler Icon tech specs (2G Scrambler)" },
+ { "slug": "ducati-scrambler-icon-800cc-2024", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com - Scrambler Icon tech specs (2G Scrambler)" },
+ { "slug": "ducati-scrambler-icon-800cc-2025", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "Cornering ABS", "source": "ducati.com - Scrambler Icon tech specs (2G Scrambler)" },
+ { "slug": "ducati-scrambler-classic-800cc-2016", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler Classic tech spec (web.archive.org)" },
+ { "slug": "ducati-scrambler-classic-800cc-2017", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler Classic tech spec (web.archive.org)" },
+ { "slug": "ducati-scrambler-classic-800cc-2018", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler Classic tech spec (web.archive.org)" },
+ { "slug": "ducati-scrambler-full-throttler-800cc-2016", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org, shared 800 Scrambler brake package)" },
+ { "slug": "ducati-scrambler-full-throttler-800cc-2017", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org, shared 800 Scrambler brake package)" },
+ { "slug": "ducati-scrambler-full-throttler-800cc-2018", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org, shared 800 Scrambler brake package)" },
+ { "slug": "ducati-scrambler-custom-800cc-2018", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org, shared 800 Scrambler brake package)" },
+ { "slug": "ducati-scrambler-custom-800cc-2019", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org, shared 800 Scrambler brake package)" },
+ { "slug": "ducati-scrambler-custom-800cc-2020", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org, shared 800 Scrambler brake package)" },
+ { "slug": "ducati-scrambler-urban-enduro-2016", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org, shared 800 Scrambler brake package)" },
+ { "slug": "ducati-scrambler-urban-enduro-800cc-2016", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org, shared 800 Scrambler brake package)" },
+ { "slug": "ducati-scrambler-urban-enduro-800cc-2017", "front_brake": "330mm single disc, 4-piston radial caliper", "rear_brake": "245mm disc, single-piston floating caliper", "abs_type": "ABS", "source": "ducati.com archived Scrambler tech spec (web.archive.org, shared 800 Scrambler brake package)" },
+
+ { "slug": "harley-davidson-v-rod-vrscb-2005", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCB ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1130cc-vrsca-1250-vrscaw-2006", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCA ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1130cc-vrsca-1250-vrscaw-2007", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS optional", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCAW ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1130cc-vrsca-1250-vrscaw-2008", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS optional", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCAW ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1130cc-vrsca-1250-vrscaw-2009", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS optional", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCAW ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1130cc-vrsca-1250-vrscaw-2010", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS optional", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCAW ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1130cc-vrsca-1250-vrscaw-2011", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS optional", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCAW ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-vrsca-2010", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS optional", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCAW ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-night-rod-vrscd-2008", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCD Night Rod ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-street-rod-vrscr-2007", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS optional", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCR Street Rod ficha tecnica" },
+ { "slug": "harley-davidson-street-rod-1130cc-2006", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCR Street Rod ficha tecnica" },
+ { "slug": "harley-davidson-street-rod-1130cc-2007", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS optional", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCR Street Rod ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1250cc-muscle-vrscf-2009", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS optional", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod Muscle VRSCF ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1250cc-muscle-vrscf-2010", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS optional", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod Muscle VRSCF ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1250cc-muscle-vrscf-2011", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS optional", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod Muscle VRSCF ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1250cc-muscle-vrscf-2012", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod Muscle VRSCF ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1250cc-muscle-vrscf-2013", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod Muscle VRSCF ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1250cc-muscle-vrscf-2014", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod Muscle VRSCF ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1250cc-muscle-vrscf-2015", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod Muscle VRSCF ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-1250cc-muscle-vrscf-2016", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod Muscle VRSCF ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-muscle-vrscf-2017", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod Muscle VRSCF ficha tecnica" },
+ { "slug": "harley-davidson-v-rod-10th-anniversary-edition-vrscdx-anv-2012", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCDX ficha tecnica" },
+ { "slug": "harley-davidson-night-rod-special-vrscdx-2017", "front_brake": "Twin ventilated floating 292mm discs", "rear_brake": "Ventilated 292mm disc", "abs_type": "ABS", "source": "fichatecnica.motosblog.com.br - Harley-Davidson V-Rod VRSCDX Night Rod Special ficha tecnica" },
+
+ { "slug": "harley-davidson-road-glide-fltrx-2025", "front_brake": "Dual floating disc rotors, 32mm 4-piston fixed axially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - Road Glide specifications" },
+ { "slug": "harley-davidson-road-glide-limited-fltrk-2026", "front_brake": "Dual floating disc rotors, 32mm 4-piston fixed axially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - Road Glide Limited specifications" },
+ { "slug": "harley-davidson-road-glide-limited-fltrxl-2026", "front_brake": "Dual floating disc rotors, 32mm 4-piston fixed axially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - Road Glide Limited specifications" },
+ { "slug": "harley-davidson-touring-road-glide-special-fltrxs-2024", "front_brake": "Dual floating disc rotors, 32mm 4-piston fixed axially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - Road Glide specifications" },
+ { "slug": "harley-davidson-street-glide-limited-2026", "front_brake": "Dual floating disc rotors, 32mm 4-piston fixed axially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - Street Glide Limited specifications" },
+ { "slug": "harley-davidson-street-glide-ultra-flhxu-2025", "front_brake": "Dual floating disc rotors, 32mm 4-piston fixed axially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - Street Glide specifications" },
+ { "slug": "harley-davidson-touring-street-glide-special-flhxs-2024", "front_brake": "Dual floating disc rotors, 32mm 4-piston fixed axially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - Street Glide specifications" },
+ { "slug": "harley-davidson-touring-street-glide-st-2024", "front_brake": "Dual floating disc rotors, 32mm 4-piston fixed axially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - Street Glide specifications" },
+ { "slug": "harley-davidson-touring-electra-glide-ultra-limited-flhtk-2024", "front_brake": "Dual floating disc rotors, 32mm 4-piston fixed axially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - Touring (Grand American Touring) specifications" },
+ { "slug": "harley-davidson-ultra-limited-120th-anniversary-flhtk-2023", "front_brake": "Dual floating disc rotors, 32mm 4-piston fixed axially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - Touring (Grand American Touring) specifications" },
+ { "slug": "harley-davidson-touring-road-king-flhr-2022", "front_brake": "Dual floating disc rotors, 32mm 4-piston fixed axially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "ABS", "source": "harley-davidson.com - Touring (Grand American Touring) specifications" },
+ { "slug": "harley-davidson-cvo-street-glide-limited-flhxse-2026", "front_brake": "Dual floating disc rotors, 4-piston fixed radially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - CVO Street Glide Limited specifications" },
+ { "slug": "harley-davidson-cvo-street-glide-st-flhxse-2026", "front_brake": "Wave-style dual floating disc rotors, 4-piston fixed radially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - CVO Street Glide ST specifications" },
+ { "slug": "harley-davidson-cvo-road-glide-st-fltrxstse-2024", "front_brake": "Wave-style dual floating disc rotors, 4-piston fixed radially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - CVO Road Glide ST specifications" },
+ { "slug": "harley-davidson-cvo-road-glide-st-fltrxstse-2025", "front_brake": "Wave-style dual floating disc rotors, 4-piston fixed radially mounted calipers", "rear_brake": "Fixed disc rotor, single axially mounted caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - CVO Road Glide ST specifications" },
+
+ { "slug": "harley-davidson-fat-boy-117-2026", "front_brake": "Split 7-spoke floating disc rotor, 4-piston fixed caliper", "rear_brake": "Split 7-spoke floating disc rotor, 2-piston floating caliper", "abs_type": "ABS", "source": "harley-davidson.com - Fat Boy specifications" },
+ { "slug": "harley-davidson-fat-boy-flfb-2025", "front_brake": "Split 7-spoke floating disc rotor, 4-piston fixed caliper", "rear_brake": "Split 7-spoke floating disc rotor, 2-piston floating caliper", "abs_type": "ABS", "source": "harley-davidson.com - Fat Boy specifications" },
+ { "slug": "harley-davidson-fat-boy-flfb-2026", "front_brake": "Split 7-spoke floating disc rotor, 4-piston fixed caliper", "rear_brake": "Split 7-spoke floating disc rotor, 2-piston floating caliper", "abs_type": "ABS", "source": "harley-davidson.com - Fat Boy specifications" },
+ { "slug": "harley-davidson-fat-boy-icon-flstfi-2025", "front_brake": "Split 7-spoke floating disc rotor, 4-piston fixed caliper", "rear_brake": "Split 7-spoke floating disc rotor, 2-piston floating caliper", "abs_type": "ABS", "source": "harley-davidson.com - Fat Boy specifications" },
+ { "slug": "harley-davidson-fat-boy-120th-anniversary-flfbs-2023", "front_brake": "Split 7-spoke floating disc rotor, 4-piston fixed caliper", "rear_brake": "Split 7-spoke floating disc rotor, 2-piston floating caliper", "abs_type": "ABS", "source": "harley-davidson.com - Fat Boy specifications" },
+ { "slug": "harley-davidson-fat-boy-30th-anniversary-2020", "front_brake": "Split 7-spoke floating disc rotor, 4-piston fixed caliper", "rear_brake": "Split 7-spoke floating disc rotor, 2-piston floating caliper", "source": "harley-davidson.com - Fat Boy specifications (Softail platform)" },
+ { "slug": "harley-davidson-softail-fat-boy-flfb-2020", "front_brake": "Split 7-spoke floating disc rotor, 4-piston fixed caliper", "rear_brake": "Split 7-spoke floating disc rotor, 2-piston floating caliper", "source": "harley-davidson.com - Fat Boy specifications (Softail platform)" },
+ { "slug": "harley-davidson-softail-breakout-114-fxbrs-2022", "front_brake": "Split 7-spoke floating disc rotor, 4-piston fixed caliper", "rear_brake": "Split 7-spoke floating disc rotor, 2-piston floating caliper", "abs_type": "ABS", "source": "harley-davidson.com - Breakout specifications" },
+ { "slug": "harley-davidson-softail-breakout-fxbr-2020", "front_brake": "Split 7-spoke floating disc rotor, 4-piston fixed caliper", "rear_brake": "Split 7-spoke floating disc rotor, 2-piston floating caliper", "source": "harley-davidson.com - Breakout specifications (Softail platform)" },
+ { "slug": "harley-davidson-softail-heritage-classic-114-flhcs-2024", "front_brake": "Solid uniform-expansion disc rotor, 4-piston fixed caliper", "rear_brake": "Solid uniform-expansion disc rotor, 2-piston floating caliper", "abs_type": "ABS", "source": "harley-davidson.com - Heritage Classic specifications" },
+ { "slug": "harley-davidson-softail-heritage-classic-flhc-2026", "front_brake": "Solid uniform-expansion disc rotor, 4-piston fixed caliper", "rear_brake": "Solid uniform-expansion disc rotor, 2-piston floating caliper", "abs_type": "ABS", "source": "harley-davidson.com - Heritage Classic specifications" },
+ { "slug": "harley-davidson-street-bob-117-2026", "front_brake": "Solid uniform-expansion disc rotor, 4-piston fixed caliper", "rear_brake": "Solid uniform-expansion disc rotor, 2-piston floating caliper", "abs_type": "ABS", "source": "harley-davidson.com - Street Bob specifications" },
+ { "slug": "harley-davidson-softail-street-bob-fxbb-2020", "front_brake": "Solid uniform-expansion disc rotor, 4-piston fixed caliper", "rear_brake": "Solid uniform-expansion disc rotor, 2-piston floating caliper", "source": "harley-davidson.com - Street Bob specifications (Softail platform)" },
+ { "slug": "harley-davidson-softail-low-rider-fxlr-2020", "front_brake": "Split 7-spoke floating disc rotor, 4-piston fixed caliper", "rear_brake": "Split 7-spoke floating disc rotor, 2-piston floating caliper", "source": "harley-davidson.com - Low Rider S specifications (Softail platform)" },
+ { "slug": "harley-davidson-pan-america-1250-limited-2026", "front_brake": "Dual floating disc rotors, radially mounted monoblock 4-piston calipers", "rear_brake": "Solid uniform-expansion disc rotor, single-piston floating caliper", "abs_type": "Cornering Enhanced ABS (C-ABS)", "source": "harley-davidson.com - Pan America 1250 specifications" },
+
+ { "slug": "husqvarna-norden-901-2022", "front_brake": "Twin discs, radially mounted 4-piston calipers", "rear_brake": "Single disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "husqvarna-motorcycles.com - Norden 901 technical specifications" },
+ { "slug": "husqvarna-norden-901-2023", "front_brake": "Twin discs, radially mounted 4-piston calipers", "rear_brake": "Single disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "husqvarna-motorcycles.com - Norden 901 technical specifications" },
+ { "slug": "husqvarna-norden-901-2024", "front_brake": "Twin discs, radially mounted 4-piston calipers", "rear_brake": "Single disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "husqvarna-motorcycles.com - Norden 901 technical specifications" },
+ { "slug": "husqvarna-norden-901-expedition-2023", "front_brake": "Twin discs, radially mounted 4-piston calipers", "rear_brake": "Single disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "husqvarna-motorcycles.com - Norden 901 technical specifications (shared Expedition chassis)" },
+ { "slug": "husqvarna-norden-901-expedition-2024", "front_brake": "Twin discs, radially mounted 4-piston calipers", "rear_brake": "Single disc, 2-piston floating caliper", "abs_type": "Cornering ABS", "source": "husqvarna-motorcycles.com - Norden 901 technical specifications (shared Expedition chassis)" }
 ]

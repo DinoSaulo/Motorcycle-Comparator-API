@@ -55,6 +55,11 @@ const STRONG_SOURCES = [
     /\bglobalsuzuki\.com\b/i, /\bktm\.com\b/i, /\bducati\.com\b/i, /\btriumphmotorcycles\.[a-z.]+\b/i, /\bpiaggio\.com\b/i, /\baprilia\.com\b/i,
     /\bbmw-motorrad\.[a-z.]+\b/i, /\bharley-davidson\.com\b/i, /\bpolaris\.com\b/i, /\bcan-am\.brp\.com\b/i, /\bbrp\.com\b/i,
     /\bautoevolution\.com\b/i, /\bmotorcyclenews\.com\b/i, /\bmotonline\.com\.br\b/i, /\bfichatecnica\.motosblog\.com\.br\b/i,
+    // motorcyclenews.com and autoevolution.com both disallow Claude agents in robots.txt, so no future
+    // research pass can actually fetch them - only already-applied seeds still cite them. Left in the
+    // list so re-validating a historical batch doesn't retroactively fail on a source that was legitimate
+    // when captured.
+    /\bhusqvarna-motorcycles\.com\b/i,
 ];
 const DIAMETER = /\d+\s*mm/i;
 const isStrong = (source) => STRONG_SOURCES.some((re) => re.test(source));
