@@ -45,21 +45,25 @@ const research = JSON.parse(fs.readFileSync(JSON_PATH, 'utf8'));
 if (!Array.isArray(research)) die('suspension-research.json must be a flat array of {slug, front, rear, source}');
 
 // --- validation ----------------------------------------------------------------------------
-// Every check below aborts rather than emitting a file. This seed runs last of all repeatables, so a
-// slug that is not in the .txt lists is one another import may already own - staging it here would
-// let this file pre-empt a claim it has no business making.
+// research.json is cumulative across batches (unlike brakes-research.json, which is replaced
+// wholesale per batch), so a slug from an earlier, already-applied batch stops appearing in the .txt
+// lists the moment its column stops being NULL - the lists are always regenerated from the live
+// gap, never accumulated. That is not a reason to drop data already paid to collect: every entry is
+// staged regardless, and the COALESCE guard on the final UPDATE makes a slug outside the current
+// lists a safe no-op rather than a stale claim. Same precedent as tools/import-brakes.mjs's
+// resolvedElsewhere. Anything actually wrong with an entry (bad shape, a duplicate, no value at
+// all, no source) still aborts generation.
 const seen = new Set();
+const resolvedElsewhere = [];
 for (const entry of research) {
     const { slug } = entry;
     if (!slug) die(`entry ${JSON.stringify(entry).slice(0, 80)} has no slug`);
     if (!SLUG_SHAPE.test(slug)) die(`slug "${slug}" is not a shape the public routing can use`);
     if (seen.has(slug)) die(`slug "${slug}" appears more than once`);
     seen.add(slug);
-    if (!targets.has(slug)) die(`slug "${slug}" is not in front_suspension.txt or rear_suspension.txt`);
     if (!entry.front && !entry.rear) die(`slug "${slug}" carries neither a front nor a rear value`);
-    if (entry.front && !frontTargets.has(slug)) die(`slug "${slug}" has a front value but is not missing front_suspension`);
-    if (entry.rear && !rearTargets.has(slug)) die(`slug "${slug}" has a rear value but is not missing rear_suspension`);
     if (!entry.source) die(`slug "${slug}" has no source`);
+    if (!targets.has(slug)) resolvedElsewhere.push(slug);
 }
 
 // --- column fitting ------------------------------------------------------------------------
@@ -157,6 +161,14 @@ const omissionProse = omitted.length === 0
       + 'found. A NULL is preferable to an invented figure - the same policy that made the displacement seed drop '
       + '65 rows rather than guess.';
 
+const resolvedProse = resolvedElsewhere.length === 0
+    ? 'Every staged slug is still missing front_suspension or rear_suspension in the live catalogue.'
+    : `${resolvedElsewhere.length} staged slug${resolvedElsewhere.length === 1 ? '' : 's'} - the Honda and Kawasaki `
+      + 'pilot batch, now fully applied - already have both columns filled; the COALESCE guard below makes '
+      + 're-staging them a safe no-op rather than a reason to drop research already paid to collect. '
+      + 'tools/suspension-research.json accumulates across batches, unlike tools/brakes-research.json, which is '
+      + 'replaced wholesale per batch.';
+
 const header = `-- Motorcycle Comparison API - front_suspension / rear_suspension backfill
 --
 -- Purpose: back-fill motorcycles.front_suspension and motorcycles.rear_suspension for catalogue rows
@@ -173,6 +185,7 @@ ${wrap('--   ', sourceDomains.join(', '))}
 --
 ${wrap('-- ', `Scope of this batch: ${brandList}. ${targetsForBatch} catalogue slugs were missing front_suspension or rear_suspension; ${rows.length} are staged below (${frontCount} carry a front value, ${rearCount} a rear).`)}
 ${wrap('-- ', omissionProse)}
+${wrap('-- ', resolvedProse)}
 --
 -- Keying: joins on motorcycles.slug, exact match only, exactly like every other seed in this
 -- directory. UNLIKE R__motorcycles_displacement_cc_2026_09.sql beside this file, the slugs staged here
@@ -184,10 +197,12 @@ ${wrap('-- ', `year range wherever the model actually changed - ${splitNameplate
 --
 -- Ordering, and why the filename is load-bearing: Flyway runs repeatable migrations in description
 -- order. "zzzz motorcycles suspension 2026 09" sorts after "zzzz motorcycles 1000ps specs 2026 09"
--- ('1' < 's'), so this is the LAST seed to run. That is deliberate and safe: the input list is exactly
--- the set of rows still NULL after every existing seed, so this file is pure gap-fill and cannot
--- pre-empt any other import's claim on these columns. Rename it earlier and it could start clobbering
--- a per-brand scrape.
+-- ('1' < 's'), so this is the LAST seed to run among the "zzzz" tier. That is deliberate and safe: the
+-- .txt lists this generator reads are always regenerated from the live gap, never accumulated, so a
+-- freshly-generated pair can only ever be a subset of what this file is allowed to touch - staging a
+-- slug the lists no longer carry (an earlier batch's own already-applied rows) is caught by the
+-- COALESCE guard below, never by pre-empting another import's claim. Rename it earlier than the
+-- per-brand scrapes and it could start clobbering one before this file's own gap-fill guard applies.
 --
 ${wrap('-- ', `${WIDTH_CUTS.count} values exceeded their column width and were cut at a word boundary rather than mid-word.`)}
 --
@@ -262,6 +277,7 @@ if (CHECK_ONLY) {
     console.log(`staged rows: ${rows.length} (${frontCount} front, ${rearCount} rear) across ${brands.length} brand(s): ${brandList}`);
     console.log(`nameplates: ${byNameplate.size}, of which ${splitNameplates.length} split by model year`);
     console.log(`deliberately omitted: ${omitted.length}`);
+    console.log(`resolved elsewhere (stale vs worklist): ${resolvedElsewhere.length}`);
     console.log(`width cuts: ${WIDTH_CUTS.count}`);
     console.log(`data rows identical to current file: ${dataOf(sql) === dataOf(current)}`);
     console.log(`whole file identical: ${sql === current}`);
@@ -270,4 +286,5 @@ if (CHECK_ONLY) {
 
 fs.writeFileSync(SQL_PATH, sql, 'utf8');
 console.log(`import-suspension: wrote ${rows.length} rows (${frontCount} front, ${rearCount} rear) for ${brandList} to ${path.relative(REPO_ROOT, SQL_PATH)}`);
-console.log(`  nameplates ${byNameplate.size}, split by year ${splitNameplates.length}, omitted ${omitted.length}, width cuts ${WIDTH_CUTS.count}`);
+console.log(`  nameplates ${byNameplate.size}, split by year ${splitNameplates.length}, omitted ${omitted.length}, `
+    + `resolved elsewhere ${resolvedElsewhere.length}, width cuts ${WIDTH_CUTS.count}`);

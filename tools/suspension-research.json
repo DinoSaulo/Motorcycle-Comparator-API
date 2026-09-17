@@ -3931,5 +3931,2781 @@
     "front": "41 mm inverted KYB fork, adjustable rebound damping and spring preload, 120 mm travel",
     "rear": "Horizontal back-link gas-charged shock, adjustable rebound damping and spring preload, 140 mm travel",
     "source": "kawasaki.com / autoevolution.com / motorcyclenews.com"
+  },
+  {
+    "slug": "ktm-1190-adventure-2016",
+    "front": "48mm WP USD forks",
+    "rear": "WP PDS rear shock, hydraulic spring preload",
+    "source": "motorcyclespecs.co.za 1190 Adventure specifications"
+  },
+  {
+    "slug": "ktm-125-exc-2016",
+    "front": "WP USD 48 mm fork 4CS closed cartridge",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 125 specifications"
+  },
+  {
+    "slug": "ktm-1290-super-adventure-2016",
+    "front": "WP Semi-active Suspension USD 48 mm",
+    "rear": "Shock absorber WP Semi-active Suspension PDS Monoshock",
+    "source": "motorcyclespecs.co.za 1290 Super Adventure specifications"
+  },
+  {
+    "slug": "ktm-200-duke-2021",
+    "front": "Non-adjustable 43mm inverted WP Apex fork",
+    "rear": "Linkage-free, spring-preload adjustable WP Apex shock w/ progressive damping",
+    "source": "motorcyclespecs.co.za 200 Duke specifications"
+  },
+  {
+    "slug": "ktm-200-exc-2016",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 200 specifications"
+  },
+  {
+    "slug": "ktm-250-exc-racing-2006",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-400-exc-2010",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 400 specifications"
+  },
+  {
+    "slug": "ktm-450-exc-2016",
+    "front": "WP USD 48 mm fork 4CS closed cartridge",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 450 specifications"
+  },
+  {
+    "slug": "ktm-450-exc-f-six-days-2027",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "motorcyclespecs.co.za 450 EXC-F Six Days specifications"
+  },
+  {
+    "slug": "ktm-500-exc-2016",
+    "front": "WP USD 48 mm fork 4CS closed cartridge",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 500 specifications"
+  },
+  {
+    "slug": "ktm-530-exc-2010",
+    "rear": "WP Suspension PDS 5018 DCC, aluminium swing arm",
+    "source": "motorcyclespecs.co.za 530 EXC specifications"
+  },
+  {
+    "slug": "ktm-625-smc-2006",
+    "front": "WP USD 48 mm fork",
+    "source": "bikez.com KTM SMC 625 specifications"
+  },
+  {
+    "slug": "ktm-625-sxc-2007",
+    "front": "WP USD 43 mm fork",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM SXC 625 specifications"
+  },
+  {
+    "slug": "ktm-640-lc4-adventure-2006",
+    "front": "WP USD 48 mm fork",
+    "source": "bikez.com KTM Adventure 640 specifications"
+  },
+  {
+    "slug": "ktm-640-lc4-enduro-2006",
+    "front": "WP USD 43 mm fork",
+    "rear": "WP Monoshock with Pro Lever",
+    "source": "bikez.com KTM Enduro 640 specifications"
+  },
+  {
+    "slug": "ktm-640-lc4-supermoto-2006",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP monoshock with Pro-Lever linkage",
+    "source": "bikez.com KTM Supermoto 640 specifications"
+  },
+  {
+    "slug": "ktm-660-smc-2006",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP monoshock with Pro-Lever linkage",
+    "source": "bikez.com KTM SMC 660 specifications"
+  },
+  {
+    "slug": "ktm-690-enduro-2010",
+    "front": "WP USD fork, 48 mm",
+    "rear": "WP monoshock with Pro Lever Linkage",
+    "source": "bikez.com KTM Enduro 690 specifications"
+  },
+  {
+    "slug": "ktm-690-smc-2011",
+    "front": "WP 48mm Upside-down forks",
+    "source": "motorcyclespecs.co.za 690 SMC specifications"
+  },
+  {
+    "slug": "ktm-690-supermoto-2009",
+    "rear": "WP monoshock with Pro Lever Linkage",
+    "source": "bikez.com KTM Supermoto 690 specifications"
+  },
+  {
+    "slug": "ktm-690-supermoto-limited-2010",
+    "rear": "WP monoshock with Pro Lever Linkage",
+    "source": "bikez.com KTM Supermoto 690 specifications"
+  },
+  {
+    "slug": "ktm-890-smt-2024",
+    "front": "43mm WP APEX upside-down forks",
+    "rear": "WP APEX Monoshock",
+    "source": "motorcyclespecs.co.za 890 SMT specifications"
+  },
+  {
+    "slug": "ktm-950-adventure-s-2005",
+    "front": "WP-Upside-down 48 Multi Adjuster",
+    "rear": "WP PDS suspension strut with hydr. spring preload",
+    "source": "motorcyclespecs.co.za 950 Adventure S specifications / bikez.com KTM Adventure 950 specifications"
+  },
+  {
+    "slug": "ktm-950-supermoto-2007",
+    "front": "48mm WP Upside down adjustable",
+    "source": "motorcyclespecs.co.za 950 Supermoto specifications"
+  },
+  {
+    "slug": "ktm-990-adventure-dakar-2011",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS rear shock, hydraulic spring preload",
+    "source": "bikez.com KTM Adventure 990 specifications / motorcyclespecs.co.za 990 Adventure specifications"
+  },
+  {
+    "slug": "ktm-990-adventure-r-2012",
+    "front": "48mm WP USD forks",
+    "rear": "WP PDS rear shock, hydraulic spring preload",
+    "source": "motorcyclespecs.co.za 990 Adventure R specifications"
+  },
+  {
+    "slug": "ktm-990-adventure-s-2009",
+    "front": "WP USD, 48 mm fork",
+    "rear": "WP monoshock PDS with hydraulic spring preload",
+    "source": "bikez.com KTM Adventure 990 specifications"
+  },
+  {
+    "slug": "ktm-990-duke-2024",
+    "rear": "WP APEX - Monoshock",
+    "source": "motorcyclespecs.co.za 990 Duke specifications"
+  },
+  {
+    "slug": "ktm-990-super-duke-2011",
+    "front": "48mm WP Upside down adjustable",
+    "source": "motorcyclespecs.co.za 990 Super Duke specifications"
+  },
+  {
+    "slug": "ktm-990-super-duke-r-2013",
+    "front": "48mm WP USD adjustable",
+    "source": "motorcyclespecs.co.za 990 Super Duke R specifications"
+  },
+  {
+    "slug": "ktm-990-supermoto-2010",
+    "front": "48mm WP USD adjustable",
+    "source": "motorcyclespecs.co.za 990 Supermoto specifications"
+  },
+  {
+    "slug": "ktm-990-supermoto-r-2014",
+    "front": "48mm WP USD adjustable",
+    "source": "motorcyclespecs.co.za 990 Supermoto R specifications"
+  },
+  {
+    "slug": "ktm-990-supermoto-t-2013",
+    "front": "48mm WP USD adjustable",
+    "source": "motorcyclespecs.co.za 990 Supermoto T specifications"
+  },
+  {
+    "slug": "ktm-adventure-1190cc-2014",
+    "front": "48mm WP USD forks",
+    "rear": "WP PDS rear shock, hydraulic spring preload",
+    "source": "motorcyclespecs.co.za 1190 Adventure specifications"
+  },
+  {
+    "slug": "ktm-adventure-1190cc-2015",
+    "front": "48mm WP USD forks",
+    "rear": "WP PDS rear shock, hydraulic spring preload",
+    "source": "motorcyclespecs.co.za 1190 Adventure specifications"
+  },
+  {
+    "slug": "ktm-adventure-640-st-2005",
+    "front": "WP USD 48 mm fork",
+    "source": "bikez.com KTM Adventure 640 specifications"
+  },
+  {
+    "slug": "ktm-adventure-640-st-2006",
+    "front": "WP USD 48 mm fork",
+    "source": "bikez.com KTM Adventure 640 specifications"
+  },
+  {
+    "slug": "ktm-adventure-640-st-2007",
+    "front": "WP USD, 48 mm fork",
+    "source": "bikez.com KTM Adventure 640 specifications"
+  },
+  {
+    "slug": "ktm-adventure-950cc-2004",
+    "front": "WP-Upside-down 48 Multi Adjuster",
+    "rear": "WP PDS suspension strut with hydr. spring preload",
+    "source": "motorcyclespecs.co.za 950 Adventure specifications / bikez.com KTM Adventure 950 specifications"
+  },
+  {
+    "slug": "ktm-adventure-950cc-2005",
+    "front": "WP-Upside-down 48 Multi Adjuster",
+    "rear": "WP PDS suspension strut with hydr. spring preload",
+    "source": "motorcyclespecs.co.za 950 Adventure specifications / bikez.com KTM Adventure 950 specifications"
+  },
+  {
+    "slug": "ktm-adventure-950cc-2006",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS suspension strut with hydr. spring preload",
+    "source": "bikez.com KTM Adventure 950 specifications"
+  },
+  {
+    "slug": "ktm-adventure-950cc-2007",
+    "front": "WP-Upside-down 48 Multi Adjuster",
+    "rear": "WP - PDS with hydraulic spring preload",
+    "source": "motorcyclespecs.co.za 950 Adventure specifications"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2006",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber with hydr. spring preload",
+    "source": "bikez.com KTM Adventure 990 specifications"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2007",
+    "front": "48mm WP USD forks",
+    "rear": "WP PDS rear shock, hydraulic spring preload",
+    "source": "motorcyclespecs.co.za 990 Adventure specifications"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2008",
+    "front": "48mm WP USD forks",
+    "rear": "WP PDS rear shock, hydraulic spring preload",
+    "source": "motorcyclespecs.co.za 990 Adventure specifications"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2009",
+    "front": "WP USD, 48 mm fork",
+    "rear": "WP monoshock PDS with hydraulic spring preload",
+    "source": "bikez.com KTM Adventure 990 specifications"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2010",
+    "front": "48mm WP USD forks",
+    "rear": "WP PDS rear shock, hydraulic spring preload",
+    "source": "motorcyclespecs.co.za 990 Adventure specifications"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2011",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS rear shock, hydraulic spring preload",
+    "source": "bikez.com KTM Adventure 990 specifications / motorcyclespecs.co.za 990 Adventure specifications"
+  },
+  {
+    "slug": "ktm-adventure-990cc-2012",
+    "front": "48mm WP USD forks",
+    "rear": "WP PDS rear shock, hydraulic spring preload",
+    "source": "motorcyclespecs.co.za 990 Adventure specifications"
+  },
+  {
+    "slug": "ktm-adventure-r-dakar-990cc-2010",
+    "front": "48mm WP USD forks",
+    "rear": "WP monoshock PDS with hydr. spring preload",
+    "source": "motorcyclespecs.co.za 990 Adventure R Dakar specifications / bikez.com KTM Adventure 990 specifications"
+  },
+  {
+    "slug": "ktm-adventure-r-dakar-990cc-2011",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS rear shock, hydraulic spring preload",
+    "source": "bikez.com KTM Adventure 990 specifications / motorcyclespecs.co.za 990 Adventure R Dakar specifications"
+  },
+  {
+    "slug": "ktm-duke-200-abs-2018",
+    "front": "Non-adjustable 43mm inverted WP Apex fork",
+    "rear": "Linkage-free, spring-preload adjustable WP Apex shock w/ progressive damping",
+    "source": "motorcyclespecs.co.za 200 Duke specifications"
+  },
+  {
+    "slug": "ktm-duke-200-abs-2019",
+    "front": "Non-adjustable 43mm inverted WP Apex fork",
+    "rear": "Linkage-free, spring-preload adjustable WP Apex shock w/ progressive damping",
+    "source": "motorcyclespecs.co.za 200 Duke specifications"
+  },
+  {
+    "slug": "ktm-duke-200-abs-2020",
+    "front": "Non-adjustable 43mm inverted WP Apex fork",
+    "rear": "Linkage-free, spring-preload adjustable WP Apex shock w/ progressive damping",
+    "source": "motorcyclespecs.co.za 200 Duke specifications"
+  },
+  {
+    "slug": "ktm-duke-200-abs-2021",
+    "front": "Non-adjustable 43mm inverted WP Apex fork",
+    "rear": "Linkage-free, spring-preload adjustable WP Apex shock w/ progressive damping",
+    "source": "motorcyclespecs.co.za 200 Duke specifications"
+  },
+  {
+    "slug": "ktm-duke-640-duke-ii-640-1999",
+    "rear": "Central shock absorber WP IBS with PRO-LEVER linkage to rear- swing-arm with needle bearing",
+    "source": "motorcyclespecs.co.za 640 Duke II specifications"
+  },
+  {
+    "slug": "ktm-duke-640-duke-ii-640-2000",
+    "rear": "Central shock absorber WP IBS with PRO-LEVER linkage to rear- swing-arm with needle bearing",
+    "source": "motorcyclespecs.co.za 640 Duke II specifications"
+  },
+  {
+    "slug": "ktm-duke-640-duke-ii-640-2001",
+    "rear": "Central shock absorber WP IBS with PRO-LEVER linkage to rear- swing-arm with needle bearing",
+    "source": "motorcyclespecs.co.za 640 Duke II specifications"
+  },
+  {
+    "slug": "ktm-duke-640-duke-ii-640-2002",
+    "rear": "Central shock absorber WP IBS with PRO-LEVER linkage to rear- swing-arm with needle bearing",
+    "source": "motorcyclespecs.co.za 640 Duke II specifications"
+  },
+  {
+    "slug": "ktm-duke-640-duke-ii-640-2003",
+    "rear": "Central shock absorber WP IBS with PRO-LEVER linkage to rear- swing-arm with needle bearing",
+    "source": "motorcyclespecs.co.za 640 Duke II specifications"
+  },
+  {
+    "slug": "ktm-duke-640-duke-ii-640-2004",
+    "rear": "Central shock absorber WP IBS with PRO-LEVER linkage to rear- swing-arm with needle bearing",
+    "source": "motorcyclespecs.co.za 640 Duke II specifications"
+  },
+  {
+    "slug": "ktm-duke-640-duke-ii-640-2006",
+    "front": "WP USD 43 mm fork",
+    "rear": "Central shock absorber WP IBS with PRO-LEVER linkage to rear- swing-arm with needle bearing",
+    "source": "bikez.com KTM Duke 640 specifications / motorcyclespecs.co.za 640 Duke II specifications"
+  },
+  {
+    "slug": "ktm-exc-125-2003",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 125 specifications"
+  },
+  {
+    "slug": "ktm-exc-125-2004",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 125 specifications"
+  },
+  {
+    "slug": "ktm-exc-125-2005",
+    "front": "WP USD 48 mm fork (1.89",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 125 specifications"
+  },
+  {
+    "slug": "ktm-exc-125-2006",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 125 specifications"
+  },
+  {
+    "slug": "ktm-exc-125-2007",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM EXC 125 specifications"
+  },
+  {
+    "slug": "ktm-exc-125-2008",
+    "front": "WP USD 48 mm fork (1.89",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM EXC 125 specifications"
+  },
+  {
+    "slug": "ktm-exc-125-2010",
+    "front": "WP USD 48 mm fork (1.89",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 125 specifications"
+  },
+  {
+    "slug": "ktm-exc-200-2003",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 200 specifications"
+  },
+  {
+    "slug": "ktm-exc-200-2004",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 200 specifications"
+  },
+  {
+    "slug": "ktm-exc-200-2005",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 200 specifications"
+  },
+  {
+    "slug": "ktm-exc-200-2006",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 200 specifications"
+  },
+  {
+    "slug": "ktm-exc-200-2007",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM EXC 200 specifications"
+  },
+  {
+    "slug": "ktm-exc-200-2008",
+    "front": "WP USD 48 mm fork (1.89",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM EXC 200 specifications"
+  },
+  {
+    "slug": "ktm-exc-200-2010",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 200 specifications"
+  },
+  {
+    "slug": "ktm-exc-250-2004",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-250-2005",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-250-2006",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-250-2007",
+    "front": "WP USD, 48 mm fork",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-250-2008",
+    "front": "WP USD 48 mm fork (1.89",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-250-2009",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-250-2010",
+    "front": "WP USD fork, 48 mm",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-250-2011",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-250-2012",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-300-2009",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM EXC 300 specifications"
+  },
+  {
+    "slug": "ktm-exc-300-2010",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 300 specifications"
+  },
+  {
+    "slug": "ktm-exc-300-2016",
+    "front": "WP USD 48 mm fork 4CS closed cartridge",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 300 specifications"
+  },
+  {
+    "slug": "ktm-exc-300-2017",
+    "front": "WP USD Xplor 48 with preload adjuster",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 300 specifications"
+  },
+  {
+    "slug": "ktm-exc-300-2018",
+    "front": "WP USD Xplor 48 with preload adjuster",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 300 specifications"
+  },
+  {
+    "slug": "ktm-exc-300-2019",
+    "front": "WP USD Xplor 48 with preload adjuster",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 300 specifications"
+  },
+  {
+    "slug": "ktm-exc-300-2020",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS Monoshock",
+    "source": "bikez.com KTM EXC 300 specifications"
+  },
+  {
+    "slug": "ktm-exc-300-2021",
+    "front": "WP XACT-USD, 48 mm",
+    "rear": "WP XACT Monoshock with linkage",
+    "source": "bikez.com KTM EXC 300 specifications"
+  },
+  {
+    "slug": "ktm-exc-300-2022",
+    "front": "WP XPLOR-USD, 48 mm",
+    "rear": "WP PDS Monoshock",
+    "source": "bikez.com KTM EXC 300 specifications"
+  },
+  {
+    "slug": "ktm-exc-300-2023",
+    "front": "WP XPLOR-USD, 48 mm",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 300 specifications"
+  },
+  {
+    "slug": "ktm-exc-380-2001",
+    "front": "50 mm WP Extreme u pside down forks and shock",
+    "source": "motorcyclespecs.co.za 380 EXC specifications"
+  },
+  {
+    "slug": "ktm-exc-400-2002",
+    "front": "WP 43mm upside-down fork",
+    "source": "motorcyclespecs.co.za 400 EXC specifications"
+  },
+  {
+    "slug": "ktm-exc-450-2003",
+    "front": "WP 48 mm upside-down fork",
+    "rear": "WP PDS shock absorber",
+    "source": "motorcyclespecs.co.za 450 EXC specifications / bikez.com KTM EXC 450 specifications"
+  },
+  {
+    "slug": "ktm-exc-450-2004",
+    "front": "WP 48 mm upside-down fork",
+    "rear": "WP PDS shock absorber",
+    "source": "motorcyclespecs.co.za 450 EXC specifications / bikez.com KTM EXC 450 specifications"
+  },
+  {
+    "slug": "ktm-exc-450-2005",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 450 specifications"
+  },
+  {
+    "slug": "ktm-exc-450-2006",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 450 specifications"
+  },
+  {
+    "slug": "ktm-exc-450-2007",
+    "rear": "WP PDS shock absorber, aluminium swingarm",
+    "source": "motorcyclespecs.co.za 450 EXC specifications"
+  },
+  {
+    "slug": "ktm-exc-450-2008",
+    "front": "WP USD 48 mm fork (1.89",
+    "rear": "WP PDS shock absorber, aluminium swingarm",
+    "source": "bikez.com KTM EXC 450 specifications / motorcyclespecs.co.za 450 EXC specifications"
+  },
+  {
+    "slug": "ktm-exc-450-2009",
+    "front": "WP USD, 48 mm fork",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM EXC 450 specifications"
+  },
+  {
+    "slug": "ktm-exc-450-2010",
+    "front": "WP USD 48 mm fork (1.89",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 450 specifications"
+  },
+  {
+    "slug": "ktm-exc-450-2011",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber, aluminium swingarm",
+    "source": "bikez.com KTM EXC 450 specifications / motorcyclespecs.co.za 450 EXC specifications"
+  },
+  {
+    "slug": "ktm-exc-520-2000",
+    "front": "43mm WP USD fork",
+    "source": "motorcyclespecs.co.za 520 EXC specifications"
+  },
+  {
+    "slug": "ktm-exc-520-2001",
+    "front": "43mm WP USD fork",
+    "source": "motorcyclespecs.co.za 520 EXC specifications"
+  },
+  {
+    "slug": "ktm-exc-f-250-2018",
+    "front": "WP USD Xplor 48 with preload adjuster",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-f-250-2019",
+    "front": "WP USD Xplor 48 with preload adjuster",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-f-250-2020",
+    "front": "WP USD Xplor 48 with preload adjuster",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-f-250-2021",
+    "front": "WP USD Xplor 48 with preload adjuster",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-f-250-2022",
+    "front": "WP XPLOR-USD, 48 mm",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 250 specifications"
+  },
+  {
+    "slug": "ktm-exc-f-350-2016",
+    "front": "WP USD 48 mm fork 4CS closed cartridge",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM EXC 350 specifications"
+  },
+  {
+    "slug": "ktm-exc-f-350-2017",
+    "front": "WP USD Xplor 48 with preload adjuster",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 350 specifications"
+  },
+  {
+    "slug": "ktm-exc-f-350-2018",
+    "front": "WP USD Xplor 48 with preload adjuster",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 350 specifications"
+  },
+  {
+    "slug": "ktm-exc-f-350-2019",
+    "front": "WP USD Xplor 48 with preload adjuster",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 350 specifications"
+  },
+  {
+    "slug": "ktm-exc-f-350-2020",
+    "front": "WP USD Xplor 48 with preload adjuster",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 350 specifications"
+  },
+  {
+    "slug": "ktm-exc-f-350-2021",
+    "front": "WP XACT-USD, 48 mm",
+    "rear": "WP XACT Monoshock with linkage",
+    "source": "bikez.com KTM EXC 350 specifications"
+  },
+  {
+    "slug": "ktm-exc-f-350-2022",
+    "front": "48mm WP XPLOR-USD forks",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "motorcyclespecs.co.za 350 EXC-F specifications / bikez.com KTM EXC 350 specifications"
+  },
+  {
+    "slug": "ktm-exc-f-350-2023",
+    "front": "WP XPLOR-USD, 48 mm",
+    "rear": "WP Xplor PDS shock absorber",
+    "source": "bikez.com KTM EXC 350 specifications"
+  },
+  {
+    "slug": "ktm-freeride-250-r-2017",
+    "front": "WP upside-down 43 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM Freeride 250 specifications"
+  },
+  {
+    "slug": "ktm-sx-125-2004",
+    "rear": "WP PDS-DA shock absorber",
+    "source": "bikez.com KTM SX 125 specifications"
+  },
+  {
+    "slug": "ktm-sx-125-2005",
+    "front": "WP USD 48 mm fork ( .)",
+    "rear": "WP PDS-DA shock absorber",
+    "source": "bikez.com KTM SX 125 specifications"
+  },
+  {
+    "slug": "ktm-sx-125-2006",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM SX 125 specifications"
+  },
+  {
+    "slug": "ktm-sx-125-2007",
+    "front": "WP USD, 43 mm fork",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM SX 125 specifications"
+  },
+  {
+    "slug": "ktm-sx-125-2008",
+    "front": "WP USD 43 mm fork (1.69",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM SX 125 specifications"
+  },
+  {
+    "slug": "ktm-sx-125-2009",
+    "front": "WP USD, 43 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM SX 125 specifications"
+  },
+  {
+    "slug": "ktm-sx-125-2010",
+    "front": "WP USD, 43 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM SX 125 specifications"
+  },
+  {
+    "slug": "ktm-sx-250-sx-250-f-2020",
+    "front": "WP XACT-USD, 48 mm",
+    "rear": "WP XACT Monoshock with linkage",
+    "source": "bikez.com KTM SX 250 specifications"
+  },
+  {
+    "slug": "ktm-sx-350-350-f-2011",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP monoshock with linkage",
+    "source": "bikez.com KTM SX 350 specifications"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2004",
+    "rear": "WP PDS-DA shock absorber",
+    "source": "bikez.com KTM SX 450 specifications"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2005",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM SX 450 specifications"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2006",
+    "front": "WP USD 48 mm fork",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM SX 450 specifications"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2007",
+    "rear": "WP Monoshock PDS",
+    "source": "bikez.com KTM SX 450 specifications"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2008",
+    "rear": "WP Monoshock PDS",
+    "source": "bikez.com KTM SX 450 specifications"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2009",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM SX 450 specifications"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2010",
+    "rear": "WP PDS mono-shock, fully adjustable, swingarm",
+    "source": "bikez.com KTM SX 450 specifications"
+  },
+  {
+    "slug": "ktm-sx-450-sx-450f-2011",
+    "rear": "WP PDS shock absorber",
+    "source": "bikez.com KTM SX 450 specifications"
+  },
+  {
+    "slug": "ktm-sx-65-2004",
+    "front": "USD Marzocchi 35 mm fork",
+    "source": "bikez.com KTM SX 65 specifications"
+  },
+  {
+    "slug": "ktm-sx-65-2006",
+    "front": "Marzocchi USD 35 mm fork",
+    "source": "bikez.com KTM SX 65 specifications"
+  },
+  {
+    "slug": "ktm-sx-65-2010",
+    "front": "Marzocchi USD 35 mm fork",
+    "source": "bikez.com KTM SX 65 specifications"
+  },
+  {
+    "slug": "ktm-sx-65-2011",
+    "front": "Marzocchi USD 35 mm fork",
+    "source": "bikez.com KTM SX 65 specifications"
+  },
+  {
+    "slug": "ktm-sx-85-2004",
+    "rear": "WP PDS monoshock",
+    "source": "bikez.com KTM SX 85 specifications"
+  },
+  {
+    "slug": "ktm-sx-85-2005",
+    "rear": "WP PDS monoshock",
+    "source": "bikez.com KTM SX 85 specifications"
+  },
+  {
+    "slug": "ktm-sx-85-2006",
+    "front": "WP USD 43 mm fork",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM SX 85 specifications"
+  },
+  {
+    "slug": "ktm-sx-85-2007",
+    "front": "WP USD, 43 mm fork",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM SX 85 specifications"
+  },
+  {
+    "slug": "ktm-sx-85-2008",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM SX 85 specifications"
+  },
+  {
+    "slug": "ktm-sx-85-2009",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM SX 85 specifications"
+  },
+  {
+    "slug": "ktm-sx-85-2010",
+    "front": "WP USD 43 mm fork",
+    "rear": "WP PDS monoshock",
+    "source": "bikez.com KTM SX 85 specifications"
+  },
+  {
+    "slug": "ktm-sx-85-2011",
+    "front": "WP USD 43 mm fork",
+    "rear": "WP PDS monoshock",
+    "source": "bikez.com KTM SX 85 specifications"
+  },
+  {
+    "slug": "ktm-sx-85-2012",
+    "front": "WP USD 43 mm fork",
+    "rear": "WP PDS monoshock",
+    "source": "bikez.com KTM SX 85 specifications"
+  },
+  {
+    "slug": "ktm-sxc-625-2004",
+    "front": "48mm WP upside-down fork",
+    "source": "motorcyclespecs.co.za 625 SXC specifications"
+  },
+  {
+    "slug": "ktm-sxc-625-2005",
+    "front": "WP USD 43 mm fork (1.89 )",
+    "source": "bikez.com KTM SXC 625 specifications"
+  },
+  {
+    "slug": "ktm-sxc-625-2006",
+    "front": "WP USD 43 mm fork",
+    "rear": "WP Monoshock with Pro Lever",
+    "source": "bikez.com KTM SXC 625 specifications"
+  },
+  {
+    "slug": "ktm-sxc-625-2007",
+    "front": "WP USD 43 mm fork",
+    "rear": "WP monoshock PDS",
+    "source": "bikez.com KTM SXC 625 specifications"
+  },
+  {
+    "slug": "suzuki-b-king-2010",
+    "front": "Inverted telescopic coil springs, spring preload, rebound and compression damping fully adjustable",
+    "rear": "Link type, oil damped, coil springs, spring preload, rebound and compression damping fully adjustable",
+    "source": "motorcyclespecs.co.za GSX 1300 B-King specifications"
+  },
+  {
+    "slug": "suzuki-bandit-1200-2006",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200N Bandit ABS specifications"
+  },
+  {
+    "slug": "suzuki-bandit-1200s-2005",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200S Bandit specifications"
+  },
+  {
+    "slug": "suzuki-bandit-1200s-2006",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200S Bandit specifications"
+  },
+  {
+    "slug": "suzuki-bandit-1200s-2007",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200S Bandit specifications"
+  },
+  {
+    "slug": "suzuki-bandit-650-2017",
+    "front": "Telescopic, coil spring, oil damped, adjustable spring preload",
+    "rear": "Link type, coil spring, oil damped, adjustable spring load and rebound damping",
+    "source": "bikez.com Suzuki Bandit 650 specifications"
+  },
+  {
+    "slug": "suzuki-bandit-650s-2017",
+    "front": "Telescopic, coil spring, oil damped, adjustable spring preload",
+    "rear": "Link type, coil spring, oil damped, adjustable spring load and rebound damping",
+    "source": "bikez.com Suzuki Bandit 650 specifications"
+  },
+  {
+    "slug": "suzuki-bandit-n-1200-1999",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200N Bandit ABS specifications"
+  },
+  {
+    "slug": "suzuki-bandit-n-1200-2000",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200N Bandit ABS specifications"
+  },
+  {
+    "slug": "suzuki-bandit-n-1200-2001",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200N Bandit ABS specifications"
+  },
+  {
+    "slug": "suzuki-bandit-n-1200-2002",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200N Bandit ABS specifications"
+  },
+  {
+    "slug": "suzuki-bandit-n-1200-2003",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200N Bandit ABS specifications"
+  },
+  {
+    "slug": "suzuki-bandit-n-1200-2004",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200N Bandit ABS specifications"
+  },
+  {
+    "slug": "suzuki-bandit-n-1200-2005",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200N Bandit ABS specifications"
+  },
+  {
+    "slug": "suzuki-bandit-n-1200-2006",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200N Bandit ABS specifications"
+  },
+  {
+    "slug": "suzuki-bandit-n-1200-2007",
+    "front": "43 mm Telescopic, oil damped, preload adjustable",
+    "rear": "Mono-shock, link-type, 4-way adjustable rebound damping, 7-way adjustable preload",
+    "source": "motorcyclespecs.co.za GSF 1200N Bandit ABS specifications"
+  },
+  {
+    "slug": "suzuki-burgman-400z-2019",
+    "rear": "Link type, coil spring, oil damped",
+    "source": "bikez.com Suzuki Burgman 400 specifications"
+  },
+  {
+    "slug": "suzuki-burgman-650-2008",
+    "rear": "Twin shock, adjustable preload",
+    "source": "bikez.com Suzuki Burgman 650 specifications"
+  },
+  {
+    "slug": "suzuki-dl-1000-v-strom-2003",
+    "front": "Telescopic, coil spring, oil damped, 43mm forks",
+    "rear": "Swingarm, coil spring, oil damped, adjustable for preload and rebound damping",
+    "source": "motorcyclespecs.co.za DL 1000 V-Strom specifications"
+  },
+  {
+    "slug": "suzuki-dl-1000-v-strom-2004",
+    "front": "Telescopic, coil spring, oil damped, 43mm forks",
+    "rear": "Swingarm, coil spring, oil damped, adjustable for preload and rebound damping",
+    "source": "motorcyclespecs.co.za DL 1000 V-Strom specifications"
+  },
+  {
+    "slug": "suzuki-dl-1000-v-strom-2005",
+    "front": "Telescopic, coil spring, oil damped, 43mm forks",
+    "rear": "Swingarm, coil spring, oil damped, adjustable for preload and rebound damping",
+    "source": "motorcyclespecs.co.za DL 1000 V-Strom specifications"
+  },
+  {
+    "slug": "suzuki-dl-1000-v-strom-2006",
+    "front": "Telescopic, coil spring, oil damped, 43mm forks",
+    "rear": "Swingarm, coil spring, oil damped, adjustable for preload and rebound damping",
+    "source": "motorcyclespecs.co.za DL 1000 V-Strom specifications"
+  },
+  {
+    "slug": "suzuki-dl-1000-v-strom-2007",
+    "front": "Telescopic, coil spring, oil damped, 43mm forks",
+    "rear": "Swingarm, coil spring, oil damped, adjustable for preload and rebound damping",
+    "source": "motorcyclespecs.co.za DL 1000 V-Strom specifications"
+  },
+  {
+    "slug": "suzuki-dl-1000-v-strom-2008",
+    "front": "Telescopic, coil spring, oil damped, 43mm forks",
+    "rear": "Swingarm, coil spring, oil damped, adjustable for preload and rebound damping",
+    "source": "motorcyclespecs.co.za DL 1000 V-Strom specifications"
+  },
+  {
+    "slug": "suzuki-dl-1000-xt-v-strom-2020",
+    "front": "40mm Inverted telescopic, coil spring, oil damped",
+    "rear": "Link type, coil spring, oil damped",
+    "source": "motorcyclespecs.co.za DL 1000XT V-Strom specifications"
+  },
+  {
+    "slug": "suzuki-dr-800-s-1994",
+    "front": "38mm Telescopic, coil spring, air damped",
+    "rear": "Link type, coil spring, gas/oil damped, spring preload fully adjustable",
+    "source": "motorcyclespecs.co.za DR 800S Big specifications"
+  },
+  {
+    "slug": "suzuki-dr-800-s-1995",
+    "front": "38mm Telescopic, coil spring, air damped",
+    "rear": "Link type, coil spring, gas/oil damped, spring preload fully adjustable",
+    "source": "motorcyclespecs.co.za DR 800S Big specifications"
+  },
+  {
+    "slug": "suzuki-dr-800-s-1996",
+    "front": "38mm Telescopic, coil spring, air damped",
+    "rear": "Link type, coil spring, gas/oil damped, spring preload fully adjustable",
+    "source": "motorcyclespecs.co.za DR 800S Big specifications"
+  },
+  {
+    "slug": "suzuki-dr-800-s-1997",
+    "front": "38mm Telescopic, coil spring, air damped",
+    "rear": "Link type, coil spring, gas/oil damped, spring preload fully adjustable",
+    "source": "motorcyclespecs.co.za DR 800S Big specifications"
+  },
+  {
+    "slug": "suzuki-dr-800-s-1998",
+    "front": "38mm Telescopic, coil spring, air damped",
+    "rear": "Link type, coil spring, gas/oil damped, spring preload fully adjustable",
+    "source": "motorcyclespecs.co.za DR 800S Big specifications"
+  },
+  {
+    "slug": "suzuki-dr-z-400-e-2005",
+    "front": "Inverted telescopic, oil-damped, adjustable compression and rebound damping",
+    "rear": "Link-type, fully-adjustable spring preload, adjustable compression and rebound damping",
+    "source": "bikez.com Suzuki DR-Z 400 specifications"
+  },
+  {
+    "slug": "suzuki-dr-z-400-s-2005",
+    "front": "Inverted telescopic, oil-damped, adjustable compression and rebound damping",
+    "rear": "Link-type, fully-adjustable spring preload, adjustable compression and rebound damping",
+    "source": "bikez.com Suzuki DR-Z 400 specifications"
+  },
+  {
+    "slug": "suzuki-dr-z-400-sm-2007",
+    "front": "Telescopic, 49 mm, oil-damped, 11-way compression damping, adjustable spring preload",
+    "rear": "Link-type, fully-adjustable spring preload, adjustable compression and rebound damping",
+    "source": "motorcyclespecs.co.za DR-Z 400SM specifications / bikez.com Suzuki DR-Z 400 specifications"
+  },
+  {
+    "slug": "suzuki-freewind-xf-650-1999",
+    "rear": "Full Floater with adjustable spring preload and damping",
+    "source": "motorcyclespecs.co.za XF 650 Freewind specifications"
+  },
+  {
+    "slug": "suzuki-freewind-xf-650-2000",
+    "rear": "Full Floater with adjustable spring preload and damping",
+    "source": "motorcyclespecs.co.za XF 650 Freewind specifications"
+  },
+  {
+    "slug": "suzuki-freewind-xf-650-2001",
+    "rear": "Full Floater with adjustable spring preload and damping",
+    "source": "motorcyclespecs.co.za XF 650 Freewind specifications"
+  },
+  {
+    "slug": "suzuki-gs-500-e-1993",
+    "front": "Telescopic forks, 7-way preload adjustment",
+    "source": "motorcyclespecs.co.za GS 500E specifications"
+  },
+  {
+    "slug": "suzuki-gs-500-e-1994",
+    "front": "Telescopic forks, 7-way preload adjustment",
+    "source": "motorcyclespecs.co.za GS 500E specifications"
+  },
+  {
+    "slug": "suzuki-gs-500-e-1995",
+    "front": "Telescopic forks, 7-way preload adjustment",
+    "source": "motorcyclespecs.co.za GS 500E specifications"
+  },
+  {
+    "slug": "suzuki-gs-500-e-1996",
+    "front": "Telescopic forks, 7-way preload adjustment",
+    "source": "motorcyclespecs.co.za GS 500E specifications"
+  },
+  {
+    "slug": "suzuki-gs-500-e-1997",
+    "front": "Telescopic forks, 7-way preload adjustment",
+    "source": "motorcyclespecs.co.za GS 500E specifications"
+  },
+  {
+    "slug": "suzuki-gs-500-e-1998",
+    "front": "Telescopic forks, 7-way preload adjustment",
+    "source": "motorcyclespecs.co.za GS 500E specifications"
+  },
+  {
+    "slug": "suzuki-gs-500-e-1999",
+    "front": "Telescopic forks, 7-way preload adjustment",
+    "source": "motorcyclespecs.co.za GS 500E specifications"
+  },
+  {
+    "slug": "suzuki-gs-500-e-2000",
+    "front": "Telescopic forks, 7-way preload adjustment",
+    "source": "motorcyclespecs.co.za GS 500E specifications"
+  },
+  {
+    "slug": "suzuki-gs-500-e-2001",
+    "front": "Telescopic forks, 7-way preload adjustment",
+    "source": "motorcyclespecs.co.za GS 500E specifications"
+  },
+  {
+    "slug": "suzuki-gs-500-e-2002",
+    "front": "Telescopic forks, 7-way preload adjustment",
+    "source": "motorcyclespecs.co.za GS 500E specifications"
+  },
+  {
+    "slug": "suzuki-gs-500-e-2003",
+    "front": "Telescopic forks, 7-way preload adjustment",
+    "source": "motorcyclespecs.co.za GS 500E specifications"
+  },
+  {
+    "slug": "suzuki-gs-500f-2007",
+    "front": "Telescopic forks, 7-way preload adjustment",
+    "source": "motorcyclespecs.co.za GS 500F specifications"
+  },
+  {
+    "slug": "suzuki-gsr-750-2017",
+    "rear": "Link type, Coil spring, Oil damped",
+    "source": "bikez.com Suzuki GSR 750 specifications"
+  },
+  {
+    "slug": "suzuki-gsr-750-freegun-2017",
+    "rear": "Link type, Coil spring, Oil damped",
+    "source": "bikez.com Suzuki GSR 750 specifications"
+  },
+  {
+    "slug": "suzuki-gsr-750-motogp-2017",
+    "rear": "Link type, Coil spring, Oil damped",
+    "source": "bikez.com Suzuki GSR 750 specifications"
+  },
+  {
+    "slug": "suzuki-gsx-1250-f-2017",
+    "front": "Telescopic, oil damped, preload adjustable",
+    "source": "motorcyclespecs.co.za GSX 1250 FA specifications"
+  },
+  {
+    "slug": "suzuki-gsx-1300-r-hayabusa-1999",
+    "front": "Inverted telescopic, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Link-type, gas/oil damped, fully adjustable spring preload, compression damping, and rebound damping",
+    "source": "motorcyclespecs.co.za GSX 1300R Hayabusa specifications"
+  },
+  {
+    "slug": "suzuki-gsx-1300-r-hayabusa-2000",
+    "front": "Inverted telescopic, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Link-type, gas/oil damped, fully adjustable spring preload, compression damping, and rebound damping",
+    "source": "bikez.com Suzuki Hayabusa specifications"
+  },
+  {
+    "slug": "suzuki-gsx-1300-r-hayabusa-2001",
+    "front": "Inverted telescopic, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Link-type, gas/oil damped, fully adjustable spring preload, compression damping, and rebound damping",
+    "source": "motorcyclespecs.co.za GSX 1300R Hayabusa specifications"
+  },
+  {
+    "slug": "suzuki-gsx-1300-r-hayabusa-2002",
+    "front": "Inverted telescopic, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Link-type, gas/oil damped, fully adjustable spring preload, compression damping, and rebound damping",
+    "source": "motorcyclespecs.co.za GSX 1300R Hayabusa specifications"
+  },
+  {
+    "slug": "suzuki-gsx-1300-r-hayabusa-2003",
+    "front": "Inverted telescopic, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Link-type, gas/oil damped, fully adjustable spring preload, compression damping, and rebound damping",
+    "source": "motorcyclespecs.co.za GSX 1300R Hayabusa specifications"
+  },
+  {
+    "slug": "suzuki-gsx-650-f-2017",
+    "front": "41mm Forks, coil spring, oil damped, adjustable spring preload",
+    "rear": "Link type, coil spring, oil damped",
+    "source": "motorcyclespecs.co.za GSX 650F specifications / bikez.com Suzuki GSX 650 specifications"
+  },
+  {
+    "slug": "suzuki-gsx-750-f-1994",
+    "front": "41mm Telescopic fork, coil spring, oil damped, rebound damping adjustable, 3-way adjustable",
+    "rear": "Link type, gas/coil spring, gas/oil damped, spring pre-load fully adjustable, compression damping force fully adjustable, rebound damping force 4-way adjustable",
+    "source": "motorcyclespecs.co.za GSX 750F Katana specifications"
+  },
+  {
+    "slug": "suzuki-gsx-750-f-1995",
+    "front": "41mm Telescopic fork, coil spring, oil damped, rebound damping adjustable, 3-way adjustable",
+    "rear": "Link type, gas/coil spring, gas/oil damped, spring pre-load fully adjustable, compression damping force fully adjustable, rebound damping force 4-way adjustable",
+    "source": "motorcyclespecs.co.za GSX 750F Katana specifications"
+  },
+  {
+    "slug": "suzuki-gsx-750-f-1996",
+    "front": "41mm Telescopic fork, coil spring, oil damped, rebound damping adjustable, 3-way adjustable",
+    "rear": "Link type, gas/coil spring, gas/oil damped, spring pre-load fully adjustable, compression damping force fully adjustable, rebound damping force 4-way adjustable",
+    "source": "motorcyclespecs.co.za GSX 750F Katana specifications"
+  },
+  {
+    "slug": "suzuki-gsx-750-f-1997",
+    "front": "41mm Telescopic fork, coil spring, oil damped, rebound damping adjustable, 3-way adjustable",
+    "rear": "Link type, gas/coil spring, gas/oil damped, spring pre-load fully adjustable, compression damping force fully adjustable, rebound damping force 4-way adjustable",
+    "source": "motorcyclespecs.co.za GSX 750F Katana specifications"
+  },
+  {
+    "slug": "suzuki-gsx-750-f-1998",
+    "front": "41mm Telescopic fork, coil spring, oil damped, rebound damping adjustable, 3-way adjustable",
+    "rear": "Link type, gas/coil spring, gas/oil damped, spring pre-load fully adjustable, compression damping force fully adjustable, rebound damping force 4-way adjustable",
+    "source": "motorcyclespecs.co.za GSX 750F Katana specifications"
+  },
+  {
+    "slug": "suzuki-gsx-750-f-1999",
+    "front": "41mm Telescopic fork, coil spring, oil damped, rebound damping adjustable, 3-way adjustable",
+    "rear": "Link type, gas/coil spring, gas/oil damped, spring pre-load fully adjustable, compression damping force fully adjustable, rebound damping force 4-way adjustable",
+    "source": "motorcyclespecs.co.za GSX 750F Katana specifications"
+  },
+  {
+    "slug": "suzuki-gsx-750-f-2000",
+    "front": "41mm Telescopic fork, coil spring, oil damped, rebound damping adjustable, 3-way adjustable",
+    "rear": "Link type, gas/coil spring, gas/oil damped, spring pre-load fully adjustable, compression damping force fully adjustable, rebound damping force 4-way adjustable",
+    "source": "motorcyclespecs.co.za GSX 750F Katana specifications"
+  },
+  {
+    "slug": "suzuki-gsx-750-f-2001",
+    "front": "41mm Telescopic fork, coil spring, oil damped, rebound damping adjustable, 3-way adjustable",
+    "rear": "Link type, gas/coil spring, gas/oil damped, spring pre-load fully adjustable, compression damping force fully adjustable, rebound damping force 4-way adjustable",
+    "source": "motorcyclespecs.co.za GSX 750F Katana specifications"
+  },
+  {
+    "slug": "suzuki-gsx-8s-2027",
+    "front": "43mm KYB inverted fork, non-adjustable",
+    "rear": "Linkage-assisted, spring-preload adjustable KYB shock",
+    "source": "motorcyclespecs.co.za GSX-8S specifications"
+  },
+  {
+    "slug": "suzuki-gsx-8s-evo-2024",
+    "rear": "Linkage-assisted, spring-preload adjustable KYB shock",
+    "source": "motorcyclespecs.co.za GSX-8S specifications"
+  },
+  {
+    "slug": "suzuki-gsx-r-1100-w-1992",
+    "front": "Kayaba upside-down forks, preload, compression and rebound damping adjustable",
+    "source": "motorcyclespecs.co.za GSX-R 1100W specifications"
+  },
+  {
+    "slug": "suzuki-gsx-r-1100-w-1993",
+    "front": "Kayaba upside-down forks, preload, compression and rebound damping adjustable",
+    "source": "motorcyclespecs.co.za GSX-R 1100W specifications"
+  },
+  {
+    "slug": "suzuki-gsx-r-1100-w-1994",
+    "front": "Kayaba upside-down forks, preload, compression and rebound damping adjustable",
+    "source": "motorcyclespecs.co.za GSX-R 1100W specifications"
+  },
+  {
+    "slug": "suzuki-gsx-r-750-w-1995",
+    "front": "Showa 43 mm cartridge style upside-down forks, preload, compression and rebound adjustable",
+    "source": "motorcyclespecs.co.za GSX-R 750 specifications"
+  },
+  {
+    "slug": "suzuki-gsx-r-750-w-1996",
+    "front": "Showa 43 mm cartridge style upside-down forks, preload, compression and rebound adjustable",
+    "source": "motorcyclespecs.co.za GSX-R 750 specifications"
+  },
+  {
+    "slug": "suzuki-gsx-r-750-w-srad-1996",
+    "front": "Showa 43 mm cartridge style upside-down forks, preload, compression and rebound adjustable",
+    "source": "motorcyclespecs.co.za GSX-R 750 specifications"
+  },
+  {
+    "slug": "suzuki-gsx-r-750-w-srad-1999",
+    "front": "Inverted telescopic, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Link-type, gas/oil damped, fully adjustable spring preload and compression damping, 4-way adjustable rebound damping",
+    "source": "motorcyclespecs.co.za GSX-R 750 specifications"
+  },
+  {
+    "slug": "suzuki-gsx-r-750-w-srad-2000",
+    "front": "Inverted telescopic, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Link-type, gas/oil damped, fully adjustable spring preload and compression damping, 4-way adjustable rebound damping",
+    "source": "motorcyclespecs.co.za GSX-R 750 specifications"
+  },
+  {
+    "slug": "suzuki-gsx-r-750-w-srad-2001",
+    "front": "Inverted telescopic, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Link-type, gas/oil damped, fully adjustable spring preload and compression damping, 4-way adjustable rebound damping",
+    "source": "motorcyclespecs.co.za GSX-R 750 specifications"
+  },
+  {
+    "slug": "suzuki-gsx-r-750-w-srad-2002",
+    "front": "Inverted telescopic, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Link-type, gas/oil damped, fully adjustable spring preload and compression damping, 4-way adjustable rebound damping",
+    "source": "motorcyclespecs.co.za GSX-R 750 specifications"
+  },
+  {
+    "slug": "suzuki-gsx-r-750-w-srad-2003",
+    "front": "Inverted telescopic, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Link-type, gas/oil damped, fully adjustable spring preload and compression damping, 4-way adjustable rebound damping",
+    "source": "motorcyclespecs.co.za GSX-R 750 specifications"
+  },
+  {
+    "slug": "suzuki-gsx-s-1000-2026",
+    "front": "43mm KYB fully adjustable inverted telescopic fork, coil spring, oil damped",
+    "rear": "Link type, coil spring, oil damped KYB",
+    "source": "motorcyclespecs.co.za GSX-S 1000 specifications"
+  },
+  {
+    "slug": "suzuki-gsx-s-1000-2027",
+    "front": "43mm KYB fully adjustable inverted telescopic fork, coil spring, oil damped",
+    "rear": "Link type, coil spring, oil damped KYB",
+    "source": "motorcyclespecs.co.za GSX-S 1000 specifications"
+  },
+  {
+    "slug": "suzuki-inazuma-250cc-2014",
+    "rear": "Link-type. Monoshock",
+    "source": "bikez.com Suzuki Inazuma 250 specifications"
+  },
+  {
+    "slug": "suzuki-inazuma-250cc-2015",
+    "rear": "Link-type. Monoshock",
+    "source": "bikez.com Suzuki Inazuma 250 specifications"
+  },
+  {
+    "slug": "suzuki-inazuma-250cc-2016",
+    "rear": "Link-type. Monoshock",
+    "source": "bikez.com Suzuki Inazuma 250 specifications"
+  },
+  {
+    "slug": "suzuki-intruder-m1500-2011",
+    "rear": "Link type, coil spring, oil damped adjustable spring preload",
+    "source": "motorcyclespecs.co.za Intruder M1500 specifications"
+  },
+  {
+    "slug": "suzuki-intruder-vl-125-lc-2006",
+    "rear": "Twin shock absorber, adjustable spring preload",
+    "source": "bikez.com Suzuki Intruder 125 specifications"
+  },
+  {
+    "slug": "suzuki-rf-600-r-1993",
+    "front": "41mm Telescopic forks, preload adjustable",
+    "source": "motorcyclespecs.co.za RF 600R specifications"
+  },
+  {
+    "slug": "suzuki-rf-600-r-1994",
+    "front": "41mm Telescopic forks, preload adjustable",
+    "source": "motorcyclespecs.co.za RF 600R specifications"
+  },
+  {
+    "slug": "suzuki-rf-600-r-1995",
+    "front": "41mm Telescopic forks, preload adjustable",
+    "source": "motorcyclespecs.co.za RF 600R specifications"
+  },
+  {
+    "slug": "suzuki-rf-600-r-1996",
+    "front": "41mm Telescopic forks, preload adjustable",
+    "source": "motorcyclespecs.co.za RF 600R specifications"
+  },
+  {
+    "slug": "suzuki-rf-900-r-1993",
+    "front": "41mm Telescopic forks, adjustable preload",
+    "source": "motorcyclespecs.co.za RF 900R specifications"
+  },
+  {
+    "slug": "suzuki-rf-900-r-1994",
+    "front": "41mm Telescopic forks, adjustable preload",
+    "source": "motorcyclespecs.co.za RF 900R specifications"
+  },
+  {
+    "slug": "suzuki-rf-900-r-1995",
+    "front": "41mm Telescopic forks, adjustable preload",
+    "source": "motorcyclespecs.co.za RF 900R specifications"
+  },
+  {
+    "slug": "suzuki-rm-85-2013",
+    "rear": "Link type, coil spring, oil damped",
+    "source": "bikez.com Suzuki RM 85 specifications"
+  },
+  {
+    "slug": "suzuki-rmx-250-1990",
+    "front": "Inverted telescopic, pneumatic/coil spring, oil dampened, 21 way compression dampening, 21 way rebound dampening",
+    "rear": "Link-type, spring preload fully adjustable, 18 way compression dampening, 21 way rebound dampening",
+    "source": "motorcyclespecs.co.za RMX 250S specifications"
+  },
+  {
+    "slug": "suzuki-rmx-250-1991",
+    "front": "Inverted telescopic, pneumatic/coil spring, oil dampened, 21 way compression dampening, 21 way rebound dampening",
+    "rear": "Link-type, spring preload fully adjustable, 18 way compression dampening, 21 way rebound dampening",
+    "source": "motorcyclespecs.co.za RMX 250S specifications"
+  },
+  {
+    "slug": "suzuki-rmx-250-1992",
+    "front": "Inverted telescopic, pneumatic/coil spring, oil dampened, 21 way compression dampening, 21 way rebound dampening",
+    "rear": "Link-type, spring preload fully adjustable, 18 way compression dampening, 21 way rebound dampening",
+    "source": "motorcyclespecs.co.za RMX 250S specifications"
+  },
+  {
+    "slug": "suzuki-rmx-250-1993",
+    "front": "Inverted telescopic, pneumatic/coil spring, oil dampened, 21 way compression dampening, 21 way rebound dampening",
+    "rear": "Link-type, spring preload fully adjustable, 18 way compression dampening, 21 way rebound dampening",
+    "source": "motorcyclespecs.co.za RMX 250S specifications"
+  },
+  {
+    "slug": "suzuki-rmx-250-1994",
+    "front": "Inverted telescopic, pneumatic/coil spring, oil dampened, 21 way compression dampening, 21 way rebound dampening",
+    "rear": "Link-type, spring preload fully adjustable, 18 way compression dampening, 21 way rebound dampening",
+    "source": "motorcyclespecs.co.za RMX 250S specifications"
+  },
+  {
+    "slug": "suzuki-rmx-250-1995",
+    "front": "Inverted telescopic, pneumatic/coil spring, oil dampened, 21 way compression dampening, 21 way rebound dampening",
+    "rear": "Link-type, spring preload fully adjustable, 18 way compression dampening, 21 way rebound dampening",
+    "source": "motorcyclespecs.co.za RMX 250S specifications"
+  },
+  {
+    "slug": "suzuki-rmx-250-1996",
+    "front": "Inverted telescopic, pneumatic/coil spring, oil dampened, 21 way compression dampening, 21 way rebound dampening",
+    "rear": "Link-type, spring preload fully adjustable, 18 way compression dampening, 21 way rebound dampening",
+    "source": "motorcyclespecs.co.za RMX 250S specifications"
+  },
+  {
+    "slug": "suzuki-rmx-250-1997",
+    "front": "Inverted telescopic, pneumatic/coil spring, oil dampened, 21 way compression dampening, 21 way rebound dampening",
+    "rear": "Link-type, spring preload fully adjustable, 18 way compression dampening, 21 way rebound dampening",
+    "source": "motorcyclespecs.co.za RMX 250S specifications"
+  },
+  {
+    "slug": "suzuki-rmx-250-1998",
+    "front": "Inverted telescopic, pneumatic/coil spring, oil dampened, 21 way compression dampening, 21 way rebound dampening",
+    "rear": "Link-type, spring preload fully adjustable, 18 way compression dampening, 21 way rebound dampening",
+    "source": "motorcyclespecs.co.za RMX 250S specifications"
+  },
+  {
+    "slug": "suzuki-rmx-250-1999",
+    "front": "Inverted telescopic, pneumatic/coil spring, oil dampened, 21 way compression dampening, 21 way rebound dampening",
+    "rear": "Link-type, spring preload fully adjustable, 18 way compression dampening, 21 way rebound dampening",
+    "source": "motorcyclespecs.co.za RMX 250S specifications"
+  },
+  {
+    "slug": "suzuki-rmx-450z-enduro-2017",
+    "front": "SHOWA 47mm telescopic forks, pneumatic/coil spring, oil damped",
+    "rear": "Link type, coil spring, oil damped",
+    "source": "motorcyclespecs.co.za RMX 450Z specifications / bikez.com Suzuki RMX 450 specifications"
+  },
+  {
+    "slug": "suzuki-rv-200-vanvan-2019",
+    "rear": "Link type, single coil spring, oil damped",
+    "source": "bikez.com Suzuki VanVan 200 specifications"
+  },
+  {
+    "slug": "suzuki-savage-ls-650-1998",
+    "front": "38 mm Telescopic forks",
+    "source": "motorcyclespecs.co.za LS 650 P Savage specifications"
+  },
+  {
+    "slug": "suzuki-sfv-650-gladius-2017",
+    "rear": "Link type, coil spring, oil damped, spring preload 7-step adjustable",
+    "source": "motorcyclespecs.co.za SFV 650 Gladius specifications"
+  },
+  {
+    "slug": "suzuki-sv-1000-2006",
+    "front": "46 mm Telescopic fork, cartridge-type, adjustable preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za SV 1000 specifications"
+  },
+  {
+    "slug": "suzuki-sv-1000s-2006",
+    "front": "46 mm Telescopic fork, cartridge-type, adjustable preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za SV 1000S specifications"
+  },
+  {
+    "slug": "suzuki-sv-650s-2008",
+    "front": "Telescopic, coil spring, oil damped, fully adjustable preload",
+    "rear": "Link-type, 7-way adjustable spring preload",
+    "source": "bikez.com Suzuki SV 650 specifications"
+  },
+  {
+    "slug": "suzuki-tl-1000-s-1997",
+    "front": "43 mm Inverted telescopic fork, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Rotary damping system, fully adjustable spring preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za TL 1000S specifications"
+  },
+  {
+    "slug": "suzuki-tl-1000-s-1998",
+    "front": "43 mm Inverted telescopic fork, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Rotary damping system, fully adjustable spring preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za TL 1000S specifications"
+  },
+  {
+    "slug": "suzuki-tl-1000-s-1999",
+    "front": "43 mm Inverted telescopic fork, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Rotary damping system, fully adjustable spring preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za TL 1000S specifications"
+  },
+  {
+    "slug": "suzuki-tl-1000-s-2000",
+    "front": "43 mm Inverted telescopic fork, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Rotary damping system, fully adjustable spring preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za TL 1000S specifications"
+  },
+  {
+    "slug": "suzuki-tl-1000-s-2001",
+    "front": "43 mm Inverted telescopic fork, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Rotary damping system, fully adjustable spring preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za TL 1000S specifications"
+  },
+  {
+    "slug": "suzuki-tl-1000-s-2002",
+    "front": "43 mm Inverted telescopic fork, coil spring, fully adjustable spring preload, rebound and compression damping",
+    "rear": "Rotary damping system, fully adjustable spring preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za TL 1000S specifications"
+  },
+  {
+    "slug": "suzuki-v-strom-650-touring-2017",
+    "rear": "Link type, coil spring, oil damped. ABS",
+    "source": "bikez.com Suzuki V-Strom 650 specifications"
+  },
+  {
+    "slug": "suzuki-v-strom-650-xplorer-2017",
+    "rear": "Link type, coil spring, oil damped. ABS",
+    "source": "bikez.com Suzuki V-Strom 650 specifications"
+  },
+  {
+    "slug": "suzuki-v-strom-650-xt-touring-2017",
+    "rear": "Link type, coil spring, oil damped. ABS",
+    "source": "bikez.com Suzuki V-Strom 650 specifications"
+  },
+  {
+    "slug": "suzuki-v-strom-650-xt-traveller-2017",
+    "rear": "Link type, coil spring, oil damped. ABS",
+    "source": "bikez.com Suzuki V-Strom 650 specifications"
+  },
+  {
+    "slug": "suzuki-v-strom-650-xt-xplorer-2017",
+    "rear": "Link type, coil spring, oil damped. ABS",
+    "source": "bikez.com Suzuki V-Strom 650 specifications"
+  },
+  {
+    "slug": "triumph-adventurer-900-1996",
+    "front": "43 mm Telescopic fork",
+    "rear": "Monoshock adjustable preload",
+    "source": "motorcyclespecs.co.za Adventurer 900 specifications"
+  },
+  {
+    "slug": "triumph-adventurer-900-1997",
+    "rear": "Monoshock adjustable preload",
+    "source": "motorcyclespecs.co.za Adventurer 900 specifications"
+  },
+  {
+    "slug": "triumph-america-2017",
+    "front": "41mm Kayaba telescopic forks, polished stainless steel shrouds",
+    "rear": "Kayaba chrome spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za America specifications"
+  },
+  {
+    "slug": "triumph-bonneville-750cc-790cc-865cc-2001",
+    "front": "41mm Telescopic fork",
+    "rear": "Chrome spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Bonneville specifications"
+  },
+  {
+    "slug": "triumph-bonneville-750cc-790cc-865cc-2002",
+    "front": "41mm Telescopic fork",
+    "rear": "Chrome spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Bonneville specifications"
+  },
+  {
+    "slug": "triumph-bonneville-750cc-790cc-865cc-2004",
+    "front": "41mm Telescopic fork",
+    "rear": "Chrome spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Bonneville specifications"
+  },
+  {
+    "slug": "triumph-bonneville-750cc-790cc-865cc-2005",
+    "front": "41mm Telescopic fork",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Bonneville specifications / bikez.com Triumph Bonneville specifications"
+  },
+  {
+    "slug": "triumph-bonneville-750cc-790cc-865cc-2006",
+    "front": "41mm forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Bonneville specifications"
+  },
+  {
+    "slug": "triumph-bonneville-750cc-790cc-865cc-2007",
+    "front": "41mm Kayaba telescopic forks",
+    "rear": "Kayaba chrome spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Bonneville specifications"
+  },
+  {
+    "slug": "triumph-bonneville-750cc-790cc-865cc-2009",
+    "front": "41mm Kayaba telescopic forks",
+    "rear": "Chromed spring twin shocks with adjustable preload. 100mm rear wheel travel",
+    "source": "motorcyclespecs.co.za Bonneville specifications / bikez.com Triumph Bonneville specifications"
+  },
+  {
+    "slug": "triumph-bonneville-750cc-790cc-865cc-2010",
+    "front": "41mm Kayaba telescopic forks",
+    "rear": "Kayaba chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Bonneville specifications / bikez.com Triumph Bonneville specifications"
+  },
+  {
+    "slug": "triumph-bonneville-bobber-1200cc-2017",
+    "front": "Kayaba 41mm forks",
+    "rear": "Kayaba chromed spring twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Bonneville Bobber specifications"
+  },
+  {
+    "slug": "triumph-bonneville-bobber-1200cc-2018",
+    "front": "KYB 41mm forks",
+    "rear": "KYB monoshock with linkage",
+    "source": "bikez.com Triumph Bonneville Bobber specifications"
+  },
+  {
+    "slug": "triumph-bonneville-bobber-1200cc-2022",
+    "front": "Showa cartridge forks, 47mm",
+    "rear": "Mono-shock RSU with linkage",
+    "source": "bikez.com Triumph Bonneville Bobber specifications"
+  },
+  {
+    "slug": "triumph-bonneville-bobber-1200cc-2023",
+    "front": "Showa cartridge forks, 47mm",
+    "rear": "Mono-shock RSU with linkage",
+    "source": "bikez.com Triumph Bonneville Bobber specifications"
+  },
+  {
+    "slug": "triumph-bonneville-bobber-1200cc-2024",
+    "front": "47 mm Showa cartridge forks",
+    "source": "motorcyclespecs.co.za Bonneville Bobber specifications"
+  },
+  {
+    "slug": "triumph-bonneville-bobber-1200cc-2025",
+    "front": "47 mm Showa cartridge forks",
+    "rear": "KYB monoshock (RSU), linkage and preload adjustment",
+    "source": "motorcyclespecs.co.za Bonneville Bobber specifications"
+  },
+  {
+    "slug": "triumph-bonneville-bobber-1200cc-2026",
+    "front": "47 mm Showa cartridge forks",
+    "rear": "KYB monoshock (RSU), linkage and preload adjustment",
+    "source": "motorcyclespecs.co.za Bonneville Bobber specifications"
+  },
+  {
+    "slug": "triumph-bonneville-bobber-black-1200cc-2019",
+    "front": "Showa 47 mm forks with cartridge damping",
+    "rear": "Kayaba twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Bonneville Bobber specifications / motorcyclespecs.co.za Bonneville Bobber Black specifications"
+  },
+  {
+    "slug": "triumph-bonneville-bobber-black-1200cc-2020",
+    "front": "Showa 47 mm forks with cartridge damping",
+    "rear": "KYB monoshock with linkage",
+    "source": "bikez.com Triumph Bonneville Bobber specifications"
+  },
+  {
+    "slug": "triumph-bonneville-bobber-black-1200cc-2021",
+    "front": "Showa cartridge forks, 47mm",
+    "rear": "Mono-shock RSU with linkage",
+    "source": "bikez.com Triumph Bonneville Bobber specifications"
+  },
+  {
+    "slug": "triumph-bonneville-bobber-chrome-edition-1200cc-2023",
+    "front": "Showa cartridge forks, 47mm",
+    "rear": "Mono-shock RSU with linkage",
+    "source": "bikez.com Triumph Bonneville Bobber specifications"
+  },
+  {
+    "slug": "triumph-bonneville-bobber-icon-edition-1200cc-2025",
+    "front": "47 mm Showa cartridge forks",
+    "rear": "KYB monoshock (RSU), linkage and preload adjustment",
+    "source": "motorcyclespecs.co.za Bonneville Bobber specifications"
+  },
+  {
+    "slug": "triumph-bonneville-newchurch-2016",
+    "front": "41mm Kayaba telescopic forks",
+    "rear": "Kayaba chrome spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Bonneville specifications"
+  },
+  {
+    "slug": "triumph-bonneville-se-2014",
+    "front": "KYB 41mm forks, 120mm travel",
+    "rear": "KYB chromed spring twin shocks with adjustable preload, 100mm rear wheel travel",
+    "source": "bikez.com Triumph Bonneville specifications"
+  },
+  {
+    "slug": "triumph-bonneville-speedmaster-1200cc-2022",
+    "front": "47 mm Showa cartridge forks",
+    "rear": "Mono-shock RSU with linkage and preload adjustment",
+    "source": "bikez.com Triumph Bonneville Speedmaster specifications"
+  },
+  {
+    "slug": "triumph-bonneville-speedmaster-1200cc-2023",
+    "front": "47 mm Showa cartridge forks",
+    "rear": "Mono-shock RSU with linkage and preload adjustment",
+    "source": "bikez.com Triumph Bonneville Speedmaster specifications"
+  },
+  {
+    "slug": "triumph-bonneville-speedmaster-1200cc-2024",
+    "front": "47 mm Showa cartridge forks",
+    "source": "motorcyclespecs.co.za Bonneville Speedmaster specifications"
+  },
+  {
+    "slug": "triumph-bonneville-speedmaster-1200cc-2025",
+    "front": "47 mm Showa cartridge forks",
+    "rear": "KYB Mono-shock RSU with linkage and preload adjustment",
+    "source": "motorcyclespecs.co.za Bonneville Speedmaster specifications"
+  },
+  {
+    "slug": "triumph-bonneville-speedmaster-1200cc-2026",
+    "front": "47 mm Showa cartridge forks",
+    "rear": "KYB Mono-shock RSU with linkage and preload adjustment",
+    "source": "motorcyclespecs.co.za Bonneville Speedmaster specifications"
+  },
+  {
+    "slug": "triumph-bonneville-spirit-2015",
+    "front": "41mm Kayaba telescopic forks",
+    "rear": "Kayaba chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Bonneville specifications / bikez.com Triumph Bonneville Spirit specifications"
+  },
+  {
+    "slug": "triumph-bonneville-t100-2004",
+    "front": "41mm Telescopic forks",
+    "rear": "Chrome spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Bonneville T100 specifications"
+  },
+  {
+    "slug": "triumph-bonneville-t214-2015",
+    "front": "41mm Kayaba telescopic forks",
+    "rear": "Kayaba chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Bonneville specifications / bikez.com Triumph Bonneville T214 specifications"
+  },
+  {
+    "slug": "triumph-daytona-1200-1994",
+    "front": "43 mm Forks with triple rate springs adjustable for compression, rebound damping and spring preload, Kayaba",
+    "rear": "Monoshock with adjustable preload and rebound damping, Kayaba",
+    "source": "motorcyclespecs.co.za Daytona 1200 specifications"
+  },
+  {
+    "slug": "triumph-daytona-675-r-2017",
+    "front": "Öhlins 43mm upside down NIX30 forks with adjustable preload, rebound and compression damping",
+    "rear": "Öhlins TTX36 twin tube monoshock with piggy back reservoir, adjustable preload, rebound and compression damping",
+    "source": "bikez.com Triumph Daytona 675 specifications / motorcyclespecs.co.za Daytona 675R specifications"
+  },
+  {
+    "slug": "triumph-daytona-765-moto2-2020",
+    "rear": "Öhlins TTX36 twin tubemonoshock with piggy back reservoir adjustable for preload. rebound and high/low speed compression damping. 130mm rear wheel travel",
+    "source": "bikez.com Triumph Daytona Moto 765 specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-2009",
+    "front": "43mm upside down forks. 120mm travel",
+    "rear": "Chromed spring twin shocks with 5 position adjustable preload. 105mm wheel travel",
+    "source": "bikez.com Triumph Rocket III specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-2300cc-2005",
+    "front": "43mm upside down forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Rocket III specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-2300cc-2006",
+    "front": "43 mm upside down forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Rocket III specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-2300cc-2007",
+    "front": "43mm upside down forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Rocket III specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-2300cc-2008",
+    "front": "43 mm Upside down forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Rocket III specifications / bikez.com Triumph Rocket III specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-2300cc-2009",
+    "front": "43mm upside down forks. 120mm travel",
+    "rear": "Chromed spring twin shocks with 5 position adjustable preload. 105mm wheel travel",
+    "source": "bikez.com Triumph Rocket III specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-classic-2009",
+    "front": "Kayaba 43mm upside down forks. 120mm travel",
+    "rear": "Kayaba chromed spring twin shocks with 5 position adjustable preload. 105mm wheel travel",
+    "source": "bikez.com Triumph Rocket III Classic specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-classic-2300cc-2006",
+    "front": "43 mm upside down forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Rocket III Classic specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-classic-2300cc-2007",
+    "front": "43mm upside down forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Rocket III Classic specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-classic-2300cc-2008",
+    "front": "43 mm Upside down forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Rocket III Classic specifications / bikez.com Triumph Rocket III Classic specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-classic-2300cc-2009",
+    "front": "Kayaba 43mm upside down forks. 120mm travel",
+    "rear": "Kayaba chromed spring twin shocks with 5 position adjustable preload. 105mm wheel travel",
+    "source": "bikez.com Triumph Rocket III Classic specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-roadster-2017",
+    "front": "Kayaba 43 mm upside down forks",
+    "rear": "Kayaba black spring twin shocks with 5 position adjustable preload",
+    "source": "bikez.com Triumph Rocket III Roadster specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-roadster-2300cc-2011",
+    "front": "Kayaba 43mm upside down forks. 120mm travel",
+    "rear": "Kayaba black spring twin shocks with 5 position adjustable preload. 105mm wheel travel",
+    "source": "bikez.com Triumph Rocket III Roadster specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-roadster-2300cc-2012",
+    "front": "Kayaba 43mm upside down forks. 120mm travel",
+    "rear": "Kayaba black spring twin shocks with 5 position adjustable preload. 105mm wheel travel",
+    "source": "bikez.com Triumph Rocket III Roadster specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-roadster-2300cc-2013",
+    "front": "KYB 43mm upside down forks. 120mm travel",
+    "rear": "KYB black spring twin shocks with 5 position adjustable preload. 105mm wheel travel",
+    "source": "bikez.com Triumph Rocket III Roadster specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-roadster-2300cc-2014",
+    "front": "KYB 43mm upside down forks. 120mm travel",
+    "rear": "KYB black spring twin shocks with 5 position adjustable preload. 105mm wheel travel",
+    "source": "bikez.com Triumph Rocket III Roadster specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-roadster-2300cc-2015",
+    "front": "KYB 43mm upside down forks. 120mm travel",
+    "rear": "Kayaba black spring twin shocks with 5 position adjustable preload. 105mm wheel travel",
+    "source": "bikez.com Triumph Rocket III Roadster specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-roadster-2300cc-2016",
+    "front": "Kayaba 43 mm upside down forks",
+    "rear": "Kayaba black spring twin shocks with 5 position adjustable preload",
+    "source": "bikez.com Triumph Rocket III Roadster specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-roadster-2300cc-2017",
+    "front": "Kayaba 43 mm upside down forks",
+    "rear": "Kayaba black spring twin shocks with 5 position adjustable preload",
+    "source": "bikez.com Triumph Rocket III Roadster specifications"
+  },
+  {
+    "slug": "triumph-rocket-iii-touring-2015",
+    "front": "Kayaba 43mm forks. 120mm travel fully shrouded uppers",
+    "rear": "Kayaba chromed spring twin shocks with 5 position adjustable preload, 105mm rear wheel travel",
+    "source": "bikez.com Triumph Rocket III Touring specifications"
+  },
+  {
+    "slug": "triumph-rocket-x-2015",
+    "front": "KYB 43mm upside down forks. 120mm travel",
+    "rear": "Kayaba black spring twin shocks with 5 position adjustable preload. 105mm wheel travel",
+    "source": "bikez.com Triumph Rocket X specifications"
+  },
+  {
+    "slug": "triumph-scrambler-1200-x-2024",
+    "front": "47mm Marzocchi non-adjustable USD forks",
+    "rear": "Marzocchi fully adjustable piggy-back RSUs with twin springs",
+    "source": "motorcyclespecs.co.za Scrambler 1200 X specifications"
+  },
+  {
+    "slug": "triumph-scrambler-1200-x-2025",
+    "front": "47mm Marzocchi non-adjustable USD forks",
+    "rear": "Marzocchi fully adjustable piggy-back RSUs with twin springs",
+    "source": "motorcyclespecs.co.za Scrambler 1200 X specifications"
+  },
+  {
+    "slug": "triumph-scrambler-400-x-2024",
+    "front": "43mm Showa Big Piston, non-adjustable inverted fork",
+    "rear": "Gas monoshock RSU with external reservoir and pre-load adjustment",
+    "source": "motorcyclespecs.co.za Scrambler 400X specifications"
+  },
+  {
+    "slug": "triumph-scrambler-400-x-2025",
+    "front": "43mm Showa Big Piston, non-adjustable inverted fork",
+    "rear": "Gas monoshock RSU with external reservoir and pre-load adjustment",
+    "source": "motorcyclespecs.co.za Scrambler 400X specifications"
+  },
+  {
+    "slug": "triumph-scrambler-900cc-2006",
+    "front": "41mm Telescopic forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Scrambler 900 specifications"
+  },
+  {
+    "slug": "triumph-scrambler-900cc-2007",
+    "front": "41mm Telescopic forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Scrambler 900 specifications"
+  },
+  {
+    "slug": "triumph-scrambler-900cc-2010",
+    "front": "41mm Telescopic forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Scrambler 900 specifications"
+  },
+  {
+    "slug": "triumph-scrambler-900cc-2023",
+    "front": "41mm forks with cartridge damping",
+    "rear": "Twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Scrambler 900 specifications"
+  },
+  {
+    "slug": "triumph-scrambler-900cc-2025",
+    "front": "Showa 43mm upside-down forks",
+    "source": "motorcyclespecs.co.za Scrambler 900 specifications"
+  },
+  {
+    "slug": "triumph-scrambler-900cc-2026",
+    "front": "Showa 43mm upside-down forks",
+    "source": "motorcyclespecs.co.za Scrambler 900 specifications"
+  },
+  {
+    "slug": "triumph-speed-400-2024",
+    "front": "43mm Showa Big Piston, non-adjustable inverted fork",
+    "source": "motorcyclespecs.co.za Speed 400 specifications"
+  },
+  {
+    "slug": "triumph-speed-400-2025",
+    "front": "43mm Showa Big Piston, non-adjustable inverted fork",
+    "source": "motorcyclespecs.co.za Speed 400 specifications"
+  },
+  {
+    "slug": "triumph-speed-four-2005",
+    "front": "43mm forks with dual rate springs and adjustable preload, compression and rebound damping",
+    "rear": "Monoshock with adjustable preload, rebound and compression damping",
+    "source": "bikez.com Triumph Speed Four specifications"
+  },
+  {
+    "slug": "triumph-speed-triple-900-1995",
+    "front": "43 mm Kayaba telescopic forks, adjustable for preload compression and rebound",
+    "source": "motorcyclespecs.co.za Speed Triple 900 specifications"
+  },
+  {
+    "slug": "triumph-speed-triple-94-2015",
+    "rear": "Single sided swingarm, Showa twin tube monoshock with rebound and compression damping",
+    "source": "motorcyclespecs.co.za Speed Triple specifications"
+  },
+  {
+    "slug": "triumph-speed-triple-955i-2001",
+    "front": "45 mm Forks with dual rate springs and adjustable preload, compression and rebound damping",
+    "rear": "Monoshock with adjustable preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za Speed Triple 955i specifications"
+  },
+  {
+    "slug": "triumph-speed-triple-955i-2002",
+    "front": "45 mm Forks with dual rate springs and adjustable preload, compression and rebound damping",
+    "rear": "Monoshock with adjustable preload, compression and rebound damping",
+    "source": "bikez.com Triumph Speed Triple specifications"
+  },
+  {
+    "slug": "triumph-speed-triple-955i-2004",
+    "front": "45 mm Forks with dual rate springs and adjustable preload, compression and rebound damping",
+    "rear": "Monoshock with adjustable preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za Speed Triple 955i specifications"
+  },
+  {
+    "slug": "triumph-speed-triple-r-2017",
+    "rear": "Öhlins TTX36 RSU twin tube monoshock with adjustable preload, rebound and compression damping",
+    "source": "motorcyclespecs.co.za Speed Triple R specifications"
+  },
+  {
+    "slug": "triumph-speed-triple-t-509-900cc-1997",
+    "front": "45 mm Upside-down forks, preload, dump and rebound adjustable",
+    "rear": "Monoshock, preload, dump and rebound adjustable",
+    "source": "motorcyclespecs.co.za Speed Triple T509 specifications"
+  },
+  {
+    "slug": "triumph-speed-triple-t-509-900cc-1998",
+    "front": "45 mm Upside-down forks, preload, dump and rebound adjustable",
+    "rear": "Monoshock, preload, dump and rebound adjustable",
+    "source": "motorcyclespecs.co.za Speed Triple T509 specifications"
+  },
+  {
+    "slug": "triumph-speed-triple-t-509-900cc-1999",
+    "front": "45 mm Upside-down forks, preload, dump and rebound adjustable",
+    "rear": "Monoshock, preload, dump and rebound adjustable",
+    "source": "motorcyclespecs.co.za Speed Triple T509 specifications"
+  },
+  {
+    "slug": "triumph-speed-triple-t-509-900cc-2000",
+    "front": "45 mm Upside-down forks, preload, dump and rebound adjustable",
+    "rear": "Monoshock, preload, dump and rebound adjustable",
+    "source": "motorcyclespecs.co.za Speed Triple T509 specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-1200cc-2019",
+    "front": "41mm cartridge forks",
+    "rear": "Twin-sided, aluminum swingarm, twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Speed Twin specifications / motorcyclespecs.co.za Speed Twin 1200 specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-1200cc-2020",
+    "front": "41mm cartridge forks",
+    "rear": "Twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Speed Twin specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-1200cc-2022",
+    "front": "43mm USD Marzocchi forks",
+    "source": "bikez.com Triumph Speed Twin specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-1200cc-2023",
+    "front": "USD Marzocchi forks, 43mm",
+    "source": "bikez.com Triumph Speed Twin specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-1200cc-2024",
+    "front": "43mm USD Marzocchi forks",
+    "source": "motorcyclespecs.co.za Speed Twin 1200 specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-1200cc-2025",
+    "front": "43mm USD Marzocchi forks",
+    "source": "motorcyclespecs.co.za Speed Twin 1200 specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-1200cc-rs-2025",
+    "front": "43mm USD Marzocchi forks, adjustable for pre-load, compression and rebound damping",
+    "source": "motorcyclespecs.co.za Speed Twin 1200RS specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-1200cc-stealth-edition-2024",
+    "front": "43mm USD Marzocchi forks",
+    "source": "motorcyclespecs.co.za Speed Twin 1200 specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-900cc-2023",
+    "front": "USD Marzocchi forks, 43mm",
+    "source": "bikez.com Triumph Speed Twin specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-900cc-2024",
+    "front": "43 mm USD Marzocchi fork",
+    "source": "motorcyclespecs.co.za Speed Twin 900 specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-900cc-2025",
+    "front": "43 mm USD Marzocchi fork",
+    "source": "motorcyclespecs.co.za Speed Twin 900 specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-900cc-2026",
+    "front": "43 mm USD Marzocchi fork",
+    "source": "motorcyclespecs.co.za Speed Twin 900 specifications"
+  },
+  {
+    "slug": "triumph-speed-twin-900cc-stealth-edition-2024",
+    "front": "43 mm USD Marzocchi fork",
+    "source": "motorcyclespecs.co.za Speed Twin 900 specifications"
+  },
+  {
+    "slug": "triumph-sprint-900-1995",
+    "front": "43mm Telescopic forks",
+    "rear": "Tri-link single shock, adjustable for rebound damping and spring preload",
+    "source": "motorcyclespecs.co.za Sprint 900 specifications"
+  },
+  {
+    "slug": "triumph-sprint-900-1996",
+    "front": "43mm Telescopic forks",
+    "rear": "Tri-link single shock, adjustable for rebound damping and spring preload",
+    "source": "motorcyclespecs.co.za Sprint 900 specifications"
+  },
+  {
+    "slug": "triumph-sprint-gt-2013",
+    "front": "Showa 43mm cartridge forks with dual rate springs and adjustable preload. 127mm travel",
+    "rear": "Showa monoshock with adjustable preload and rebound damping. 152mm rear wheel travel",
+    "source": "bikez.com Triumph Sprint GT specifications"
+  },
+  {
+    "slug": "triumph-sprint-gt-se-2015",
+    "front": "Showa 43mm cartridge forks with dual rate springs and adjustable preload. 127mm travel",
+    "rear": "Showa monoshock with adjustable preload and rebound damping. 152mm rear wheel travel",
+    "source": "bikez.com Triumph Sprint GT specifications"
+  },
+  {
+    "slug": "triumph-sprint-rs-955-2000",
+    "front": "45 mm Forks with dual rate springs and adjustable preload",
+    "rear": "Monoshock with adjustable preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za Sprint RS specifications"
+  },
+  {
+    "slug": "triumph-sprint-rs-955-2001",
+    "front": "45 mm Forks with dual rate springs and adjustable preload",
+    "rear": "Monoshock with adjustable preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za Sprint RS specifications"
+  },
+  {
+    "slug": "triumph-sprint-rs-955-2002",
+    "front": "45 mm Forks with dual rate springs and adjustable preload",
+    "rear": "Monoshock with adjustable preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za Sprint RS specifications"
+  },
+  {
+    "slug": "triumph-sprint-st-2010",
+    "front": "Showa 43mm cartridge forks with dual rate springs and adjustable preload 127mm travel",
+    "rear": "Showa Monoshock with adjustable preload and rebound damping. 119mm travel",
+    "source": "bikez.com Triumph Sprint ST specifications"
+  },
+  {
+    "slug": "triumph-sprint-st-955-1999",
+    "front": "45 mm Forks with dual rate springs and adjustable preload",
+    "rear": "Monoshock with adjustable preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za Sprint ST specifications"
+  },
+  {
+    "slug": "triumph-sprint-st-955-2000",
+    "front": "45 mm Forks with dual rate springs and adjustable preload",
+    "rear": "Monoshock with adjustable preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za Sprint ST specifications"
+  },
+  {
+    "slug": "triumph-sprint-st-955-2001",
+    "front": "45 mm Forks with dual rate springs and adjustable preload",
+    "rear": "Monoshock with adjustable preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za Sprint ST specifications"
+  },
+  {
+    "slug": "triumph-street-cup-900cc-2017",
+    "front": "Kayaba 41 mm cartridge fork",
+    "rear": "Kayaba twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Street Cup specifications"
+  },
+  {
+    "slug": "triumph-street-cup-900cc-2018",
+    "front": "Kayaba 41mm forks",
+    "rear": "KYB twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Street Cup specifications"
+  },
+  {
+    "slug": "triumph-street-scrambler-900cc-2017",
+    "front": "41mm Telescopic forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Scrambler 900 specifications"
+  },
+  {
+    "slug": "triumph-street-scrambler-900cc-2018",
+    "front": "41mm Telescopic forks",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Scrambler 900 specifications"
+  },
+  {
+    "slug": "triumph-street-triple-2017",
+    "front": "Showa 41mm upside down big piston forks",
+    "rear": "Kayaba monoshock, adjustable preload",
+    "source": "bikez.com Triumph Street Triple specifications / motorcyclespecs.co.za Street Triple specifications"
+  },
+  {
+    "slug": "triumph-street-triple-675-r-2017",
+    "front": "Showa 41mm upside down big piston forks",
+    "source": "bikez.com Triumph Street Triple specifications"
+  },
+  {
+    "slug": "triumph-street-triple-765-rs-2019",
+    "front": "Showa 41 mm upside down big piston forks (BPF). Adjustable compression damping, rebound damping and preload",
+    "rear": "Öhlins STX40 piggyback reservoir monoshock. Adjustable spring preload (lock-rings), compression damping and rebound damping",
+    "source": "motorcyclespecs.co.za Street Triple 765RS specifications"
+  },
+  {
+    "slug": "triumph-street-triple-765-rs-2020",
+    "front": "Showa 41 mm upside down big piston forks (BPF), Adjustable compression damping, rebound damping and preload adjustment",
+    "rear": "Öhlins STX40 piggyback reservoir monoshock. Adjustable spring preload (lock-rings), compression damping and rebound damping",
+    "source": "motorcyclespecs.co.za Street Triple 765RS specifications"
+  },
+  {
+    "slug": "triumph-street-triple-765-rs-2021",
+    "front": "Showa 41 mm upside down big piston forks (BPF), Adjustable compression damping, rebound damping and preload adjustment",
+    "rear": "Öhlins STX40 piggyback reservoir monoshock. Adjustable spring preload (lock-rings), compression damping and rebound damping",
+    "source": "motorcyclespecs.co.za Street Triple 765RS specifications"
+  },
+  {
+    "slug": "triumph-street-triple-765-rs-2022",
+    "front": "Showa 41 mm upside down big piston forks (BPF), adjustable compression damping, rebound damping and preload adjustment",
+    "rear": "Öhlins STX40 piggyback reservoir monoshock, adjustable compression and rebound damping, and preload adjustment",
+    "source": "motorcyclespecs.co.za Street Triple 765RS specifications"
+  },
+  {
+    "slug": "triumph-street-triple-765-rs-2023",
+    "front": "Showa 41 mm upside down separate function big piston forks (SF-BPF), Adjustable compression damping, rebound damping and preload adjustment",
+    "rear": "Öhlins STX40 piggyback reservoir monoshock, adjustable compression and rebound damping, and preload adjustment",
+    "source": "bikez.com Triumph Street Triple specifications / motorcyclespecs.co.za Street Triple 765RS specifications"
+  },
+  {
+    "slug": "triumph-street-triple-765-rs-2025",
+    "front": "Showa 41 mm upside down Big Piston Forks (BPF), adjustable compression and rebound damping, and preload adjustment",
+    "source": "motorcyclespecs.co.za Street Triple 765RS specifications"
+  },
+  {
+    "slug": "triumph-street-triple-rx-2017",
+    "front": "Showa 41mm upside down big piston forks",
+    "rear": "Kayaba monoshock, adjustable preload",
+    "source": "bikez.com Triumph Street Triple specifications / motorcyclespecs.co.za Street Triple specifications"
+  },
+  {
+    "slug": "triumph-street-twin-900cc-2016",
+    "front": "Kayaba 41mm forks. 120mm travel",
+    "rear": "Kayaba twin shocks with adjustable preload. 120mm rear wheel travel",
+    "source": "bikez.com Triumph Street Twin specifications"
+  },
+  {
+    "slug": "triumph-street-twin-900cc-2017",
+    "front": "KYB 41mm forks",
+    "rear": "KYB twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Street Twin specifications"
+  },
+  {
+    "slug": "triumph-street-twin-900cc-2018",
+    "front": "Kayaba 41 mm fork",
+    "rear": "Kayaba twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Street Twin specifications"
+  },
+  {
+    "slug": "triumph-street-twin-900cc-2019",
+    "front": "41 mm Kayaba fork, non-adjustable with cartridge damping",
+    "rear": "Kayaba twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Street Twin specifications"
+  },
+  {
+    "slug": "triumph-street-twin-900cc-2020",
+    "front": "41 mm Kayaba fork, non-adjustable with cartridge damping",
+    "rear": "Kayaba twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Street Twin specifications"
+  },
+  {
+    "slug": "triumph-street-twin-900cc-2021",
+    "front": "41 mm Kayaba fork, non-adjustable with cartridge damping",
+    "rear": "Kayaba twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Street Twin specifications"
+  },
+  {
+    "slug": "triumph-street-twin-900cc-2022",
+    "front": "41mm cartridge forks",
+    "source": "bikez.com Triumph Street Twin specifications"
+  },
+  {
+    "slug": "triumph-thruxton-2015",
+    "front": "41 mm Forks with adjustable preload",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Thruxton specifications"
+  },
+  {
+    "slug": "triumph-thruxton-900cc-2006",
+    "front": "41 mm forks with adjustable preload",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Thruxton 900 specifications"
+  },
+  {
+    "slug": "triumph-thruxton-900cc-2007",
+    "front": "41mm forks with adjustable preload",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "bikez.com Triumph Thruxton 900 specifications"
+  },
+  {
+    "slug": "triumph-thruxton-900cc-2014",
+    "front": "KYB 41mm forks with adjustable preload. 120mm travel",
+    "rear": "KYB chromed spring twin shocks with adjustable preload. 106mm rear wheel travel",
+    "source": "bikez.com Triumph Thruxton 900 specifications"
+  },
+  {
+    "slug": "triumph-thruxton-900cc-2015",
+    "front": "Kayaba 41mm forks with adjustable preload. 120mm travel",
+    "rear": "Kayaba chromed spring twin shocks with adjustable preload. 106mm rear wheel travel",
+    "source": "bikez.com Triumph Thruxton 900 specifications"
+  },
+  {
+    "slug": "triumph-thruxton-ace-2015",
+    "front": "41 mm Forks with adjustable preload",
+    "rear": "Chromed spring twin shocks with adjustable preload",
+    "source": "motorcyclespecs.co.za Thruxton specifications"
+  },
+  {
+    "slug": "triumph-thruxton-r-1200cc-2016",
+    "front": "Showa 43mm USD big piston forks, fully adjustable",
+    "rear": "Fully adjustable Öhlins twin shocks with piggy back reservoir",
+    "source": "motorcyclespecs.co.za Thruxton 1200R specifications"
+  },
+  {
+    "slug": "triumph-thruxton-r-1200cc-2017",
+    "front": "Showa 43mm USD big piston forks, fully adjustable",
+    "rear": "Fully adjustable Öhlins twin shocks with piggy back reservoir",
+    "source": "motorcyclespecs.co.za Thruxton 1200R specifications"
+  },
+  {
+    "slug": "triumph-thruxton-r-1200cc-2018",
+    "front": "Showa 43mm USD big piston forks, fully adjustable",
+    "rear": "Fully adjustable Öhlins twin shocks with piggy back reservoir",
+    "source": "motorcyclespecs.co.za Thruxton 1200R specifications"
+  },
+  {
+    "slug": "triumph-thruxton-r-1200cc-2020",
+    "front": "Showa 43mm USD big piston forks, fully adjustable",
+    "rear": "Fully adjustable Öhlins twin shocks with piggy back reservoir",
+    "source": "motorcyclespecs.co.za Thruxton 1200R specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-2015",
+    "front": "Showa 47mm forks",
+    "rear": "Showa chromed spring twin shocks with 5 position adjustable preload",
+    "source": "motorcyclespecs.co.za Thunderbird specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-900-1995",
+    "front": "43 mm Telescopic forks",
+    "rear": "Monoshock, preload adjustable",
+    "source": "motorcyclespecs.co.za Thunderbird 900 specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-900-1996",
+    "front": "43 mm Telescopic forks",
+    "rear": "Monoshock, preload adjustable",
+    "source": "motorcyclespecs.co.za Thunderbird 900 specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-900-1997",
+    "front": "43 mm Telescopic forks",
+    "rear": "Monoshock, preload adjustable",
+    "source": "motorcyclespecs.co.za Thunderbird 900 specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-900-1998",
+    "front": "43 mm Telescopic forks",
+    "rear": "Monoshock, preload adjustable",
+    "source": "motorcyclespecs.co.za Thunderbird 900 specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-900-2001",
+    "front": "43 mm Telescopic forks",
+    "rear": "Monoshock, preload adjustable",
+    "source": "motorcyclespecs.co.za Thunderbird 900 specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-900-sport-1998",
+    "front": "43 mm Forks with triple rate springs adjustable for compression, rebound damping and spring preload",
+    "rear": "Monoshock adjustable for compression, rebound damping and spring preload",
+    "source": "motorcyclespecs.co.za Thunderbird 900 Sport specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-900-sport-1999",
+    "front": "43 mm Forks with triple rate springs adjustable for compression, rebound damping and spring preload",
+    "rear": "Monoshock adjustable for compression, rebound damping and spring preload",
+    "source": "motorcyclespecs.co.za Thunderbird 900 Sport specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-900-sport-2000",
+    "front": "43 mm Forks with triple rate springs adjustable for compression, rebound damping and spring preload",
+    "rear": "Monoshock adjustable for compression, rebound damping and spring preload",
+    "source": "motorcyclespecs.co.za Thunderbird 900 Sport specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-900-sport-2001",
+    "front": "43 mm Forks with triple rate springs adjustable for compression, rebound damping and spring preload",
+    "rear": "Monoshock adjustable for compression, rebound damping and spring preload",
+    "source": "motorcyclespecs.co.za Thunderbird 900 Sport specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-commander-2018",
+    "front": "Showa 47mm forks",
+    "rear": "Showa chromed spring twin shocks with 5 position adjustable preload",
+    "source": "bikez.com Triumph Thunderbird Commander specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-lt-2018",
+    "front": "Showa 47mm forks",
+    "rear": "Showa chromed spring twin shocks with 5 position adjustable preload",
+    "source": "bikez.com Triumph Thunderbird LT specifications"
+  },
+  {
+    "slug": "triumph-thunderbird-storm-2018",
+    "front": "Showa 47mm forks",
+    "rear": "Showa chromed spring twin shocks with 5 position adjustable preload",
+    "source": "bikez.com Triumph Thunderbird Storm specifications"
+  },
+  {
+    "slug": "triumph-tiger-1050-2012",
+    "front": "43 mm Showa upside down forks with adjustable preload, rebound and compression damping adjustment",
+    "rear": "Showa Mono-shock with adjustable preload and rebound damping",
+    "source": "motorcyclespecs.co.za Tiger 1050 specifications"
+  },
+  {
+    "slug": "triumph-tiger-1050-se-2013",
+    "front": "43 mm Showa upside down forks with adjustable preload, rebound and compression damping adjustment",
+    "rear": "Showa Mono-shock with adjustable preload and rebound damping",
+    "source": "motorcyclespecs.co.za Tiger 1050 specifications"
+  },
+  {
+    "slug": "triumph-tiger-800-xc-2017",
+    "front": "Showa 43mm upside down forks",
+    "rear": "Showa monoshock with hydraulically adjustable preload",
+    "source": "bikez.com Triumph Tiger 800 specifications"
+  },
+  {
+    "slug": "triumph-tiger-800-xc-special-2014",
+    "rear": "Showa monoshock with remote oil reservoir, hydraulically adjustable preload, rebound damping adjustment",
+    "source": "motorcyclespecs.co.za Tiger 800XC specifications"
+  },
+  {
+    "slug": "triumph-tiger-900-1994",
+    "front": "43 mm Kayaba telescopic fork, adjustable for compression and rebound damping",
+    "rear": "Kayaba monoshock, adjustable preload",
+    "source": "motorcyclespecs.co.za Tiger 900 specifications"
+  },
+  {
+    "slug": "triumph-tiger-900-1995",
+    "front": "43 mm Kayaba telescopic fork, adjustable for compression and rebound damping",
+    "rear": "Kayaba monoshock, adjustable preload",
+    "source": "motorcyclespecs.co.za Tiger 900 specifications"
+  },
+  {
+    "slug": "triumph-tiger-900-1996",
+    "front": "43 mm Kayaba telescopic fork, adjustable for compression and rebound damping",
+    "rear": "Kayaba monoshock, adjustable preload",
+    "source": "motorcyclespecs.co.za Tiger 900 specifications"
+  },
+  {
+    "slug": "triumph-tiger-955i-2001",
+    "front": "43 mm Fork with triple rate springs",
+    "rear": "Monoshock with remotely adjustable preload and rebound damping",
+    "source": "motorcyclespecs.co.za Tiger 955i specifications"
+  },
+  {
+    "slug": "triumph-tiger-955i-2002",
+    "front": "43 mm Fork with triple rate springs",
+    "rear": "Monoshock with remotely adjustable preload and rebound damping",
+    "source": "motorcyclespecs.co.za Tiger 955i specifications"
+  },
+  {
+    "slug": "triumph-tiger-955i-2004",
+    "front": "43 mm Fork with triple rate springs",
+    "rear": "Monoshock with remotely adjustable preload and rebound damping",
+    "source": "motorcyclespecs.co.za Tiger 955i specifications"
+  },
+  {
+    "slug": "triumph-tiger-955i-2005",
+    "front": "43 mm Fork with triple rate springs",
+    "rear": "Monoshock with remotely adjustable preload and rebound damping",
+    "source": "motorcyclespecs.co.za Tiger 955i specifications"
+  },
+  {
+    "slug": "triumph-tiger-955i-2006",
+    "front": "43 mm Fork with triple rate springs",
+    "rear": "Monoshock with remotely adjustable preload and rebound damping",
+    "source": "motorcyclespecs.co.za Tiger 955i specifications"
+  },
+  {
+    "slug": "triumph-tracker-400-2027",
+    "front": "43mm Showa Big Piston, non-adjustable inverted fork",
+    "rear": "Gas monoshock RSU with external reservoir and pre-load adjustment",
+    "source": "motorcyclespecs.co.za Tracker 400 specifications"
+  },
+  {
+    "slug": "triumph-trident-900-1994",
+    "front": "43 mm Telescopic forks",
+    "rear": "Tri-link rising rate monoshock, adjustable preload",
+    "source": "motorcyclespecs.co.za Trident 900 specifications"
+  },
+  {
+    "slug": "triumph-trophy-1200-1999",
+    "front": "43mm Forks with triple rate springs adjustable for compression, rebound damping and spring preload",
+    "rear": "Monoshock with adjustable preload and rebound damping",
+    "source": "motorcyclespecs.co.za Trophy 1200 specifications"
+  },
+  {
+    "slug": "triumph-trophy-1200-2000",
+    "front": "43mm Forks with triple rate springs adjustable for compression, rebound damping and spring preload",
+    "rear": "Monoshock with adjustable preload and rebound damping",
+    "source": "motorcyclespecs.co.za Trophy 1200 specifications"
+  },
+  {
+    "slug": "triumph-trophy-1200-2001",
+    "front": "43mm Forks with triple rate springs adjustable for compression, rebound damping and spring preload",
+    "rear": "Monoshock with adjustable preload and rebound damping",
+    "source": "motorcyclespecs.co.za Trophy 1200 specifications"
+  },
+  {
+    "slug": "triumph-trophy-2013",
+    "front": "WP 43 mm upside down forks, manually adjustable rebound and damping",
+    "rear": "WP monoshock with remote oil reservoir, manually adjustable hydraulic preload, manually adjustable rebound damping",
+    "source": "motorcyclespecs.co.za Trophy specifications"
+  },
+  {
+    "slug": "triumph-trophy-900-1995",
+    "front": "43 mm Telescopic forks",
+    "source": "motorcyclespecs.co.za Trophy 900 specifications"
+  },
+  {
+    "slug": "triumph-trophy-900-1996",
+    "front": "43 mm Telescopic forks",
+    "source": "motorcyclespecs.co.za Trophy 900 specifications"
+  },
+  {
+    "slug": "triumph-trophy-900-1997",
+    "front": "43 mm Telescopic forks",
+    "source": "motorcyclespecs.co.za Trophy 900 specifications"
+  },
+  {
+    "slug": "triumph-trophy-900-1998",
+    "front": "43 mm Telescopic forks",
+    "source": "motorcyclespecs.co.za Trophy 900 specifications"
+  },
+  {
+    "slug": "triumph-trophy-900-1999",
+    "front": "43 mm Telescopic forks",
+    "source": "motorcyclespecs.co.za Trophy 900 specifications"
+  },
+  {
+    "slug": "triumph-trophy-900-2000",
+    "front": "43 mm Telescopic forks",
+    "source": "motorcyclespecs.co.za Trophy 900 specifications"
+  },
+  {
+    "slug": "triumph-tt-600-2000",
+    "front": "43mm forks with dual rate springs and adjustable preload, compression and rebound damping",
+    "rear": "Monoshock with adjustable preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za TT 600 specifications"
+  },
+  {
+    "slug": "triumph-tt-600-2001",
+    "front": "43mm forks with dual rate springs and adjustable preload, compression and rebound damping",
+    "rear": "Monoshock with adjustable preload, compression and rebound damping",
+    "source": "motorcyclespecs.co.za TT 600 specifications"
+  },
+  {
+    "slug": "yamaha-bt-1100-bulldog-2006",
+    "front": "43mm forks preload adjustable",
+    "rear": "Rising rate monoshock preload adjustable",
+    "source": "motorcyclespecs.co.za BT1100 Bulldog specifications"
+  },
+  {
+    "slug": "yamaha-dt-125-x-2005",
+    "front": "41mm Telescopic forks",
+    "source": "motorcyclespecs.co.za DT 125 X specifications"
+  },
+  {
+    "slug": "yamaha-fz-6n-2011",
+    "front": "43mm Telescopic fork",
+    "rear": "Swingarm Link less type Monocross",
+    "source": "motorcyclespecs.co.za FZ-6N specifications"
+  },
+  {
+    "slug": "yamaha-fz1-2015",
+    "rear": "Linked monoshock with spring preload adjustment",
+    "source": "bikez.com Yamaha FZ1 specifications"
+  },
+  {
+    "slug": "yamaha-fz1-fazer-2015",
+    "rear": "Link-type swingarm",
+    "source": "motorcyclespecs.co.za FZ-1 Fazer specifications"
+  },
+  {
+    "slug": "yamaha-fz6-n-s2-2009",
+    "rear": "Swingarm Link less type Monocross",
+    "source": "motorcyclespecs.co.za FZ-6N S2 specifications"
+  },
+  {
+    "slug": "yamaha-mt-01-2013",
+    "rear": "Swingarm with fully adjustable single shock",
+    "source": "motorcyclespecs.co.za MT-01 specifications"
+  },
+  {
+    "slug": "yamaha-mt-03-321-abs-homem-de-ferro-2022",
+    "front": "Telescopic forks, 37.0 mm inner tube",
+    "rear": "Linkage-assisted spring-preload adjustable KYB shock",
+    "source": "bikez.com Yamaha MT-03 specifications / motorcyclespecs.co.za MT-03 specifications"
+  },
+  {
+    "slug": "yamaha-mt-07-moto-cage-2018",
+    "front": "41mm telescopic fork",
+    "source": "bikez.com Yamaha MT-07 specifications"
+  },
+  {
+    "slug": "yamaha-mt-09-sport-tracker-2017",
+    "rear": "Swingarm, (Link type suspension)",
+    "source": "bikez.com Yamaha MT-09 specifications"
+  },
+  {
+    "slug": "yamaha-mt-09-street-rally-2017",
+    "rear": "Swingarm, (Link type suspension)",
+    "source": "bikez.com Yamaha MT-09 specifications"
+  },
+  {
+    "slug": "yamaha-t-max-500-2011",
+    "front": "43mm Telescopic forks",
+    "source": "motorcyclespecs.co.za T MAX 500 specifications"
+  },
+  {
+    "slug": "yamaha-t-max-530-abs-2016",
+    "front": "43mm Telescopic forks",
+    "source": "motorcyclespecs.co.za T MAX 530 specifications"
+  },
+  {
+    "slug": "yamaha-t-max-530-black-max-2016",
+    "front": "43mm Telescopic forks",
+    "source": "motorcyclespecs.co.za T MAX 530 specifications"
+  },
+  {
+    "slug": "yamaha-t-max-530-bronze-max-2016",
+    "front": "43mm Telescopic forks",
+    "source": "motorcyclespecs.co.za T MAX 530 specifications"
+  },
+  {
+    "slug": "yamaha-tmax-dx-2019",
+    "front": "43mm telescopic forks",
+    "source": "bikez.com Yamaha TMax specifications"
+  },
+  {
+    "slug": "yamaha-tmax-sx-2019",
+    "front": "43mm telescopic forks",
+    "source": "bikez.com Yamaha TMax specifications"
+  },
+  {
+    "slug": "yamaha-tmax-sx-sport-edition-2019",
+    "front": "43mm telescopic forks",
+    "source": "bikez.com Yamaha TMax specifications"
+  },
+  {
+    "slug": "yamaha-tracer-900-gt-2020",
+    "front": "41mm inverted fork, fully adjustable",
+    "source": "bikez.com Yamaha Tracer 900 specifications"
+  },
+  {
+    "slug": "yamaha-tt-600-re-2005",
+    "rear": "Alloy swinging arm single shock with adjustable dampers",
+    "source": "motorcyclespecs.co.za TT 600RE specifications"
+  },
+  {
+    "slug": "yamaha-wr-250r-2018",
+    "rear": "Swingarm, single shock, 46 mm, adjustable",
+    "source": "motorcyclespecs.co.za WR 250R specifications"
+  },
+  {
+    "slug": "yamaha-xt-1200-ze-super-tenere-raid-edition-2020",
+    "front": "43mm inverted fork; electronically adjustable compression and rebound damping",
+    "rear": "Monoshock, adjustable preload and rebound damping",
+    "source": "bikez.com Yamaha Super Tenere specifications"
+  },
+  {
+    "slug": "yamaha-xt-1200-ze-super-tenere-world-crosser-2017",
+    "front": "Upside-down telescopic fork, 43 mm",
+    "rear": "Monoshock, adjustable preload and rebound damping",
+    "source": "bikez.com Yamaha Super Tenere specifications"
+  },
+  {
+    "slug": "yamaha-xt-660r-2017",
+    "rear": "Linked monoshock with spring preload adjustment",
+    "source": "bikez.com Yamaha XT 660 specifications"
+  },
+  {
+    "slug": "yamaha-xt-660x-2017",
+    "rear": "Linked monoshock with spring preload adjustment",
+    "source": "bikez.com Yamaha XT 660 specifications"
+  },
+  {
+    "slug": "yamaha-xt1200ze-super-tenere-2021",
+    "front": "43mm inverted fork; electronically adjustable compression and rebound damping",
+    "rear": "Monoshock, adjustable preload and rebound damping",
+    "source": "bikez.com Yamaha Super Tenere specifications"
+  },
+  {
+    "slug": "yamaha-xtz-250x-2008",
+    "front": "35mm telescopic fork",
+    "rear": "Swingarm w/rebound-adjustable single shock",
+    "source": "motorcyclespecs.co.za XTZ 250 Lancer X specifications"
+  },
+  {
+    "slug": "yamaha-xtz-250x-2009",
+    "front": "35mm telescopic fork",
+    "rear": "Swingarm w/rebound-adjustable single shock",
+    "source": "motorcyclespecs.co.za XTZ 250 Lancer X specifications"
+  },
+  {
+    "slug": "yamaha-xtz-250x-2010",
+    "front": "35mm telescopic fork",
+    "rear": "Swingarm w/rebound-adjustable single shock",
+    "source": "motorcyclespecs.co.za XTZ 250 Lancer X specifications"
+  },
+  {
+    "slug": "yamaha-yfz-450-yz-450-f-449cc-2009",
+    "rear": "Cast Aluminum Swing Arm, . Piggy Back High/Low Speed Compression, Rebound and Threaded Preload Adjustment",
+    "source": "bikez.com Yamaha YFZ 450 specifications"
+  },
+  {
+    "slug": "yamaha-yfz-450-yz-450-f-449cc-2012",
+    "rear": "Cast aluminum swingarm w/ piggyback High/Low speed compression, rebound and threaded preload adjustment, 11.0-in travel",
+    "source": "bikez.com Yamaha YFZ 450 specifications"
+  },
+  {
+    "slug": "yamaha-yfz-450-yz-450-f-449cc-2020",
+    "rear": "Cast aluminum swingarm w/piggyback High/Low speed compression, rebound and threaded preload adjustment, 11.0-in travel",
+    "source": "bikez.com Yamaha YFZ 450 specifications"
+  },
+  {
+    "slug": "yamaha-yfz-450-yz-450-f-449cc-2021",
+    "rear": "Cast aluminum swingarm w/piggyback High/Low speed compression, rebound and threaded preload adjustment, 11.0-in travel",
+    "source": "bikez.com Yamaha YFZ 450 specifications"
+  },
+  {
+    "slug": "yamaha-yfz-450-yz-450-f-449cc-2022",
+    "rear": "Cast aluminum swingarm w/piggyback High/Low speed compression, rebound and threaded preload adjustment, 11.0-in travel",
+    "source": "bikez.com Yamaha YFZ 450 specifications"
+  },
+  {
+    "slug": "yamaha-yfz-450-yz-450-f-449cc-2023",
+    "rear": "Cast aluminum swingarm w/piggyback High/Low speed compression, rebound and threaded preload adjustment, 11.0-in travel",
+    "source": "bikez.com Yamaha YFZ 450 specifications"
+  },
+  {
+    "slug": "yamaha-yz-125-lc-2020",
+    "front": "KYB® Speed-Sensitive System inverted fork; fully adjustable",
+    "source": "bikez.com Yamaha YZ 125 specifications"
+  },
+  {
+    "slug": "yamaha-yz-250-f-250cc-2020",
+    "front": "KYB® spring-type fork with speed sensitive damping; fully adjustable",
+    "source": "bikez.com Yamaha YZ 250 specifications"
+  },
+  {
+    "slug": "yamaha-yz-250-f-250cc-2021",
+    "front": "KYB speed-Sensitive System, inverted fork: fully adjustable",
+    "source": "bikez.com Yamaha YZ 250 specifications"
+  },
+  {
+    "slug": "yamaha-yz-250-lc-2020",
+    "front": "KYB® spring-type fork with speed sensitive damping; fully adjustable",
+    "source": "bikez.com Yamaha YZ 250 specifications"
+  },
+  {
+    "slug": "yamaha-yz-85-lw-85cc-2022",
+    "front": "Inverted fork; fully adjustable",
+    "source": "bikez.com Yamaha YZ 85 specifications"
   }
 ]
